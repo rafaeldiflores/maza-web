@@ -1,0 +1,71 @@
+import Link from "next/link";
+import { Logo } from "./logo";
+import { WA_MESSAGES, waLink } from "@/lib/site";
+
+const NAV_LINKS = [
+  { href: "#funciones", label: "Funciones" },
+  { href: "#planes", label: "Planes" },
+];
+
+export function Header() {
+  return (
+    <header className="sticky top-0 z-40 border-b border-border-soft bg-bg-start/70 backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
+        <Link href="/" className="shrink-0">
+          <Logo />
+        </Link>
+
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-semibold text-ink-muted transition-colors hover:text-ink"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <a
+          href={waLink(WA_MESSAGES.general)}
+          target="_blank"
+          rel="noreferrer"
+          className="hidden shrink-0 rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-accent-ink transition-transform hover:scale-[1.03] active:scale-[0.98] sm:inline-flex sm:items-center"
+        >
+          Hablar por WhatsApp
+        </a>
+
+        <details className="relative md:hidden">
+          <summary
+            className="grid h-10 w-10 cursor-pointer list-none place-items-center rounded-full border border-border-soft text-ink [&::-webkit-details-marker]:hidden"
+            aria-label="Abrir menú"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </summary>
+          <div className="absolute right-0 top-12 flex w-56 flex-col gap-1 rounded-2xl border border-border-soft bg-bg-start p-3 shadow-xl shadow-black/40">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="rounded-lg px-3 py-2.5 text-sm font-semibold text-ink-muted hover:bg-white/5 hover:text-ink"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a
+              href={waLink(WA_MESSAGES.general)}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-1 rounded-lg bg-accent px-3 py-2.5 text-center text-sm font-bold text-accent-ink"
+            >
+              Hablar por WhatsApp
+            </a>
+          </div>
+        </details>
+      </div>
+    </header>
+  );
+}

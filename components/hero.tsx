@@ -23,10 +23,10 @@ export function Hero() {
           </h1>
 
           <p className="max-w-[50ch] text-lg leading-relaxed text-ink-muted sm:text-xl">
-            MAZA lleva la cola de trabajo, el inventario y la caja de tu
-            taller — y le da a cada cliente un link para seguir su vehículo
-            en vivo y aprobar el presupuesto desde el celular, sin llamar ni
-            venir hasta el local.
+            MAZA lleva la cola de trabajo, el inventario y la caja — con un
+            asistente que conoce tu taller de memoria y le da a cada cliente
+            un link para seguir su vehículo en vivo y aprobar el presupuesto
+            desde el celular.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">

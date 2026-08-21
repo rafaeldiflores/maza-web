@@ -2,6 +2,7 @@ import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Problem } from "@/components/problem";
 import { Features } from "@/components/features";
+import { Assistant } from "@/components/assistant";
 import { Demo } from "@/components/demo";
 import { SocialProof } from "@/components/social-proof";
 import { Pricing } from "@/components/pricing";
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <Problem />
         <Features />
+        <Assistant />
         <Demo />
         <SocialProof />
         <Pricing />

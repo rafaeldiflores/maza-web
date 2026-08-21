@@ -77,8 +77,7 @@ export default function OpengraphImage() {
             <span>Tu cliente informado.</span>
           </div>
           <div style={{ fontSize: 30, color: "#c3c6d9", lineHeight: 1.4 }}>
-            Cola de trabajo, inventario y presupuestos que se aprueban
-            desde el celular.
+            Con un asistente que conoce tu taller de memoria.
           </div>
         </div>
 

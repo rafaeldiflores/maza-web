@@ -4,6 +4,7 @@ import { TRIAL_DIAS, WA_MESSAGES, waLink } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "#funciones", label: "Funciones" },
+  { href: "#asistente", label: "Asistente IA" },
   { href: "#planes", label: "Planes" },
   { href: "#preguntas", label: "Preguntas" },
 ];

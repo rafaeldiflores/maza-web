@@ -9,18 +9,24 @@ Formato: PNG o JPG, proporción vertical de celular (ideal 1080x2340 o
 similar), sin necesidad de recortar a mano — la imagen se recorta sola
 dentro del marco.
 
-PRIORIDAD ALTA — estas 4 son las que se ven grandes en la página:
+PRIORIDAD ALTA — estas 6 son las que se ven grandes en la página:
 
   hero.png          Portada. La primera impresión del sitio: conviene la
                     pantalla más vendedora (Home con el resumen del día).
   seguimiento.png   Link de seguimiento en vivo (vista del cliente)
   presupuesto.png   Presupuesto esperando aprobación del cliente
   equipo.png        Panel de equipo (dueño + mecánicos, plan Empresa)
+  ia.png            Chat del asistente respondiendo con datos reales del
+                    taller. Ideal: una respuesta que muestre números
+                    concretos (stock bajo, facturación, cola) — es lo que
+                    prueba que no es un chatbot genérico.
+  brief.png         Resumen del día / turno del día con los pendientes
+                    priorizados y las alertas.
 
 El resto de las funciones va en un grid compacto sin captura, así que
 estos archivos son opcionales y hoy no se muestran en ninguna parte:
 
-  rubro.png · cola.png · qr.png · inventario.png · ia.png ·
+  rubro.png · cola.png · qr.png · inventario.png ·
   domicilio.png · balances.png · exportar.png
 
 Mientras un archivo no exista se muestra un recuadro "Captura pendiente"

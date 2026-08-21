@@ -20,12 +20,12 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   title: "MAZA — Tu taller ordenado, tu cliente informado",
   description:
-    "App de gestión para talleres de autos, motos y bicicletas: cola de trabajo, inventario y caja, con link de seguimiento en vivo y presupuestos que el cliente aprueba desde el celular. 14 días gratis.",
+    "App de gestión para talleres de autos, motos y bicicletas: cola de trabajo, inventario y caja, con un asistente IA que conoce tus datos y presupuestos que el cliente aprueba desde el celular. 14 días gratis.",
   metadataBase: new URL("https://maza-app.vercel.app"),
   openGraph: {
     title: "MAZA — Tu taller ordenado, tu cliente informado",
     description:
-      "Cola de trabajo, inventario y caja, con seguimiento en vivo y presupuestos que se aprueban desde el celular. 14 días gratis.",
+      "Asistente IA con los datos reales de tu taller, seguimiento en vivo y presupuestos que se aprueban desde el celular. 14 días gratis.",
     locale: "es_CL",
     type: "website",
     siteName: "MAZA",

@@ -4,7 +4,7 @@ import { PhoneFrame } from "./phone-frame";
 
 export function Features() {
   const spotlight = FEATURES.filter((f) => f.spotlight);
-  const rest = FEATURES.filter((f) => !f.spotlight);
+  const rest = FEATURES.filter((f) => !f.spotlight && !f.ownSection);
 
   return (
     <section id="funciones" className="px-5 py-20 sm:px-8 sm:py-28">
@@ -14,7 +14,7 @@ export function Features() {
             Lo que ningún cuaderno puede hacer.
           </h2>
           <p className="mt-4 max-w-[60ch] text-base leading-relaxed text-ink-muted sm:text-lg">
-            Tres cosas que cambian cómo te ve tu cliente — y ocho más que
+            Tres cosas que cambian cómo te ve tu cliente — y siete más que
             ordenan el taller por dentro.
           </p>
         </div>

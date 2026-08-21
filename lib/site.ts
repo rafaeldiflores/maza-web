@@ -40,6 +40,8 @@ export type Feature = {
    * llegar a los precios.
    */
   spotlight?: boolean;
+  /** Tiene su propia sección dedicada, así que no va en el grid ni en spotlight. */
+  ownSection?: boolean;
 };
 
 /**
@@ -111,6 +113,7 @@ export const FEATURES: Feature[] = [
       "Consulta diagnósticos y sugerencias de servicio a un asistente que conoce tu inventario y tu cola en tiempo real.",
     icon: "ia",
     shotAlt: "Conversación con el asistente de inteligencia artificial",
+    ownSection: true,
   },
   {
     title: "Despacho a domicilio",
@@ -143,6 +146,50 @@ export const DEMO_VIDEO = {
   file: "demo/demo.mp4",
   poster: "demo/poster.jpg",
 };
+
+/**
+ * Lo que el asistente hace de verdad (ver ai.service.ts en la app). Cada
+ * punto corresponde a una capacidad real, no a promesa de marketing: si algo
+ * cambia en el servicio, esta lista se corrige.
+ */
+export const IA_CAPACIDADES = [
+  {
+    title: "Lee tu taller, no internet",
+    body: "Cada respuesta se arma con tus datos del momento: qué repuesto está bajo el mínimo, cuántos vehículos hay en cada estado, qué se facturó esta semana, qué citas tienes mañana.",
+  },
+  {
+    title: "Diagnostica y arma la orden",
+    body: "Le describes el síntoma y te propone servicios y repuestos de tu propio catálogo, con tus precios. Nunca inventa un servicio que no tengas cargado.",
+  },
+  {
+    title: "Redacta el WhatsApp al cliente",
+    body: "“Avísale a Diego que su moto está lista” y te deja el mensaje escrito con los datos reales de esa orden. Tú lo revisas y lo envías: nunca se manda solo.",
+  },
+  {
+    title: "Sabe cómo se usa la app",
+    body: "Tiene el manual de MAZA adentro. Si no encuentras dónde se agenda una cita o cómo se cierra la caja, se lo preguntas en vez de buscar en menús.",
+  },
+];
+
+/** Preguntas reales que el asistente responde con los datos del taller. */
+export const IA_EJEMPLOS = [
+  "¿Qué repuestos tengo bajo stock?",
+  "¿Cuánto llevo facturado este mes?",
+  "Me suena atrás al frenar, ¿qué puede ser?",
+  "Avísale a Diego que su auto está listo",
+  "¿Qué citas tengo mañana?",
+  "¿Cuántas motos hay en el taller?",
+  "¿Cómo agendo una cita?",
+];
+
+/** Lo que MAZA detecta solo y te muestra al abrir la app. */
+export const BRIEF_ALERTAS = [
+  "Entregas que se pasaron de fecha",
+  "Citas agendadas que no llegaron",
+  "Repuestos que te van a faltar para el trabajo de hoy",
+  "Vehículos listos que el cliente todavía no sabe que puede retirar",
+  "Clientes a los que les toca mantención",
+];
 
 /** El dolor antes de la solución: nombrarlo hace que las funciones aterricen. */
 export const PROBLEMS = [
@@ -197,6 +244,10 @@ export const FAQS = [
     a: "Se guardan cifrados en servidores de Google Firebase, con reglas que impiden que otra cuenta lea los datos de tu taller. Puedes exportarlos a Excel o pedir que se eliminen cuando quieras.",
   },
   {
+    q: "El asistente de IA, ¿se inventa las cosas?",
+    a: "No trabaja de memoria general: antes de cada respuesta lee los datos reales de tu taller. Cuando propone servicios o repuestos, solo puede elegir de tu propio catálogo — si algo no lo tienes cargado, no aparece. Y los mensajes a clientes te los deja escritos para que los revises: nunca envía nada por su cuenta.",
+  },
+  {
     q: "¿Puedo cancelar cuando quiera?",
     a: `Sí. No hay contrato de permanencia ni multa por salir. Además parte con ${TRIAL_DIAS} días gratis para que pruebes con tu trabajo real antes de pagar nada.`,
   },
@@ -224,9 +275,10 @@ export const PLANS: Plan[] = [
     price: 14990,
     tagline: "Para el que trabaja solo",
     features: [
+      "Asistente IA con los datos de tu taller",
+      "Resumen del día con alertas automáticas",
       "Cola de trabajo y agenda completa",
       "Inventario con descuento automático",
-      "Asistente IA integrado",
       "Balances y estadísticas",
     ],
   },

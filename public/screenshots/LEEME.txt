@@ -1,0 +1,31 @@
+Capturas de la app — cómo activarlas
+=====================================
+
+Cada función de la landing (sección "Funciones" en app/) busca su propia
+captura acá, por nombre exacto. Basta con dejar el archivo con ese nombre
+en esta carpeta y volver a desplegar: no hace falta tocar código.
+
+Formato: PNG o JPG, proporción vertical de celular (ideal 1080x2340 o
+similar), sin necesidad de recortar a mano — la imagen se recorta sola
+dentro del marco.
+
+Archivos esperados (uno por función, en el orden en que aparecen en la
+página):
+
+  seguimiento.png   Link de seguimiento en vivo (vista del cliente)
+  presupuesto.png   Presupuesto esperando aprobación del cliente
+  equipo.png        Panel de equipo (dueño + mecánicos, plan Empresa)
+  rubro.png         Selector de rubro del taller (autos/motos/bicicletas)
+  cola.png          Cola de trabajo con los estados de cada vehículo
+  qr.png            Escaneo del QR del cliente al ingresar un vehículo
+  inventario.png    Lista de repuestos con stock
+  ia.png            Conversación con el asistente IA
+  domicilio.png     Configuración de despacho a domicilio
+  balances.png      Balances e ingresos del taller
+  exportar.png      Exportación de datos a Excel
+
+Mientras un archivo no exista, esa función muestra un recuadro "Captura
+pendiente" en vez de romperse — así se puede ir completando de a una.
+
+Para agregar o renombrar funciones, editar el arreglo FEATURES en
+lib/site.ts (el campo `icon` de cada función es el nombre de archivo).

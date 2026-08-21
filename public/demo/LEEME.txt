@@ -1,0 +1,13 @@
+Video de demo — cómo activarlo
+================================
+
+Dejar acá:
+
+  demo.mp4     el video (MP4, H.264 recomendado para compatibilidad)
+  poster.jpg   opcional — imagen de portada mientras no se reproduce
+
+y volver a desplegar. Mientras "demo.mp4" no exista, la sección muestra
+una tarjeta "Demo en camino" con un botón para pedir la demo por
+WhatsApp, en vez de un reproductor roto.
+
+Configuración en lib/site.ts → DEMO_VIDEO.

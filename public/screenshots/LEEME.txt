@@ -1,31 +1,32 @@
 Capturas de la app — cómo activarlas
 =====================================
 
-Cada función de la landing (sección "Funciones" en app/) busca su propia
-captura acá, por nombre exacto. Basta con dejar el archivo con ese nombre
-en esta carpeta y volver a desplegar: no hace falta tocar código.
+La landing busca sus capturas acá, por nombre exacto. Basta con dejar el
+archivo con ese nombre en esta carpeta y volver a desplegar: no hace
+falta tocar código.
 
 Formato: PNG o JPG, proporción vertical de celular (ideal 1080x2340 o
 similar), sin necesidad de recortar a mano — la imagen se recorta sola
 dentro del marco.
 
-Archivos esperados (uno por función, en el orden en que aparecen en la
-página):
+PRIORIDAD ALTA — estas 4 son las que se ven grandes en la página:
 
+  hero.png          Portada. La primera impresión del sitio: conviene la
+                    pantalla más vendedora (Home con el resumen del día).
   seguimiento.png   Link de seguimiento en vivo (vista del cliente)
   presupuesto.png   Presupuesto esperando aprobación del cliente
   equipo.png        Panel de equipo (dueño + mecánicos, plan Empresa)
-  rubro.png         Selector de rubro del taller (autos/motos/bicicletas)
-  cola.png          Cola de trabajo con los estados de cada vehículo
-  qr.png            Escaneo del QR del cliente al ingresar un vehículo
-  inventario.png    Lista de repuestos con stock
-  ia.png            Conversación con el asistente IA
-  domicilio.png     Configuración de despacho a domicilio
-  balances.png      Balances e ingresos del taller
-  exportar.png      Exportación de datos a Excel
 
-Mientras un archivo no exista, esa función muestra un recuadro "Captura
-pendiente" en vez de romperse — así se puede ir completando de a una.
+El resto de las funciones va en un grid compacto sin captura, así que
+estos archivos son opcionales y hoy no se muestran en ninguna parte:
 
-Para agregar o renombrar funciones, editar el arreglo FEATURES en
-lib/site.ts (el campo `icon` de cada función es el nombre de archivo).
+  rubro.png · cola.png · qr.png · inventario.png · ia.png ·
+  domicilio.png · balances.png · exportar.png
+
+Mientras un archivo no exista se muestra un recuadro "Captura pendiente"
+en vez de romperse — así se puede ir completando de a una.
+
+Para cambiar qué funciones llevan captura grande, editar el arreglo
+FEATURES en lib/site.ts: las que tienen `spotlight: true` van en bloque
+grande (el campo `icon` es el nombre del archivo). Conviene no pasar de
+3 o 4: más bloques grandes alargan el scroll antes de los precios.

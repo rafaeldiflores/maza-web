@@ -3,22 +3,24 @@ import { FeatureIcon } from "./feature-icon";
 import { PhoneFrame } from "./phone-frame";
 
 export function Features() {
+  const spotlight = FEATURES.filter((f) => f.spotlight);
+  const rest = FEATURES.filter((f) => !f.spotlight);
+
   return (
     <section id="funciones" className="px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="reveal mb-16 max-w-2xl sm:mb-24">
           <h2 className="font-display text-[clamp(2.25rem,6vw,3.5rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
-            Todo el taller, en una sola pantalla.
+            Lo que ningún cuaderno puede hacer.
           </h2>
           <p className="mt-4 max-w-[60ch] text-base leading-relaxed text-ink-muted sm:text-lg">
-            MAZA conecta la cola de trabajo con lo que tu cliente ve en su
-            celular: seguimiento en vivo, aprobación de presupuestos y todo
-            el respaldo operativo del taller.
+            Tres cosas que cambian cómo te ve tu cliente — y ocho más que
+            ordenan el taller por dentro.
           </p>
         </div>
 
         <div className="flex flex-col gap-20 sm:gap-28">
-          {FEATURES.map((feature, i) => {
+          {spotlight.map((feature, i) => {
             const imageFirst = i % 2 === 0;
             return (
               <div
@@ -57,6 +59,29 @@ export function Features() {
               </div>
             );
           })}
+        </div>
+
+        <div className="reveal mt-24 border-t border-border-soft pt-14 sm:mt-32">
+          <h3 className="mb-10 max-w-[40ch] font-display text-[clamp(1.75rem,4vw,2.5rem)] leading-[1.02] tracking-[0.01em] text-ink text-balance">
+            Y todo el resto del taller, resuelto.
+          </h3>
+
+          <div className="grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
+            {rest.map((feature) => (
+              <div key={feature.icon} className="reveal flex flex-col gap-2.5">
+                <FeatureIcon
+                  name={feature.icon}
+                  className="h-6 w-6 text-accent"
+                />
+                <h4 className="text-base font-bold text-ink">
+                  {feature.title}
+                </h4>
+                <p className="max-w-[42ch] text-[15px] leading-relaxed text-ink-muted">
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

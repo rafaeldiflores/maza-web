@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { WA_MESSAGES, waLink } from "@/lib/site";
+import { TRIAL_DIAS, WA_MESSAGES, waLink } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "#funciones", label: "Funciones" },
   { href: "#planes", label: "Planes" },
+  { href: "#preguntas", label: "Preguntas" },
 ];
 
 export function Header() {
@@ -28,12 +29,12 @@ export function Header() {
         </nav>
 
         <a
-          href={waLink(WA_MESSAGES.general)}
+          href={waLink(WA_MESSAGES.trial)}
           target="_blank"
           rel="noreferrer"
           className="hidden shrink-0 rounded-full bg-accent px-5 py-2.5 text-sm font-bold text-accent-ink transition-transform hover:scale-[1.03] active:scale-[0.98] sm:inline-flex sm:items-center"
         >
-          Hablar por WhatsApp
+          Probar gratis
         </a>
 
         <details className="relative md:hidden">
@@ -56,12 +57,12 @@ export function Header() {
               </a>
             ))}
             <a
-              href={waLink(WA_MESSAGES.general)}
+              href={waLink(WA_MESSAGES.trial)}
               target="_blank"
               rel="noreferrer"
               className="mt-1 rounded-lg bg-accent px-3 py-2.5 text-center text-sm font-bold text-accent-ink"
             >
-              Hablar por WhatsApp
+              Probar {TRIAL_DIAS} días gratis
             </a>
           </div>
         </details>

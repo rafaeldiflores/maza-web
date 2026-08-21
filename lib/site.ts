@@ -4,10 +4,13 @@ export function waLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+/** Días de prueba gratis. Debe coincidir con el trial del PlanService de la app. */
+export const TRIAL_DIAS = 14;
+
 export const WA_MESSAGES = {
   general: "Hola, quiero saber más sobre MAZA para mi taller.",
-  plan: (plan: string) =>
-    `Hola, quiero contratar el plan ${plan} de MAZA.`,
+  trial: `Hola, quiero probar MAZA gratis por ${TRIAL_DIAS} días en mi taller.`,
+  plan: (plan: string) => `Hola, quiero contratar el plan ${plan} de MAZA.`,
 } as const;
 
 export type IconName =
@@ -31,6 +34,12 @@ export type Feature = {
   tag?: string;
   /** Texto alternativo de la captura de esta función. */
   shotAlt: string;
+  /**
+   * Las estrella van en bloque grande con captura; el resto en grid compacto.
+   * Solo 3 deberían llevarlo: más bloques grandes = muro de scroll antes de
+   * llegar a los precios.
+   */
+  spotlight?: boolean;
 };
 
 /**
@@ -48,6 +57,7 @@ export const FEATURES: Feature[] = [
     icon: "seguimiento",
     tag: "Poco común en talleres",
     shotAlt: "Vista del cliente siguiendo su vehículo en vivo desde el link",
+    spotlight: true,
   },
   {
     title: "Presupuestos con aprobación online",
@@ -56,6 +66,7 @@ export const FEATURES: Feature[] = [
     icon: "presupuesto",
     tag: "Cierra ventas más rápido",
     shotAlt: "Presupuesto esperando aprobación del cliente desde el celular",
+    spotlight: true,
   },
   {
     title: "Equipo con dueño y mecánicos",
@@ -64,6 +75,7 @@ export const FEATURES: Feature[] = [
     icon: "equipo",
     tag: "Plan Empresa",
     shotAlt: "Panel de equipo con mecánicos y carga de trabajo repartida",
+    spotlight: true,
   },
   {
     title: "Un taller, tu rubro",
@@ -131,6 +143,72 @@ export const DEMO_VIDEO = {
   file: "demo/demo.mp4",
   poster: "demo/poster.jpg",
 };
+
+/** El dolor antes de la solución: nombrarlo hace que las funciones aterricen. */
+export const PROBLEMS = [
+  {
+    title: "El cuaderno del mesón",
+    body: "Una hoja mojada, una letra que no se entiende, y la orden que nadie encuentra cuando el cliente viene a buscar su vehículo.",
+  },
+  {
+    title: "“¿Ya está listo?”",
+    body: "El mismo cliente preguntando tres veces al día, interrumpiendo al mecánico que está con las manos adentro de un motor.",
+  },
+  {
+    title: "Presupuestos que se enfrían",
+    body: "Mandas el monto por WhatsApp, el cliente no responde, y a la semana el vehículo sigue ocupando espacio sin que nadie decida nada.",
+  },
+  {
+    title: "Cerrar la caja a ciegas",
+    body: "Fin de mes y no sabes cuánto entró de verdad, qué repuesto se gastó, ni cuál servicio te está dejando plata.",
+  },
+];
+
+export type Testimonial = {
+  quote: string;
+  name: string;
+  workshop: string;
+  /** Foto en /public/<photo>; si no existe se usa la inicial del nombre. */
+  photo: string;
+};
+
+/**
+ * VACÍO A PROPÓSITO. No hay testimonios inventados: MAZA todavía no tiene
+ * usuarios reales, y un testimonio falso se nota y quema la confianza justo
+ * donde más importa. La sección no se renderiza mientras esto esté vacío.
+ *
+ * Para llenarlo: conseguir 2-3 talleres piloto (aunque sea gratis a cambio
+ * del testimonio), pedirles una frase textual, el nombre del taller y una
+ * foto real, y agregarlos acá.
+ */
+export const TESTIMONIALS: Testimonial[] = [];
+
+export const FAQS = [
+  {
+    q: "¿Sirve para mi rubro?",
+    a: "Sí. Al crear tu cuenta eliges si el taller es de autos, motos o bicicletas, y la app cambia los campos y los términos: el auto se controla por kilometraje, la bicicleta por calendario. No es una app de autos adaptada a la fuerza.",
+  },
+  {
+    q: "¿Necesito internet para usarla?",
+    a: "Sí, MAZA sincroniza los datos de tu taller en la nube para que estén respaldados y disponibles desde cualquier dispositivo. Con la conexión del celular basta.",
+  },
+  {
+    q: "¿Mis datos y los de mis clientes están seguros?",
+    a: "Se guardan cifrados en servidores de Google Firebase, con reglas que impiden que otra cuenta lea los datos de tu taller. Puedes exportarlos a Excel o pedir que se eliminen cuando quieras.",
+  },
+  {
+    q: "¿Puedo cancelar cuando quiera?",
+    a: `Sí. No hay contrato de permanencia ni multa por salir. Además parte con ${TRIAL_DIAS} días gratis para que pruebes con tu trabajo real antes de pagar nada.`,
+  },
+  {
+    q: "Trabajo solo, ¿igual me sirve?",
+    a: "Es justamente para quien trabaja solo o con un equipo chico. El plan Pro está pensado para un usuario; el equipo con mecánicos aparte solo aparece en el plan Empresa.",
+  },
+  {
+    q: "Tengo todo en un cuaderno, ¿tengo que cargar todo de nuevo?",
+    a: "No hace falta empezar por el histórico. La mayoría parte cargando solo los vehículos que están en el taller ahora, y el resto de los clientes se van sumando solos a medida que vuelven.",
+  },
+];
 
 export type Plan = {
   name: string;

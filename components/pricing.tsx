@@ -1,4 +1,4 @@
-import { PLANS, WA_MESSAGES, waLink } from "@/lib/site";
+import { PLANS, TRIAL_DIAS, WA_MESSAGES, waLink } from "@/lib/site";
 
 const currency = new Intl.NumberFormat("es-CL", {
   style: "currency",
@@ -12,11 +12,21 @@ export function Pricing() {
       <div className="mx-auto max-w-6xl">
         <div className="reveal mb-12 max-w-2xl sm:mb-16">
           <h2 className="font-display text-[clamp(2.25rem,6vw,3.5rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
-            Planes para cada taller.
+            Menos que una orden perdida al mes.
           </h2>
           <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-ink-muted sm:text-lg">
-            Sin pasarela adentro de la app: escríbenos por WhatsApp y
-            activamos tu plan al tiro.
+            Todos los planes parten con {TRIAL_DIAS} días gratis, sin tarjeta
+            de crédito. Te activamos el plan personalmente: hablas con una
+            persona, no con un formulario.
+          </p>
+        </div>
+
+        <div className="reveal mb-8 flex flex-wrap items-center gap-3 rounded-2xl border border-accent/30 bg-accent/10 px-5 py-4">
+          <span className="rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-ink">
+            {TRIAL_DIAS} días gratis
+          </span>
+          <p className="text-sm font-medium text-ink">
+            Pruébalo con el trabajo real de tu taller antes de pagar nada.
           </p>
         </div>
 
@@ -83,8 +93,11 @@ export function Pricing() {
                     : "border border-border-strong text-ink hover:bg-white/5"
                 }`}
               >
-                Contratar {plan.name}
+                Empezar con {plan.name}
               </a>
+              <p className="mt-2.5 text-center text-xs text-ink-faint">
+                {TRIAL_DIAS} días gratis · Sin tarjeta
+              </p>
             </div>
           ))}
         </div>

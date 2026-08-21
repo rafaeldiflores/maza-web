@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Archivo } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -17,16 +18,20 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "MAZA — Gestión inteligente para tu taller",
+  title: "MAZA — Tu taller ordenado, tu cliente informado",
   description:
-    "MAZA es la app de gestión para talleres de autos, motos o bicicletas: cola de trabajo, inventario, presupuestos con aprobación online, seguimiento en vivo para tus clientes y un asistente con IA.",
+    "App de gestión para talleres de autos, motos y bicicletas: cola de trabajo, inventario y caja, con link de seguimiento en vivo y presupuestos que el cliente aprueba desde el celular. 14 días gratis.",
   metadataBase: new URL("https://maza-app.vercel.app"),
   openGraph: {
-    title: "MAZA — Gestión inteligente para tu taller",
+    title: "MAZA — Tu taller ordenado, tu cliente informado",
     description:
-      "Cola de trabajo, inventario, presupuestos con aprobación online y seguimiento en vivo para tus clientes. Para talleres de autos, motos y bicicletas.",
+      "Cola de trabajo, inventario y caja, con seguimiento en vivo y presupuestos que se aprueban desde el celular. 14 días gratis.",
     locale: "es_CL",
     type: "website",
+    siteName: "MAZA",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
@@ -36,7 +41,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es"
       className={`${bebasNeue.variable} ${archivo.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

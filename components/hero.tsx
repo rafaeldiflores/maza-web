@@ -49,8 +49,8 @@ export function Hero() {
           </div>
 
           <p className="text-sm text-ink-faint">
-            Sin tarjeta de crédito · Sin permanencia · Autos, motos y
-            bicicletas
+            Sin tarjeta de crédito · Sin permanencia · Mecánica, detailing,
+            lavado — autos, motos y bicicletas
           </p>
         </div>
 

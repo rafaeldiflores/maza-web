@@ -27,6 +27,7 @@ export const WA_MESSAGES = {
 } as const;
 
 export type IconName =
+  | "servicios"
   | "rubro"
   | "cola"
   | "seguimiento"
@@ -91,6 +92,13 @@ export const FEATURES: Feature[] = [
     tag: "Plan Empresa",
     shotAlt: "Panel de equipo con mecánicos y carga de trabajo repartida",
     spotlight: true,
+  },
+  {
+    title: "Los servicios los defines tú",
+    description:
+      "Creas cada servicio con su nombre y su precio. Nada está atado a la mecánica: si haces detailing, lavado o pulido, tu catálogo dice eso y MAZA trabaja igual.",
+    icon: "servicios",
+    shotAlt: "Catálogo de servicios del taller con nombres y precios propios",
   },
   {
     title: "Un taller, tu rubro",
@@ -246,7 +254,11 @@ export const TESTIMONIALS: Testimonial[] = [];
 export const FAQS = [
   {
     q: "¿Sirve para mi rubro?",
-    a: "Sí. Al crear tu cuenta eliges si el taller es de autos, motos o bicicletas, y la app cambia los campos y los términos: el auto se controla por kilometraje, la bicicleta por calendario. No es una app de autos adaptada a la fuerza.",
+    a: "Sí. Al crear tu cuenta eliges si trabajas con autos, motos o bicicletas, y la app cambia los campos y los términos: el auto se controla por kilometraje, la bicicleta por calendario. No es una app de autos adaptada a la fuerza.",
+  },
+  {
+    q: "No hago mecánica, hago detailing / lavado. ¿Me sirve igual?",
+    a: "Sí. El catálogo de servicios es tuyo: creas cada servicio con el nombre y el precio que quieras, así que puede decir “Pulido de faros” o “Lavado premium” igual que diría “Cambio de pastillas”. Todo lo demás —la cola de trabajo, el seguimiento del cliente, los presupuestos, la caja— funciona igual sin importar qué le hagas al vehículo.",
   },
   {
     q: "¿Necesito internet para usarla?",

@@ -14,7 +14,7 @@ export function Features() {
             Lo que ningún cuaderno puede hacer.
           </h2>
           <p className="mt-4 max-w-[60ch] text-base leading-relaxed text-ink-muted sm:text-lg">
-            Tres cosas que cambian cómo te ve tu cliente — y siete más que
+            Tres cosas que cambian cómo te ve tu cliente — y ocho más que
             ordenan el taller por dentro.
           </p>
         </div>

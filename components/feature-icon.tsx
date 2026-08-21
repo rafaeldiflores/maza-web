@@ -1,6 +1,13 @@
 import type { IconName } from "@/lib/site";
 
 const paths: Record<IconName, React.ReactNode> = {
+  servicios: (
+    <>
+      <path d="M4 6.5h11M4 12h11M4 17.5h7" />
+      <path d="M18.5 5v4M20.5 7h-4" />
+      <circle cx="18.5" cy="16.5" r="2.2" />
+    </>
+  ),
   rubro: (
     <>
       <path d="M9 3h6l1.5 5.5a6.5 6.5 0 1 1-9 0L9 3Z" />

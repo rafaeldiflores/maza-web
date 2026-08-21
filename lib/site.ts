@@ -1,3 +1,16 @@
+/**
+ * URL canónica del sitio. Se usa para la metadata (og:image), el sitemap y
+ * robots.txt — si no coincide con el dominio real, la previsualización al
+ * compartir el link llega rota, que es justo lo que más importa acá.
+ *
+ * Vercel expone el dominio de producción en VERCEL_PROJECT_PRODUCTION_URL,
+ * así que esto sigue solo al dominio actual y al conectar uno propio basta
+ * con cambiar el fallback.
+ */
+export const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "https://maza-web-rho.vercel.app";
+
 export const WHATSAPP_NUMBER = "56934358652";
 
 export function waLink(message: string) {

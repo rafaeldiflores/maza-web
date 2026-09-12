@@ -278,7 +278,7 @@ export const FAQS = [
   },
   {
     q: "Trabajo solo, ¿igual me sirve?",
-    a: "Es justamente para quien trabaja solo o con un equipo chico. El plan Pro está pensado para un usuario; el equipo con mecánicos aparte solo aparece en el plan Empresa.",
+    a: "Es justamente para quien trabaja solo o con un equipo chico. Taller Solo está pensado para una persona; Taller Full suma un segundo acceso trabajando a la par (socio o ayudante); y el equipo completo con roles y asignación por mecánico aparece desde el plan Empresa.",
   },
   {
     q: "Tengo todo en un cuaderno, ¿tengo que cargar todo de nuevo?",
@@ -289,45 +289,59 @@ export const FAQS = [
 export type Plan = {
   name: string;
   price: number;
+  /** true = "price" es el piso de un plan que escala (Empresa, por asiento). */
+  priceDesde?: boolean;
+  /** Costo de cada asiento adicional, si el plan escala (solo Empresa). */
+  extraSeatPrice?: number;
   tagline: string;
   features: string[];
   highlighted?: boolean;
 };
 
+/**
+ * Fuente de verdad: docs/planes-y-precios.md y plan.service.ts en Maza-app.
+ * Cualquier cambio de nombre, precio o función tiene que reflejarse ahí
+ * primero (o venir de ahí) — este archivo no inventa nada nuevo.
+ */
 export const PLANS: Plan[] = [
   {
-    name: "Pro",
-    price: 14990,
-    tagline: "Para el que trabaja solo",
+    name: "Taller Solo",
+    price: 24990,
+    tagline: "Para el mecánico o taller unipersonal",
     features: [
-      "Asistente IA con los datos de tu taller",
-      "Resumen del día con alertas automáticas",
-      "Cola de trabajo y agenda completa",
+      "1 acceso, en el teléfono y en la web de mostrador",
+      "Asistente IA con uso justo",
+      "Link de seguimiento en vivo para tus clientes",
+      "Presupuestos con aprobación online",
       "Inventario con descuento automático",
-      "Balances y estadísticas",
+      "Balances y caja diaria",
     ],
   },
   {
-    name: "Ilimitado",
-    price: 24990,
-    tagline: "Sin límites de clientes ni vehículos",
+    name: "Taller Full",
+    price: 39990,
+    tagline: "Dueño + 1 socio o ayudante trabajando a la vez",
     features: [
-      "Todo lo de Pro",
-      "Clientes y vehículos ilimitados",
-      "Despacho a domicilio",
-      "Exportación a Excel",
+      "Todo lo de Taller Solo",
+      "Cobro online del presupuesto con Mercado Pago",
+      "2 accesos trabajando a la par (co-dueño o mecánico)",
+      "Órdenes de trabajo y clientes ilimitados",
+      "Soporte prioritario",
     ],
     highlighted: true,
   },
   {
     name: "Empresa",
-    price: 49990,
-    tagline: "Para talleres con equipo",
+    price: 59990,
+    priceDesde: true,
+    extraSeatPrice: 9990,
+    tagline: "Talleres de 3 o más personas",
     features: [
-      "Todo lo de Ilimitado",
-      "Mecánicos con acceso propio",
-      "Reparto de carga de trabajo",
-      "Soporte prioritario",
+      "Todo lo de Taller Full",
+      "Base de 3 personas: dueño + 2 mecánicos",
+      "Todo el equipo conectado a la vez",
+      "Asignación de órdenes por mecánico",
+      "Reporte de productividad por mecánico",
     ],
   },
 ];

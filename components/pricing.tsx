@@ -52,6 +52,11 @@ export function Pricing() {
               <p className="mt-1 text-sm text-ink-muted">{plan.tagline}</p>
 
               <p className="mt-6 flex items-baseline gap-1.5">
+                {plan.priceDesde && (
+                  <span className="text-sm font-medium text-ink-faint">
+                    desde
+                  </span>
+                )}
                 <span className="font-display text-4xl text-accent">
                   {currency.format(plan.price)}
                 </span>
@@ -59,6 +64,11 @@ export function Pricing() {
                   / mes
                 </span>
               </p>
+              {plan.extraSeatPrice && (
+                <p className="mt-1 text-xs text-ink-faint">
+                  + {currency.format(plan.extraSeatPrice)} por mecánico extra
+                </p>
+              )}
 
               <ul className="mt-6 flex flex-1 flex-col gap-3">
                 {plan.features.map((feature) => (

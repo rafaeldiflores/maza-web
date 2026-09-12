@@ -137,7 +137,7 @@ export default function TerminosPage() {
 
             <Section n={6} title="Cobro del taller a sus clientes (Mercado Pago Connect)">
               <p>
-                Desde el plan Ilimitado, puedes vincular tu propia cuenta de
+                Desde el plan Taller Full, puedes vincular tu propia cuenta de
                 Mercado Pago para cobrar presupuestos directamente a tus
                 clientes desde el link de seguimiento. Esa relación de cobro
                 es exclusivamente entre tu taller y tu cliente:{" "}

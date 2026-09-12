@@ -204,12 +204,25 @@ export default function PrivacidadPage() {
                 </li>
                 <li>
                   <strong className="text-ink">Eliminar</strong> tu cuenta y
-                  todos los datos asociados escribiéndonos a{" "}
+                  todos los datos asociados desde{" "}
                   <a
-                    href="mailto:rafasandiflores2@gmail.com"
+                    href="https://acceso-maza.web.app/eliminar-cuenta"
+                    target="_blank"
+                    rel="noreferrer"
                     className="text-accent hover:underline"
                   >
-                    rafasandiflores2@gmail.com
+                    acceso-maza.web.app/eliminar-cuenta
+                  </a>
+                  . Se borran tu perfil, los datos de tus clientes y
+                  vehículos, el inventario y el historial operativo del
+                  taller; los registros de pago se conservan por el plazo
+                  exigido por la normativa contable y tributaria chilena. Si
+                  tienes dudas, escríbenos a{" "}
+                  <a
+                    href="mailto:soporte@maza.app"
+                    className="text-accent hover:underline"
+                  >
+                    soporte@maza.app
                   </a>
                   .
                 </li>

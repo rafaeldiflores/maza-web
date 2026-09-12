@@ -34,6 +34,20 @@ export function Footer() {
           >
             Política de privacidad
           </Link>
+          <Link
+            href="/terminos"
+            className="font-semibold text-ink-muted hover:text-ink"
+          >
+            Términos y condiciones
+          </Link>
+          <a
+            href="https://acceso-maza.web.app/eliminar-cuenta"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-ink-muted hover:text-ink"
+          >
+            Eliminar cuenta
+          </a>
         </div>
       </div>
 

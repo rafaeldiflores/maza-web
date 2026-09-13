@@ -19,11 +19,11 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-border-soft pt-8 first:border-t-0 first:pt-0">
-      <h2 className="text-lg font-bold text-ink">
-        {n}. {title}
-      </h2>
-      <div className="mt-3 flex flex-col gap-3 text-[15px] leading-relaxed text-ink-muted">
+    <section>
+      <p className="titulo-seccion">
+        {n.toString().padStart(2, "0")} · {title}
+      </p>
+      <div className="mt-4 flex flex-col gap-3 text-[15px] leading-relaxed text-ink-muted">
         {children}
       </div>
     </section>
@@ -35,15 +35,15 @@ export default function PrivacidadPage() {
     <>
       <Header />
       <main className="flex-1 px-5 py-14 sm:px-8 sm:py-20">
-        <div className="mx-auto max-w-3xl rounded-3xl border border-border-soft bg-white/[0.03] p-7 sm:p-12">
-          <h1 className="font-display text-4xl tracking-[0.01em] text-ink sm:text-5xl">
+        <div className="caja mx-auto max-w-3xl p-7 sm:p-12">
+          <h1 className="text-3xl font-bold tracking-[-0.01em] text-ink sm:text-4xl">
             Política de privacidad
           </h1>
-          <p className="mt-2 text-sm text-ink-faint">
+          <p className="rotulo mt-2 text-[10px]">
             Última actualización: 21 de agosto de 2026
           </p>
 
-          <div className="mt-10 flex flex-col gap-8">
+          <div className="mt-10 flex flex-col gap-10">
             <Section n={1} title="Quiénes somos">
               <p>
                 MAZA es una aplicación de gestión para talleres de autos,
@@ -52,7 +52,7 @@ export default function PrivacidadPage() {
                 consultas sobre privacidad, escríbenos a{" "}
                 <a
                   href="mailto:rafasandiflores2@gmail.com"
-                  className="text-accent hover:underline"
+                  className="text-value-shade hover:underline"
                 >
                   rafasandiflores2@gmail.com
                 </a>
@@ -121,7 +121,7 @@ export default function PrivacidadPage() {
               <p>La aplicación utiliza los siguientes servicios externos:</p>
               <ul className="list-disc space-y-2 pl-5">
                 <li>
-                  <span className="inline-block rounded-md bg-accent/15 px-2 py-0.5 text-xs font-bold text-accent">
+                  <span className="rotulo inline-block border border-border-strong px-2 py-0.5 text-[10px] text-value-shade">
                     Firebase (Google)
                   </span>{" "}
                   — autenticación de usuarios y base de datos (Firestore).
@@ -130,13 +130,13 @@ export default function PrivacidadPage() {
                     href="https://firebase.google.com/support/privacy"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-accent hover:underline"
+                    className="text-value-shade hover:underline"
                   >
                     firebase.google.com/support/privacy
                   </a>
                 </li>
                 <li>
-                  <span className="inline-block rounded-md bg-accent/15 px-2 py-0.5 text-xs font-bold text-accent">
+                  <span className="rotulo inline-block border border-border-strong px-2 py-0.5 text-[10px] text-value-shade">
                     Anthropic Claude
                   </span>{" "}
                   — modelo de inteligencia artificial que procesa las
@@ -147,13 +147,13 @@ export default function PrivacidadPage() {
                     href="https://www.anthropic.com/privacy"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-accent hover:underline"
+                    className="text-value-shade hover:underline"
                   >
                     anthropic.com/privacy
                   </a>
                 </li>
                 <li>
-                  <span className="inline-block rounded-md bg-accent/15 px-2 py-0.5 text-xs font-bold text-accent">
+                  <span className="rotulo inline-block border border-border-strong px-2 py-0.5 text-[10px] text-value-shade">
                     Cloudflare Workers
                   </span>{" "}
                   — infraestructura proxy para las solicitudes al asistente
@@ -162,7 +162,7 @@ export default function PrivacidadPage() {
                     href="https://www.cloudflare.com/privacypolicy/"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-accent hover:underline"
+                    className="text-value-shade hover:underline"
                   >
                     cloudflare.com/privacypolicy
                   </a>
@@ -209,7 +209,7 @@ export default function PrivacidadPage() {
                     href="https://acceso-maza.web.app/eliminar-cuenta"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-accent hover:underline"
+                    className="text-value-shade hover:underline"
                   >
                     acceso-maza.web.app/eliminar-cuenta
                   </a>
@@ -220,7 +220,7 @@ export default function PrivacidadPage() {
                   tienes dudas, escríbenos a{" "}
                   <a
                     href="mailto:soporte@maza.app"
-                    className="text-accent hover:underline"
+                    className="text-value-shade hover:underline"
                   >
                     soporte@maza.app
                   </a>
@@ -253,7 +253,7 @@ export default function PrivacidadPage() {
                 eliminación de datos, escríbenos a{" "}
                 <a
                   href="mailto:rafasandiflores2@gmail.com"
-                  className="text-accent hover:underline"
+                  className="text-value-shade hover:underline"
                 >
                   rafasandiflores2@gmail.com
                 </a>

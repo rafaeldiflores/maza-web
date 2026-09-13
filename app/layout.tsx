@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Archivo } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -8,13 +8,6 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
   weight: "400",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const archivo = Archivo({
-  variable: "--font-archivo",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -38,10 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="es"
-      className={`${bebasNeue.variable} ${archivo.variable} h-full antialiased`}
-    >
+    <html lang="es" className={`${bebasNeue.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         {children}
         <Analytics />

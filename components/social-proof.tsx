@@ -16,15 +16,17 @@ export function SocialProof() {
   return (
     <section className="px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
-        <h2 className="reveal mb-12 max-w-2xl font-display text-[clamp(2rem,5.5vw,3.25rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
-          Talleres que ya dejaron el cuaderno.
-        </h2>
+        <p className="reveal titulo-seccion mb-10">
+          Talleres que ya dejaron el cuaderno
+        </p>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {TESTIMONIALS.map((t) => (
+        <div className="caja grid grid-cols-1 md:grid-cols-3">
+          {TESTIMONIALS.map((t, i) => (
             <figure
               key={t.name}
-              className="reveal flex flex-col gap-5 rounded-2xl border border-border-soft bg-white/[0.03] p-6"
+              className={`reveal flex flex-col gap-5 p-6 ${
+                i % 3 !== 2 ? "md:border-r" : ""
+              } ${i < TESTIMONIALS.length - 3 ? "border-b md:border-b-0" : "border-b md:border-b-0"} border-neutral-track`}
             >
               <blockquote className="text-[15px] leading-relaxed text-ink-muted">
                 “{t.quote}”
@@ -34,18 +36,20 @@ export function SocialProof() {
                   <Image
                     src={`/${t.photo}`}
                     alt=""
-                    width={44}
-                    height={44}
-                    className="h-11 w-11 rounded-full object-cover"
+                    width={40}
+                    height={40}
+                    className="h-10 w-10 border border-border-strong object-cover"
                   />
                 ) : (
-                  <span className="grid h-11 w-11 place-items-center rounded-full bg-white/[0.08] font-display text-lg text-ink">
+                  <span className="grid h-10 w-10 place-items-center border border-border-strong font-display text-lg text-ink">
                     {t.name.charAt(0)}
                   </span>
                 )}
                 <span className="flex flex-col">
-                  <span className="text-sm font-bold text-ink">{t.name}</span>
-                  <span className="text-xs text-ink-faint">{t.workshop}</span>
+                  <span className="text-sm font-bold text-ink">
+                    {t.name}
+                  </span>
+                  <span className="rotulo text-[10px]">{t.workshop}</span>
                 </span>
               </figcaption>
             </figure>

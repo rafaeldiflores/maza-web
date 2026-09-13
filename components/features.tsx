@@ -40,11 +40,11 @@ export function Features() {
                   className={`flex max-w-[50ch] flex-col gap-3 ${imageFirst ? "sm:order-2" : "sm:order-1"}`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white/[0.06] text-accent">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center border border-border-strong text-ink">
                       <FeatureIcon name={feature.icon} className="h-6 w-6" />
                     </span>
                     {feature.tag && (
-                      <span className="rounded-full bg-accent/15 px-3 py-1 text-xs font-bold text-accent">
+                      <span className="rotulo text-[10px] text-value-shade">
                         {feature.tag}
                       </span>
                     )}
@@ -61,24 +61,28 @@ export function Features() {
           })}
         </div>
 
-        <div className="reveal mt-24 border-t border-border-soft pt-14 sm:mt-32">
-          <h3 className="mb-10 max-w-[40ch] font-display text-[clamp(1.75rem,4vw,2.5rem)] leading-[1.02] tracking-[0.01em] text-ink text-balance">
-            Y todo el resto del taller, resuelto.
-          </h3>
+        <div className="reveal mt-24 sm:mt-32">
+          <p className="titulo-seccion">Y todo el resto del taller, resuelto</p>
 
-          <div className="grid grid-cols-1 gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
-            {rest.map((feature) => (
-              <div key={feature.icon} className="reveal flex flex-col gap-2.5">
-                <FeatureIcon
-                  name={feature.icon}
-                  className="h-6 w-6 text-accent"
-                />
-                <h4 className="text-base font-bold text-ink">
-                  {feature.title}
-                </h4>
-                <p className="max-w-[42ch] text-[15px] leading-relaxed text-ink-muted">
-                  {feature.description}
-                </p>
+          <div className="caja mt-8">
+            {rest.map((feature, i) => (
+              <div
+                key={feature.icon}
+                className={`flex items-start gap-4 p-5 ${
+                  i < rest.length - 1 ? "border-b border-neutral-track" : ""
+                }`}
+              >
+                <span className="grid h-10 w-10 shrink-0 place-items-center border border-border-soft text-ink">
+                  <FeatureIcon name={feature.icon} className="h-5 w-5" />
+                </span>
+                <div className="flex flex-col gap-1">
+                  <h4 className="text-base font-bold text-ink">
+                    {feature.title}
+                  </h4>
+                  <p className="max-w-[52ch] text-[15px] leading-relaxed text-ink-muted">
+                    {feature.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

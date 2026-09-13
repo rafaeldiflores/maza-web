@@ -1,18 +1,86 @@
 import { LogoMark } from "./logo";
-import { PhoneFrame } from "./phone-frame";
 import { TRIAL_DIAS, WA_MESSAGES, waLink } from "@/lib/site";
+
+const ITEMS = [
+  { name: "Diagnóstico y revisión general", price: 8000 },
+  { name: "Cambio de pastillas de freno", price: 22000 },
+  { name: "Repuesto: pastillas delanteras", price: 15000 },
+];
+
+const currency = new Intl.NumberFormat("es-CL", {
+  style: "currency",
+  currency: "CLP",
+  maximumFractionDigits: 0,
+});
+
+const total = ITEMS.reduce((sum, item) => sum + item.price, 0);
+
+/**
+ * Maqueta fiel de la vista del cliente en /o/<token> (ver worker.js), con un
+ * presupuesto esperando aprobación: es el núcleo del producto, así que va en
+ * HTML/CSS real en vez de una captura o un PhoneFrame genérico.
+ */
+function OrdenMockup() {
+  return (
+    <div className="w-full max-w-[300px] border-2 border-ink bg-surface">
+      <div className="border-b border-border-strong px-5 py-4 text-center">
+        <p className="rotulo">Taller Demo</p>
+        <h3 className="mt-1 text-lg font-bold text-ink">
+          Honda CB 500 · 2021
+        </h3>
+        <p className="cifra mt-1 inline-block border border-border-soft px-2 py-0.5 text-[11px]">
+          ORDEN #0142
+        </p>
+      </div>
+
+      <div className="flex items-center gap-2.5 border-b border-border-strong bg-value-soft px-5 py-3">
+        <span className="testigo bg-value" />
+        <span className="rotulo text-[11px] text-ink">
+          Esperando aprobación
+        </span>
+      </div>
+
+      <div className="px-5 py-4">
+        <p className="titulo-seccion">Presupuesto</p>
+        <div className="mt-3 flex flex-col">
+          {ITEMS.map((item) => (
+            <div
+              key={item.name}
+              className="flex items-baseline justify-between gap-3 border-b border-neutral-track py-2.5 text-[13px]"
+            >
+              <span className="text-ink-muted">{item.name}</span>
+              <span className="cifra shrink-0 text-[13px]">
+                {currency.format(item.price)}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-3 flex items-baseline justify-between border-t border-border-strong pt-3">
+          <span className="rotulo">Total</span>
+          <span className="cifra text-[22px] text-value-shade">
+            {currency.format(total)}
+          </span>
+        </div>
+
+        <button
+          type="button"
+          tabIndex={-1}
+          className="mt-4 w-full bg-value py-3 text-sm font-bold text-splash-bg"
+        >
+          Aprobar presupuesto
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden px-5 pb-20 pt-14 sm:px-8 sm:pb-28 sm:pt-20">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-24 right-[-10%] h-[36rem] w-[36rem] rounded-full bg-accent/10 blur-3xl"
-      />
-
+    <section className="px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-16">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
-        <div className="hero-stagger flex flex-col items-start gap-6">
-          <span className="grid h-14 w-14 place-items-center rounded-2xl bg-ink text-bg-start shadow-lg shadow-black/30 sm:h-16 sm:w-16">
+        <div className="flex flex-col items-start gap-6">
+          <span className="grid h-14 w-14 place-items-center bg-ink text-app-bg sm:h-16 sm:w-16">
             <LogoMark className="h-9 w-9 sm:h-11 sm:w-11" />
           </span>
 
@@ -34,7 +102,7 @@ export function Hero() {
               href={waLink(WA_MESSAGES.trial)}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-base font-bold text-accent-ink transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              className="inline-flex items-center justify-center bg-value px-7 py-3.5 text-base font-bold text-splash-bg"
             >
               Probar {TRIAL_DIAS} días gratis
             </a>
@@ -42,7 +110,7 @@ export function Hero() {
               href={waLink(WA_MESSAGES.general)}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-border-strong px-7 py-3.5 text-base font-semibold text-ink transition-colors hover:bg-white/5"
+              className="inline-flex items-center justify-center border border-border-strong px-7 py-3.5 text-base font-semibold text-ink transition-colors hover:bg-surface-alt"
             >
               ¿Dudas? Hablemos
             </a>
@@ -55,11 +123,7 @@ export function Hero() {
         </div>
 
         <div className="flex justify-center lg:justify-end">
-          <PhoneFrame
-            file="screenshots/hero.png"
-            alt="Pantalla de inicio de MAZA con el resumen del día del taller"
-            className="max-w-[280px] rotate-[2deg]"
-          />
+          <OrdenMockup />
         </div>
       </div>
     </section>

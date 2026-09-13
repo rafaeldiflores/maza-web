@@ -1,49 +1,190 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Lenguaje "placa de datos" (ver DESIGN.md en Maza-app). Los tokens de acá
+   son los mismos --maza-* de src/theme/variables.scss, traídos a la web:
+   si la paleta de la app cambia, este archivo cambia con ella.
+   ───────────────────────────────────────────────────────────────────────── */
+
 :root {
-  --bg-start: #1a1a2e;
-  --bg-end: #312e81;
-  --ink: #f5f6fa;
-  --ink-muted: #c3c6d9;
-  --ink-faint: #8d90ab;
-  --accent: #ff9900;
-  --accent-shade: #e08800;
-  --accent-ink: #1a1a2e;
-  --border-soft: #ffffff1f;
-  --border-strong: #ffffff33;
+  color-scheme: light;
+
+  --maza-app-bg: #f0f4f8;
+  --maza-surface: #ffffff;
+  --maza-surface-alt: #f9fafb;
+  --maza-ink: #1a1a2e;
+  --maza-ink-muted: #374151;
+  --maza-ink-faint: #6b7280;
+  --maza-ink-ghost: #9ca3af;
+  --maza-border-soft: #f3f4f6;
+  --maza-border-strong: #d1d5db;
+  --maza-neutral-track: #e5e7eb;
+  --maza-danger: #e53935;
+
+  /* Naranja de valor: SOLO dinero y la acción principal de cada pantalla. */
+  --maza-value: #ff9900;
+  --maza-value-shade: #e08800;
+  --maza-value-soft: #fff8ee;
+
+  /* Color de rubro (identidad), uso moderado — nunca precio ni navegación. */
+  --maza-blue: #2f6df6;
+
+  /* Splash / panel de lectura: siempre oscuro, no depende del tema. */
+  --maza-splash-bg: #0a0a0a;
+  --maza-splash-ink: #f2f2f5;
+  --maza-splash-ink-faint: #9497a1;
+  --maza-splash-border: #2a2b30;
+
+  /* Vidrio de cabecera: única excepción a "sin blur" (DESIGN.md §4). */
+  --maza-glass-bg: rgba(255, 255, 255, 0.82);
+
+  --maza-success: #16a34a;
+
+  --maza-font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono",
+    Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --maza-app-bg: #0d0d0d;
+    --maza-surface: #1b1c21;
+    --maza-surface-alt: #24262e;
+    --maza-ink: #f2f2f5;
+    --maza-ink-muted: #c7c9d1;
+    --maza-ink-faint: #9498a3;
+    --maza-ink-ghost: #82858f;
+    --maza-border-soft: #31333c;
+    --maza-border-strong: #40424d;
+    --maza-neutral-track: #2a2c34;
+    --maza-danger: #ff6b6b;
+
+    --maza-value: #ffb020;
+    --maza-value-shade: #cc7700;
+    --maza-value-soft: #2b2013;
+
+    --maza-blue: #60a5fa;
+
+    --maza-glass-bg: rgba(23, 24, 28, 0.82);
+
+    --maza-success: #4ade80;
+  }
 }
 
 @theme inline {
   --font-display: var(--font-bebas-neue);
-  --font-sans: var(--font-archivo);
-  --color-bg-start: var(--bg-start);
-  --color-bg-end: var(--bg-end);
-  --color-ink: var(--ink);
-  --color-ink-muted: var(--ink-muted);
-  --color-ink-faint: var(--ink-faint);
-  --color-accent: var(--accent);
-  --color-accent-shade: var(--accent-shade);
-  --color-accent-ink: var(--accent-ink);
-  --color-border-soft: var(--border-soft);
-  --color-border-strong: var(--border-strong);
+  --font-mono: var(--maza-font-mono);
+
+  --color-app-bg: var(--maza-app-bg);
+  --color-surface: var(--maza-surface);
+  --color-surface-alt: var(--maza-surface-alt);
+  --color-ink: var(--maza-ink);
+  --color-ink-muted: var(--maza-ink-muted);
+  --color-ink-faint: var(--maza-ink-faint);
+  --color-ink-ghost: var(--maza-ink-ghost);
+  --color-border-soft: var(--maza-border-soft);
+  --color-border-strong: var(--maza-border-strong);
+  --color-neutral-track: var(--maza-neutral-track);
+  --color-danger: var(--maza-danger);
+
+  --color-value: var(--maza-value);
+  --color-value-shade: var(--maza-value-shade);
+  --color-value-soft: var(--maza-value-soft);
+
+  --color-blue: var(--maza-blue);
+  --color-success: var(--maza-success);
+
+  --color-splash-bg: var(--maza-splash-bg);
+  --color-splash-ink: var(--maza-splash-ink);
+  --color-splash-ink-faint: var(--maza-splash-ink-faint);
+  --color-splash-border: var(--maza-splash-border);
+
+  --color-glass-bg: var(--maza-glass-bg);
 }
 
 html {
-  color-scheme: dark;
+  scroll-behavior: smooth;
 }
 
 body {
-  background:
-    radial-gradient(120% 90% at 15% -10%, #3d3a9a55 0%, transparent 55%),
-    linear-gradient(170deg, var(--bg-start) 0%, var(--bg-end) 100%);
-  background-attachment: fixed;
-  color: var(--ink-muted);
-  font-family: var(--font-archivo), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--maza-app-bg);
+  color: var(--maza-ink-muted);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--maza-value);
+  color: var(--maza-splash-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--maza-ink);
+  outline-offset: 2px;
+}
+
+/* ─── Voz del sistema (DESIGN.md §1 regla 3, §5) ───────────────────────────
+   Los mismos nombres que los mixins de src/theme/_placa.scss, traducidos a
+   clases planas: no hay parámetros de Sass acá, así que el tamaño se ajusta
+   con una clase modificadora chica cuando hace falta. Van en @layer
+   components para que una utilidad de Tailwind (text-value-shade, text-[13px])
+   siga pudiendo pisarlas, igual que con cualquier clase de Tailwind. */
+@layer components {
+  .rotulo {
+    font-family: var(--maza-font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--maza-ink-faint);
+  }
+
+  .rotulo-sm {
+    font-size: 10px;
+  }
+
+  .cifra {
+    font-family: var(--maza-font-mono);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--maza-ink);
+  }
+
+  .testigo {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    display: inline-block;
+    background: currentColor;
+  }
+
+  .caja {
+    background: var(--maza-surface);
+    border: 1px solid var(--maza-border-strong);
+  }
+
+  .titulo-seccion {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--maza-ink);
+    font-family: var(--maza-font-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--maza-ink);
+  }
+
+  /* Vidrio de cabecera: única excepción de blur del sistema (DESIGN.md §4). */
+  .vidrio-cabecera {
+    background: var(--maza-glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -59,39 +200,10 @@ body {
 @keyframes reveal-in {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes hero-in {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero-stagger > * {
-    animation: hero-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-  .hero-stagger > *:nth-child(1) {
-    animation-delay: 0.05s;
-  }
-  .hero-stagger > *:nth-child(2) {
-    animation-delay: 0.16s;
-  }
-  .hero-stagger > *:nth-child(3) {
-    animation-delay: 0.27s;
-  }
-  .hero-stagger > *:nth-child(4) {
-    animation-delay: 0.38s;
   }
 }

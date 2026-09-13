@@ -2,15 +2,65 @@ import { BRIEF_ALERTAS, IA_CAPACIDADES, IA_EJEMPLOS } from "@/lib/site";
 import { FeatureIcon } from "./feature-icon";
 import { PhoneFrame } from "./phone-frame";
 
+const BRIEF_DATOS = [
+  { rotulo: "En cola", valor: "7" },
+  { rotulo: "Listas p/ entrega", valor: "3" },
+  { rotulo: "Stock bajo", valor: "2" },
+];
+
+const currency = new Intl.NumberFormat("es-CL", {
+  style: "currency",
+  currency: "CLP",
+  maximumFractionDigits: 0,
+});
+
+/**
+ * Panel de lectura (DESIGN.md §5): el LCD embutido de la placa, siempre
+ * oscuro en los dos temas. Briefing del día que el asistente arma solo.
+ */
+function PanelLectura() {
+  return (
+    <div className="w-full max-w-[300px] border-2 border-splash-border bg-splash-bg px-5 py-5 text-splash-ink">
+      <p className="rotulo text-[10px] text-splash-ink-faint">
+        Briefing del día
+      </p>
+      <div className="mt-4 grid grid-cols-3 gap-px bg-splash-border">
+        {BRIEF_DATOS.map((dato) => (
+          <div
+            key={dato.rotulo}
+            className="flex flex-col gap-1 bg-splash-bg px-2 py-3 text-center"
+          >
+            <span className="cifra text-2xl text-splash-ink">
+              {dato.valor}
+            </span>
+            <span className="rotulo text-[9px] text-splash-ink-faint">
+              {dato.rotulo}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-4 flex items-baseline justify-between border-t border-splash-border pt-4">
+        <span className="rotulo text-[10px] text-splash-ink-faint">
+          Cobrado hoy
+        </span>
+        <span className="cifra text-xl text-value">
+          {currency.format(184500)}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function Assistant() {
   return (
     <section
       id="asistente"
-      className="border-y border-border-soft bg-black/20 px-5 py-20 sm:px-8 sm:py-28"
+      className="border-y border-border-soft bg-surface-alt px-5 py-20 sm:px-8 sm:py-28"
     >
       <div className="mx-auto max-w-6xl">
         <div className="reveal max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-3.5 py-1.5 text-xs font-bold text-accent">
+          <span className="rotulo inline-flex items-center gap-2 border border-border-strong px-3 py-1.5 text-[10px]">
             <FeatureIcon name="ia" className="h-4 w-4" />
             Incluido en todos los planes
           </span>
@@ -35,7 +85,7 @@ export function Assistant() {
               {IA_EJEMPLOS.map((q) => (
                 <span
                   key={q}
-                  className="rounded-full border border-border-soft bg-white/[0.04] px-3.5 py-1.5 text-[13px] text-ink-muted"
+                  className="border border-border-strong bg-surface px-3 py-1.5 text-[13px] text-ink-muted"
                 >
                   {q}
                 </span>
@@ -72,19 +122,7 @@ export function Assistant() {
                   key={alerta}
                   className="flex items-start gap-2.5 text-[15px] text-ink-muted"
                 >
-                  <svg
-                    viewBox="0 0 20 20"
-                    className="mt-1 h-4 w-4 shrink-0 text-accent"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <path d="M10 6v5M10 14h.01" />
-                    <circle cx="10" cy="10" r="7.5" />
-                  </svg>
+                  <span className="testigo mt-1.5 bg-ink-faint" />
                   {alerta}
                 </li>
               ))}
@@ -92,10 +130,7 @@ export function Assistant() {
           </div>
 
           <div className="flex justify-center lg:justify-end">
-            <PhoneFrame
-              file="screenshots/brief.png"
-              alt="Resumen del día con los pendientes priorizados del taller"
-            />
+            <PanelLectura />
           </div>
         </div>
       </div>

@@ -14,9 +14,9 @@ export function PhoneFrame({
 
   return (
     <div
-      className={`relative aspect-[9/19.5] w-full max-w-[260px] overflow-hidden rounded-[2.25rem] border-4 border-white/15 bg-bg-start shadow-2xl shadow-black/40 ${className ?? ""}`}
+      className={`relative aspect-[9/19.5] w-full max-w-[260px] overflow-hidden border-2 border-ink bg-surface ${className ?? ""}`}
     >
-      <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-1.5 w-14 -translate-x-1/2 rounded-full bg-black/40" />
+      <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-1.5 w-14 -translate-x-1/2 bg-ink" />
 
       {ready ? (
         <Image
@@ -27,25 +27,10 @@ export function PhoneFrame({
           className="object-cover"
         />
       ) : (
-        <div className="flex h-full flex-col items-center justify-center gap-2 border border-dashed border-white/15 p-4 text-center">
-          <svg
-            viewBox="0 0 24 24"
-            className="h-6 w-6 text-ink-faint"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <rect x="3.5" y="5" width="17" height="14" rx="2" />
-            <circle cx="9" cy="10.5" r="1.7" />
-            <path d="m5.5 16.5 4-4 3 3 3.5-4.5 4.5 5.5" />
-          </svg>
-          <span className="text-xs font-medium text-ink-faint">
-            Captura pendiente
-          </span>
-          <code className="text-[10px] leading-tight text-ink-faint/70">
+        <div className="flex h-full flex-col items-center justify-center gap-3 border-t border-neutral-track p-4 text-center">
+          <span className="rotulo text-[10px]">Captura pendiente</span>
+          <span className="h-px w-10 bg-border-strong" />
+          <code className="text-[10px] leading-tight text-ink-ghost">
             /public/{file}
           </code>
         </div>

@@ -20,11 +20,11 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-border-soft pt-8 first:border-t-0 first:pt-0">
-      <h2 className="text-lg font-bold text-ink">
-        {n}. {title}
-      </h2>
-      <div className="mt-3 flex flex-col gap-3 text-[15px] leading-relaxed text-ink-muted">
+    <section>
+      <p className="titulo-seccion">
+        {n.toString().padStart(2, "0")} · {title}
+      </p>
+      <div className="mt-4 flex flex-col gap-3 text-[15px] leading-relaxed text-ink-muted">
         {children}
       </div>
     </section>
@@ -36,15 +36,15 @@ export default function TerminosPage() {
     <>
       <Header />
       <main className="flex-1 px-5 py-14 sm:px-8 sm:py-20">
-        <div className="mx-auto max-w-3xl rounded-3xl border border-border-soft bg-white/[0.03] p-7 sm:p-12">
-          <h1 className="font-display text-4xl tracking-[0.01em] text-ink sm:text-5xl">
+        <div className="caja mx-auto max-w-3xl p-7 sm:p-12">
+          <h1 className="text-3xl font-bold tracking-[-0.01em] text-ink sm:text-4xl">
             Términos y condiciones
           </h1>
-          <p className="mt-2 text-sm text-ink-faint">
+          <p className="rotulo mt-2 text-[10px]">
             Última actualización: 12 de septiembre de 2026
           </p>
 
-          <div className="mt-10 flex flex-col gap-8">
+          <div className="mt-10 flex flex-col gap-10">
             <Section n={1} title="Objeto">
               <p>
                 Estos términos regulan el uso de{" "}
@@ -113,7 +113,7 @@ export default function TerminosPage() {
                 <strong className="text-ink">encargado del tratamiento</strong>
                 : almacena y procesa esos datos únicamente para prestarte el
                 servicio, con las medidas de seguridad descritas en la{" "}
-                <Link href="/privacidad" className="text-accent hover:underline">
+                <Link href="/privacidad" className="text-value-shade hover:underline">
                   Política de privacidad
                 </Link>
                 . Es tu responsabilidad contar con la habilitación necesaria
@@ -191,7 +191,7 @@ export default function TerminosPage() {
                   href="https://acceso-maza.web.app/eliminar-cuenta"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-accent hover:underline"
+                  className="text-value-shade hover:underline"
                 >
                   acceso-maza.web.app/eliminar-cuenta
                 </a>
@@ -236,7 +236,7 @@ export default function TerminosPage() {
                 Para consultas sobre estos términos, escríbenos a{" "}
                 <a
                   href="mailto:soporte@maza.app"
-                  className="text-accent hover:underline"
+                  className="text-value-shade hover:underline"
                 >
                   soporte@maza.app
                 </a>

@@ -1,6 +1,6 @@
-import { BRIEF_ALERTAS, IA_CAPACIDADES, IA_EJEMPLOS } from "@/lib/site";
+import { BRIEF_ALERTAS, IA_CAPACIDADES } from "@/lib/site";
 import { FeatureIcon } from "./feature-icon";
-import { PhoneFrame } from "./phone-frame";
+import { AssistantChat } from "./assistant-chat";
 
 const BRIEF_DATOS = [
   { rotulo: "En cola", valor: "7" },
@@ -76,21 +76,8 @@ export function Assistant() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 items-start gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-          <div className="flex flex-col items-center gap-6">
-            <PhoneFrame
-              file="screenshots/ia.png"
-              alt="Conversación con el asistente de MAZA respondiendo con datos del taller"
-            />
-            <div className="flex max-w-[420px] flex-wrap justify-center gap-2">
-              {IA_EJEMPLOS.map((q) => (
-                <span
-                  key={q}
-                  className="border border-border-strong bg-surface px-3 py-1.5 text-[13px] text-ink-muted"
-                >
-                  {q}
-                </span>
-              ))}
-            </div>
+          <div className="flex flex-col items-center">
+            <AssistantChat />
           </div>
 
           <div className="flex flex-col gap-8">

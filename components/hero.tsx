@@ -5,8 +5,8 @@ import { TRIAL_DIAS, WA_MESSAGES, waLink } from "@/lib/site";
 export function Hero() {
   return (
     <section className="px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-16">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
-        <div className="flex flex-col items-start gap-6">
+      <div className="mx-auto grid max-w-6xl xl:max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
+        <div className="flex flex-col items-start gap-6 lg:col-span-5">
           <div className="flex items-center gap-3">
             <span className="grid h-12 w-12 place-items-center bg-ink text-app-bg sm:h-14 sm:w-14">
               <LogoMark className="h-8 w-8 sm:h-10 sm:w-10" />
@@ -16,7 +16,7 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 className="font-display text-[clamp(2.75rem,9vw,5.25rem)] leading-[0.95] tracking-[0.01em] text-ink text-balance">
+          <h1 className="font-display text-[clamp(2.75rem,8.5vw,5rem)] leading-[0.95] tracking-[0.01em] text-ink text-balance">
             Tu taller ordenado.
             <br />
             Tu cliente informado.
@@ -57,7 +57,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="flex justify-center lg:justify-end">
+        <div className="flex justify-center lg:justify-end lg:col-span-7">
           <OrdenMockup />
         </div>
       </div>

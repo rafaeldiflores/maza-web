@@ -68,6 +68,12 @@ export function Pricing() {
                 </p>
               )}
 
+              {plan.roiNote && (
+                <div className="mt-2.5 border-l-2 border-value bg-value-soft/60 px-2.5 py-1.5 text-xs font-semibold text-value-shade">
+                  {plan.roiNote}
+                </div>
+              )}
+
               <ul className="mt-6 flex flex-1 flex-col">
                 {plan.features.map((feature, fi) => (
                   <li
@@ -101,6 +107,32 @@ export function Pricing() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Banner de migración asistida */}
+        <div className="reveal mt-10 flex flex-col items-start justify-between gap-4 border border-border-strong bg-surface p-6 sm:flex-row sm:items-center">
+          <div className="flex flex-col gap-1">
+            <span className="rotulo text-[10px] text-value-shade">
+              Migración sin fricción
+            </span>
+            <h4 className="text-base font-bold text-ink">
+              ¿Tienes tu lista en un cuaderno o Excel?
+            </h4>
+            <p className="text-sm text-ink-muted">
+              Envíanos una foto de tus servicios o repuestos por WhatsApp y te
+              dejamos el catálogo configurado en 10 minutos.
+            </p>
+          </div>
+          <a
+            href={waLink(
+              "Hola, quiero que me ayuden a configurar el catálogo de mi taller en MAZA."
+            )}
+            target="_blank"
+            rel="noreferrer"
+            className="shrink-0 border border-ink px-5 py-2.5 text-xs font-bold text-ink transition-colors hover:bg-surface-alt"
+          >
+            Configurar por WhatsApp →
+          </a>
         </div>
       </div>
     </section>

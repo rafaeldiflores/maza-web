@@ -3,6 +3,7 @@ import { Hero } from "@/components/hero";
 import { Problem } from "@/components/problem";
 import { Features } from "@/components/features";
 import { Assistant } from "@/components/assistant";
+import { HybridPlatform } from "@/components/hybrid-platform";
 import { Demo } from "@/components/demo";
 import { SocialProof } from "@/components/social-proof";
 import { Pricing } from "@/components/pricing";
@@ -21,6 +22,7 @@ export default function Home() {
         <Problem />
         <Features />
         <Assistant />
+        <HybridPlatform />
         <Demo />
         <SocialProof />
         <Pricing />

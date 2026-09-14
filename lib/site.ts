@@ -218,20 +218,20 @@ export const BRIEF_ALERTAS = [
 /** El dolor antes de la solución: nombrarlo hace que las funciones aterricen. */
 export const PROBLEMS = [
   {
-    title: "El cuaderno del mesón",
-    body: "Una hoja mojada, una letra que no se entiende, y la orden que nadie encuentra cuando el cliente viene a buscar su vehículo.",
+    title: "El cuaderno pierde plata",
+    body: "Una hoja mojada, una letra ilegible o una orden que nadie encuentra. Con cada servicio o repuesto no anotado, el taller pierde dinero sin darse cuenta.",
   },
   {
-    title: "“¿Ya está listo?”",
-    body: "El mismo cliente preguntando tres veces al día, interrumpiendo al mecánico que está con las manos adentro de un motor.",
+    title: "“¿Ya está listo mi vehículo?”",
+    body: "Clientes llamando varias veces al día interrumpiendo al mecánico debajo del motor. Con el link en vivo de MAZA, el cliente ve el avance solo desde su celular.",
   },
   {
     title: "Presupuestos que se enfrían",
-    body: "Mandas el monto por WhatsApp, el cliente no responde, y a la semana el vehículo sigue ocupando espacio sin que nadie decida nada.",
+    body: "Mandas el monto por WhatsApp, el cliente no responde y el vehículo ocupa espacio por días. En MAZA el cliente aprueba con un toque en el link.",
   },
   {
     title: "Cerrar la caja a ciegas",
-    body: "Fin de mes y no sabes cuánto entró de verdad, qué repuesto se gastó, ni cuál servicio te está dejando plata.",
+    body: "A fin de mes no sabes cuánto entró de verdad ni qué repuesto se gastó. MAZA descuenta el inventario solo y cuadra la caja en 10 segundos.",
   },
 ];
 
@@ -247,14 +247,14 @@ export type Testimonial = {
  * VACÍO A PROPÓSITO. No hay testimonios inventados: MAZA todavía no tiene
  * usuarios reales, y un testimonio falso se nota y quema la confianza justo
  * donde más importa. La sección no se renderiza mientras esto esté vacío.
- *
- * Para llenarlo: conseguir 2-3 talleres piloto (aunque sea gratis a cambio
- * del testimonio), pedirles una frase textual, el nombre del taller y una
- * foto real, y agregarlos acá.
  */
 export const TESTIMONIALS: Testimonial[] = [];
 
 export const FAQS = [
+  {
+    q: "¿Puedo usar MAZA en mi computador o solo en el celular?",
+    a: "En ambos a la vez. Tienes la app en tu teléfono para avanzar trabajos y tomar fotos a pie de vehículo, y la web de mostrador para tu PC o laptop en la recepción. Se conectan al instante con un código QR (igual que WhatsApp Web) y se sincronizan en 0.3 segundos.",
+  },
   {
     q: "¿Sirve para mi rubro?",
     a: "Sí. Al crear tu cuenta eliges si trabajas con autos, motos o bicicletas, y la app cambia los campos y los términos: el auto se controla por kilometraje, la bicicleta por calendario. No es una app de autos adaptada a la fuerza.",
@@ -285,7 +285,7 @@ export const FAQS = [
   },
   {
     q: "Tengo todo en un cuaderno, ¿tengo que cargar todo de nuevo?",
-    a: "No hace falta empezar por el histórico. La mayoría parte cargando solo los vehículos que están en el taller ahora, y el resto de los clientes se van sumando solos a medida que vuelven.",
+    a: "No hace falta empezar por el histórico. La mayoría parte cargando solo los vehículos que están en el taller ahora, y el resto de los clientes se van sumando solos a medida que vuelven. Además, nos puedes mandar una foto de tu lista por WhatsApp y te ayudamos a dejarla cargada.",
   },
 ];
 
@@ -297,6 +297,7 @@ export type Plan = {
   /** Costo de cada asiento adicional, si el plan escala (solo Empresa). */
   extraSeatPrice?: number;
   tagline: string;
+  roiNote?: string;
   features: string[];
   highlighted?: boolean;
 };
@@ -311,25 +312,27 @@ export const PLANS: Plan[] = [
     name: "Taller Solo",
     price: 24990,
     tagline: "Para el mecánico o taller unipersonal",
+    roiNote: "Menos que un cambio de pastillas. Se paga con 1 sola orden al mes.",
     features: [
-      "1 acceso, en el teléfono y en la web de mostrador",
-      "Asistente IA con uso justo",
+      "1 acceso simultáneo: celular en foso + PC en mostrador",
+      "Asistente IA que lee el stock y caja de tu taller",
       "Link de seguimiento en vivo para tus clientes",
-      "Presupuestos con aprobación online",
-      "Inventario con descuento automático",
-      "Balances y caja diaria",
+      "Presupuestos con aprobación online en 1 toque",
+      "Inventario con descuento automático por orden",
+      "Balances y cuadre de caja diaria en segundos",
     ],
   },
   {
     name: "Taller Full",
     price: 39990,
     tagline: "Dueño + 1 socio o ayudante trabajando a la vez",
+    roiNote: "Menos de lo que ganas en media jornada. 2 personas a la par.",
     features: [
       "Todo lo de Taller Solo",
       "Cobro online del presupuesto con Mercado Pago",
-      "2 accesos trabajando a la par (co-dueño o mecánico)",
+      "2 accesos trabajando a la par (fosa y mesón)",
       "Órdenes de trabajo y clientes ilimitados",
-      "Soporte prioritario",
+      "Soporte prioritario y asistencia de catálogo",
     ],
     highlighted: true,
   },
@@ -338,13 +341,14 @@ export const PLANS: Plan[] = [
     price: 59990,
     priceDesde: true,
     extraSeatPrice: 9990,
-    tagline: "Talleres de 3 o más personas",
+    tagline: "Talleres de 3 o más personas con mecánicos",
+    roiNote: "Control total de productividad por el costo de una sola mantención.",
     features: [
       "Todo lo de Taller Full",
       "Base de 3 personas: dueño + 2 mecánicos",
-      "Todo el equipo conectado a la vez",
+      "Todo el equipo conectado a la vez en PC y celular",
       "Asignación de órdenes por mecánico",
-      "Reporte de productividad por mecánico",
+      "Reporte de productividad y rendimiento por mecánico",
     ],
   },
 ];

@@ -1,4 +1,4 @@
-import { DEMO_VIDEO, WA_MESSAGES, waLink } from "@/lib/site";
+import { DEMO_VIDEO, waLink } from "@/lib/site";
 import { mediaExists } from "@/lib/media";
 
 export function Demo() {
@@ -31,22 +31,18 @@ export function Demo() {
                 </svg>
               </span>
               <div>
-                <p className="font-semibold text-ink">Demo en camino</p>
-                <p className="mt-1 max-w-[42ch] text-sm text-ink-muted">
-                  Todavía no hay un video subido. Mientras tanto, te la
-                  mostramos por videollamada o WhatsApp.
+                <p className="font-bold text-ink text-lg">¿Quieres ver MAZA en acción?</p>
+                <p className="mt-1.5 max-w-[44ch] text-sm text-ink-muted">
+                  Te mostramos la app funcionando en vivo en 5 minutos por videollamada o WhatsApp, adaptada a tu rubro (autos, motos o bicicletas).
                 </p>
-                <code className="mt-2 block text-[11px] text-ink-ghost">
-                  /public/{DEMO_VIDEO.file}
-                </code>
               </div>
               <a
-                href={waLink(WA_MESSAGES.general)}
+                href={waLink("Hola, quiero agendar una demo en vivo de MAZA para ver cómo funciona en mi taller.")}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-1 inline-flex items-center justify-center bg-value px-6 py-2.5 text-sm font-bold text-splash-bg"
+                className="mt-2 inline-flex items-center justify-center bg-value px-7 py-3 text-sm font-bold text-splash-bg hover:bg-value-shade transition-colors"
               >
-                Pedir una demo
+                Agendar demostración en vivo →
               </a>
             </div>
           )}

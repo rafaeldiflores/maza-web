@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { mediaExists } from "@/lib/media";
+import { AndroidFrame } from "./android-frame";
 
 function MockupSeguimiento() {
   return (
     <div className="flex h-full flex-col bg-surface p-4 text-xs">
-      <div className="border-b border-border-strong pb-3 pt-4 text-center">
+      <div className="border-b border-border-strong pb-3 pt-5 text-center">
         <span className="rotulo text-[9px] text-value-shade">● Link de tu cliente</span>
         <h4 className="mt-0.5 font-bold text-ink text-sm">Honda CB 500 · 2021</h4>
         <p className="cifra mt-1 text-[10px] text-ink-faint">ORDEN #0142</p>
@@ -62,7 +63,7 @@ function MockupSeguimiento() {
 function MockupPresupuesto() {
   return (
     <div className="flex h-full flex-col bg-surface p-4 text-xs">
-      <div className="border-b border-border-strong pb-2 pt-4 text-center">
+      <div className="border-b border-border-strong pb-2 pt-5 text-center">
         <span className="rotulo text-[9px] text-value-shade">Aprobación en 1 clic</span>
         <h4 className="mt-0.5 font-bold text-ink text-sm">Presupuesto #0142</h4>
       </div>
@@ -106,7 +107,7 @@ function MockupPresupuesto() {
 function MockupEquipo() {
   return (
     <div className="flex h-full flex-col bg-surface p-4 text-xs">
-      <div className="border-b border-border-strong pb-2 pt-4 text-center">
+      <div className="border-b border-border-strong pb-2 pt-5 text-center">
         <span className="rotulo text-[9px] text-value-shade">Plan Empresa</span>
         <h4 className="mt-0.5 font-bold text-ink text-sm">Panel de Equipo</h4>
         <p className="text-[10px] text-ink-faint">Reparto de carga en vivo</p>
@@ -154,7 +155,7 @@ function MockupEquipo() {
 function MockupIA() {
   return (
     <div className="flex h-full flex-col bg-surface p-4 text-xs">
-      <div className="border-b border-border-strong pb-2 pt-4 text-center">
+      <div className="border-b border-border-strong pb-2 pt-5 text-center">
         <span className="rotulo text-[9px] text-value-shade">Asistente IA</span>
         <h4 className="mt-0.5 font-bold text-ink text-sm">Conoce tu taller</h4>
       </div>
@@ -186,44 +187,46 @@ function MockupIA() {
   );
 }
 
+export interface PhoneFrameProps {
+  file?: string;
+  alt?: string;
+  className?: string;
+  children?: React.ReactNode;
+  aspect?: string;
+}
+
 export function PhoneFrame({
   file,
-  alt,
+  alt = "Captura de pantalla de la app MAZA en Android",
   className,
-}: {
-  file: string;
-  alt: string;
-  className?: string;
-}) {
-  const ready = mediaExists(file);
+  children,
+  aspect = "aspect-[9/19.5]",
+}: PhoneFrameProps) {
+  const ready = file ? mediaExists(file) : false;
 
   return (
-    <div
-      className={`relative aspect-[9/19.5] w-full max-w-[260px] overflow-hidden border-2 border-ink bg-surface shadow-md ${
-        className ?? ""
-      }`}
-    >
-      <div className="pointer-events-none absolute left-1/2 top-2 z-10 h-1.5 w-12 -translate-x-1/2 rounded-full bg-ink" />
-
-      {ready ? (
+    <AndroidFrame className={className} aspect={aspect}>
+      {children ? (
+        children
+      ) : ready && file ? (
         <Image
           src={`/${file}`}
           alt={alt}
           fill
-          sizes="260px"
+          sizes="(max-width: 640px) 260px, 290px"
           className="object-cover object-top"
         />
-      ) : file.includes("seguimiento") ? (
+      ) : file?.includes("seguimiento") ? (
         <MockupSeguimiento />
-      ) : file.includes("presupuesto") ? (
+      ) : file?.includes("presupuesto") ? (
         <MockupPresupuesto />
-      ) : file.includes("equipo") ? (
+      ) : file?.includes("equipo") ? (
         <MockupEquipo />
-      ) : file.includes("ia") ? (
+      ) : file?.includes("ia") ? (
         <MockupIA />
       ) : (
         <MockupSeguimiento />
       )}
-    </div>
+    </AndroidFrame>
   );
 }

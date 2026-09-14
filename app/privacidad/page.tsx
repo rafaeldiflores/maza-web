@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, waLink } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Política de privacidad — MAZA",
@@ -51,10 +52,10 @@ export default function PrivacidadPage() {
                 <strong className="text-ink">Rafael Di Fiore</strong>. Para
                 consultas sobre privacidad, escríbenos a{" "}
                 <a
-                  href="mailto:rafasandiflores2@gmail.com"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="text-value-shade hover:underline"
                 >
-                  rafasandiflores2@gmail.com
+                  {CONTACT_EMAIL}
                 </a>
                 .
               </p>
@@ -219,10 +220,10 @@ export default function PrivacidadPage() {
                   exigido por la normativa contable y tributaria chilena. Si
                   tienes dudas, escríbenos a{" "}
                   <a
-                    href="mailto:soporte@maza.app"
+                    href={`mailto:${CONTACT_EMAIL}`}
                     className="text-value-shade hover:underline"
                   >
-                    soporte@maza.app
+                    {CONTACT_EMAIL}
                   </a>
                   .
                 </li>
@@ -252,10 +253,19 @@ export default function PrivacidadPage() {
                 Para cualquier consulta relacionada con privacidad o
                 eliminación de datos, escríbenos a{" "}
                 <a
-                  href="mailto:rafasandiflores2@gmail.com"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="text-value-shade hover:underline"
                 >
-                  rafasandiflores2@gmail.com
+                  {CONTACT_EMAIL}
+                </a>{" "}
+                o contáctanos por WhatsApp al{" "}
+                <a
+                  href={waLink("Hola, tengo una consulta sobre privacidad en MAZA.")}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-value-shade hover:underline"
+                >
+                  {CONTACT_PHONE_DISPLAY}
                 </a>
                 .
               </p>

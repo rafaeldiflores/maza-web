@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { WA_MESSAGES, waLink } from "@/lib/site";
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, WA_MESSAGES, waLink } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -20,13 +20,13 @@ export function Footer() {
             rel="noreferrer"
             className="font-semibold text-ink-muted hover:text-ink"
           >
-            WhatsApp
+            WhatsApp ({CONTACT_PHONE_DISPLAY})
           </a>
           <a
-            href="mailto:rafasandiflores2@gmail.com"
+            href={`mailto:${CONTACT_EMAIL}`}
             className="font-semibold text-ink-muted hover:text-ink"
           >
-            rafasandiflores2@gmail.com
+            {CONTACT_EMAIL}
           </a>
           <Link
             href="/privacidad"

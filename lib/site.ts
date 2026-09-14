@@ -11,7 +11,10 @@ export const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
   ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
   : "https://maza-web-rho.vercel.app";
 
-export const WHATSAPP_NUMBER = "56934358652";
+export const WHATSAPP_NUMBER = "56936410159";
+export const CONTACT_PHONE = "+56936410159";
+export const CONTACT_PHONE_DISPLAY = "+56 9 3641 0159";
+export const CONTACT_EMAIL = "contacto.mazapp@gmail.com";
 
 export function waLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

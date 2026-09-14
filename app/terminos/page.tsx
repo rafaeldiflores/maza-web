@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, waLink } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Términos y condiciones — MAZA",
@@ -235,10 +236,19 @@ export default function TerminosPage() {
               <p>
                 Para consultas sobre estos términos, escríbenos a{" "}
                 <a
-                  href="mailto:soporte@maza.app"
+                  href={`mailto:${CONTACT_EMAIL}`}
                   className="text-value-shade hover:underline"
                 >
-                  soporte@maza.app
+                  {CONTACT_EMAIL}
+                </a>{" "}
+                o contáctanos por WhatsApp al{" "}
+                <a
+                  href={waLink("Hola, tengo una consulta sobre los términos de MAZA.")}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-value-shade hover:underline"
+                >
+                  {CONTACT_PHONE_DISPLAY}
                 </a>
                 .
               </p>

@@ -203,7 +203,7 @@ export function PhoneFrame({
         className ?? ""
       }`}
     >
-      <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-1.5 w-14 -translate-x-1/2 bg-ink" />
+      <div className="pointer-events-none absolute left-1/2 top-2 z-10 h-1.5 w-12 -translate-x-1/2 rounded-full bg-ink" />
 
       {ready ? (
         <Image
@@ -211,7 +211,7 @@ export function PhoneFrame({
           alt={alt}
           fill
           sizes="260px"
-          className="object-cover"
+          className="object-cover object-top"
         />
       ) : file.includes("seguimiento") ? (
         <MockupSeguimiento />

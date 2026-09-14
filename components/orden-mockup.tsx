@@ -25,7 +25,7 @@ export function OrdenMockup() {
       className="max-w-[300px] sm:max-w-[325px]"
       aspect="aspect-auto"
     >
-      <div className="w-full bg-surface pb-4 pt-6">
+      <div className="w-full bg-surface pb-4 pt-4">
         <div className="border-b border-border-strong px-5 pb-3 pt-1 text-center">
           <p className="rotulo text-[10px]">Vista que recibe tu cliente</p>
           <h3 className="mt-1 text-lg font-bold text-ink">

@@ -41,7 +41,7 @@ export function HybridPlatform() {
             >
               <div className="flex h-full flex-col bg-surface p-4 text-xs">
                 {/* Cabecera del celular con estado de sincronización */}
-                <div className="border-b border-border-strong pb-2.5 pt-5 text-center">
+                <div className="border-b border-border-strong pb-2.5 pt-3.5 text-center">
                   <span className="rotulo text-[9px] text-value-shade">
                     ● Móvil en fosa
                   </span>

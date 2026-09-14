@@ -38,17 +38,6 @@ export function AndroidFrame({
         <div
           className={`relative ${aspect} w-full overflow-hidden rounded-[32px] border border-black/40 bg-surface shadow-inner sm:rounded-[36px]`}
         >
-          {/* Cámara frontal Punch-Hole estilo Android moderno (centrada) */}
-          <div
-            className="pointer-events-none absolute left-1/2 top-2 z-30 flex -translate-x-1/2 items-center justify-center"
-            aria-hidden="true"
-          >
-            <div className="flex h-3.5 w-3.5 items-center justify-center rounded-full bg-black shadow-[inset_0_1px_2px_rgba(0,0,0,0.95)] ring-[1.5px] ring-neutral-900/90">
-              <div className="flex h-1.5 w-1.5 items-center justify-center rounded-full bg-[#15233d]">
-                <div className="h-0.5 w-0.5 rounded-full bg-blue-400/80" />
-              </div>
-            </div>
-          </div>
 
           {/* Reflejo de cristal 3D sutil sobre el vidrio de la pantalla */}
           <div

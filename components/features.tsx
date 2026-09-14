@@ -1,10 +1,10 @@
 import { FEATURES } from "@/lib/site";
 import { FeatureIcon } from "./feature-icon";
 import { PhoneFrame } from "./phone-frame";
+import { WorkshopToolsGrid } from "./workshop-tools-grid";
 
 export function Features() {
   const spotlight = FEATURES.filter((f) => f.spotlight);
-  const rest = FEATURES.filter((f) => !f.spotlight && !f.ownSection);
 
   return (
     <section id="funciones" className="px-5 py-20 sm:px-8 sm:py-28">
@@ -61,32 +61,7 @@ export function Features() {
           })}
         </div>
 
-        <div className="reveal mt-24 sm:mt-32">
-          <p className="titulo-seccion">Y todo el resto del taller, resuelto</p>
-
-          <div className="caja mt-8">
-            {rest.map((feature, i) => (
-              <div
-                key={feature.icon}
-                className={`flex items-start gap-4 p-5 ${
-                  i < rest.length - 1 ? "border-b border-neutral-track" : ""
-                }`}
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center border border-border-soft text-ink">
-                  <FeatureIcon name={feature.icon} className="h-5 w-5" />
-                </span>
-                <div className="flex flex-col gap-1">
-                  <h4 className="text-base font-bold text-ink">
-                    {feature.title}
-                  </h4>
-                  <p className="max-w-[52ch] text-[15px] leading-relaxed text-ink-muted">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <WorkshopToolsGrid />
       </div>
     </section>
   );

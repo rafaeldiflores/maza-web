@@ -32,7 +32,7 @@ function MockupSeguimiento() {
           <span className="mt-0.5 grid h-4 w-4 place-items-center bg-value text-[9px] font-bold text-splash-bg">●</span>
           <div>
             <p className="font-bold text-value-shade">En reparación</p>
-            <p className="text-[10px] text-ink-muted">Mecánico: Carlos M. (Fosa 1)</p>
+            <p className="text-[10px] text-ink-muted">Mecánico: Carlos M. (Cupo 1)</p>
           </div>
         </div>
 
@@ -122,7 +122,7 @@ function MockupEquipo() {
           <div className="mt-1.5 h-1.5 w-full bg-neutral-track">
             <div className="h-full bg-value w-3/4" />
           </div>
-          <p className="mt-1 text-[10px] text-ink-muted">En fosa: Honda CB 500</p>
+          <p className="mt-1 text-[10px] text-ink-muted">En taller: Honda CB 500</p>
         </div>
 
         <div className="border border-border-soft bg-surface-alt p-2.5">
@@ -133,7 +133,7 @@ function MockupEquipo() {
           <div className="mt-1.5 h-1.5 w-full bg-neutral-track">
             <div className="h-full bg-blue w-1/2" />
           </div>
-          <p className="mt-1 text-[10px] text-ink-muted">En fosa: Toyota Hilux</p>
+          <p className="mt-1 text-[10px] text-ink-muted">En taller: Toyota Hilux</p>
         </div>
 
         <div className="border border-border-soft bg-surface-alt p-2.5">

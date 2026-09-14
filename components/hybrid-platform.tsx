@@ -11,7 +11,7 @@ export function HybridPlatform() {
             Doble superficie · Sincronizado en tiempo real
           </span>
           <h2 className="mt-5 font-display text-[clamp(2.25rem,6vw,3.75rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
-            En el foso tu teléfono.
+            En el taller tu teléfono.
             <br />
             En el mesón tu computador.
           </h2>
@@ -23,7 +23,7 @@ export function HybridPlatform() {
           </p>
         </div>
 
-        {/* Maqueta visual dual: Monitor PC horizontal + Celular Android en foso */}
+        {/* Maqueta visual dual: Monitor PC horizontal + Celular Android en taller */}
         <div className="reveal mt-12 grid grid-cols-1 items-end gap-10 lg:grid-cols-12">
           {/* Lado PC Mostrador (8 columnas en desktop): Monitor con ventana de navegador */}
           <div className="lg:col-span-8">
@@ -33,7 +33,7 @@ export function HybridPlatform() {
             />
           </div>
 
-          {/* Lado Móvil (4 columnas en desktop): Celular Android en foso */}
+          {/* Lado Móvil (4 columnas en desktop): Celular Android en taller */}
           <div className="flex flex-col items-center justify-center lg:col-span-4">
             <PhoneFrame
               className="max-w-[260px] sm:max-w-[275px]"
@@ -43,7 +43,7 @@ export function HybridPlatform() {
                 {/* Cabecera del celular con estado de sincronización */}
                 <div className="border-b border-border-strong pb-2.5 pt-3.5 text-center">
                   <span className="rotulo text-[9px] text-value-shade">
-                    ● Móvil en fosa
+                    ● Móvil en taller
                   </span>
                   <p className="mt-0.5 text-xs font-bold text-ink">
                     ORDEN #0142 EN VIVO
@@ -55,7 +55,7 @@ export function HybridPlatform() {
                     <div>
                       <span className="rotulo text-[9px]">Mecánico asignado</span>
                       <p className="text-xs font-bold text-ink">
-                        Carlos M. (Fosa 1)
+                        Carlos M. (Cupo 1)
                       </p>
                     </div>
                     <span className="testigo bg-value" />
@@ -97,7 +97,7 @@ export function HybridPlatform() {
               <span className="grid h-9 w-9 place-items-center border border-border-strong text-ink">
                 📱
               </span>
-              <h3 className="text-base font-bold text-ink">En el foso</h3>
+              <h3 className="text-base font-bold text-ink">En el taller</h3>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-ink-muted">
               El mecánico tiene el teléfono al lado del motor: avanza estados,

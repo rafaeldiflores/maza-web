@@ -24,7 +24,7 @@ export function Hero() {
 
           <p className="max-w-[50ch] text-lg leading-relaxed text-ink-muted sm:text-xl">
             MAZA lleva la cola de trabajo, el inventario y la caja: tu mecánico
-            trabaja con el celular en el foso, tu recepción cobra en el computador,
+            trabaja con el celular en el taller, tu recepción cobra en el computador,
             y cada cliente aprueba su presupuesto en 1 toque desde WhatsApp.
           </p>
 
@@ -49,7 +49,7 @@ export function Hero() {
 
           <div className="flex flex-col gap-1 text-sm text-ink-faint">
             <p className="font-medium text-ink-muted">
-              📱 Celular en foso + 💻 Computador en mesón sincronizados en 0.3s
+              📱 Celular en taller + 💻 Computador en mesón sincronizados en 0.3s
             </p>
             <p className="text-xs">
               Sin tarjeta de crédito · Sin contratos · Autos, motos, bicicletas, detailing y lavado

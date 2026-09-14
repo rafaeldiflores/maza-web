@@ -117,7 +117,7 @@ export function OrdenMockup() {
           {estado === "aprobado"
             ? "¡Tu taller recibió la orden aprobada y descontó el stock!"
             : estado === "rechazado"
-            ? "¡El taller liberó la fosa de inmediato sin llamadas!"
+            ? "¡El taller liberó el cupo de inmediato sin llamadas!"
             : "Marca o desmarca ítems, luego aprueba o rechaza:"}
         </span>
       </div>
@@ -392,7 +392,7 @@ export function OrdenMockup() {
         </div>
 
         {/* ══════════════════════════════════════════════════════════════
-            PANTALLA 2: CELULAR DEL TALLER / MECÁNICO (App en fosa)
+            PANTALLA 2: CELULAR DEL TALLER / MECÁNICO (App en taller)
             ══════════════════════════════════════════════════════════════ */}
         <div
           className={`flex flex-col items-center ${
@@ -404,7 +404,7 @@ export function OrdenMockup() {
               Paso 2 · Vista del Mecánico
             </span>
             <p className="text-xs font-bold text-ink">
-              App MAZA en fosa o recepción
+              App MAZA en taller o recepción
             </p>
           </div>
 
@@ -417,7 +417,7 @@ export function OrdenMockup() {
               <div className="border-b border-border-strong bg-surface-alt px-4 pb-2 text-center">
                 <div className="flex items-center justify-between text-[9px]">
                   <span className="rotulo text-ink">Taller Central</span>
-                  <span className="rotulo text-value-shade">Fosa 1 · Carlos M.</span>
+                  <span className="rotulo text-value-shade">Cupo 1 · Carlos M.</span>
                 </div>
                 <h4 className="mt-0.5 text-sm font-bold text-ink">
                   ORDEN #0142 EN VIVO
@@ -520,9 +520,9 @@ export function OrdenMockup() {
                   {/* Tarjeta de mano de obra y asignación */}
                   <div className="rounded border border-border-soft bg-surface-alt p-2 text-[10.5px]">
                     <div className="flex justify-between items-center text-ink font-semibold">
-                      <span>Mano de obra y fosa</span>
+                      <span>Mano de obra y cupo</span>
                       <span className="rotulo text-[9px] text-ink-faint">
-                        Carlos M. (Fosa 1)
+                        Carlos M. (Cupo 1)
                       </span>
                     </div>
                     <p className="mt-0.5 text-[10px] text-ink-muted">
@@ -531,7 +531,7 @@ export function OrdenMockup() {
                             totalSeleccionado
                           )}.`
                         : estado === "rechazado"
-                        ? "Fosa 1 liberada. Mecánico disponible para nueva orden."
+                        ? "Cupo 1 liberado. Mecánico disponible para nueva orden."
                         : "Mecánico en espera de autorización del cliente."}
                     </p>
                   </div>
@@ -550,7 +550,7 @@ export function OrdenMockup() {
                         </div>
                       </div>
                       <p className="text-center text-[9px] text-success font-semibold">
-                        ✓ Fosa desbloqueada en tiempo real
+                        ✓ Cupo desbloqueado en tiempo real
                       </p>
                     </div>
                   ) : estado === "rechazado" ? (
@@ -560,7 +560,7 @@ export function OrdenMockup() {
                           Cobrar revisión ($8.000)
                         </div>
                         <div className="border border-ink bg-surface-alt py-2 text-center text-[10px] font-bold text-ink">
-                          Liberar fosa ✓
+                          Liberar cupo ✓
                         </div>
                       </div>
                       <p className="text-center text-[9px] text-ink-muted font-semibold">

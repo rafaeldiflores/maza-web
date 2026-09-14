@@ -314,7 +314,7 @@ export const PLANS: Plan[] = [
     tagline: "Para el mecánico o taller unipersonal",
     roiNote: "Menos que un cambio de pastillas. Se paga con 1 sola orden al mes.",
     features: [
-      "1 acceso simultáneo: celular en foso + PC en mostrador",
+      "1 acceso simultáneo: celular en el taller + PC en mostrador",
       "Asistente IA que lee el stock y caja de tu taller",
       "Link de seguimiento en vivo para tus clientes",
       "Presupuestos con aprobación online en 1 toque",
@@ -330,7 +330,7 @@ export const PLANS: Plan[] = [
     features: [
       "Todo lo de Taller Solo",
       "Cobro online del presupuesto con Mercado Pago",
-      "2 accesos trabajando a la par (fosa y mesón)",
+      "2 accesos trabajando a la par (taller y mesón)",
       "Órdenes de trabajo y clientes ilimitados",
       "Soporte prioritario y asistencia de catálogo",
     ],

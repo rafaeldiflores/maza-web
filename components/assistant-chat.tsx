@@ -93,7 +93,7 @@ const SCENARIOS: ChatScenario[] = [
     botText:
       "Hay 7 vehículos en el taller en este momento:",
     metrics: [
-      { label: "En fosa / reparación", val: "3 vehículos" },
+      { label: "En taller / reparación", val: "3 vehículos" },
       { label: "Esperando repuesto", val: "1 vehículo" },
       { label: "Listos para retiro", val: "3 vehículos" },
       { label: "Próxima cita", val: "15:30 hrs (Yamaha R3)" },

@@ -209,8 +209,20 @@ export function AssistantChat() {
 
                 {/* Botón de acción sugerida */}
                 {active.actionText && (
-                  <div className="mt-2.5 border border-border-strong bg-surface py-1 px-2 text-center text-[9.5px] font-bold text-value-shade hover:bg-surface-alt cursor-default">
-                    ⚡ {active.actionText}
+                  <div className="mt-2.5 flex items-center justify-center gap-1.5 border border-border-strong bg-surface py-1 px-2 text-center text-[9.5px] font-bold text-value-shade hover:bg-surface-alt cursor-default">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-3 w-3 text-value"
+                      aria-hidden="true"
+                    >
+                      <path d="M13 2 3 14h8l-1 8 11-13h-8l1-7Z" />
+                    </svg>
+                    <span>{active.actionText}</span>
                   </div>
                 )}
               </div>
@@ -220,7 +232,19 @@ export function AssistantChat() {
             <div className="border-t border-border-strong pt-2">
               <div className="flex items-center justify-between rounded border border-border-strong bg-surface px-2.5 py-1.5 text-[10px] text-ink-faint">
                 <span className="truncate">Preguntar sobre stock, caja...</span>
-                <span className="text-ink-muted">➤</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-3 w-3 text-ink-muted"
+                  aria-hidden="true"
+                >
+                  <path d="m22 2-7 20-4-9-9-4Z" />
+                  <path d="M22 2 11 13" />
+                </svg>
               </div>
             </div>
           </div>

@@ -450,10 +450,10 @@ export function OrdenMockup() {
                     />
                     <span className="rotulo text-[10px] font-bold">
                       {estado === "aprobado"
-                        ? "🟢 PRESUPUESTO APROBADO"
+                        ? "PRESUPUESTO APROBADO"
                         : estado === "rechazado"
-                        ? "🔴 PRESUPUESTO RECHAZADO"
-                        : "⏳ ESPERANDO APROBACIÓN"}
+                        ? "PRESUPUESTO RECHAZADO"
+                        : "ESPERANDO APROBACIÓN"}
                     </span>
                   </div>
                   {estado !== "pendiente" && (
@@ -542,8 +542,21 @@ export function OrdenMockup() {
                   {estado === "aprobado" ? (
                     <div className="flex flex-col gap-1.5">
                       <div className="grid grid-cols-2 gap-1.5">
-                        <div className="border border-border-strong bg-surface py-2 text-center text-[10px] font-bold text-ink">
-                          📷 Foto inicio
+                        <div className="flex items-center justify-center gap-1 border border-border-strong bg-surface py-2 text-center text-[10px] font-bold text-ink">
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="h-3 w-3 text-ink-muted"
+                            aria-hidden="true"
+                          >
+                            <path d="M4 8h3l2-3h6l2 3h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z" />
+                            <circle cx="12" cy="14" r="3.5" />
+                          </svg>
+                          <span>Foto inicio</span>
                         </div>
                         <div className="bg-value py-2 text-center text-[10px] font-bold text-splash-bg">
                           Iniciar trabajo →
@@ -569,8 +582,21 @@ export function OrdenMockup() {
                     </div>
                   ) : (
                     <div className="flex flex-col gap-1">
-                      <div className="border border-neutral-track bg-neutral-track/30 py-2.5 text-center text-[10.5px] font-medium text-ink-ghost cursor-not-allowed">
-                        🔒 Trabajo en pausa por aprobación
+                      <div className="flex items-center justify-center gap-1.5 border border-neutral-track bg-neutral-track/30 py-2.5 text-center text-[10.5px] font-medium text-ink-ghost cursor-not-allowed">
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-3.5 w-3.5 text-ink-ghost"
+                          aria-hidden="true"
+                        >
+                          <rect x="3" y="11" width="18" height="11" rx="1.5" />
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                        <span>Trabajo en pausa por aprobación</span>
                       </div>
                       <p className="text-center text-[9px] text-ink-ghost">
                         El mecánico no pierde tiempo llamando
@@ -586,9 +612,14 @@ export function OrdenMockup() {
 
       {/* ─── Micro-aviso explicativo inferior ─── */}
       <div className="mt-4 text-center">
-        <p className="text-xs text-ink-faint">
-          💡 En MAZA el cliente elige qué reparar desde su casa, los totales se
-          calculan solos y tu taller sabe exactamente qué hacer en 0.3 segundos.
+        <p className="inline-flex flex-wrap items-center justify-center gap-1.5 text-xs text-ink-faint">
+          <span className="rotulo text-[9px] text-value-shade border border-value/25 bg-value-soft px-1.5 py-0.5">
+            FLUJO EN VIVO
+          </span>
+          <span>
+            En MAZA el cliente elige qué reparar desde su casa, los totales se
+            calculan solos y tu taller sabe exactamente qué hacer en 0.3 segundos.
+          </span>
         </p>
       </div>
     </div>

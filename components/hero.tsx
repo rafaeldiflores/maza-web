@@ -47,11 +47,51 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="flex flex-col gap-1 text-sm text-ink-faint">
-            <p className="font-medium text-ink-muted">
-              📱 Celular en taller + 💻 Computador en mesón sincronizados en 0.3s
-            </p>
-            <p className="text-xs">
+          <div className="flex flex-col gap-2 pt-1">
+            <div className="inline-flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 border border-border-strong bg-surface-alt/80 px-2.5 py-1 font-mono text-[11px] font-bold text-ink">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-3.5 w-3.5 text-value"
+                  aria-hidden="true"
+                >
+                  <rect x="5" y="2" width="14" height="20" rx="2" />
+                  <path d="M12 18h.01" />
+                </svg>
+                <span>MÓVIL TALLER</span>
+              </span>
+
+              <span className="font-mono text-xs font-bold text-ink-ghost">+</span>
+
+              <span className="inline-flex items-center gap-1.5 border border-border-strong bg-surface-alt/80 px-2.5 py-1 font-mono text-[11px] font-bold text-ink">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-3.5 w-3.5 text-blue"
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="3" width="20" height="14" rx="1.5" />
+                  <path d="M8 21h8M12 17v4" />
+                </svg>
+                <span>COMPUTADOR MESÓN</span>
+              </span>
+
+              <span className="inline-flex items-center gap-1.5 font-mono text-[10.5px] font-bold text-value-shade">
+                <span className="testigo h-1.5 w-1.5 bg-value animate-pulse" />
+                <span>SINCRONIZADOS EN 0.3S</span>
+              </span>
+            </div>
+
+            <p className="text-xs text-ink-faint">
               Sin tarjeta de crédito · Sin contratos · Autos, motos, bicicletas, detailing y lavado
             </p>
           </div>

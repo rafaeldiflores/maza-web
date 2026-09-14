@@ -18,7 +18,7 @@ const TOOLS: WorkshopTool[] = [
     id: "qr",
     icon: "qr",
     title: "QR al ingreso",
-    badge: "⚡ 3 seg",
+    badge: "3 SEG",
     microCopy: "Vincula la orden y la patente al instante sin tipear datos.",
     detail:
       "Escanea el código QR del cliente desde la cámara del celular o tablet y asocia el vehículo al taller en segundos, evitando rellenar formularios repetidos.",
@@ -27,7 +27,7 @@ const TOOLS: WorkshopTool[] = [
     id: "inventario",
     icon: "inventario",
     title: "Inventario automático",
-    badge: "📦 Auto-rebaja",
+    badge: "AUTO-REBAJA",
     microCopy: "El stock de repuestos se descuenta solo con cada orden.",
     detail:
       "Los repuestos y aceites se rebajan del inventario al incluirlos en una reparación. Si algo está bajo el mínimo, el sistema te avisa antes de que falte.",
@@ -36,7 +36,7 @@ const TOOLS: WorkshopTool[] = [
     id: "cola",
     icon: "cola",
     title: "Cola de trabajo y agenda",
-    badge: "⏱ En vivo",
+    badge: "EN VIVO",
     microCopy: "Estados claros desde el ingreso hasta la entrega final.",
     detail:
       "Visualiza de un solo vistazo qué vehículos están en diagnóstico, cuáles en cupo de faena y cuáles listos para entrega, con citas organizadas.",
@@ -45,7 +45,7 @@ const TOOLS: WorkshopTool[] = [
     id: "balances",
     icon: "balances",
     title: "Balances y caja diaria",
-    badge: "📊 Cero planillas",
+    badge: "CERO PLANILLAS",
     microCopy: "Ventas del día, semana y mes sin usar hojas de cálculo.",
     detail:
       "Arqueo diario de caja, medios de pago (efectivo, débito, transferencia), margen de repuestos y mano de obra. Todo calculado automáticamente.",
@@ -54,7 +54,7 @@ const TOOLS: WorkshopTool[] = [
     id: "servicios",
     icon: "servicios",
     title: "Catálogo a tu medida",
-    badge: "🛠 Libre",
+    badge: "A MEDIDA",
     microCopy: "Precios y nombres propios para mecánica, detailing o lavado.",
     detail:
       "Configura tus servicios con tus propias tarifas y nombres. Funciona igual de bien para mantenciones de pauta, desabolladura o lavado y estética.",
@@ -63,7 +63,7 @@ const TOOLS: WorkshopTool[] = [
     id: "rubro",
     icon: "rubro",
     title: "Autos, motos o bicis",
-    badge: "🎯 Tu rubro",
+    badge: "TU RUBRO",
     microCopy: "La app habla tu idioma según la especialidad de tu taller.",
     detail:
       "Adapta la terminología, pautas de kilometraje y campos específicos según si trabajas con vehículos, flotas, motocicletas o bicicletas.",
@@ -72,7 +72,7 @@ const TOOLS: WorkshopTool[] = [
     id: "domicilio",
     icon: "domicilio",
     title: "Despacho a domicilio",
-    badge: "💬 Por WhatsApp",
+    badge: "VÍA WHATSAPP",
     microCopy: "Sectores, costos y comprobante directo al cliente.",
     detail:
       "Configura zonas de cobertura y recargos por traslado, enviando el comprobante de recepción o entrega directamente al WhatsApp de tu cliente.",
@@ -81,7 +81,7 @@ const TOOLS: WorkshopTool[] = [
     id: "exportar",
     icon: "exportar",
     title: "Exportación a Excel",
-    badge: "📥 1 Clic",
+    badge: "1 CLIC EXCEL",
     microCopy: "Descarga tu cartera de clientes y repuestos cuando quieras.",
     detail:
       "Tus datos te pertenecen. Exporta todo el historial de clientes, reparaciones y catálogo de bodega a planillas Excel con un solo toque.",

@@ -70,8 +70,21 @@ export function HybridPlatform() {
                     </div>
 
                     <div className="grid grid-cols-2 gap-1.5">
-                      <div className="border border-border-strong py-1.5 text-center text-[10px] font-bold text-ink">
-                        📷 Foto falla
+                      <div className="flex items-center justify-center gap-1 border border-border-strong py-1.5 text-center text-[10px] font-bold text-ink">
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-3 w-3 text-ink-muted"
+                          aria-hidden="true"
+                        >
+                          <path d="M4 8h3l2-3h6l2 3h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z" />
+                          <circle cx="12" cy="14" r="3.5" />
+                        </svg>
+                        <span>Foto falla</span>
                       </div>
                       <div className="bg-value py-1.5 text-center text-[10px] font-bold text-splash-bg">
                         Avanzar estado
@@ -94,8 +107,20 @@ export function HybridPlatform() {
         <div className="reveal mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
           <div className="caja p-6">
             <div className="flex items-center gap-3">
-              <span className="grid h-9 w-9 place-items-center border border-border-strong text-ink">
-                📱
+              <span className="grid h-9 w-9 place-items-center border border-border-strong bg-surface text-value">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                  aria-hidden="true"
+                >
+                  <rect x="5" y="2" width="14" height="20" rx="2" />
+                  <path d="M12 18h.01" />
+                </svg>
               </span>
               <h3 className="text-base font-bold text-ink">En el taller</h3>
             </div>
@@ -107,8 +132,20 @@ export function HybridPlatform() {
 
           <div className="caja p-6">
             <div className="flex items-center gap-3">
-              <span className="grid h-9 w-9 place-items-center border border-border-strong text-ink">
-                💻
+              <span className="grid h-9 w-9 place-items-center border border-border-strong bg-surface text-blue">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="3" width="20" height="14" rx="1.5" />
+                  <path d="M8 21h8M12 17v4" />
+                </svg>
               </span>
               <h3 className="text-base font-bold text-ink">En el mesón</h3>
             </div>
@@ -120,8 +157,19 @@ export function HybridPlatform() {
 
           <div className="caja p-6">
             <div className="flex items-center gap-3">
-              <span className="grid h-9 w-9 place-items-center border border-border-strong text-ink">
-                ⚡
+              <span className="grid h-9 w-9 place-items-center border border-border-strong bg-surface text-value">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                  aria-hidden="true"
+                >
+                  <path d="M13 2 3 14h8l-1 8 11-13h-8l1-7Z" />
+                </svg>
               </span>
               <h3 className="text-base font-bold text-ink">Estilo WhatsApp Web</h3>
             </div>

@@ -5,22 +5,27 @@ export function LogoMark({ className }: { className?: string }) {
       className={className}
       role="img"
       aria-label="MAZA"
+      fill="none"
+      stroke="currentColor"
     >
-      <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="7" />
-      <circle cx="50" cy="50" r="39" fill="none" stroke="currentColor" strokeWidth="2" />
-      <line x1="50" y1="50" x2="50.00" y2="11.00" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="69.50" y2="16.73" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="83.77" y2="30.50" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="89.00" y2="50.00" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="83.77" y2="69.50" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="69.50" y2="83.27" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="50.00" y2="89.00" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="30.50" y2="83.27" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="16.23" y2="69.50" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="11.00" y2="50.00" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="16.23" y2="30.50" stroke="currentColor" strokeWidth="1.6" />
-      <line x1="50" y1="50" x2="30.50" y2="16.73" stroke="currentColor" strokeWidth="1.6" />
-      <circle cx="50" cy="50" r="6" fill="currentColor" />
+      <circle cx="50" cy="50" r="41" strokeWidth="5.5" />
+      <circle cx="50" cy="50" r="35" strokeWidth="1.6" opacity="0.4" />
+      <g strokeWidth="2.6" strokeLinecap="round">
+        <line x1="50" y1="15" x2="50" y2="50" />
+        <line x1="74.75" y1="25.25" x2="50" y2="50" />
+        <line x1="85" y1="50" x2="50" y2="50" />
+        <line x1="74.75" y1="74.75" x2="50" y2="50" />
+        <line x1="50" y1="85" x2="50" y2="50" />
+        <line x1="25.25" y1="74.75" x2="50" y2="50" />
+        <line x1="15" y1="50" x2="50" y2="50" />
+        <line x1="25.25" y1="25.25" x2="50" y2="50" />
+      </g>
+      <circle cx="50" cy="50" r="16.5" strokeWidth="3.5" />
+      <circle cx="50" cy="50" r="8" strokeWidth="3" />
+      <circle cx="50" cy="37.2" r="1.3" fill="currentColor" stroke="none" />
+      <circle cx="62.8" cy="50" r="1.3" fill="currentColor" stroke="none" />
+      <circle cx="50" cy="62.8" r="1.3" fill="currentColor" stroke="none" />
+      <circle cx="37.2" cy="50" r="1.3" fill="currentColor" stroke="none" />
     </svg>
   );
 }

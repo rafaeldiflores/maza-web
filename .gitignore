@@ -41,3 +41,10 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+# Hooks del grafo (Claude Code)
+.claude/.session-start
+.claude/hooks/grafo.env
+.claude/hooks/grafo.log
+.claude/settings.local.json
+.claude/hooks/
+.claude/commands/avance.md

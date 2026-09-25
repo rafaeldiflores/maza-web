@@ -48,7 +48,7 @@ function MockupSeguimiento() {
           <span className="mt-0.5 grid h-4 w-4 place-items-center border border-border-strong text-[9px] text-ink-ghost">○</span>
           <div>
             <p className="font-medium text-ink">Listo para retiro</p>
-            <p className="text-[10px] text-ink-ghost">Aviso automático por WhatsApp</p>
+            <p className="text-[10px] text-ink-ghost">Aviso por WhatsApp en 1 toque</p>
           </div>
         </div>
       </div>

@@ -29,10 +29,12 @@ export const TRIAL_DIAS = 14;
 
 /**
  * Oferta de lanzamiento: el Plan Fundador de docs/planes-y-precios.md (50% de
- * por vida sobre cualquier plan de pago, cupo de 20 talleres). Los cupos
- * tomados se actualizan a mano al activar cada taller: el contador tiene que
- * ser verdad, si no la urgencia se vuelve un truco. Con `activa: false` la
- * sección vuelve a los precios de lista.
+ * por vida sobre cualquier plan de pago, cupo de 20 talleres). Una sola bolsa:
+ * los talleres piloto de Google Play cuentan dentro de los mismos 20. `tomados`
+ * = testers activos + talleres en prueba + Fundadores pagando; se sube al
+ * activar la prueba y se baja si al terminarla no paga. Se actualiza a mano: el
+ * contador tiene que ser verdad, si no la urgencia se vuelve un truco. Con
+ * `activa: false` la sección vuelve a los precios de lista.
  */
 export const FUNDADOR = {
   activa: true,

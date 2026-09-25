@@ -20,6 +20,10 @@ export function waLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
+/** Mensaje del botón principal: el cupo Fundador mientras haya oferta. */
+export const mensajeCtaPrincipal = () =>
+  ofertaFundador() ? WA_MESSAGES.fundador : WA_MESSAGES.trial;
+
 /** Días de prueba gratis. Debe coincidir con el trial del PlanService de la app. */
 export const TRIAL_DIAS = 14;
 
@@ -45,9 +49,20 @@ export function precioFinal(precio: number) {
   return ofertaFundador() ? Math.round(precio * (1 - FUNDADOR.descuento)) : precio;
 }
 
+export const clp = new Intl.NumberFormat("es-CL", {
+  style: "currency",
+  currency: "CLP",
+  maximumFractionDigits: 0,
+});
+
+/** Texto del botón principal, el mismo en hero, barra fija y cierre. */
+export const textoCtaPrincipal = () =>
+  ofertaFundador() ? "Tomar mi cupo por WhatsApp" : `Probar ${TRIAL_DIAS} días gratis`;
+
 export const WA_MESSAGES = {
   general: "Hola, quiero saber más sobre MAZA para mi taller.",
   trial: `Hola, quiero probar MAZA gratis por ${TRIAL_DIAS} días en mi taller.`,
+  fundador: "Hola, quiero tomar uno de los cupos Fundador (50% de por vida) de MAZA para mi taller.",
   plan: (plan: string) =>
     ofertaFundador()
       ? `Hola, quiero tomar uno de los cupos Fundador (50% de por vida) con el plan ${plan} de MAZA.`
@@ -190,10 +205,13 @@ export const FEATURES: Feature[] = [
 /**
  * Video de demo. Mismo mecanismo que las capturas: dejar el archivo en
  * /public/demo/demo.mp4 (+ opcionalmente demo/poster.jpg) y se activa solo.
+ * Sin archivo, la sección no aparece.
  */
 export const DEMO_VIDEO = {
   file: "demo/demo.mp4",
   poster: "demo/poster.jpg",
+  /** true = grabado en vertical (9:16), como un reel. */
+  vertical: true,
 };
 
 /**
@@ -326,6 +344,10 @@ export type Plan = {
   features: string[];
   highlighted?: boolean;
 };
+
+/** Precio del plan más barato, con la oferta aplicada. */
+export const precioDesde = () => precioFinal(Math.min(...PLANS.map((p) => p.price)));
+export const precioDesdeLista = () => Math.min(...PLANS.map((p) => p.price));
 
 /**
  * Fuente de verdad: docs/planes-y-precios.md y plan.service.ts en Maza-app.

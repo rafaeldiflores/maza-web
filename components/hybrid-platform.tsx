@@ -3,28 +3,27 @@ import { PhoneFrame } from "./phone-frame";
 
 export function HybridPlatform() {
   return (
-    <section className="border-y border-border-soft bg-surface-alt px-5 py-20 sm:px-8 sm:py-28">
+    <section className="border-y border-border-soft bg-surface-alt px-5 py-16 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="reveal max-w-3xl">
-          <span className="rotulo inline-flex items-center gap-2 border border-border-strong px-3 py-1.5 text-[10px]">
+          <span className="rotulo hidden items-center gap-2 border border-border-strong px-3 py-1.5 text-[10px] sm:inline-flex">
             <span className="testigo bg-value" />
-            Doble superficie · Sincronizado en tiempo real
+            Celular y computador, sincronizados
           </span>
-          <h2 className="mt-5 font-display text-[clamp(2.25rem,6vw,3.75rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
+          <h2 className="font-display sm:mt-5 text-[clamp(2.25rem,6vw,3.75rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
             En el taller tu teléfono.
             <br />
             En el mesón tu computador.
           </h2>
           <p className="mt-4 max-w-[60ch] text-base leading-relaxed text-ink-muted sm:text-lg">
-            MAZA está pensada para cómo se trabaja de verdad: la rapidez del
-            celular al lado del vehículo y la comodidad de la pantalla ancha en
-            la recepción. Sin instalaciones pesadas: se conecta con código QR
-            igual que WhatsApp Web.
+            El mecánico avanza la orden en el celular y la recepción la ve al
+            instante en el computador. Se conecta con un QR, igual que WhatsApp
+            Web.
           </p>
         </div>
 
         {/* Maqueta visual dual: Monitor PC horizontal + Celular Android en taller */}
-        <div className="reveal mt-12 grid grid-cols-1 items-end gap-10 lg:grid-cols-12">
+        <div className="reveal mt-8 grid grid-cols-1 items-end gap-10 sm:mt-12 lg:grid-cols-12">
           {/* Lado PC Mostrador (8 columnas en desktop): Monitor con ventana de navegador */}
           <div className="lg:col-span-8">
             <ComputerFrame
@@ -34,7 +33,7 @@ export function HybridPlatform() {
           </div>
 
           {/* Lado Móvil (4 columnas en desktop): Celular Android en taller */}
-          <div className="flex flex-col items-center justify-center lg:col-span-4">
+          <div className="hidden flex-col items-center justify-center lg:col-span-4 lg:flex">
             <PhoneFrame
               className="max-w-[260px] sm:max-w-[275px]"
               aspect="aspect-[9/18.5]"
@@ -104,7 +103,7 @@ export function HybridPlatform() {
         </div>
 
         {/* 3 pilares de la experiencia híbrida */}
-        <div className="reveal mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="reveal mt-12 hidden grid-cols-1 gap-6 sm:grid sm:grid-cols-3">
           <div className="caja p-6">
             <div className="flex items-center gap-3">
               <span className="grid h-9 w-9 place-items-center border border-border-strong bg-surface text-value">

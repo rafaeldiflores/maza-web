@@ -4,7 +4,7 @@ import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, WA_MESSAGES, waLink } from "@/lib
 
 export function Footer() {
   return (
-    <footer className="border-t border-border-soft px-5 py-12 sm:px-8">
+    <footer id="pie" className="border-t border-border-soft px-5 py-12 sm:px-8">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex flex-col gap-3">
           <Logo />

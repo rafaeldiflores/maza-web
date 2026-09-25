@@ -56,7 +56,7 @@ export function Assistant() {
   return (
     <section
       id="asistente"
-      className="border-y border-border-soft bg-surface-alt px-5 py-20 sm:px-8 sm:py-28"
+      className="border-y border-border-soft bg-surface-alt px-5 py-16 sm:px-8 sm:py-28"
     >
       <div className="mx-auto max-w-6xl">
         <div className="reveal max-w-3xl">
@@ -68,23 +68,24 @@ export function Assistant() {
             No es un chatbot pegado encima.
           </h2>
           <p className="mt-4 max-w-[60ch] text-base leading-relaxed text-ink-muted sm:text-lg">
-            El asistente de MAZA lee tu taller entero antes de contestar:
-            el inventario con su stock real, la cola de trabajo, la agenda,
-            la caja del día y el historial de cada cliente. Por eso responde
-            con tus números, no con generalidades.
+            Lee tu inventario, tu cola, tu agenda y tu caja antes de
+            contestar. Responde con tus números, no con generalidades.
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 items-start gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+        <div className="mt-10 grid grid-cols-1 items-start gap-10 sm:mt-14 sm:gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <div className="flex flex-col items-center">
             <AssistantChat />
           </div>
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-3 sm:gap-8">
             {IA_CAPACIDADES.map((cap) => (
               <div key={cap.title} className="reveal flex flex-col gap-2">
-                <h3 className="text-lg font-bold text-ink">{cap.title}</h3>
-                <p className="max-w-[52ch] text-[15px] leading-relaxed text-ink-muted">
+                <h3 className="flex items-center gap-2.5 text-base font-bold text-ink sm:text-lg">
+                  <span className="testigo bg-value sm:hidden" />
+                  {cap.title}
+                </h3>
+                <p className="hidden max-w-[52ch] text-[15px] leading-relaxed text-ink-muted sm:block">
                   {cap.body}
                 </p>
               </div>
@@ -92,7 +93,7 @@ export function Assistant() {
           </div>
         </div>
 
-        <div className="reveal mt-20 grid grid-cols-1 items-center gap-10 border-t border-border-soft pt-16 sm:gap-14 lg:grid-cols-[1.1fr_1fr]">
+        <div className="reveal mt-20 hidden grid-cols-1 items-center gap-10 border-t border-border-soft pt-16 sm:grid sm:gap-14 lg:grid-cols-[1.1fr_1fr]">
           <div className="flex max-w-[52ch] flex-col gap-4">
             <h3 className="font-display text-[clamp(1.75rem,4.5vw,2.75rem)] leading-[1.02] tracking-[0.01em] text-ink text-balance">
               Y antes de que preguntes, ya te avisó.

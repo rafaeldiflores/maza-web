@@ -110,7 +110,7 @@ export function OrdenMockup() {
             ? "Sincronizado (0.3s) · Presupuesto Aprobado"
             : estado === "rechazado"
             ? "Sincronizado (0.3s) · Presupuesto Rechazado"
-            : "Simulación interactiva bidireccional"}
+            : "Pruébalo: tú eres el cliente"}
         </span>
 
         <span className="hidden text-xs text-ink-muted sm:inline">
@@ -133,7 +133,7 @@ export function OrdenMockup() {
               : "text-ink-muted"
           }`}
         >
-          1. Celular Cliente
+          1. Tu cliente
         </button>
         <button
           type="button"
@@ -144,7 +144,7 @@ export function OrdenMockup() {
               : "text-ink-muted"
           }`}
         >
-          2. App del Taller
+          2. Tu taller
           {estado !== "pendiente" && (
             <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
               <span
@@ -617,8 +617,8 @@ export function OrdenMockup() {
             FLUJO EN VIVO
           </span>
           <span>
-            En MAZA el cliente elige qué reparar desde su casa, los totales se
-            calculan solos y tu taller sabe exactamente qué hacer en 0.3 segundos.
+            El cliente elige qué reparar desde su casa y tu taller lo ve al
+            instante.
           </span>
         </p>
       </div>

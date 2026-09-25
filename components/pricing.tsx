@@ -15,13 +15,37 @@ const currency = new Intl.NumberFormat("es-CL", {
   maximumFractionDigits: 0,
 });
 
+function ListaFunciones({
+  features,
+  className = "",
+}: {
+  features: string[];
+  className?: string;
+}) {
+  return (
+    <ul className={`flex flex-col ${className}`}>
+      {features.map((feature, fi) => (
+        <li
+          key={feature}
+          className={`flex items-start gap-2.5 py-2.5 text-sm text-ink-muted ${
+            fi < features.length - 1 ? "border-b border-border-soft" : ""
+          }`}
+        >
+          <span className="testigo mt-1.5 bg-value" />
+          {feature}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function Pricing() {
   const oferta = ofertaFundador();
   const cupos = cuposFundador();
   const pct = Math.round(FUNDADOR.descuento * 100);
 
   return (
-    <section id="planes" className="px-5 py-20 sm:px-8 sm:py-28">
+    <section id="planes" className="px-5 py-16 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="reveal mb-12 max-w-2xl sm:mb-16">
           <h2 className="font-display text-[clamp(2.25rem,6vw,3.5rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
@@ -71,7 +95,7 @@ export function Pricing() {
           {PLANS.map((plan, i) => (
             <div
               key={plan.name}
-              className={`flex flex-col p-7 border-neutral-track ${
+              className={`flex flex-col p-6 sm:p-7 border-neutral-track ${plan.highlighted ? "order-first md:order-none" : ""} ${
                 i < PLANS.length - 1 ? "border-b md:border-b-0" : ""
               } ${i % PLANS.length !== PLANS.length - 1 ? "md:border-r" : ""} ${
                 plan.highlighted ? "border-t-2 border-t-ink" : ""
@@ -123,27 +147,23 @@ export function Pricing() {
                 </div>
               )}
 
-              <ul className="mt-6 flex flex-1 flex-col">
-                {plan.features.map((feature, fi) => (
-                  <li
-                    key={feature}
-                    className={`flex items-start gap-2.5 py-2.5 text-sm text-ink-muted ${
-                      fi < plan.features.length - 1
-                        ? "border-b border-border-soft"
-                        : ""
-                    }`}
-                  >
-                    <span className="testigo mt-1.5 bg-value" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+              <details className="group/incluye mt-5 border-t border-border-soft md:hidden">
+                <summary className="flex cursor-pointer list-none items-center justify-between py-3 text-sm font-semibold text-ink [&::-webkit-details-marker]:hidden">
+                  Qué incluye ({plan.features.length})
+                  <span className="text-ink-faint transition-transform group-open/incluye:rotate-180">▾</span>
+                </summary>
+                <ListaFunciones features={plan.features} />
+              </details>
+              <div className="hidden flex-1 md:flex md:flex-col">
+                <ListaFunciones features={plan.features} className="mt-6" />
+              </div>
 
               <a
                 href={waLink(WA_MESSAGES.plan(plan.name))}
                 target="_blank"
                 rel="noreferrer"
-                className={`mt-8 inline-flex items-center justify-center px-6 py-3 text-sm font-bold ${
+                data-cta={`plan-${plan.name.toLowerCase().replace(/\s+/g, "-")}`}
+                className={`mt-5 md:mt-8 inline-flex items-center justify-center px-6 py-3 text-sm font-bold ${
                   plan.highlighted
                     ? "bg-value text-splash-bg"
                     : "border border-ink text-ink hover:bg-surface-alt"
@@ -179,6 +199,7 @@ export function Pricing() {
             )}
             target="_blank"
             rel="noreferrer"
+            data-cta="migracion"
             className="shrink-0 border border-ink px-5 py-2.5 text-xs font-bold text-ink transition-colors hover:bg-surface-alt"
           >
             Configurar por WhatsApp →

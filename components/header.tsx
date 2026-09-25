@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { TRIAL_DIAS, WA_MESSAGES, waLink } from "@/lib/site";
+import { mensajeCtaPrincipal, ofertaFundador, textoCtaPrincipal, waLink } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "#funciones", label: "Funciones" },
@@ -30,12 +30,13 @@ export function Header() {
         </nav>
 
         <a
-          href={waLink(WA_MESSAGES.trial)}
+          href={waLink(mensajeCtaPrincipal())}
           target="_blank"
           rel="noreferrer"
+          data-cta="header"
           className="hidden shrink-0 bg-value px-5 py-2.5 text-sm font-bold text-splash-bg sm:inline-flex sm:items-center"
         >
-          Probar gratis
+          {ofertaFundador() ? "Tomar mi cupo" : "Probar gratis"}
         </a>
 
         <details className="relative md:hidden">
@@ -58,12 +59,13 @@ export function Header() {
               </a>
             ))}
             <a
-              href={waLink(WA_MESSAGES.trial)}
+              href={waLink(mensajeCtaPrincipal())}
               target="_blank"
               rel="noreferrer"
+              data-cta="menu"
               className="bg-value px-4 py-3 text-center text-sm font-bold text-splash-bg"
             >
-              Probar {TRIAL_DIAS} días gratis
+              {textoCtaPrincipal()}
             </a>
           </div>
         </details>

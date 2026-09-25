@@ -112,7 +112,7 @@ export function WorkshopToolsGrid() {
   };
 
   return (
-    <div className="reveal mt-20 sm:mt-28">
+    <div className="reveal mt-14 sm:mt-28">
       {/* Cabecera técnica con selector de modo */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-b-2 border-ink pb-3.5">
         <div>
@@ -129,7 +129,7 @@ export function WorkshopToolsGrid() {
         </div>
 
         {/* Switch modo rápido / detallado */}
-        <div className="flex items-center gap-2 self-start sm:self-auto">
+        <div className="hidden items-center gap-2 self-start sm:flex sm:self-auto">
           <span className="rotulo-sm hidden text-ink-ghost sm:inline">Lectura:</span>
           <button
             type="button"
@@ -147,8 +147,8 @@ export function WorkshopToolsGrid() {
         </div>
       </div>
 
-      {/* Grid compacto de 4 columnas en desktop, 2 en tablet y móvil */}
-      <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 sm:gap-4">
+      {/* Grid compacto: 4 columnas en desktop, 2 en tablet y celular */}
+      <div className="mt-5 grid grid-cols-2 gap-2.5 lg:grid-cols-4 sm:gap-4">
         {TOOLS.map((tool) => {
           const isExpanded = expandedAll || !!expandedIds[tool.id];
 
@@ -164,7 +164,7 @@ export function WorkshopToolsGrid() {
               }}
               role="button"
               tabIndex={0}
-              className={`group flex flex-col justify-between border bg-surface p-4 transition-all duration-200 cursor-pointer select-none text-left ${
+              className={`group flex flex-col justify-between border bg-surface p-3 sm:p-4 transition-all duration-200 cursor-pointer select-none text-left ${
                 isExpanded
                   ? "border-value/80 bg-surface-alt/70 shadow-md shadow-black/20"
                   : "border-border-strong hover:border-border-strong hover:bg-surface-alt/40"
@@ -182,7 +182,7 @@ export function WorkshopToolsGrid() {
                   >
                     <FeatureIcon name={tool.icon} className="h-5 w-5" />
                   </span>
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-value-shade bg-value-soft border border-value/20 px-2 py-0.5">
+                  <span className="hidden font-mono text-[10px] font-bold uppercase tracking-wider text-value-shade bg-value-soft border border-value/20 px-2 py-0.5 sm:inline">
                     {tool.badge}
                   </span>
                 </div>
@@ -206,7 +206,7 @@ export function WorkshopToolsGrid() {
               </div>
 
               {/* Indicador sutil de interacción */}
-              <div className="mt-3 flex items-center justify-between border-t border-neutral-track/60 pt-2 font-mono text-[10px] uppercase text-ink-ghost group-hover:text-ink-muted">
+              <div className="mt-3 hidden items-center justify-between border-t border-neutral-track/60 pt-2 font-mono sm:flex text-[10px] uppercase text-ink-ghost group-hover:text-ink-muted">
                 <span>{isExpanded ? "Ocultar" : "Detalle"}</span>
                 <span className="text-xs">{isExpanded ? "▴" : "▾"}</span>
               </div>

@@ -1,4 +1,4 @@
-import { FAQS, PLANS } from "@/lib/site";
+import { FAQS, PLANS, precioFinal } from "@/lib/site";
 
 /**
  * JSON-LD para que Google entienda que esto es una app con planes de pago y
@@ -19,7 +19,7 @@ export function StructuredData() {
         offers: PLANS.map((plan) => ({
           "@type": "Offer",
           name: plan.name,
-          price: plan.price,
+          price: precioFinal(plan.price),
           priceCurrency: "CLP",
         })),
       },

@@ -1,4 +1,13 @@
-import { PLANS, TRIAL_DIAS, WA_MESSAGES, waLink } from "@/lib/site";
+import {
+  FUNDADOR,
+  PLANS,
+  TRIAL_DIAS,
+  WA_MESSAGES,
+  cuposFundador,
+  ofertaFundador,
+  precioFinal,
+  waLink,
+} from "@/lib/site";
 
 const currency = new Intl.NumberFormat("es-CL", {
   style: "currency",
@@ -7,6 +16,10 @@ const currency = new Intl.NumberFormat("es-CL", {
 });
 
 export function Pricing() {
+  const oferta = ofertaFundador();
+  const cupos = cuposFundador();
+  const pct = Math.round(FUNDADOR.descuento * 100);
+
   return (
     <section id="planes" className="px-5 py-20 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
@@ -21,14 +34,38 @@ export function Pricing() {
           </p>
         </div>
 
-        <div className="reveal mb-8 flex flex-wrap items-center gap-3 border border-border-strong bg-value-soft px-5 py-4">
-          <span className="rotulo bg-value px-2.5 py-1 text-[10px] text-splash-bg">
-            {TRIAL_DIAS} días gratis
-          </span>
-          <p className="text-sm font-medium text-ink">
-            Pruébalo con el trabajo real de tu taller antes de pagar nada.
-          </p>
-        </div>
+        {oferta ? (
+          <div className="reveal mb-8 flex flex-col gap-4 border-2 border-value bg-value-soft px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-1.5">
+              <span className="rotulo w-fit bg-value px-2.5 py-1 text-[10px] text-splash-bg">
+                Lanzamiento · {pct}% de por vida
+              </span>
+              <p className="text-base font-bold text-ink">
+                Los primeros {FUNDADOR.cupos} talleres pagan la mitad. Para siempre.
+              </p>
+              <p className="text-sm text-ink-muted">
+                Precio Fundador por tiempo limitado: se congela mientras
+                mantengas el plan. Cuando se llenen los cupos, vuelve el precio
+                normal. Igual partes con {TRIAL_DIAS} días gratis, sin tarjeta.
+              </p>
+            </div>
+            <div className="shrink-0 border border-border-strong bg-surface px-5 py-3 text-center">
+              <p className="cifra text-3xl text-value-shade">{cupos}</p>
+              <p className="rotulo text-[10px]">
+                de {FUNDADOR.cupos} cupos disponibles
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="reveal mb-8 flex flex-wrap items-center gap-3 border border-border-strong bg-value-soft px-5 py-4">
+            <span className="rotulo bg-value px-2.5 py-1 text-[10px] text-splash-bg">
+              {TRIAL_DIAS} días gratis
+            </span>
+            <p className="text-sm font-medium text-ink">
+              Pruébalo con el trabajo real de tu taller antes de pagar nada.
+            </p>
+          </div>
+        )}
 
         <div className="caja reveal grid grid-cols-1 md:grid-cols-3">
           {PLANS.map((plan, i) => (
@@ -49,14 +86,26 @@ export function Pricing() {
               </h3>
               <p className="mt-1 text-sm text-ink-muted">{plan.tagline}</p>
 
-              <p className="mt-6 flex items-baseline gap-1.5">
+              {oferta && (
+                <p className="mt-6 flex items-center gap-2">
+                  <span className="text-sm text-ink-faint line-through">
+                    {currency.format(plan.price)}
+                  </span>
+                  <span className="rotulo bg-value px-1.5 py-0.5 text-[10px] text-splash-bg">
+                    −{pct}% Fundador
+                  </span>
+                </p>
+              )}
+              <p
+                className={`${oferta ? "mt-1" : "mt-6"} flex items-baseline gap-1.5`}
+              >
                 {plan.priceDesde && (
                   <span className="text-sm font-medium text-ink-faint">
                     desde
                   </span>
                 )}
                 <span className="cifra text-4xl text-value-shade">
-                  {currency.format(plan.price)}
+                  {currency.format(precioFinal(plan.price))}
                 </span>
                 <span className="text-sm font-medium text-ink-faint">
                   / mes
@@ -64,7 +113,7 @@ export function Pricing() {
               </p>
               {plan.extraSeatPrice && (
                 <p className="rotulo mt-1 text-[10px]">
-                  + {currency.format(plan.extraSeatPrice)} por mecánico extra
+                  + {currency.format(precioFinal(plan.extraSeatPrice))} por mecánico extra
                 </p>
               )}
 
@@ -100,9 +149,10 @@ export function Pricing() {
                     : "border border-ink text-ink hover:bg-surface-alt"
                 }`}
               >
-                Empezar con {plan.name}
+                {oferta ? "Tomar mi cupo Fundador" : `Empezar con ${plan.name}`}
               </a>
               <p className="rotulo mt-2.5 text-center text-[10px]">
+                {oferta && "De por vida · "}
                 {TRIAL_DIAS} días gratis · Sin tarjeta
               </p>
             </div>

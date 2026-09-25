@@ -23,10 +23,35 @@ export function waLink(message: string) {
 /** Días de prueba gratis. Debe coincidir con el trial del PlanService de la app. */
 export const TRIAL_DIAS = 14;
 
+/**
+ * Oferta de lanzamiento: el Plan Fundador de docs/planes-y-precios.md (50% de
+ * por vida sobre cualquier plan de pago, cupo de 20 talleres). Los cupos
+ * tomados se actualizan a mano al activar cada taller: el contador tiene que
+ * ser verdad, si no la urgencia se vuelve un truco. Con `activa: false` la
+ * sección vuelve a los precios de lista.
+ */
+export const FUNDADOR = {
+  activa: true,
+  descuento: 0.5,
+  cupos: 20,
+  tomados: 0,
+} as const;
+
+export const cuposFundador = () => Math.max(FUNDADOR.cupos - FUNDADOR.tomados, 0);
+export const ofertaFundador = () => FUNDADOR.activa && cuposFundador() > 0;
+
+/** Precio con la oferta aplicada (o el de lista si no hay oferta). */
+export function precioFinal(precio: number) {
+  return ofertaFundador() ? Math.round(precio * (1 - FUNDADOR.descuento)) : precio;
+}
+
 export const WA_MESSAGES = {
   general: "Hola, quiero saber más sobre MAZA para mi taller.",
   trial: `Hola, quiero probar MAZA gratis por ${TRIAL_DIAS} días en mi taller.`,
-  plan: (plan: string) => `Hola, quiero contratar el plan ${plan} de MAZA.`,
+  plan: (plan: string) =>
+    ofertaFundador()
+      ? `Hola, quiero tomar uno de los cupos Fundador (50% de por vida) con el plan ${plan} de MAZA.`
+      : `Hola, quiero contratar el plan ${plan} de MAZA.`,
 } as const;
 
 export type IconName =

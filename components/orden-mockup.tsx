@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 import { AndroidFrame } from "./android-frame";
 
 interface BudgetItem {
@@ -66,6 +67,7 @@ export function OrdenMockup() {
   const handleAprobar = () => {
     if (countSeleccionados === 0) return;
     setEstado("aprobado");
+    track("demo", { accion: "aprobar" });
     if (typeof window !== "undefined" && window.innerWidth < 640) {
       setTimeout(() => setMobileTab("taller"), 550);
     }
@@ -73,6 +75,7 @@ export function OrdenMockup() {
 
   const handleRechazar = () => {
     setEstado("rechazado");
+    track("demo", { accion: "rechazar" });
     if (typeof window !== "undefined" && window.innerWidth < 640) {
       setTimeout(() => setMobileTab("taller"), 550);
     }

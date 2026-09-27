@@ -1,13 +1,6 @@
+import { HeroCta } from "./hero-cta";
 import { OrdenMockup } from "./orden-mockup";
-import { WhatsappIcon } from "./whatsapp-icon";
-import { TRIAL_DIAS, mensajeCtaPrincipal, textoCtaPrincipal, waLink } from "@/lib/site";
-
-/** Lo que trae la prueba: ayuda concreta, no precio. */
-const AYUDA = [
-  `${TRIAL_DIAS} días gratis con el trabajo real de tu taller`,
-  "Te ayudamos a cargar tus servicios y repuestos (mándanos una foto)",
-  "Una persona te acompaña por WhatsApp, no un formulario",
-];
+import { TRIAL_DIAS } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -20,47 +13,36 @@ export function Hero() {
             Tu cliente informado.
           </h1>
 
-          <p className="max-w-[46ch] text-lg leading-relaxed text-ink-muted sm:text-xl">
-            Menos llamadas preguntando “¿ya está listo?”, menos papeles
-            perdidos. Tu cliente sigue su vehículo y aprueba el presupuesto
-            desde WhatsApp; tú llevas la cola, el inventario y la caja desde el
-            celular.
+          <p className="max-w-[40ch] text-lg leading-relaxed text-ink-muted sm:text-xl">
+            Tu cliente aprueba el presupuesto desde WhatsApp. Tú dejas de
+            contestar “¿ya está listo?”.
           </p>
 
-          <ul className="flex flex-col gap-2 text-sm text-ink-muted sm:text-base">
-            {AYUDA.map((texto) => (
-              <li key={texto} className="flex items-start gap-2.5">
-                <span className="testigo mt-2 bg-value" />
-                {texto}
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
-            <a
-              href={waLink(mensajeCtaPrincipal())}
-              target="_blank"
-              rel="noreferrer"
-              data-cta="hero"
-              className="inline-flex items-center justify-center gap-2 bg-value px-7 py-3.5 text-base font-bold text-splash-bg transition-colors hover:bg-value-shade"
-            >
-              <WhatsappIcon />
-              {textoCtaPrincipal()}
-            </a>
-            <a
-              href="#funciones"
-              className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-ink underline underline-offset-4 hover:text-value-shade"
-            >
-              Ver cómo funciona ↓
-            </a>
-          </div>
+          <HeroCta />
 
           <p className="text-xs text-ink-faint">
-            Sin tarjeta · Sin permanencia · Para talleres multirubro
+            {TRIAL_DIAS} días gratis · Te ayudamos a cargarlo · Sin tarjeta
           </p>
+
+          {/* Cara humana: sin testimonios todavía, esto es lo verdadero. */}
+          <div className="flex items-center gap-3 border-t border-border-soft pt-4">
+            {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
+            <img
+              src="/fundador.jpg"
+              alt="Rafael, creador de MAZA"
+              width={48}
+              height={48}
+              className="h-12 w-12 shrink-0 rounded-full object-cover"
+            />
+            <p className="text-sm leading-snug text-ink-muted">
+              <span className="font-semibold text-ink">Te atiendo yo, Rafael.</span>
+              <br />
+              Creé MAZA y te acompaño por WhatsApp en la puesta en marcha.
+            </p>
+          </div>
         </div>
 
-        <div className="flex justify-center lg:col-span-7 lg:justify-end">
+        <div id="demo-cliente" className="flex scroll-mt-20 justify-center lg:col-span-7 lg:justify-end">
           <OrdenMockup />
         </div>
       </div>

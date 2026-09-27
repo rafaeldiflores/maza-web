@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Bebas_Neue } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { SITE_URL } from "@/lib/site";
+import { CF_ANALYTICS_TOKEN, SITE_URL } from "@/lib/site";
+
+// En Vercel mide @vercel/analytics; fuera de Vercel (Cloudflare), el beacon de
+// Cloudflare Web Analytics si hay token. Nunca los dos a la vez.
+const enVercel = !!process.env.VERCEL;
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -34,7 +38,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="es" className={`${bebasNeue.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         {children}
-        <Analytics />
+        {enVercel && <Analytics />}
+        {!enVercel && CF_ANALYTICS_TOKEN && (
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: CF_ANALYTICS_TOKEN })}
+          />
+        )}
       </body>
     </html>
   );

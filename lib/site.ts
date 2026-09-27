@@ -3,13 +3,22 @@
  * robots.txt — si no coincide con el dominio real, la previsualización al
  * compartir el link llega rota, que es justo lo que más importa acá.
  *
- * Vercel expone el dominio de producción en VERCEL_PROJECT_PRODUCTION_URL,
- * así que esto sigue solo al dominio actual y al conectar uno propio basta
- * con cambiar el fallback.
+ * Orden: SITE_URL explícita (el build de Cloudflare la pasa, ver `build:cf`
+ * en package.json), después el dominio de producción que expone Vercel, y al
+ * final el hostname de Vercel de siempre.
  */
-export const SITE_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "https://maza-web-rho.vercel.app";
+export const SITE_URL = process.env.SITE_URL
+  ? process.env.SITE_URL.replace(/\/$/, "")
+  : process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "https://maza-web-rho.vercel.app";
+
+/**
+ * Token de Cloudflare Web Analytics (panel de Cloudflare → Analytics & Logs →
+ * Web Analytics → agregar el sitio). Sin cookies ni banner. Vacío = no se
+ * carga nada. En Vercel sigue @vercel/analytics.
+ */
+export const CF_ANALYTICS_TOKEN = process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN || "";
 
 export const WHATSAPP_NUMBER = "56936410159";
 export const CONTACT_PHONE = "+56936410159";

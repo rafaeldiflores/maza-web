@@ -1,0 +1,18 @@
+// Landing de MAZA en Cloudflare (Workers con assets estáticos, sin código).
+// Se publica con `npm run deploy:cf`: exporta Next a `out/` y lo sube.
+// El dominio se conecta en `routes` una vez que la zona está en Cloudflare.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "maza-web",
+  "compatibility_date": "2026-09-01",
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+  // Al tener el dominio (reemplazar DOMINIO):
+  // "routes": [
+  //   { "pattern": "DOMINIO", "custom_domain": true },
+  //   { "pattern": "www.DOMINIO", "custom_domain": true }
+  // ]
+}

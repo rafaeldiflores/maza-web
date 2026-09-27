@@ -1,0 +1,7 @@
+# Reglas de cabeceras de Cloudflare (Workers static assets).
+# El export deja /icon y /opengraph-image sin extensión, y sin esto salen como
+# application/octet-stream: WhatsApp no muestra la previsualización del link.
+/icon
+  Content-Type: image/png
+/opengraph-image
+  Content-Type: image/png

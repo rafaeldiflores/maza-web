@@ -3,34 +3,7 @@
 import { useState } from "react";
 import { track } from "@vercel/analytics";
 import { AndroidFrame } from "./android-frame";
-
-interface BudgetItem {
-  id: string;
-  name: string;
-  category: "diagnostico" | "servicio" | "repuesto";
-  price: number;
-}
-
-const ITEMS: BudgetItem[] = [
-  {
-    id: "diag",
-    name: "Diagnóstico y escaneo general",
-    category: "diagnostico",
-    price: 8000,
-  },
-  {
-    id: "frenos",
-    name: "Cambio pastillas de freno (mano de obra)",
-    category: "servicio",
-    price: 22000,
-  },
-  {
-    id: "repuesto",
-    name: "Pastillas delanteras OEM (repuesto)",
-    category: "repuesto",
-    price: 15000,
-  },
-];
+import { RUBROS, useRubro, type DatosRubro } from "./rubro-contexto";
 
 const currency = new Intl.NumberFormat("es-CL", {
   style: "currency",
@@ -38,7 +11,14 @@ const currency = new Intl.NumberFormat("es-CL", {
   maximumFractionDigits: 0,
 });
 
+/** Demo del presupuesto; se reinicia al cambiar de rubro (key). */
 export function OrdenMockup() {
+  const { rubro } = useRubro();
+  return <OrdenDemo key={rubro ?? "moto"} datos={RUBROS[rubro ?? "moto"]} />;
+}
+
+function OrdenDemo({ datos }: { datos: DatosRubro }) {
+  const ITEMS = datos.items;
   const [selectedIds, setSelectedIds] = useState<string[]>([
     "diag",
     "frenos",
@@ -193,7 +173,7 @@ export function OrdenMockup() {
                   Link directo · Sin instalar nada
                 </span>
                 <h4 className="mt-0.5 text-sm font-bold text-ink">
-                  Honda CB 500 · 2021
+                  {datos.vehiculo}
                 </h4>
                 <p className="cifra mt-0.5 inline-block border border-border-soft px-2 py-0.5 text-[10px] text-ink-muted">
                   ORDEN #0142
@@ -426,7 +406,7 @@ export function OrdenMockup() {
                   ORDEN #0142 EN VIVO
                 </h4>
                 <p className="text-[10px] text-ink-muted">
-                  Honda CB 500 F · Diego Morales
+                  {datos.modelo} · {datos.cliente}
                 </p>
               </div>
 
@@ -472,7 +452,7 @@ export function OrdenMockup() {
 
                 <p className="mt-1 text-[10px] leading-tight text-ink-muted">
                   {estado === "aprobado"
-                    ? `Diego Morales aprobó ${countSeleccionados} servicio(s) por ${currency.format(
+                    ? `${datos.cliente} aprobó ${countSeleccionados} servicio(s) por ${currency.format(
                         totalSeleccionado
                       )}. Trabajo autorizado.`
                     : estado === "rechazado"
@@ -489,7 +469,7 @@ export function OrdenMockup() {
                   {/* Tarjeta de inventario del repuesto */}
                   <div className="rounded border border-border-soft bg-surface-alt p-2 text-[10.5px]">
                     <div className="flex justify-between items-center text-ink font-semibold">
-                      <span>Repuesto: Pastillas OEM</span>
+                      <span>Repuesto: {datos.repuesto}</span>
                       <span
                         className={`rotulo text-[9px] font-bold ${
                           estado === "aprobado" && hasRepuesto

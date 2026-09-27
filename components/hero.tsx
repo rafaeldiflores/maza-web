@@ -1,10 +1,12 @@
 import { HeroCta } from "./hero-cta";
+import { RubroProvider } from "./rubro-contexto";
 import { OrdenMockup } from "./orden-mockup";
 import { CREADOR, TRIAL_DIAS } from "@/lib/site";
 
 export function Hero() {
   return (
     <section id="inicio" className="px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-16">
+      <RubroProvider>
       <div className="mx-auto grid max-w-6xl xl:max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
         <div className="flex flex-col items-start gap-5 lg:col-span-5">
           <h1 className="font-display text-[clamp(2.75rem,8.5vw,5rem)] leading-[0.95] tracking-[0.01em] text-ink text-balance">
@@ -47,6 +49,7 @@ export function Hero() {
           <OrdenMockup />
         </div>
       </div>
+      </RubroProvider>
     </section>
   );
 }

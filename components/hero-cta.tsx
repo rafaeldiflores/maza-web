@@ -1,26 +1,21 @@
 "use client";
 
-import { useState } from "react";
 import { track } from "@vercel/analytics";
 import { WhatsappIcon } from "./whatsapp-icon";
+import { RubroIcono } from "./rubro-icono";
+import { RUBROS, useRubro, type Rubro } from "./rubro-contexto";
 import { TRIAL_DIAS, textoCtaPrincipal, waLink } from "@/lib/site";
 
-const RUBROS = [
-  { id: "bici", label: "Bici", emoji: "🚲", taller: "taller de bicicletas" },
-  { id: "moto", label: "Moto", emoji: "🏍️", taller: "taller de motos" },
-  { id: "auto", label: "Auto", emoji: "🚗", taller: "taller de autos" },
-] as const;
-
-type Rubro = (typeof RUBROS)[number]["id"];
+const ORDEN: Rubro[] = ["bici", "moto", "auto"];
 
 /**
  * Chips de rubro + botones del hero. El chip es el primer toque sin
- * compromiso y además segmenta el lead: el mensaje de WhatsApp ya dice qué
- * rubro es. Sin chip elegido, el mensaje es el genérico de la prueba.
+ * compromiso: cambia la demo de abajo (vehículo, trabajos y precios) y
+ * segmenta el lead, porque el mensaje de WhatsApp ya dice qué rubro es.
  */
 export function HeroCta() {
-  const [rubro, setRubro] = useState<Rubro | null>(null);
-  const elegido = RUBROS.find((r) => r.id === rubro);
+  const { rubro, setRubro } = useRubro();
+  const elegido = rubro ? RUBROS[rubro] : null;
   const mensaje = `Hola, quiero probar MAZA gratis por ${TRIAL_DIAS} días en mi ${
     elegido ? elegido.taller : "taller"
   }.`;
@@ -35,24 +30,37 @@ export function HeroCta() {
       <div className="flex flex-col gap-2">
         <p className="rotulo text-[10px]">¿Qué tipo de taller tienes?</p>
         <div className="flex gap-2" role="radiogroup" aria-label="Rubro del taller">
-          {RUBROS.map((r) => (
+          {ORDEN.map((id) => (
             <button
-              key={r.id}
+              key={id}
               type="button"
               role="radio"
-              aria-checked={rubro === r.id}
-              onClick={() => elegir(r.id)}
-              className={`flex flex-1 items-center justify-center gap-1.5 border px-3 py-2.5 text-sm font-semibold transition-colors sm:flex-none sm:px-5 ${
-                rubro === r.id
+              aria-checked={rubro === id}
+              onClick={() => elegir(id)}
+              className={`flex flex-1 items-center justify-center gap-2 border px-3 py-2.5 text-sm font-semibold transition-colors sm:flex-none sm:px-5 ${
+                rubro === id
                   ? "border-ink bg-ink text-app-bg"
                   : "border-border-strong bg-surface text-ink hover:bg-surface-alt"
               }`}
             >
-              <span aria-hidden="true">{r.emoji}</span>
-              {r.label}
+              <RubroIcono rubro={id} />
+              {RUBROS[id].label}
             </button>
           ))}
         </div>
+        <p className="min-h-5 text-xs text-ink-muted" aria-live="polite">
+          {elegido && (
+            <>
+              La demo de abajo ya es de un {elegido.taller}.{" "}
+              <a
+                href="#demo-cliente"
+                className="font-semibold text-ink underline underline-offset-2"
+              >
+                Verla ↓
+              </a>
+            </>
+          )}
+        </p>
       </div>
 
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
@@ -60,7 +68,7 @@ export function HeroCta() {
           href={waLink(mensaje)}
           target="_blank"
           rel="noreferrer"
-          data-cta={elegido ? `hero-${elegido.id}` : "hero"}
+          data-cta={rubro ? `hero-${rubro}` : "hero"}
           className="inline-flex items-center justify-center gap-2 bg-value px-7 py-3.5 text-base font-bold text-splash-bg transition-colors hover:bg-value-shade"
         >
           <WhatsappIcon />

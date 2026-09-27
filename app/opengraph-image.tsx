@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { MARCA, NARANJO, TINTA } from "@/lib/marca";
 
 // Se genera al compilar: el export estático de Cloudflare no tiene servidor.
 export const dynamic = "force-static";
@@ -36,22 +37,10 @@ export default function OpengraphImage() {
               justifyContent: "center",
             }}
           >
-            <svg width="54" height="54" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="45" fill="none" stroke="#0a0a0a" strokeWidth="7" />
-              <circle cx="50" cy="50" r="39" fill="none" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="50" y2="11" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="69.5" y2="16.73" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="83.77" y2="30.5" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="89" y2="50" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="83.77" y2="69.5" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="69.5" y2="83.27" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="50" y2="89" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="30.5" y2="83.27" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="16.23" y2="69.5" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="11" y2="50" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="16.23" y2="30.5" stroke="#0a0a0a" strokeWidth="2" />
-              <line x1="50" y1="50" x2="30.5" y2="16.73" stroke="#0a0a0a" strokeWidth="2" />
-              <circle cx="50" cy="50" r="7" fill="#ff9900" />
+            <svg width="56" height="56" viewBox="0 0 100 100">
+              <path d={MARCA.anillo} fill={TINTA} fillRule="evenodd" />
+              <path d={MARCA.rayos} fill={TINTA} />
+              <path d={MARCA.buje} fill={NARANJO} fillRule="evenodd" />
             </svg>
           </div>
           <span

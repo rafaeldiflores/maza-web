@@ -29,14 +29,24 @@ export function OrdenMockup() {
 function Demo({ r }: { r: Rubro }) {
   const [tab, setTab] = useState<"cliente" | "taller">("cliente");
   const [aprobado, setAprobado] = useState(false);
+  // Lo que el visitante escribió en "Tu nombre": la app muestra esa firma.
+  const firma = useRef("");
+  const [firmaMostrada, setFirmaMostrada] = useState(CLIENTE);
 
   // La demo real, al aprobar, se recarga con ?aprobado=1. Mismo origen en
   // producción (mazataller.com), así que se puede leer; en otro origen el
   // acceso tira y simplemente no se detecta.
   const alCargar = (e: React.SyntheticEvent<HTMLIFrameElement>) => {
     try {
-      const busca = e.currentTarget.contentWindow?.location.search ?? "";
+      const ventana = e.currentTarget.contentWindow;
+      const busca = ventana?.location.search ?? "";
+      ventana?.document
+        .getElementById("firma-nombre")
+        ?.addEventListener("input", (ev) => {
+          firma.current = (ev.target as HTMLInputElement).value.trim();
+        });
       if (busca.includes("aprobado=1") && !aprobado) {
+        if (firma.current) setFirmaMostrada(firma.current);
         setAprobado(true);
         track("demo", { accion: "aprobar", rubro: r });
         if (window.innerWidth < 640) setTimeout(() => setTab("taller"), 900);
@@ -90,7 +100,7 @@ function Demo({ r }: { r: Rubro }) {
         <div className={`flex-col items-center ${tab === "cliente" ? "hidden sm:flex" : "flex"}`}>
           <Rotulo paso="Tu taller" titulo="Te enteras al instante" />
           <AndroidFrame className="max-w-[280px] sm:max-w-[290px]" aspect="aspect-[9/18.8]">
-            <VistaTaller vehiculo={RUBROS[r].vehiculo} />
+            <VistaTaller vehiculo={RUBROS[r].vehiculo} firma={firmaMostrada} />
           </AndroidFrame>
         </div>
       </div>
@@ -155,7 +165,7 @@ function PaginaReal({
  * de respuesta de la orden (orden.page.html). Al aprobar NO se descuenta
  * stock: eso pasa en la reparación o la entrega.
  */
-function VistaTaller({ vehiculo }: { vehiculo: string }) {
+function VistaTaller({ vehiculo, firma }: { vehiculo: string; firma: string }) {
   return (
     <div className="flex h-full flex-col gap-3 bg-app-bg px-3 pb-6 pt-4 text-xs">
       {/* Notificación push */}
@@ -184,7 +194,7 @@ function VistaTaller({ vehiculo }: { vehiculo: string }) {
 
         <div className="rounded-lg border border-success/40 bg-success/10 p-2.5">
           <p className="font-semibold text-ink">✓ {CLIENTE} aprobó desde el link</p>
-          <p className="mt-0.5 text-ink-muted">Firmó como «{CLIENTE}»</p>
+          <p className="mt-0.5 text-ink-muted">Firmó como «{firma}»</p>
           <p className="text-ink-muted">Hace un momento · desde Android</p>
           <p className="mt-1.5 font-semibold text-ink underline underline-offset-2">Ver constancia</p>
         </div>

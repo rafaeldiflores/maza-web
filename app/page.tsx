@@ -7,6 +7,7 @@ import { Assistant } from "@/components/assistant";
 import { HybridPlatform } from "@/components/hybrid-platform";
 import { Demo } from "@/components/demo";
 import { SocialProof } from "@/components/social-proof";
+import { QuienEstaDetras } from "@/components/quien-esta-detras";
 import { Pricing } from "@/components/pricing";
 import { Faq } from "@/components/faq";
 import { FinalCta } from "@/components/final-cta";
@@ -36,6 +37,7 @@ export default function Home() {
         <Assistant />
         <HybridPlatform />
         <SocialProof />
+        <QuienEstaDetras />
         <Pricing />
         <Faq />
         <FinalCta />

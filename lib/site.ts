@@ -25,6 +25,20 @@ export const CONTACT_PHONE = "+56936410159";
 export const CONTACT_PHONE_DISPLAY = "+56 9 3641 0159";
 export const CONTACT_EMAIL = "contacto.mazapp@gmail.com";
 
+/**
+ * Quién está detrás (datos del portafolio, rafaelitoraldev.vercel.app). Sin
+ * testimonios todavía, la historia real del creador es la prueba social:
+ * nada de acá se adorna.
+ */
+export const CREADOR = {
+  nombre: "Rafael Díaz Flores",
+  corto: "Rafael",
+  titulo: "Ingeniero informático (Duoc UC)",
+  ciudad: "Santiago, Chile",
+  linkedin: "https://www.linkedin.com/in/rafaeldiaz-it",
+  foto: "/fundador.jpg",
+} as const;
+
 export function waLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }

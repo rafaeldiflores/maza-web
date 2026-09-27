@@ -1,6 +1,6 @@
 import { HeroCta } from "./hero-cta";
 import { OrdenMockup } from "./orden-mockup";
-import { TRIAL_DIAS } from "@/lib/site";
+import { CREADOR, TRIAL_DIAS } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -25,21 +25,22 @@ export function Hero() {
           </p>
 
           {/* Cara humana: sin testimonios todavía, esto es lo verdadero. */}
-          <div className="flex items-center gap-3 border-t border-border-soft pt-4">
+          <a href="#quien" className="flex items-center gap-3 border-t border-border-soft pt-4">
             {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
             <img
-              src="/fundador.jpg"
-              alt="Rafael, creador de MAZA"
+              src={CREADOR.foto}
+              alt={`${CREADOR.nombre}, creador de MAZA`}
               width={48}
               height={48}
               className="h-12 w-12 shrink-0 rounded-full object-cover"
             />
             <p className="text-sm leading-snug text-ink-muted">
-              <span className="font-semibold text-ink">Te atiendo yo, Rafael.</span>
+              <span className="font-semibold text-ink">Te atiendo yo, {CREADOR.corto}.</span>
               <br />
-              Creé MAZA y te acompaño por WhatsApp en la puesta en marcha.
+              Tuve taller de bicicletas y creé MAZA.{" "}
+              <span className="underline underline-offset-2">Mi historia ↓</span>
             </p>
-          </div>
+          </a>
         </div>
 
         <div id="demo-cliente" className="flex scroll-mt-20 justify-center lg:col-span-7 lg:justify-end">

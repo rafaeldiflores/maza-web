@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
+    { "source": "/", "destination": "https://mazataller.com/", "permanent": true },
     { "source": "/:path*", "destination": "https://mazataller.com/:path*", "permanent": true }
   ]
 }

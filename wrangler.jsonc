@@ -1,6 +1,10 @@
 // Landing de MAZA en Cloudflare (Workers con assets estáticos, sin código).
 // Se publica con `npm run deploy:cf`: exporta Next a `out/` y lo sube.
-// El dominio se conecta en `routes` una vez que la zona está en Cloudflare.
+//
+// Custom Domains en el dominio y en www (un Custom Domain no cubre el otro).
+// El Worker de la app (maza-app) atiende /o/*, /api/aprobar y /mercadopago/*
+// en este mismo dominio con rutas: las rutas se ejecutan antes que el Custom
+// Domain, así que esos caminos nunca llegan acá.
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "maza-web",
@@ -9,10 +13,9 @@
     "directory": "./out",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
-  }
-  // Al tener el dominio (reemplazar DOMINIO):
-  // "routes": [
-  //   { "pattern": "DOMINIO", "custom_domain": true },
-  //   { "pattern": "www.DOMINIO", "custom_domain": true }
-  // ]
+  },
+  "routes": [
+    { "pattern": "mazataller.com", "custom_domain": true },
+    { "pattern": "www.mazataller.com", "custom_domain": true }
+  ]
 }

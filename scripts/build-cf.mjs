@@ -8,8 +8,7 @@
 // compartir el link llega rota.
 import { execSync } from "node:child_process";
 
-// Mientras no haya dominio propio, el hostname que da Cloudflare al Worker.
-const POR_DEFECTO = "https://maza-web.bike-app.workers.dev";
+const POR_DEFECTO = "https://mazataller.com";
 
 execSync("npx next build", {
   stdio: "inherit",

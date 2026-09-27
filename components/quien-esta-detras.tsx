@@ -27,14 +27,15 @@ export function QuienEstaDetras() {
           </h2>
           <div className="flex flex-col gap-3 text-base leading-relaxed text-ink-muted">
             <p>
-              Soy {CREADOR.nombre}, ingeniero informático,
+              Soy {CREADOR.nombre}, ingeniero informático, oriundo
               de {CREADOR.ciudad}. Desde chico quise entender cómo funcionan las
               cosas por dentro, y la mecánica siempre fue una pasión aparte de
               la informática.
             </p>
             <p>
-              En pandemia, cuando las bicis se llenaron de trabajo, abrí un
-              taller para pagarme la carrera. Lo atendí cinco años mientras
+              En pandemia, cuando las bicis se llenaron de trabajo, abrí{" "}
+              <strong className="text-ink">{CREADOR.taller}</strong>, mi taller
+              de bicicletas, para pagarme la carrera. Lo atendí cinco años mientras
               estudiaba, y ahí conocí los problemas de verdad: el cuaderno, las
               llamadas preguntando si la bici estaba lista, los presupuestos que
               nadie contestaba.

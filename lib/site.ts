@@ -34,7 +34,8 @@ export const CREADOR = {
   nombre: "Rafael Díaz Flores",
   corto: "Rafael",
   titulo: "Ingeniero informático (Duoc UC)",
-  ciudad: "Santiago, Chile",
+  ciudad: "El Quisco, Chile",
+  taller: "Litoral Bikes",
   linkedin: "https://www.linkedin.com/in/rafaeldiaz-it",
   foto: "/fundador.jpg",
 } as const;

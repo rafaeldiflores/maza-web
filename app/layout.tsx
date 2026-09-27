@@ -18,7 +18,7 @@ const bebasNeue = Bebas_Neue({
 export const metadata: Metadata = {
   title: "MAZA — Tu taller ordenado, tu cliente informado",
   description:
-    "App de gestión para talleres de autos, motos y bicicletas: cola de trabajo, inventario y caja, con un asistente IA que conoce tus datos y presupuestos que el cliente aprueba desde el celular. 14 días gratis.",
+    "App de gestión para talleres multirubro: cola de trabajo, inventario y caja, con un asistente IA que conoce tus datos y presupuestos que el cliente aprueba desde el celular. 14 días gratis.",
   metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "MAZA — Tu taller ordenado, tu cliente informado",

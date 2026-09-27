@@ -7,7 +7,7 @@ import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, waLink } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Política de privacidad — MAZA",
   description:
-    "Cómo MAZA recopila, usa y protege los datos de talleres de autos, motos y bicicletas.",
+    "Cómo MAZA recopila, usa y protege los datos de talleres multirubro.",
 };
 
 function Section({
@@ -47,8 +47,8 @@ export default function PrivacidadPage() {
           <div className="mt-10 flex flex-col gap-10">
             <Section n={1} title="Quiénes somos">
               <p>
-                MAZA es una aplicación de gestión para talleres de autos,
-                motos y bicicletas, desarrollada por{" "}
+                MAZA es una aplicación de gestión para talleres
+                multirubro, desarrollada por{" "}
                 <strong className="text-ink">Rafael Di Fiore</strong>. Para
                 consultas sobre privacidad, escríbenos a{" "}
                 <a

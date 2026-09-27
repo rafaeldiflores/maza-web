@@ -157,7 +157,7 @@ export const FEATURES: Feature[] = [
   {
     title: "Un taller, tu rubro",
     description:
-      "Autos, motos o bicicletas: eliges el rubro y la app habla tu idioma, con los campos y recordatorios que corresponden.",
+      "Multirubro: eliges el rubro del taller (auto, moto o bicicleta) y la app habla tu idioma, con los campos y recordatorios que corresponden.",
     icon: "rubro",
     shotAlt: "Selector de rubro del taller: autos, motos o bicicletas",
   },
@@ -311,7 +311,7 @@ export const FAQS = [
   },
   {
     q: "¿Sirve para mi rubro?",
-    a: "Sí. Al crear tu cuenta eliges si trabajas con autos, motos o bicicletas, y la app cambia los campos y los términos: el auto se controla por kilometraje, la bicicleta por calendario. No es una app de autos adaptada a la fuerza.",
+    a: "Sí. MAZA es multirubro: al crear tu cuenta eliges si trabajas con autos, motos o bicicletas, y la app cambia los campos y los términos: el auto se controla por kilometraje, la bicicleta por calendario. No es una app de autos adaptada a la fuerza.",
   },
   {
     q: "No hago mecánica, hago detailing / lavado. ¿Me sirve igual?",

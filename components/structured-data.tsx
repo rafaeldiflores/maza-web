@@ -14,7 +14,7 @@ export function StructuredData() {
         applicationCategory: "BusinessApplication",
         operatingSystem: "Android",
         description:
-          "App de gestión para talleres de autos, motos y bicicletas: cola de trabajo, inventario, presupuestos con aprobación online y seguimiento en vivo para los clientes.",
+          "App de gestión para talleres multirubro: cola de trabajo, inventario, presupuestos con aprobación online y seguimiento en vivo para los clientes.",
         inLanguage: "es-CL",
         offers: PLANS.map((plan) => ({
           "@type": "Offer",

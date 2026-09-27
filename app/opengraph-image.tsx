@@ -99,7 +99,7 @@ export default function OpengraphImage() {
               color: "#9497a1",
             }}
           >
-            Autos · Motos · Bicicletas
+            Taller multirubro
           </div>
         </div>
       </div>

@@ -70,8 +70,8 @@ export function Hero() {
           </div>
 
           <p className="text-xs text-ink-faint">
-            {TRIAL_DIAS} días gratis · Sin tarjeta · Autos, motos, bicis,
-            detailing y lavado
+            {TRIAL_DIAS} días gratis · Sin tarjeta · Para talleres
+            multirubro
           </p>
         </div>
 

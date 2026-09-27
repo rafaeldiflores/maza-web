@@ -62,7 +62,7 @@ const TOOLS: WorkshopTool[] = [
   {
     id: "rubro",
     icon: "rubro",
-    title: "Autos, motos o bicis",
+    title: "Taller multirubro",
     badge: "TU RUBRO",
     microCopy: "La app habla tu idioma según la especialidad de tu taller.",
     detail:

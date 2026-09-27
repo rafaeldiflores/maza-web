@@ -8,7 +8,7 @@ import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, waLink } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Términos y condiciones — MAZA",
   description:
-    "Condiciones de uso de MAZA para talleres de autos, motos y bicicletas: planes, pagos, datos de clientes e IA.",
+    "Condiciones de uso de MAZA para talleres multirubro: planes, pagos, datos de clientes e IA.",
 };
 
 function Section({
@@ -50,7 +50,7 @@ export default function TerminosPage() {
               <p>
                 Estos términos regulan el uso de{" "}
                 <strong className="text-ink">MAZA</strong>, una aplicación de
-                gestión para talleres de autos, motos y bicicletas,
+                gestión para talleres multirubro,
                 desarrollada por{" "}
                 <strong className="text-ink">Rafael Di Fiore</strong>. Al
                 crear una cuenta o usar la aplicación, aceptas estos términos.

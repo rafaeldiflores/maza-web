@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col gap-3">
           <Logo />
           <p className="max-w-[38ch] text-sm leading-relaxed text-ink-faint">
-            Gestión inteligente para talleres de autos, motos y bicicletas.
+            Gestión inteligente para talleres multirubro.
           </p>
         </div>
 

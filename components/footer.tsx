@@ -41,7 +41,7 @@ export function Footer() {
             Términos y condiciones
           </Link>
           <a
-            href="https://acceso-maza.web.app/eliminar-cuenta"
+            href="https://app.mazataller.com/eliminar-cuenta"
             target="_blank"
             rel="noreferrer"
             className="font-semibold text-ink-muted hover:text-ink"

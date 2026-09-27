@@ -189,12 +189,12 @@ export default function TerminosPage() {
                 Puedes eliminar tu cuenta y los datos asociados en cualquier
                 momento desde{" "}
                 <a
-                  href="https://acceso-maza.web.app/eliminar-cuenta"
+                  href="https://app.mazataller.com/eliminar-cuenta"
                   target="_blank"
                   rel="noreferrer"
                   className="text-value-shade hover:underline"
                 >
-                  acceso-maza.web.app/eliminar-cuenta
+                  app.mazataller.com/eliminar-cuenta
                 </a>
                 . Al eliminar la cuenta se borran tu perfil, los datos de tus
                 clientes y vehículos, el inventario y el historial operativo

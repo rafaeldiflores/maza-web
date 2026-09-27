@@ -54,7 +54,7 @@ export function HybridPlatform() {
                     <div>
                       <span className="rotulo text-[9px]">Mecánico asignado</span>
                       <p className="text-xs font-bold text-ink">
-                        Carlos M. (Cupo 1)
+                        Carlos M.
                       </p>
                     </div>
                     <span className="testigo bg-value" />

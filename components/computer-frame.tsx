@@ -60,7 +60,7 @@ export function ComputerFrame({
 
             <span className="rotulo flex shrink-0 items-center gap-1.5 text-[9px] text-value-shade">
               <span className="h-2 w-2 animate-pulse rounded-full bg-value" />
-              ● En vivo (0.3s)
+              ● En vivo
             </span>
           </div>
         </div>

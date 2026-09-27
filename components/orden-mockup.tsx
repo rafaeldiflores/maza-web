@@ -1,609 +1,202 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { track } from "@vercel/analytics";
 import { AndroidFrame } from "./android-frame";
-import { RUBROS, useRubro, type DatosRubro } from "./rubro-contexto";
+import { RUBROS, useRubro, type Rubro } from "./rubro-contexto";
 
-const currency = new Intl.NumberFormat("es-CL", {
-  style: "currency",
-  currency: "CLP",
-  maximumFractionDigits: 0,
-});
+/**
+ * Página real del cliente con una orden de ejemplo (GET /o/demo en el Worker
+ * de Maza-app). Es la misma que usa la app para "Mira lo que ve tu cliente":
+ * nunca puede diferir de lo que recibe un cliente de verdad.
+ */
+const DEMO_URL = "https://mazataller.com/o/demo";
+/** Ancho al que se dibuja la página real; después se escala al marco. */
+const ANCHO_PAGINA = 375;
 
-/** Demo del presupuesto; se reinicia al cambiar de rubro (key). */
+const CLIENTE = "Diego Morales";
+
+/** Qué hacer en la demo, en tres pasos cortos. */
+const PASOS = ["Quita lo que no quieras", "Escribe tu nombre", "Aprueba"];
+
+/** Se reinicia al cambiar de rubro (key): la página del cliente parte de cero. */
 export function OrdenMockup() {
   const { rubro } = useRubro();
-  return <OrdenDemo key={rubro ?? "moto"} datos={RUBROS[rubro ?? "moto"]} />;
+  const r: Rubro = rubro ?? "moto";
+  return <Demo key={r} r={r} />;
 }
 
-function OrdenDemo({ datos }: { datos: DatosRubro }) {
-  const ITEMS = datos.items;
-  const [selectedIds, setSelectedIds] = useState<string[]>([
-    "diag",
-    "frenos",
-    "repuesto",
-  ]);
-  const [estado, setEstado] = useState<"pendiente" | "aprobado" | "rechazado">(
-    "pendiente"
-  );
-  const [mobileTab, setMobileTab] = useState<"cliente" | "taller">("cliente");
+function Demo({ r }: { r: Rubro }) {
+  const [tab, setTab] = useState<"cliente" | "taller">("cliente");
+  const [aprobado, setAprobado] = useState(false);
 
-  // Cálculo en tiempo real según los ítems seleccionados
-  const totalSeleccionado = ITEMS.filter((item) =>
-    selectedIds.includes(item.id)
-  ).reduce((sum, item) => sum + item.price, 0);
-
-  const hasRepuesto = selectedIds.includes("repuesto");
-  const countSeleccionados = selectedIds.length;
-
-  const toggleItem = (id: string) => {
-    if (estado !== "pendiente") return;
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
-  };
-
-  const handleAprobar = () => {
-    if (countSeleccionados === 0) return;
-    setEstado("aprobado");
-    track("demo", { accion: "aprobar" });
-    if (typeof window !== "undefined" && window.innerWidth < 640) {
-      setTimeout(() => setMobileTab("taller"), 550);
+  // La demo real, al aprobar, se recarga con ?aprobado=1. Mismo origen en
+  // producción (mazataller.com), así que se puede leer; en otro origen el
+  // acceso tira y simplemente no se detecta.
+  const alCargar = (e: React.SyntheticEvent<HTMLIFrameElement>) => {
+    try {
+      const busca = e.currentTarget.contentWindow?.location.search ?? "";
+      if (busca.includes("aprobado=1") && !aprobado) {
+        setAprobado(true);
+        track("demo", { accion: "aprobar", rubro: r });
+        if (window.innerWidth < 640) setTimeout(() => setTab("taller"), 900);
+      }
+    } catch {
+      /* origen distinto: sin detección */
     }
-  };
-
-  const handleRechazar = () => {
-    setEstado("rechazado");
-    track("demo", { accion: "rechazar" });
-    if (typeof window !== "undefined" && window.innerWidth < 640) {
-      setTimeout(() => setMobileTab("taller"), 550);
-    }
-  };
-
-  const handleReiniciar = () => {
-    setEstado("pendiente");
-    setSelectedIds(["diag", "frenos", "repuesto"]);
-    setMobileTab("cliente");
   };
 
   return (
     <div className="flex w-full flex-col items-center">
-      {/* ─── Píldora de estado de sincronización entre ambos dispositivos ─── */}
-      <div className="mb-4 flex flex-wrap items-center justify-center gap-2 text-center">
-        <span
-          className={`rotulo inline-flex items-center gap-1.5 border px-3 py-1 text-[10px] ${
-            estado === "aprobado"
-              ? "border-success bg-success/15 text-success font-bold"
-              : estado === "rechazado"
-              ? "border-danger bg-danger/15 text-danger font-bold"
-              : "border-border-strong bg-surface text-ink"
-          }`}
-        >
-          <span
-            className={`h-2 w-2 rounded-full ${
-              estado === "aprobado"
-                ? "bg-success animate-pulse"
-                : estado === "rechazado"
-                ? "bg-danger"
-                : "bg-value"
+      <p className="rotulo mb-2 flex items-center gap-2 border border-border-strong bg-surface px-3 py-1.5 text-[11px] text-ink">
+        <span className={`h-2 w-2 rounded-full ${aprobado ? "bg-success" : "bg-value"}`} />
+        {aprobado ? "Aprobado: mira lo que te llega" : "Pruébalo: tú eres el cliente"}
+      </p>
+      <ol className="mb-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-ink-muted">
+        {PASOS.map((p, i) => (
+          <li key={p}>
+            <span className="font-bold text-ink">{i + 1}.</span> {p}
+          </li>
+        ))}
+      </ol>
+
+      {/* Pestañas solo en el celular; en pantallas grandes van lado a lado. */}
+      <div className="mb-4 flex w-full max-w-[320px] border border-border-strong bg-surface p-1 sm:hidden">
+        {(["cliente", "taller"] as const).map((t, i) => (
+          <button
+            key={t}
+            type="button"
+            onClick={() => setTab(t)}
+            className={`relative flex-1 py-1.5 text-center text-xs font-bold ${
+              tab === t ? "bg-ink text-app-bg" : "text-ink-muted"
             }`}
-          />
-          {estado === "aprobado"
-            ? "Sincronizado (0.3s) · Presupuesto Aprobado"
-            : estado === "rechazado"
-            ? "Sincronizado (0.3s) · Presupuesto Rechazado"
-            : "Pruébalo: tú eres el cliente"}
-        </span>
-
-        <span className="hidden text-xs text-ink-muted sm:inline">
-          {estado === "aprobado"
-            ? "¡Tu taller recibió la orden aprobada y descontó el stock!"
-            : estado === "rechazado"
-            ? "¡El taller liberó el cupo de inmediato sin llamadas!"
-            : "Marca o desmarca ítems, luego aprueba o rechaza:"}
-        </span>
-      </div>
-
-      {/* ─── Pestañas exclusivas para pantallas pequeñas (móviles) ─── */}
-      <div className="mb-4 flex w-full max-w-[320px] rounded border border-border-strong bg-surface p-1 sm:hidden">
-        <button
-          type="button"
-          onClick={() => setMobileTab("cliente")}
-          className={`flex-1 py-1.5 text-center text-xs font-bold transition-all ${
-            mobileTab === "cliente"
-              ? "bg-ink text-app-bg shadow-sm"
-              : "text-ink-muted"
-          }`}
-        >
-          1. Tu cliente
-        </button>
-        <button
-          type="button"
-          onClick={() => setMobileTab("taller")}
-          className={`relative flex-1 py-1.5 text-center text-xs font-bold transition-all ${
-            mobileTab === "taller"
-              ? "bg-ink text-app-bg shadow-sm"
-              : "text-ink-muted"
-          }`}
-        >
-          2. Tu taller
-          {estado !== "pendiente" && (
-            <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-              <span
-                className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                  estado === "aprobado" ? "bg-success" : "bg-danger"
-                }`}
-              />
-              <span
-                className={`relative inline-flex rounded-full h-2.5 w-2.5 ${
-                  estado === "aprobado" ? "bg-success" : "bg-danger"
-                }`}
-              />
-            </span>
-          )}
-        </button>
-      </div>
-
-      {/* ─── Contenedor dual de los 2 dispositivos ─── */}
-      <div className="grid w-full grid-cols-1 items-start justify-center gap-6 sm:grid-cols-2 lg:gap-5 xl:gap-8">
-        {/* ══════════════════════════════════════════════════════════════
-            PANTALLA 1: CELULAR DEL CLIENTE (Selección y aprobación/rechazo)
-            ══════════════════════════════════════════════════════════════ */}
-        <div
-          className={`flex flex-col items-center ${
-            mobileTab === "taller" ? "hidden sm:flex" : "flex"
-          }`}
-        >
-          <div className="mb-2 text-center">
-            <span className="rotulo text-[9px] text-ink-faint">
-              Paso 1 · Vista del Cliente
-            </span>
-            <p className="text-xs font-bold text-ink">Link enviado por WhatsApp</p>
-          </div>
-
-          <AndroidFrame
-            className="max-w-[280px] sm:max-w-[290px]"
-            aspect="aspect-[9/18.8]"
           >
-            <div className="flex h-full flex-col bg-surface pb-3 pt-3.5 text-xs select-none">
-              {/* Encabezado del link del cliente */}
-              <div className="border-b border-border-strong px-4 pb-2 text-center">
-                <span className="rotulo text-[9px] text-value-shade">
-                  Link directo · Sin instalar nada
-                </span>
-                <h4 className="mt-0.5 text-sm font-bold text-ink">
-                  {datos.vehiculo}
-                </h4>
-                <p className="cifra mt-0.5 inline-block border border-border-soft px-2 py-0.5 text-[10px] text-ink-muted">
-                  ORDEN #0142
-                </p>
-              </div>
+            {i + 1}. {t === "cliente" ? "Tu cliente" : "Tu taller"}
+            {t === "taller" && aprobado && (
+              <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-success" />
+            )}
+          </button>
+        ))}
+      </div>
 
-              {/* Estado del presupuesto */}
-              <div
-                className={`flex items-center justify-between border-b border-border-strong px-4 py-2 transition-colors ${
-                  estado === "aprobado"
-                    ? "bg-success/15"
-                    : estado === "rechazado"
-                    ? "bg-danger/15"
-                    : "bg-value-soft"
-                }`}
-              >
-                <div className="flex items-center gap-2">
-                  <span
-                    className={`testigo ${
-                      estado === "aprobado"
-                        ? "bg-success animate-pulse"
-                        : estado === "rechazado"
-                        ? "bg-danger"
-                        : "bg-value"
-                    }`}
-                  />
-                  <span
-                    className={`rotulo text-[10.5px] ${
-                      estado === "aprobado"
-                        ? "text-success font-bold"
-                        : estado === "rechazado"
-                        ? "text-danger font-bold"
-                        : "text-ink"
-                    }`}
-                  >
-                    {estado === "aprobado"
-                      ? "Presupuesto aprobado"
-                      : estado === "rechazado"
-                      ? "Presupuesto rechazado"
-                      : "Esperando tu visto bueno"}
-                  </span>
-                </div>
-                {estado !== "pendiente" && (
-                  <span
-                    className={`rotulo text-[9px] font-bold ${
-                      estado === "aprobado" ? "text-success" : "text-danger"
-                    }`}
-                  >
-                    ✓ EN VIVO
-                  </span>
-                )}
-              </div>
-
-              {/* Detalle del presupuesto con checkboxes interactivos */}
-              <div className="flex flex-1 flex-col justify-between px-4 py-2.5">
-                <div>
-                  <div className="flex items-center justify-between">
-                    <p className="titulo-seccion text-[9.5px]">
-                      Servicios a realizar
-                    </p>
-                    {estado === "pendiente" && (
-                      <span className="text-[9px] text-value-shade font-semibold">
-                        Seleccionable
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Lista de ítems interactivos */}
-                  <div className="mt-2 flex flex-col gap-1.5 text-[11px]">
-                    {ITEMS.map((item) => {
-                      const isChecked = selectedIds.includes(item.id);
-                      return (
-                        <button
-                          key={item.id}
-                          type="button"
-                          disabled={estado !== "pendiente"}
-                          onClick={() => toggleItem(item.id)}
-                          className={`flex w-full items-center justify-between gap-2 rounded border p-1.5 text-left transition-all ${
-                            estado === "pendiente"
-                              ? "cursor-pointer hover:border-neutral-400 active:scale-[0.99]"
-                              : "cursor-default"
-                          } ${
-                            isChecked
-                              ? "border-border-strong bg-surface shadow-xs"
-                              : "border-dashed border-neutral-track bg-neutral-track/20 opacity-55"
-                          }`}
-                        >
-                          <div className="flex items-center gap-2 min-w-0">
-                            <span
-                              className={`grid h-3.5 w-3.5 shrink-0 place-items-center rounded-xs border text-[9px] font-bold ${
-                                isChecked
-                                  ? "border-value bg-value text-splash-bg"
-                                  : "border-border-strong bg-surface text-transparent"
-                              }`}
-                            >
-                              ✓
-                            </span>
-                            <span
-                              className={`text-[10px] leading-tight truncate ${
-                                isChecked
-                                  ? "text-ink font-medium"
-                                  : "text-ink-ghost line-through"
-                              }`}
-                            >
-                              {item.name}
-                            </span>
-                          </div>
-                          <span
-                            className={`cifra text-[10.5px] font-medium shrink-0 ${
-                              isChecked ? "text-ink" : "text-ink-ghost"
-                            }`}
-                          >
-                            {currency.format(item.price)}
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {/* Total recalculado en tiempo real */}
-                  <div className="mt-2.5 flex items-baseline justify-between border-t border-border-strong pt-2">
-                    <div className="flex flex-col">
-                      <span className="rotulo text-[10px]">Total a pagar</span>
-                      <span className="text-[9px] text-ink-faint">
-                        {countSeleccionados} de {ITEMS.length} ítems
-                      </span>
-                    </div>
-                    <span className="cifra text-lg font-bold text-value-shade">
-                      {currency.format(totalSeleccionado)}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Botones de acción: Aprobar y Rechazar */}
-                <div className="mt-3">
-                  {estado === "pendiente" ? (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex gap-2">
-                        <button
-                          type="button"
-                          disabled={countSeleccionados === 0}
-                          onClick={handleAprobar}
-                          className={`flex-1 py-2.5 text-center text-xs font-bold text-splash-bg transition-transform shadow-sm ${
-                            countSeleccionados > 0
-                              ? "cursor-pointer bg-value hover:bg-value-shade active:scale-[0.98]"
-                              : "cursor-not-allowed bg-neutral-track text-ink-ghost"
-                          }`}
-                        >
-                          Aprobar ({currency.format(totalSeleccionado)})
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={handleRechazar}
-                          className="cursor-pointer border border-danger/40 bg-danger/5 px-3 py-2.5 text-center text-xs font-bold text-danger transition-colors hover:bg-danger/15 active:scale-[0.98]"
-                          title="Rechazar presupuesto"
-                        >
-                          ✕ Rechazar
-                        </button>
-                      </div>
-
-                      <p className="text-center text-[9px] text-ink-ghost">
-                        Toca los ítems para modificar o elige aprobar/rechazar
-                      </p>
-                    </div>
-                  ) : estado === "aprobado" ? (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex items-center justify-center gap-1.5 border border-success bg-success/15 py-2 text-center text-[11px] font-bold text-success">
-                        <span>
-                          ✓ Presupuesto aprobado ({currency.format(totalSeleccionado)})
-                        </span>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={handleReiniciar}
-                        className="cursor-pointer text-center text-[10px] text-ink-faint hover:underline"
-                      >
-                        ↺ Reiniciar simulación
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="flex items-center justify-center gap-1.5 border border-danger bg-danger/15 py-2 text-center text-[11px] font-bold text-danger">
-                        <span>✕ Presupuesto rechazado por el cliente</span>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={handleReiniciar}
-                        className="cursor-pointer text-center text-[10px] text-ink-faint hover:underline"
-                      >
-                        ↺ Reiniciar simulación
-                      </button>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+      <div className="grid w-full grid-cols-1 items-start gap-6 sm:grid-cols-2 lg:gap-5 xl:gap-8">
+        <div className={`flex-col items-center ${tab === "taller" ? "hidden sm:flex" : "flex"}`}>
+          <Rotulo paso="Tu cliente" titulo="Le llega un link por WhatsApp" />
+          <AndroidFrame className="max-w-[280px] sm:max-w-[290px]" aspect="aspect-[9/18.8]">
+            <PaginaReal rubro={r} onLoad={alCargar} />
           </AndroidFrame>
         </div>
 
-        {/* ══════════════════════════════════════════════════════════════
-            PANTALLA 2: CELULAR DEL TALLER / MECÁNICO (App en taller)
-            ══════════════════════════════════════════════════════════════ */}
-        <div
-          className={`flex flex-col items-center ${
-            mobileTab === "cliente" ? "hidden sm:flex" : "flex"
-          }`}
-        >
-          <div className="mb-2 text-center">
-            <span className="rotulo text-[9px] text-value-shade">
-              Paso 2 · Vista del Mecánico
-            </span>
-            <p className="text-xs font-bold text-ink">
-              App MAZA en taller o recepción
-            </p>
-          </div>
-
-          <AndroidFrame
-            className="max-w-[280px] sm:max-w-[290px]"
-            aspect="aspect-[9/18.8]"
-          >
-            <div className="flex h-full flex-col bg-surface pb-3 pt-3.5 text-xs select-none">
-              {/* Encabezado del taller */}
-              <div className="border-b border-border-strong bg-surface-alt px-4 pb-2 text-center">
-                <div className="flex items-center justify-between text-[9px]">
-                  <span className="rotulo text-ink">Taller Central</span>
-                  <span className="rotulo text-value-shade">Cupo 1 · Carlos M.</span>
-                </div>
-                <h4 className="mt-0.5 text-sm font-bold text-ink">
-                  ORDEN #0142 EN VIVO
-                </h4>
-                <p className="text-[10px] text-ink-muted">
-                  {datos.modelo} · {datos.cliente}
-                </p>
-              </div>
-
-              {/* ─── Estado dinámico en el taller (Pendiente / Aprobado / Rechazado) ─── */}
-              <div
-                className={`border-b px-4 py-2.5 transition-all duration-300 ${
-                  estado === "aprobado"
-                    ? "border-success bg-success/20 text-success"
-                    : estado === "rechazado"
-                    ? "border-danger bg-danger/15 text-danger"
-                    : "border-border-strong bg-amber-500/10 text-amber-700 dark:text-amber-400"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5">
-                    <span
-                      className={`h-2.5 w-2.5 rounded-full ${
-                        estado === "aprobado"
-                          ? "bg-success animate-ping"
-                          : estado === "rechazado"
-                          ? "bg-danger"
-                          : "bg-amber-500"
-                      }`}
-                    />
-                    <span className="rotulo text-[10px] font-bold">
-                      {estado === "aprobado"
-                        ? "PRESUPUESTO APROBADO"
-                        : estado === "rechazado"
-                        ? "PRESUPUESTO RECHAZADO"
-                        : "ESPERANDO APROBACIÓN"}
-                    </span>
-                  </div>
-                  {estado !== "pendiente" && (
-                    <span
-                      className={`rotulo text-[9px] font-bold ${
-                        estado === "aprobado" ? "text-success" : "text-danger"
-                      }`}
-                    >
-                      0.3s Sinc
-                    </span>
-                  )}
-                </div>
-
-                <p className="mt-1 text-[10px] leading-tight text-ink-muted">
-                  {estado === "aprobado"
-                    ? `${datos.cliente} aprobó ${countSeleccionados} servicio(s) por ${currency.format(
-                        totalSeleccionado
-                      )}. Trabajo autorizado.`
-                    : estado === "rechazado"
-                    ? "El cliente rechazó el presupuesto desde el link. Vehículo liberado para retiro."
-                    : `Cliente revisando presupuesto por WhatsApp (${currency.format(
-                        totalSeleccionado
-                      )}).`}
-                </p>
-              </div>
-
-              {/* ─── Tareas de taller y stock reactivo ─── */}
-              <div className="flex flex-1 flex-col justify-between px-4 py-2.5">
-                <div className="space-y-2">
-                  {/* Tarjeta de inventario del repuesto */}
-                  <div className="rounded border border-border-soft bg-surface-alt p-2 text-[10.5px]">
-                    <div className="flex justify-between items-center text-ink font-semibold">
-                      <span>Repuesto: {datos.repuesto}</span>
-                      <span
-                        className={`rotulo text-[9px] font-bold ${
-                          estado === "aprobado" && hasRepuesto
-                            ? "text-success"
-                            : estado === "rechazado" ||
-                              (estado === "aprobado" && !hasRepuesto)
-                            ? "text-ink-faint"
-                            : "text-value-shade"
-                        }`}
-                      >
-                        {estado === "aprobado" && hasRepuesto
-                          ? "✓ Descontado de bodega"
-                          : estado === "aprobado" && !hasRepuesto
-                          ? "No requerido (cliente trae pieza)"
-                          : estado === "rechazado"
-                          ? "Stock intacto (2 en bodega)"
-                          : "2 en bodega (reservado)"}
-                      </span>
-                    </div>
-                    <p className="mt-0.5 text-[10px] text-ink-muted">
-                      {estado === "aprobado" && hasRepuesto
-                        ? "1 juego descontado de inventario automáticamente."
-                        : estado === "aprobado" && !hasRepuesto
-                        ? "Cliente desmarcó este repuesto. No se toca el stock."
-                        : estado === "rechazado"
-                        ? "Presupuesto rechazado: ningún repuesto fue consumido."
-                        : "Esperando confirmación de compra."}
-                    </p>
-                  </div>
-
-                  {/* Tarjeta de mano de obra y asignación */}
-                  <div className="rounded border border-border-soft bg-surface-alt p-2 text-[10.5px]">
-                    <div className="flex justify-between items-center text-ink font-semibold">
-                      <span>Mano de obra y cupo</span>
-                      <span className="rotulo text-[9px] text-ink-faint">
-                        Carlos M. (Cupo 1)
-                      </span>
-                    </div>
-                    <p className="mt-0.5 text-[10px] text-ink-muted">
-                      {estado === "aprobado"
-                        ? `Cambio de pastillas y diagnóstico autorizado por ${currency.format(
-                            totalSeleccionado
-                          )}.`
-                        : estado === "rechazado"
-                        ? "Cupo 1 liberado. Mecánico disponible para nueva orden."
-                        : "Mecánico en espera de autorización del cliente."}
-                    </p>
-                  </div>
-                </div>
-
-                {/* ─── Botones de acción del taller ─── */}
-                <div className="mt-3">
-                  {estado === "aprobado" ? (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="grid grid-cols-2 gap-1.5">
-                        <div className="flex items-center justify-center gap-1 border border-border-strong bg-surface py-2 text-center text-[10px] font-bold text-ink">
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.8"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="h-3 w-3 text-ink-muted"
-                            aria-hidden="true"
-                          >
-                            <path d="M4 8h3l2-3h6l2 3h3a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z" />
-                            <circle cx="12" cy="14" r="3.5" />
-                          </svg>
-                          <span>Foto inicio</span>
-                        </div>
-                        <div className="bg-value py-2 text-center text-[10px] font-bold text-splash-bg">
-                          Iniciar trabajo →
-                        </div>
-                      </div>
-                      <p className="text-center text-[9px] text-success font-semibold">
-                        ✓ Cupo desbloqueado en tiempo real
-                      </p>
-                    </div>
-                  ) : estado === "rechazado" ? (
-                    <div className="flex flex-col gap-1.5">
-                      <div className="grid grid-cols-2 gap-1.5">
-                        <div className="border border-border-strong bg-surface py-2 text-center text-[10px] font-bold text-ink">
-                          Cobrar revisión ($8.000)
-                        </div>
-                        <div className="border border-ink bg-surface-alt py-2 text-center text-[10px] font-bold text-ink">
-                          Liberar cupo ✓
-                        </div>
-                      </div>
-                      <p className="text-center text-[9px] text-ink-muted font-semibold">
-                        Vehículo listo para entrega sin reparar
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col gap-1">
-                      <div className="flex items-center justify-center gap-1.5 border border-neutral-track bg-neutral-track/30 py-2.5 text-center text-[10.5px] font-medium text-ink-ghost cursor-not-allowed">
-                        <svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="1.8"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="h-3.5 w-3.5 text-ink-ghost"
-                          aria-hidden="true"
-                        >
-                          <rect x="3" y="11" width="18" height="11" rx="1.5" />
-                          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        </svg>
-                        <span>Trabajo en pausa por aprobación</span>
-                      </div>
-                      <p className="text-center text-[9px] text-ink-ghost">
-                        El mecánico no pierde tiempo llamando
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
+        <div className={`flex-col items-center ${tab === "cliente" ? "hidden sm:flex" : "flex"}`}>
+          <Rotulo paso="Tu taller" titulo="Te enteras al instante" />
+          <AndroidFrame className="max-w-[280px] sm:max-w-[290px]" aspect="aspect-[9/18.8]">
+            <VistaTaller vehiculo={RUBROS[r].vehiculo} />
           </AndroidFrame>
         </div>
       </div>
+    </div>
+  );
+}
 
-      {/* ─── Micro-aviso explicativo inferior ─── */}
-      <div className="mt-4 text-center">
-        <p className="inline-flex flex-wrap items-center justify-center gap-1.5 text-xs text-ink-faint">
-          <span className="rotulo text-[9px] text-value-shade border border-value/25 bg-value-soft px-1.5 py-0.5">
-            FLUJO EN VIVO
+function Rotulo({ paso, titulo }: { paso: string; titulo: string }) {
+  return (
+    <div className="mb-2 text-center">
+      <span className="rotulo text-[9px] text-ink-faint">{paso}</span>
+      <p className="text-xs font-bold text-ink">{titulo}</p>
+    </div>
+  );
+}
+
+/** La página real dentro del marco, dibujada a 375 px y escalada al ancho. */
+function PaginaReal({
+  rubro,
+  onLoad,
+}: {
+  rubro: Rubro;
+  onLoad: (e: React.SyntheticEvent<HTMLIFrameElement>) => void;
+}) {
+  const caja = useRef<HTMLDivElement>(null);
+  const [escala, setEscala] = useState(0.7);
+
+  useEffect(() => {
+    const el = caja.current;
+    if (!el) return;
+    const obs = new ResizeObserver(([e]) => setEscala(e.contentRect.width / ANCHO_PAGINA));
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  // #card-presupuesto: abre en lo que hay que tocar; la línea de tiempo queda
+  // arriba, a un scroll.
+  const src = `${DEMO_URL}?r=${rubro}&n=${encodeURIComponent("Taller Central")}#card-presupuesto`;
+
+  return (
+    <div ref={caja} className="h-full w-full overflow-hidden bg-app-bg">
+      <iframe
+        src={src}
+        title="Página que recibe el cliente, con una orden de ejemplo"
+        loading="lazy"
+        onLoad={onLoad}
+        style={{
+          width: ANCHO_PAGINA,
+          height: `${100 / escala}%`,
+          transform: `scale(${escala})`,
+          transformOrigin: "0 0",
+        }}
+        className="border-0"
+      />
+    </div>
+  );
+}
+
+/**
+ * Lo que ve el taller cuando el cliente aprueba, con los textos reales de la
+ * app: la notificación (notificarPresupuestoAprobado en el Worker) y el panel
+ * de respuesta de la orden (orden.page.html). Al aprobar NO se descuenta
+ * stock: eso pasa en la reparación o la entrega.
+ */
+function VistaTaller({ vehiculo }: { vehiculo: string }) {
+  return (
+    <div className="flex h-full flex-col gap-3 bg-app-bg px-3 pb-6 pt-4 text-xs">
+      {/* Notificación push */}
+      <div className="flex gap-2.5 rounded-xl border border-border-soft bg-surface p-3 shadow-sm">
+        <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-ink text-[10px] font-bold text-app-bg">
+          M
+        </span>
+        <div className="min-w-0">
+          <p className="text-[10px] text-ink-faint">MAZA · ahora</p>
+          <p className="font-semibold leading-snug text-ink">{CLIENTE} aprobó el presupuesto</p>
+          <p className="text-ink-muted">{vehiculo} · Presupuesto</p>
+        </div>
+      </div>
+
+      {/* La orden en la app */}
+      <div className="flex flex-1 flex-col gap-2.5 rounded-xl border border-border-soft bg-surface p-3">
+        <div className="flex items-start justify-between gap-2">
+          <div>
+            <p className="text-sm font-bold text-ink">{vehiculo}</p>
+            <p className="text-ink-muted">{CLIENTE}</p>
+          </div>
+          <span className="shrink-0 rounded bg-success/15 px-1.5 py-0.5 text-[10px] font-bold text-success">
+            Por iniciar
           </span>
-          <span>
-            El cliente elige qué reparar desde su casa y tu taller lo ve al
-            instante.
-          </span>
+        </div>
+
+        <div className="rounded-lg border border-success/40 bg-success/10 p-2.5">
+          <p className="font-semibold text-ink">✓ {CLIENTE} aprobó desde el link</p>
+          <p className="mt-0.5 text-ink-muted">Firmó como «{CLIENTE}»</p>
+          <p className="text-ink-muted">Hace un momento · desde Android</p>
+          <p className="mt-1.5 font-semibold text-ink underline underline-offset-2">Ver constancia</p>
+        </div>
+
+        <p className="leading-snug text-ink-muted">
+          Queda la constancia con su nombre, la fecha y lo que aprobó. Sin
+          llamadas ni “dale, hazlo” por audio.
         </p>
+
+        <span className="mt-auto block bg-value py-2.5 text-center text-[13px] font-bold text-splash-bg">
+          Iniciar reparación
+        </span>
       </div>
     </div>
   );

@@ -320,7 +320,7 @@ export const TESTIMONIALS: Testimonial[] = [];
 export const FAQS = [
   {
     q: "¿Puedo usar MAZA en mi computador o solo en el celular?",
-    a: "En ambos a la vez. Tienes la app en tu teléfono para avanzar trabajos y tomar fotos a pie de vehículo, y la web de mostrador para tu PC o laptop en la recepción. Se conectan al instante con un código QR (igual que WhatsApp Web) y se sincronizan en 0.3 segundos.",
+    a: "En ambos a la vez. Tienes la app en tu teléfono para avanzar trabajos y tomar fotos a pie de vehículo, y la web de mostrador para tu PC o laptop en la recepción. Se conectan con un código QR (igual que WhatsApp Web) y lo que haces en uno aparece en el otro al momento.",
   },
   {
     q: "¿Sirve para mi rubro?",

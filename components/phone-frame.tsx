@@ -32,7 +32,7 @@ function MockupSeguimiento() {
           <span className="mt-0.5 grid h-4 w-4 place-items-center bg-value text-[9px] font-bold text-splash-bg">●</span>
           <div>
             <p className="font-bold text-value-shade">En reparación</p>
-            <p className="text-[10px] text-ink-muted">Mecánico: Carlos M. (Cupo 1)</p>
+            <p className="text-[10px] text-ink-muted">Mecánico: Carlos M.</p>
           </div>
         </div>
 

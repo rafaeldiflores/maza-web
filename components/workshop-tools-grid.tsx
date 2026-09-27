@@ -39,7 +39,7 @@ const TOOLS: WorkshopTool[] = [
     badge: "EN VIVO",
     microCopy: "Estados claros desde el ingreso hasta la entrega final.",
     detail:
-      "Visualiza de un solo vistazo qué vehículos están en diagnóstico, cuáles en cupo de faena y cuáles listos para entrega, con citas organizadas.",
+      "Visualiza de un solo vistazo qué vehículos están en diagnóstico, cuáles en reparación y cuáles listos para entrega, con citas organizadas.",
   },
   {
     id: "balances",

@@ -387,7 +387,7 @@ export const PLANS: Plan[] = [
     roiNote: "Menos de lo que ganas en media jornada. 2 personas a la par.",
     features: [
       "Todo lo de Taller Solo",
-      "Cobro online del presupuesto con Mercado Pago",
+      "Cobro online del presupuesto con Mercado Pago (acceso anticipado)",
       "2 accesos trabajando a la par (taller y mesón)",
       "Órdenes de trabajo y clientes ilimitados",
       "Soporte prioritario y asistencia de catálogo",

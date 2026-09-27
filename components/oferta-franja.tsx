@@ -1,17 +1,18 @@
-import { FUNDADOR, cuposFundador, ofertaFundador } from "@/lib/site";
+import { TRIAL_DIAS } from "@/lib/site";
 
-/** Franja de lanzamiento sobre la cabecera: lo primero que ve quien viene de un anuncio. */
+/**
+ * Franja sobre la cabecera: lo primero que ve quien viene de un anuncio.
+ * Habla de la prueba y de la ayuda, nunca de descuentos ni cupos (ver
+ * mensajeCtaPrincipal en lib/site.ts).
+ */
 export function OfertaFranja() {
-  if (!ofertaFundador()) return null;
-  const pct = Math.round(FUNDADOR.descuento * 100);
-
   return (
     <a
-      href="#planes"
+      href="#empezar"
       className="block bg-ink px-4 py-2 text-center text-[13px] font-semibold text-app-bg"
     >
-      <span className="text-value">Lanzamiento:</span> {pct}% de por vida · quedan{" "}
-      {cuposFundador()} de {FUNDADOR.cupos} cupos <span aria-hidden="true">→</span>
+      <span className="text-value">{TRIAL_DIAS} días gratis:</span> te ayudamos a
+      dejar tu taller cargado <span aria-hidden="true">→</span>
     </a>
   );
 }

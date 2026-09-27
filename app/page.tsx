@@ -15,19 +15,13 @@ import { StructuredData } from "@/components/structured-data";
 import { CtaFija } from "@/components/cta-fija";
 import { WaTracking } from "@/components/wa-tracking";
 import {
-  FUNDADOR,
-  TRIAL_DIAS,
-  cuposFundador,
   mensajeCtaPrincipal,
-  ofertaFundador,
   textoCtaPrincipal,
   waLink,
 } from "@/lib/site";
 
 export default function Home() {
-  const detalleCta = ofertaFundador()
-    ? `50% de por vida · quedan ${cuposFundador()} de ${FUNDADOR.cupos} cupos`
-    : `${TRIAL_DIAS} días gratis · Sin tarjeta`;
+  const detalleCta = `Sin tarjeta · Te ayudamos a dejarlo listo`;
 
   return (
     <>

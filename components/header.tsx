@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Logo } from "./logo";
-import { mensajeCtaPrincipal, ofertaFundador, textoCtaPrincipal, waLink } from "@/lib/site";
+import { mensajeCtaPrincipal, textoCtaPrincipal, waLink } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "#funciones", label: "Funciones" },
@@ -36,7 +36,7 @@ export function Header() {
           data-cta="header"
           className="hidden shrink-0 bg-value px-5 py-2.5 text-sm font-bold text-splash-bg sm:inline-flex sm:items-center"
         >
-          {ofertaFundador() ? "Tomar mi cupo" : "Probar gratis"}
+          Probar gratis
         </a>
 
         <details className="relative md:hidden">

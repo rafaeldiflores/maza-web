@@ -29,9 +29,12 @@ export function waLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-/** Mensaje del botón principal: el cupo Fundador mientras haya oferta. */
-export const mensajeCtaPrincipal = () =>
-  ofertaFundador() ? WA_MESSAGES.fundador : WA_MESSAGES.trial;
+/**
+ * Mensaje del botón principal: siempre la prueba gratis. El Fundador se
+ * menciona solo dentro de Planes; en la entrada (lo que ve quien llega de un
+ * anuncio) nada de descuentos ni contadores: Instagram bajó el perfil por eso.
+ */
+export const mensajeCtaPrincipal = () => WA_MESSAGES.trial;
 
 /** Días de prueba gratis. Debe coincidir con el trial del PlanService de la app. */
 export const TRIAL_DIAS = 14;
@@ -67,17 +70,13 @@ export const clp = new Intl.NumberFormat("es-CL", {
 });
 
 /** Texto del botón principal, el mismo en hero, barra fija y cierre. */
-export const textoCtaPrincipal = () =>
-  ofertaFundador() ? "Tomar mi cupo por WhatsApp" : `Probar ${TRIAL_DIAS} días gratis`;
+export const textoCtaPrincipal = () => `Probar ${TRIAL_DIAS} días gratis`;
 
 export const WA_MESSAGES = {
   general: "Hola, quiero saber más sobre MAZA para mi taller.",
   trial: `Hola, quiero probar MAZA gratis por ${TRIAL_DIAS} días en mi taller.`,
-  fundador: "Hola, quiero tomar uno de los cupos Fundador (50% de por vida) de MAZA para mi taller.",
   plan: (plan: string) =>
-    ofertaFundador()
-      ? `Hola, quiero tomar uno de los cupos Fundador (50% de por vida) con el plan ${plan} de MAZA.`
-      : `Hola, quiero contratar el plan ${plan} de MAZA.`,
+    `Hola, quiero probar MAZA con el plan ${plan} en mi taller.`,
 } as const;
 
 export type IconName =
@@ -370,7 +369,7 @@ export const PLANS: Plan[] = [
     name: "Taller Solo",
     price: 24990,
     tagline: "Para el mecánico o taller unipersonal",
-    roiNote: "Menos que un cambio de pastillas. Se paga con 1 sola orden al mes.",
+    roiNote: "Ideal si atiendes tú mismo el mesón y el taller.",
     features: [
       "1 acceso simultáneo: celular en el taller + PC en mostrador",
       "Asistente IA que lee el stock y caja de tu taller",
@@ -384,7 +383,7 @@ export const PLANS: Plan[] = [
     name: "Taller Full",
     price: 39990,
     tagline: "Dueño + 1 socio o ayudante trabajando a la vez",
-    roiNote: "Menos de lo que ganas en media jornada. 2 personas a la par.",
+    roiNote: "Para cuando ya no das abasto solo: dos personas a la par.",
     features: [
       "Todo lo de Taller Solo",
       "Cobro online del presupuesto con Mercado Pago (acceso anticipado)",
@@ -400,7 +399,7 @@ export const PLANS: Plan[] = [
     priceDesde: true,
     extraSeatPrice: 9990,
     tagline: "Talleres de 3 o más personas con mecánicos",
-    roiNote: "Control total de productividad por el costo de una sola mantención.",
+    roiNote: "Cada mecánico con sus órdenes y el dueño viendo todo.",
     features: [
       "Todo lo de Taller Full",
       "Base de 3 personas: dueño + 2 mecánicos",

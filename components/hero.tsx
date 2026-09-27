@@ -1,20 +1,15 @@
 import { OrdenMockup } from "./orden-mockup";
 import { WhatsappIcon } from "./whatsapp-icon";
-import {
-  FUNDADOR,
-  TRIAL_DIAS,
-  clp,
-  mensajeCtaPrincipal,
-  ofertaFundador,
-  precioDesde,
-  precioDesdeLista,
-  textoCtaPrincipal,
-  waLink,
-} from "@/lib/site";
+import { TRIAL_DIAS, mensajeCtaPrincipal, textoCtaPrincipal, waLink } from "@/lib/site";
+
+/** Lo que trae la prueba: ayuda concreta, no precio. */
+const AYUDA = [
+  `${TRIAL_DIAS} días gratis con el trabajo real de tu taller`,
+  "Te ayudamos a cargar tus servicios y repuestos (mándanos una foto)",
+  "Una persona te acompaña por WhatsApp, no un formulario",
+];
 
 export function Hero() {
-  const oferta = ofertaFundador();
-
   return (
     <section id="inicio" className="px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-16">
       <div className="mx-auto grid max-w-6xl xl:max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
@@ -26,29 +21,20 @@ export function Hero() {
           </h1>
 
           <p className="max-w-[46ch] text-lg leading-relaxed text-ink-muted sm:text-xl">
-            Tu cliente aprueba el presupuesto desde WhatsApp y tú llevas la
-            cola, el inventario y la caja desde el celular.
+            Menos llamadas preguntando “¿ya está listo?”, menos papeles
+            perdidos. Tu cliente sigue su vehículo y aprueba el presupuesto
+            desde WhatsApp; tú llevas la cola, el inventario y la caja desde el
+            celular.
           </p>
 
-          <div className="flex flex-col gap-1">
-            {oferta && (
-              <p className="flex items-center gap-2 text-sm">
-                <span className="text-ink-faint line-through">
-                  {clp.format(precioDesdeLista())}
-                </span>
-                <span className="rotulo bg-value px-1.5 py-0.5 text-[10px] text-splash-bg">
-                  −{Math.round(FUNDADOR.descuento * 100)}% de por vida
-                </span>
-              </p>
-            )}
-            <p className="flex items-baseline gap-1.5">
-              <span className="text-sm font-medium text-ink-faint">desde</span>
-              <span className="cifra text-3xl text-value-shade">
-                {clp.format(precioDesde())}
-              </span>
-              <span className="text-sm font-medium text-ink-faint">/ mes</span>
-            </p>
-          </div>
+          <ul className="flex flex-col gap-2 text-sm text-ink-muted sm:text-base">
+            {AYUDA.map((texto) => (
+              <li key={texto} className="flex items-start gap-2.5">
+                <span className="testigo mt-2 bg-value" />
+                {texto}
+              </li>
+            ))}
+          </ul>
 
           <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center sm:gap-3">
             <a
@@ -62,16 +48,15 @@ export function Hero() {
               {textoCtaPrincipal()}
             </a>
             <a
-              href="#planes"
+              href="#funciones"
               className="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-ink underline underline-offset-4 hover:text-value-shade"
             >
-              Ver precios ↓
+              Ver cómo funciona ↓
             </a>
           </div>
 
           <p className="text-xs text-ink-faint">
-            {TRIAL_DIAS} días gratis · Sin tarjeta · Para talleres
-            multirubro
+            Sin tarjeta · Sin permanencia · Para talleres multirubro
           </p>
         </div>
 

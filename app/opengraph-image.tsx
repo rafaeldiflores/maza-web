@@ -38,8 +38,7 @@ export default function OpengraphImage() {
             }}
           >
             <svg width="56" height="56" viewBox="0 0 100 100">
-              <path d={MARCA.anillo} fill={TINTA} fillRule="evenodd" />
-              <path d={MARCA.rayos} fill={TINTA} />
+              <path d={MARCA.silueta} fill={TINTA} fillRule="evenodd" />
               <path d={MARCA.buje} fill={NARANJO} fillRule="evenodd" />
             </svg>
           </div>

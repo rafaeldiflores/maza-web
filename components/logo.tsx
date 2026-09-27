@@ -1,11 +1,10 @@
 import { MARCA, NARANJO } from "@/lib/marca";
 
-/** La rueda de MAZA: llanta y rayos en `currentColor`, buje en naranjo. */
+/** La rueda de MAZA en `currentColor`, con el buje en naranjo. */
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 100 100" className={className} role="img" aria-label="MAZA">
-      <path d={MARCA.anillo} fill="currentColor" fillRule="evenodd" />
-      <path d={MARCA.rayos} fill="currentColor" />
+      <path d={MARCA.silueta} fill="currentColor" fillRule="evenodd" />
       <path d={MARCA.buje} fill={NARANJO} fillRule="evenodd" />
     </svg>
   );

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "../logo";
+import { ProntoGooglePlay } from "./pronto-google-play";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
@@ -22,6 +23,7 @@ export function SitioFooter() {
             Gestión para talleres multirubro. La app ejecuta en el taller;
             la web administra desde el mesón.
           </p>
+          <ProntoGooglePlay className="self-start" />
         </div>
 
         <div className="flex flex-col gap-2">

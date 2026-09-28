@@ -47,6 +47,14 @@ export const CREADOR = {
  */
 export const URL_ENTRAR = "/entrar";
 export const URL_REGISTRO = "/registro";
+/** El formulario de alta en la web (Firebase Hosting detrás de /app). */
+export const URL_ALTA_WEB = "/app/registrar";
+/**
+ * La app está en prueba cerrada: solo la instalan los testers que se suman
+ * escribiendo por WhatsApp. Al publicarla en Google Play, esto pasa a false y
+ * el sello "Pronto en Google Play" y el paso previo al registro cambian solos.
+ */
+export const APP_EN_PRUEBA_CERRADA = true;
 
 /** Páginas del sitio oficial, en el orden del menú. */
 export const NAV_SITIO = [
@@ -108,6 +116,8 @@ export const WA_MESSAGES = {
   trial: `Hola, quiero probar MAZA gratis por ${TRIAL_DIAS} días en mi taller.`,
   plan: (plan: string) =>
     `Hola, quiero probar MAZA con el plan ${plan} en mi taller.`,
+  tester:
+    "Hola, quiero crear mi cuenta de MAZA y sumarme a la prueba de la app de Android. Mi correo de Google Play es: ",
 } as const;
 
 export type IconName =

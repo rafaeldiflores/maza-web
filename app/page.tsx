@@ -7,6 +7,7 @@ import { PhoneFrame } from "@/components/phone-frame";
 import { FeatureIcon } from "@/components/feature-icon";
 import { StructuredData } from "@/components/structured-data";
 import { CierreCuenta } from "@/components/sitio/cierre-cuenta";
+import { ProntoGooglePlay } from "@/components/sitio/pronto-google-play";
 import { CelularConAsistente, MesonConAsistente } from "@/components/sitio/meson-con-asistente";
 import {
   FEATURES,
@@ -100,6 +101,7 @@ export default function Inicio() {
               <p className="font-mono text-xs text-ink-faint">
                 {TRIAL_DIAS} días gratis · Sin tarjeta · Celular y computador
               </p>
+              <ProntoGooglePlay />
             </div>
 
             <div className="relative lg:col-span-7">

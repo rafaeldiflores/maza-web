@@ -78,7 +78,7 @@ export default function TerminosPage() {
               <p>
                 MAZA ofrece un período de prueba gratuito de 14 días con
                 funciones limitadas. Al finalizar, la cuenta queda bloqueada
-                hasta contratar un plan pago (Solo, Taller Full o Empresa).
+                hasta contratar un plan pago (Taller Solo, Taller Pro o Empresa).
                 Los precios vigentes se muestran en la aplicación y en este
                 sitio, en pesos chilenos (CLP), y pueden actualizarse con
                 aviso previo.
@@ -138,7 +138,7 @@ export default function TerminosPage() {
 
             <Section n={6} title="Cobro del taller a sus clientes (Mercado Pago Connect)">
               <p>
-                Desde el plan Taller Full, puedes vincular tu propia cuenta de
+                Desde el plan Taller Pro, puedes vincular tu propia cuenta de
                 Mercado Pago para cobrar presupuestos directamente a tus
                 clientes desde el link de seguimiento. Esa relación de cobro
                 es exclusivamente entre tu taller y tu cliente:{" "}

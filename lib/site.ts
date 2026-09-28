@@ -155,9 +155,9 @@ export const FEATURES: Feature[] = [
   {
     title: "Equipo con dueño y mecánicos",
     description:
-      "Cada uno con su acceso, y en el inicio ves quién tiene qué entre manos y qué quedó sin dueño. Taller Full suma un segundo acceso; Empresa, el equipo completo con asignación por mecánico.",
+      "Cada uno con su acceso, y en el inicio ves quién tiene qué entre manos y qué quedó sin dueño. Taller Pro suma un segundo acceso; Empresa, el equipo completo con asignación por mecánico.",
     icon: "equipo",
-    tag: "Taller Full y Empresa",
+    tag: "Taller Pro y Empresa",
     shotAlt: "Panel de equipo con mecánicos y carga de trabajo repartida",
     spotlight: true,
   },
@@ -349,7 +349,7 @@ export const FAQS = [
   },
   {
     q: "Trabajo solo, ¿igual me sirve?",
-    a: "Es justamente para quien trabaja solo o con un equipo chico. Taller Solo está pensado para una persona; Taller Full suma un segundo acceso trabajando a la par (socio o ayudante); y el equipo completo con roles y asignación por mecánico aparece desde el plan Empresa.",
+    a: "Es justamente para quien trabaja solo o con un equipo chico. Taller Solo está pensado para una persona; Taller Pro suma un segundo acceso trabajando a la par (socio o ayudante); y el equipo completo con roles y asignación por mecánico aparece desde el plan Empresa.",
   },
   {
     q: "Tengo todo en un cuaderno, ¿tengo que cargar todo de nuevo?",
@@ -395,7 +395,7 @@ export const PLANS: Plan[] = [
     ],
   },
   {
-    name: "Taller Full",
+    name: "Taller Pro",
     price: 39990,
     tagline: "Dueño + 1 socio o ayudante trabajando a la vez",
     roiNote: "Para cuando ya no das abasto solo: dos personas a la par.",
@@ -416,7 +416,7 @@ export const PLANS: Plan[] = [
     tagline: "Talleres de 3 o más personas con mecánicos",
     roiNote: "Cada mecánico con sus órdenes y el dueño viendo todo.",
     features: [
-      "Todo lo de Taller Full",
+      "Todo lo de Taller Pro",
       "Base de 3 personas: dueño + 2 mecánicos",
       "Todo el equipo conectado a la vez en PC y celular",
       "Asignación de órdenes por mecánico",

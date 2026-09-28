@@ -299,12 +299,12 @@ export default function PrivacidadPage() {
                   <strong className="text-ink">Eliminar</strong> tu cuenta y
                   todos los datos asociados desde{" "}
                   <a
-                    href="https://app.mazataller.com/eliminar-cuenta"
+                    href="https://mazataller.com/eliminar-cuenta"
                     target="_blank"
                     rel="noreferrer"
                     className="text-value-shade hover:underline"
                   >
-                    app.mazataller.com/eliminar-cuenta
+                    mazataller.com/eliminar-cuenta
                   </a>
                   . Se borran tu perfil, los datos de tus clientes y
                   vehículos, el inventario y el historial operativo del

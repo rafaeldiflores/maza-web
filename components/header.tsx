@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Logo } from "./logo";
 import { mensajeCtaPrincipal, textoCtaPrincipal, waLink } from "@/lib/site";
 
+const URL_ENTRAR = "/entrar";
+
 const NAV_LINKS = [
   { href: "#funciones", label: "Funciones" },
   { href: "#asistente", label: "Asistente IA" },
@@ -29,15 +31,26 @@ export function Header() {
           ))}
         </nav>
 
-        <a
-          href={waLink(mensajeCtaPrincipal())}
-          target="_blank"
-          rel="noreferrer"
-          data-cta="header"
-          className="hidden shrink-0 bg-value px-5 py-2.5 text-sm font-bold text-splash-bg sm:inline-flex sm:items-center"
-        >
-          Probar gratis
-        </a>
+        <div className="hidden shrink-0 items-center gap-2 sm:flex">
+          {/* Para quien ya usa MAZA: la web del mesón. /entrar redirige a la
+              web (Worker maza-app-web), así el sitio nunca muestra su host. */}
+          <a
+            href={URL_ENTRAR}
+            data-cta="entrar"
+            className="inline-flex items-center border border-border-strong px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:bg-surface-alt"
+          >
+            Entrar
+          </a>
+          <a
+            href={waLink(mensajeCtaPrincipal())}
+            target="_blank"
+            rel="noreferrer"
+            data-cta="header"
+            className="inline-flex items-center bg-value px-5 py-2.5 text-sm font-bold text-splash-bg"
+          >
+            Probar gratis
+          </a>
+        </div>
 
         <details className="relative md:hidden">
           <summary
@@ -58,6 +71,13 @@ export function Header() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={URL_ENTRAR}
+              data-cta="entrar-menu"
+              className="border-b border-neutral-track px-4 py-3 text-sm font-bold text-ink"
+            >
+              Entrar a mi taller
+            </a>
             <a
               href={waLink(mensajeCtaPrincipal())}
               target="_blank"

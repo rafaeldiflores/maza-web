@@ -23,7 +23,7 @@ export const CF_ANALYTICS_TOKEN = process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN || 
 export const WHATSAPP_NUMBER = "56936410159";
 export const CONTACT_PHONE = "+56936410159";
 export const CONTACT_PHONE_DISPLAY = "+56 9 3641 0159";
-export const CONTACT_EMAIL = "contacto.mazapp@gmail.com";
+export const CONTACT_EMAIL = "contacto@mazataller.com";
 
 /**
  * Quién está detrás (datos del portafolio, rafaelitoraldev.vercel.app). Sin

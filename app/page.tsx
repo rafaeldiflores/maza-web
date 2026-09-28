@@ -22,7 +22,7 @@ import {
  * larga, con demo y WhatsApp, vive en /empieza para los anuncios.
  */
 export const metadata: Metadata = {
-  title: "MAZA — Gestión para talleres de bicicletas, motos y autos",
+  title: "MAZA — Gestión para talleres multirubro",
   alternates: { canonical: "/" },
 };
 
@@ -72,7 +72,7 @@ export default function Inicio() {
         <section className="px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-20">
           <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
             <div className="flex flex-col items-start gap-6 lg:col-span-5">
-              <p className="rotulo">Gestión de talleres · Bici · Moto · Auto</p>
+              <p className="rotulo">Gestión de talleres · Multirubro</p>
               <h1 className="font-display text-[clamp(3rem,8vw,5.25rem)] leading-[0.92] tracking-[0.01em] text-ink text-balance">
                 Todo tu taller en un solo sistema.
               </h1>

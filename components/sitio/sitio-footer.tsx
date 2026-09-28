@@ -19,7 +19,7 @@ export function SitioFooter() {
         <div className="col-span-2 flex flex-col gap-3">
           <Logo />
           <p className="max-w-[34ch] text-sm leading-relaxed text-ink-faint">
-            Gestión para talleres de bicicletas, motos y autos. La app ejecuta en el taller;
+            Gestión para talleres multirubro. La app ejecuta en el taller;
             la web administra desde el mesón.
           </p>
         </div>

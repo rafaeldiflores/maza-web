@@ -146,7 +146,7 @@ export const FEATURES: Feature[] = [
   {
     title: "Presupuestos con aprobación online",
     description:
-      "El cliente aprueba o rechaza el presupuesto desde el link, sin tener que pasar por el taller ni llamar por teléfono.",
+      "El cliente aprueba desde el link con su nombre, destilda lo que no quiere o pide conversar el precio. Sin pasar por el taller ni llamar por teléfono.",
     icon: "presupuesto",
     tag: "Cierra ventas más rápido",
     shotAlt: "Presupuesto esperando aprobación del cliente desde el celular",
@@ -155,9 +155,9 @@ export const FEATURES: Feature[] = [
   {
     title: "Equipo con dueño y mecánicos",
     description:
-      "En el plan Empresa cada mecánico tiene su propio acceso y la carga de trabajo se reparte entre todo el equipo.",
+      "Cada uno con su acceso, y en el inicio ves quién tiene qué entre manos y qué quedó sin dueño. Taller Full suma un segundo acceso; Empresa, el equipo completo con asignación por mecánico.",
     icon: "equipo",
-    tag: "Plan Empresa",
+    tag: "Taller Full y Empresa",
     shotAlt: "Panel de equipo con mecánicos y carga de trabajo repartida",
     spotlight: true,
   },

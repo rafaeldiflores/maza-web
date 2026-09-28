@@ -15,7 +15,11 @@ PRIORIDAD ALTA — estas 6 son las que se ven grandes en la página:
                     pantalla más vendedora (Home con el resumen del día).
   seguimiento.png   Link de seguimiento en vivo (vista del cliente)
   presupuesto.png   Presupuesto esperando aprobación del cliente
-  equipo.png        Panel de equipo (dueño + mecánicos, plan Empresa)
+  equipo.png        Panel de equipo del inicio (captura real: npm run capturas
+                    -- equipo en Maza-app, con CAPTURAS_DPR=2.772)
+
+seguimiento.png y presupuesto.png son capturas reales de mazataller.com/o/demo
+(r=moto). Nada de maquetas: lo que se muestra tiene que existir en la app.
   ia.png            Chat del asistente respondiendo con datos reales del
                     taller. Ideal: una respuesta que muestre números
                     concretos (stock bajo, facturación, cola) — es lo que

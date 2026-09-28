@@ -6,6 +6,7 @@ import { CF_ANALYTICS_TOKEN, SITE_URL } from "@/lib/site";
 // En Vercel mide @vercel/analytics; fuera de Vercel (Cloudflare), el beacon de
 // Cloudflare Web Analytics si hay token. Nunca los dos a la vez.
 const enVercel = !!process.env.VERCEL;
+import { EnlacesAlta } from "@/components/enlaces-alta";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="es" className={`${bebasNeue.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         {children}
+        <EnlacesAlta />
         {enVercel && <Analytics />}
         {!enVercel && CF_ANALYTICS_TOKEN && (
           <script

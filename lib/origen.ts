@@ -51,3 +51,23 @@ export function nombreOrigen(origen: string): string | null {
   if (origen === "directo") return null;
   return NOMBRES[origen] ?? origen;
 }
+
+const CLAVE_REF = "maza_ref";
+
+/**
+ * Código de referido (`?ref=`) de la primera página que lo trajo en esta
+ * sesión. El link del referido suele apuntar a la portada o a /registro, y el
+ * alta está dos clics más allá: sin guardarlo, se perdía en el camino.
+ */
+export function refVisita(): string | null {
+  try {
+    const enUrl = new URLSearchParams(location.search).get("ref")?.trim();
+    if (enUrl) {
+      sessionStorage.setItem(CLAVE_REF, enUrl);
+      return enUrl;
+    }
+    return sessionStorage.getItem(CLAVE_REF);
+  } catch {
+    return null;
+  }
+}

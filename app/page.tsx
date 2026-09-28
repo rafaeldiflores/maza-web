@@ -7,7 +7,7 @@ import { PhoneFrame } from "@/components/phone-frame";
 import { FeatureIcon } from "@/components/feature-icon";
 import { StructuredData } from "@/components/structured-data";
 import { CierreCuenta } from "@/components/sitio/cierre-cuenta";
-import { MesonConAsistente } from "@/components/sitio/meson-con-asistente";
+import { CelularConAsistente, MesonConAsistente } from "@/components/sitio/meson-con-asistente";
 import {
   FEATURES,
   TRIAL_DIAS,
@@ -103,12 +103,17 @@ export default function Inicio() {
             </div>
 
             <div className="relative lg:col-span-7">
-              <ComputerFrame>
-                <MesonConAsistente />
-              </ComputerFrame>
-              <div className="absolute -bottom-8 -left-2 hidden w-[150px] sm:block lg:-left-10 lg:w-[170px]">
-                <PhoneFrame file="screenshots/hero.png" alt="La app de MAZA en el celular del taller" />
+              <div className="hidden md:block">
+                <ComputerFrame>
+                  <MesonConAsistente />
+                </ComputerFrame>
+                <div className="absolute -bottom-8 -left-2 w-[150px] lg:-left-10 lg:w-[170px]">
+                  <PhoneFrame file="screenshots/hero.png" alt="La app de MAZA en el celular del taller" />
+                </div>
               </div>
+              <PhoneFrame className="md:hidden">
+                <CelularConAsistente />
+              </PhoneFrame>
             </div>
           </div>
         </section>

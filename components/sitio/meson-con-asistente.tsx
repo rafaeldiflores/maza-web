@@ -28,66 +28,100 @@ export function MesonConAsistente() {
         aria-hidden="true"
         className="absolute bottom-0 right-0 top-0 hidden w-[44%] flex-col border-l border-border-strong bg-surface shadow-[-12px_0_30px_-12px_rgba(0,0,0,0.35)] md:flex"
       >
-        <header className="flex items-center justify-between border-b border-border-strong px-3 py-2">
-          <span className="flex items-center gap-1.5 text-[10px] font-bold text-ink">
-            <span className="grid h-4 w-4 place-items-center bg-ink text-[9px] text-app-bg">✦</span>
-            Asistente MAZA
-          </span>
-          <span className="text-[10px] text-ink-ghost">×</span>
-        </header>
-
-        <div className="flex flex-1 flex-col gap-2 overflow-hidden px-3 py-2 text-[9.5px] leading-snug lg:gap-1 lg:text-[8.5px] xl:gap-2 xl:text-[10px]">
-          <p className="max-w-[88%] self-end bg-ink px-2 py-1.5 text-app-bg">
-            ¿Qué entrego hoy, cuánto cobro y quién no ha aprobado?
-          </p>
-
-          <div className="flex flex-col gap-1.5 border border-border-strong bg-surface-alt p-2 text-ink">
-            <p className="rotulo text-[7.5px] text-value-shade">Cola · Caja · Presupuestos</p>
-            <p>
-              Hoy entregas <strong>3 vehículos</strong> y cobras <strong className="cifra">$162.000</strong>:
-            </p>
-
-            <table className="w-full border-collapse text-[8.5px] lg:text-[8px] xl:text-[9px]">
-              <tbody>
-                {ENTREGAS.map((e) => (
-                  <tr key={e.orden} className="border-t border-neutral-track">
-                    <td className="py-1 pr-1">
-                      <span className="font-bold">{e.cliente}</span>
-                      <span className="block text-ink-faint lg:hidden xl:block">{e.vehiculo}</span>
-                    </td>
-                    <td className={`py-1 pr-1 font-bold ${e.listo ? "text-success" : "text-value-shade"}`}>
-                      {e.listo ? "✓ " : "◷ "}
-                      {e.estado}
-                    </td>
-                    <td className="cifra py-1 text-right font-bold">{e.monto}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            <p className="border-l-2 border-value bg-value-soft/50 px-1.5 py-1">
-              <strong>Transportes Sur Ltda</strong> no ha aprobado el presupuesto de la Hilux
-              (<span className="cifra">$120.000</span>), enviado hace 2 días.
-            </p>
-          </div>
-
-          <div className="flex gap-1 whitespace-nowrap">
-            <span className="bg-value px-1.5 py-1 text-[8.5px] font-bold text-splash-bg">
-              Avisar a los 2 listos
-            </span>
-            <span className="border border-ink px-1.5 py-1 text-[8.5px] font-bold text-ink">
-              Reenviar presupuesto
-            </span>
-          </div>
-        </div>
-
-        <footer className="border-t border-border-strong px-3 py-2">
-          <div className="flex items-center justify-between border border-border-strong px-2 py-1 text-[9px] text-ink-ghost">
-            Pregúntale a tu taller…
-            <span className="text-ink">↑</span>
-          </div>
-        </footer>
+        <ContenidoAsistente />
       </aside>
     </div>
+  );
+}
+
+/**
+ * En el celular el computador no se lee: el mismo chat va dentro del
+ * teléfono, que a ese ancho tiene el tamaño del panel del mesón.
+ */
+export function CelularConAsistente() {
+  return (
+    <div aria-hidden="true" className="flex h-full flex-col bg-surface pt-5">
+      <ContenidoAsistente previa />
+    </div>
+  );
+}
+
+function ContenidoAsistente({ previa = false }: { previa?: boolean }) {
+  return (
+    <>
+      <header className="flex items-center justify-between border-b border-border-strong px-3 py-2">
+        <span className="flex items-center gap-1.5 text-[10px] font-bold text-ink">
+          <span className="grid h-4 w-4 place-items-center bg-ink text-[9px] text-app-bg">✦</span>
+          Asistente MAZA
+        </span>
+        <span className="text-[10px] text-ink-ghost">×</span>
+      </header>
+
+      <div className="flex flex-1 flex-col gap-2 overflow-hidden px-3 py-2 text-[9.5px] leading-snug lg:gap-1 lg:text-[8.5px] xl:gap-2 xl:text-[10px]">
+        {previa && (
+          <>
+            <p className="max-w-[88%] self-end bg-ink px-2 py-1.5 text-app-bg">
+              ¿Cuánto llevo facturado este mes?
+            </p>
+            <div className="max-w-[92%] border border-border-strong bg-surface-alt p-2 text-ink">
+              <p className="rotulo text-[7.5px] text-value-shade">Caja</p>
+              <p className="mt-1">
+                <strong className="cifra">$2.840.000</strong> en 38 órdenes cerradas,{" "}
+                <strong className="text-success">📈 14 %</strong> sobre agosto a esta fecha.
+              </p>
+            </div>
+          </>
+        )}
+        <p className="max-w-[88%] self-end bg-ink px-2 py-1.5 text-app-bg">
+          ¿Qué entrego hoy, cuánto cobro y quién no ha aprobado?
+        </p>
+
+        <div className="flex flex-col gap-1.5 border border-border-strong bg-surface-alt p-2 text-ink">
+          <p className="rotulo text-[7.5px] text-value-shade">Cola · Caja · Presupuestos</p>
+          <p>
+            Hoy entregas <strong>3 vehículos</strong> y cobras <strong className="cifra">$162.000</strong>:
+          </p>
+
+          <table className="w-full border-collapse text-[8.5px] lg:text-[8px] xl:text-[9px]">
+            <tbody>
+              {ENTREGAS.map((e) => (
+                <tr key={e.orden} className="border-t border-neutral-track">
+                  <td className="py-1 pr-1">
+                    <span className="font-bold">{e.cliente}</span>
+                    <span className="block text-ink-faint lg:hidden xl:block">{e.vehiculo}</span>
+                  </td>
+                  <td className={`py-1 pr-1 font-bold ${e.listo ? "text-success" : "text-value-shade"}`}>
+                    {e.listo ? "✓ " : "◷ "}
+                    {e.estado}
+                  </td>
+                  <td className="cifra py-1 text-right font-bold">{e.monto}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <p className="border-l-2 border-value bg-value-soft/50 px-1.5 py-1">
+            <strong>Transportes Sur Ltda</strong> no ha aprobado el presupuesto de la Hilux
+            (<span className="cifra">$120.000</span>), enviado hace 2 días.
+          </p>
+        </div>
+
+        <div className="flex gap-1 whitespace-nowrap">
+          <span className="bg-value px-1.5 py-1 text-[8.5px] font-bold text-splash-bg">
+            Avisar a los 2 listos
+          </span>
+          <span className="border border-ink px-1.5 py-1 text-[8.5px] font-bold text-ink">
+            Reenviar presupuesto
+          </span>
+        </div>
+      </div>
+
+      <footer className="border-t border-border-strong px-3 py-2">
+        <div className="flex items-center justify-between border border-border-strong px-2 py-1 text-[9px] text-ink-ghost">
+          Pregúntale a tu taller…
+          <span className="text-ink">↑</span>
+        </div>
+      </footer>
+    </>
   );
 }

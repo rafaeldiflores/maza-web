@@ -5,17 +5,19 @@ import { SITE_URL } from "@/lib/site";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const pagina = (ruta: string, priority: number, changeFrequency: "monthly" | "yearly" = "monthly") => ({
+    url: `${SITE_URL}${ruta}`,
+    changeFrequency,
+    priority,
+  });
   return [
-    { url: SITE_URL, changeFrequency: "monthly", priority: 1 },
-    {
-      url: `${SITE_URL}/privacidad`,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${SITE_URL}/terminos`,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
+    pagina("", 1),
+    pagina("/funciones", 0.8),
+    pagina("/planes", 0.8),
+    pagina("/ayuda", 0.7),
+    pagina("/nosotros", 0.5),
+    pagina("/empieza", 0.6),
+    pagina("/privacidad", 0.3, "yearly"),
+    pagina("/terminos", 0.3, "yearly"),
   ];
 }

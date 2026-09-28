@@ -40,6 +40,22 @@ export const CREADOR = {
   foto: "/fundador.jpg",
 } as const;
 
+/**
+ * La cuenta vive en la web de la app (mazataller.com/app). El sitio manda ahí
+ * por direcciones cortas que redirige el Worker maza-app-web, así ningún texto
+ * muestra la ruta técnica y la web se puede mudar sin tocar el sitio.
+ */
+export const URL_ENTRAR = "/entrar";
+export const URL_REGISTRO = "/registro";
+
+/** Páginas del sitio oficial, en el orden del menú. */
+export const NAV_SITIO = [
+  { href: "/funciones", label: "Funciones" },
+  { href: "/planes", label: "Planes" },
+  { href: "/ayuda", label: "Ayuda" },
+  { href: "/nosotros", label: "Nosotros" },
+] as const;
+
 export function waLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }

@@ -53,8 +53,8 @@ export function ComputerFrame({
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
               <span className="truncate font-mono text-[11px] text-neutral-300">
-                https://<strong className="text-white">app.maza.pro</strong>
-                /mostrador
+                https://<strong className="text-white">mazataller.com</strong>
+                /app
               </span>
             </div>
 

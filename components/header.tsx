@@ -52,6 +52,18 @@ export function Header() {
           </a>
         </div>
 
+        {/* En el celular "Entrar" va a la vista, junto al menú: dentro del menú
+            desplegable nadie lo encontraba. */}
+        <div className="ml-auto flex items-center sm:hidden">
+          <a
+            href={URL_ENTRAR}
+            data-cta="entrar-movil"
+            className="inline-flex h-11 items-center bg-ink px-5 text-sm font-bold text-surface"
+          >
+            Entrar
+          </a>
+        </div>
+
         <details className="relative md:hidden">
           <summary
             className="grid h-11 w-11 cursor-pointer list-none place-items-center border border-border-strong text-ink [&::-webkit-details-marker]:hidden"

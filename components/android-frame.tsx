@@ -7,7 +7,7 @@ export interface AndroidFrameProps {
 
 /**
  * Marco de un Galaxy S25 Ultra: canto plano de titanio, esquinas apenas
- * redondeadas, bisel mínimo y cámara perforada al centro. El canto es un
+ * redondeadas y bisel mínimo, sin cámara para no tapar la captura. El canto es un
  * degradado fino (no un chasis grueso) para que la captura sea la protagonista.
  */
 export function AndroidFrame({
@@ -32,12 +32,6 @@ export function AndroidFrame({
         {/* Bisel negro mínimo */}
         <div className="rounded-[24px] bg-black p-[4px]">
           <div className={`relative ${aspect} w-full overflow-hidden rounded-[20px] bg-surface`}>
-            {/* Cámara perforada */}
-            <div
-              className="pointer-events-none absolute left-1/2 top-[7px] z-30 h-[9px] w-[9px] -translate-x-1/2 rounded-full bg-black ring-1 ring-white/10"
-              aria-hidden="true"
-            />
-
             {/* Reflejo sutil del vidrio plano */}
             <div
               className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-tr from-transparent via-transparent to-white/[0.06]"

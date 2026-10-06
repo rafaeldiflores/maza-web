@@ -14,7 +14,6 @@ import { FinalCta } from "@/components/final-cta";
 import { Footer } from "@/components/footer";
 import { StructuredData } from "@/components/structured-data";
 import { CtaFija } from "@/components/cta-fija";
-import { WaTracking } from "@/components/wa-tracking";
 import type { Metadata } from "next";
 import {
   mensajeCtaPrincipal,
@@ -60,7 +59,6 @@ export default function Empieza() {
         texto={textoCtaPrincipal()}
         detalle={detalleCta}
       />
-      <WaTracking />
     </>
   );
 }

@@ -7,6 +7,8 @@ import { CF_ANALYTICS_TOKEN, SITE_URL } from "@/lib/site";
 // Cloudflare Web Analytics si hay token. Nunca los dos a la vez.
 const enVercel = !!process.env.VERCEL;
 import { EnlacesAlta } from "@/components/enlaces-alta";
+import { WaTracking } from "@/components/wa-tracking";
+import { BotonWhatsappFlotante } from "@/components/boton-whatsapp-flotante";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -39,7 +41,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="es" className={`${bebasNeue.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         {children}
+        <BotonWhatsappFlotante />
         <EnlacesAlta />
+        <WaTracking />
         {enVercel && <Analytics />}
         {!enVercel && CF_ANALYTICS_TOKEN && (
           <script

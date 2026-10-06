@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "../logo";
-import { NAV_SITIO, URL_ENTRAR, URL_REGISTRO } from "@/lib/site";
+import { WhatsappIcon } from "../whatsapp-icon";
+import { NAV_SITIO, URL_ENTRAR, URL_REGISTRO, WA_MESSAGES, waLink } from "@/lib/site";
 
 /**
  * Cabecera del sitio oficial. A diferencia de la de la landing (anclas dentro
@@ -73,6 +74,16 @@ export function SitioHeader({ activa }: { activa?: string }) {
                   {l.label}
                 </Link>
               ))}
+              <a
+                href={waLink(WA_MESSAGES.general)}
+                target="_blank"
+                rel="noreferrer"
+                data-cta="menu-movil-whatsapp"
+                className="flex items-center justify-center gap-2 border-b border-neutral-track px-4 py-3 text-sm font-semibold text-ink hover:bg-surface-alt"
+              >
+                <WhatsappIcon className="h-4 w-4 text-[#25D366]" />
+                WhatsApp directo
+              </a>
               <a href={URL_REGISTRO} className="bg-value px-4 py-3 text-center text-sm font-bold text-splash-bg">
                 Crear cuenta gratis
               </a>

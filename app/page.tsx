@@ -9,6 +9,7 @@ import { StructuredData } from "@/components/structured-data";
 import { CierreCuenta } from "@/components/sitio/cierre-cuenta";
 import { ProntoGooglePlay } from "@/components/sitio/pronto-google-play";
 import { CelularConAsistente, MesonConAsistente } from "@/components/sitio/meson-con-asistente";
+import { WhatsappIcon } from "@/components/whatsapp-icon";
 import {
   FEATURES,
   TRIAL_DIAS,
@@ -16,6 +17,7 @@ import {
   URL_REGISTRO,
   clp,
   precioDesde,
+  waLink,
 } from "@/lib/site";
 
 /**
@@ -82,7 +84,7 @@ export default function Inicio() {
                 Órdenes, clientes, inventario y caja, con un link para que tu cliente siga su
                 vehículo y apruebe el presupuesto desde el celular.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <a
                   href={URL_REGISTRO}
                   data-cta="inicio-registro"
@@ -91,11 +93,21 @@ export default function Inicio() {
                   Crear cuenta gratis
                 </a>
                 <a
+                  href={waLink("Hola Rafa, quiero probar MAZA en mi taller.")}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cta="inicio-whatsapp"
+                  className="inline-flex h-12 items-center gap-2 border border-border-strong bg-surface px-5 text-base font-bold text-ink hover:border-ink hover:bg-surface-alt"
+                >
+                  <WhatsappIcon className="h-5 w-5 text-[#25D366]" />
+                  Hablar por WhatsApp
+                </a>
+                <a
                   href={URL_ENTRAR}
                   data-cta="inicio-entrar"
-                  className="inline-flex h-12 items-center border border-ink px-6 text-base font-bold text-ink hover:bg-surface"
+                  className="inline-flex h-12 items-center px-3 text-sm font-semibold text-ink-muted hover:text-ink hover:underline"
                 >
-                  Entrar a mi taller
+                  Entrar a mi taller →
                 </a>
               </div>
               <p className="font-mono text-xs text-ink-faint">

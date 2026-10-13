@@ -12,7 +12,6 @@ import { ProntoGooglePlay } from "@/components/sitio/pronto-google-play";
 import { CelularConAsistente, MesonConAsistente } from "@/components/sitio/meson-con-asistente";
 import {
   FEATURES,
-  TRIAL_DIAS,
   URL_ENTRAR,
   clp,
   precioDesde,
@@ -192,7 +191,7 @@ export default function Inicio() {
                 IVA incluido
               </p>
               <p className="text-sm text-ink-muted">
-                Tres planes según cuántas personas trabajan. Empiezas con {TRIAL_DIAS} días gratis.
+                Tres planes según cuántas personas trabajan. Precios con IVA incluido.
               </p>
               <span className="mt-auto text-sm font-bold text-ink group-hover:underline">Ver planes →</span>
             </Link>

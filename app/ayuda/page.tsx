@@ -3,7 +3,7 @@ import { SitioHeader } from "@/components/sitio/sitio-header";
 import { SitioFooter } from "@/components/sitio/sitio-footer";
 import { CabeceraPagina } from "@/components/sitio/cabecera-pagina";
 import { CierreCuenta } from "@/components/sitio/cierre-cuenta";
-import { TRIAL_DIAS, WA_MESSAGES, waLink } from "@/lib/site";
+import { WA_MESSAGES, waLink } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Ayuda — MAZA",
@@ -28,7 +28,7 @@ const GUIAS: Guia[] = [
       "MAZA entra por invitación: inscribe tu taller en mazataller.com y te contactamos para dejar tu cuenta lista.",
       "Elige el rubro y el nombre de tu taller. El catálogo parte con servicios de ejemplo.",
       "En Servicios pon tus precios con el ícono de etiquetas, o importa tu lista completa (ver «Importar tu lista de precios»).",
-      `Tienes ${TRIAL_DIAS} días de prueba con todo incluido. El plan se elige después, desde la app.`,
+      "Partes con todo incluido. El plan se elige después, desde la app.",
     ],
   },
   {

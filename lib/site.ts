@@ -376,7 +376,7 @@ export const FAQS = [
   },
   {
     q: "¿Puedo cancelar cuando quiera?",
-    a: `Sí. No hay contrato de permanencia ni multa por salir. Además parte con ${TRIAL_DIAS} días gratis para que pruebes con tu trabajo real antes de pagar nada.`,
+    a: "Sí. No hay contrato de permanencia ni multa por salir.",
   },
   {
     q: "Trabajo solo, ¿igual me sirve?",

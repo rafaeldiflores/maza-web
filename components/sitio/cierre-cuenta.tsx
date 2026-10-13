@@ -1,7 +1,11 @@
-import { TRIAL_DIAS, URL_ENTRAR, URL_REGISTRO } from "@/lib/site";
+import Link from "next/link";
+import { URL_ENTRAR } from "@/lib/site";
 
-/** Cierre de cada página del sitio: los dos caminos, crear cuenta o entrar. */
-export function CierreCuenta({ titulo = "Empieza hoy con tu taller real." }: { titulo?: string }) {
+/**
+ * Cierre de cada página del sitio: inscribir el taller (MAZA entra por
+ * invitación, como taller fundador) o entrar, para quien ya usa MAZA.
+ */
+export function CierreCuenta({ titulo = "¿Quieres tu taller adentro?" }: { titulo?: string }) {
   return (
     <section className="bg-splash-bg px-5 py-16 sm:px-8 sm:py-20">
       <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -10,13 +14,17 @@ export function CierreCuenta({ titulo = "Empieza hoy con tu taller real." }: { t
             {titulo}
           </h2>
           <p className="mt-3 font-mono text-xs text-splash-ink-faint">
-            {TRIAL_DIAS} días gratis · Sin tarjeta · Te ayudamos a cargarlo
+            Talleres fundadores · Pocos cupos · Te contactamos por WhatsApp
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <a href={URL_REGISTRO} className="inline-flex h-12 items-center bg-value px-6 font-bold text-splash-bg">
-            Crear cuenta gratis
-          </a>
+          <Link
+            href="/#inscripcion"
+            data-cta="cierre-inscripcion"
+            className="inline-flex h-12 items-center bg-value px-6 font-bold text-splash-bg"
+          >
+            Inscribir mi taller
+          </Link>
           <a href={URL_ENTRAR} className="inline-flex h-12 items-center border border-splash-border px-6 font-bold text-splash-ink">
             Entrar
           </a>

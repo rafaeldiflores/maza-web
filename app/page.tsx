@@ -7,6 +7,7 @@ import { PhoneFrame } from "@/components/phone-frame";
 import { FeatureIcon } from "@/components/feature-icon";
 import { StructuredData } from "@/components/structured-data";
 import { InscripcionBeta } from "@/components/sitio/inscripcion-beta";
+import { CierreCuenta } from "@/components/sitio/cierre-cuenta";
 import { ProntoGooglePlay } from "@/components/sitio/pronto-google-play";
 import { CelularConAsistente, MesonConAsistente } from "@/components/sitio/meson-con-asistente";
 import {
@@ -19,8 +20,9 @@ import {
 
 /**
  * Portada del sitio oficial. Mientras dure el programa de talleres fundadores,
- * lo primero es la invitación a inscribir el taller (llega al WhatsApp de MAZA). Crear cuenta
- * no aparece acá: /registro sigue existiendo para quien reciba el link.
+ * lo primero es la invitación a inscribir el taller (llega al WhatsApp de MAZA).
+ * No hay "crear cuenta" en el sitio: /registro sigue existiendo (sin indexar)
+ * para quien reciba el link a mano.
  * "Entrar a mi taller" queda chico, para los talleres que ya usan MAZA.
  */
 export const metadata: Metadata = {
@@ -68,7 +70,7 @@ export default function Inicio() {
   return (
     <>
       <StructuredData />
-      <SitioHeader activa="/" accion="beta" />
+      <SitioHeader activa="/" />
       <main className="flex-1">
         {/* ─── Apertura ─────────────────────────────────────────────── */}
         <section className="px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12">
@@ -205,30 +207,7 @@ export default function Inicio() {
           </div>
         </section>
 
-        <section className="bg-splash-bg px-5 py-16 sm:px-8 sm:py-20">
-          <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h2 className="max-w-[18ch] font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-[0.98] tracking-[0.01em] text-splash-ink">
-                ¿Quieres tu taller adentro?
-              </h2>
-              <p className="mt-3 font-mono text-xs text-splash-ink-faint">
-                Talleres fundadores · Pocos cupos · Te contactamos por WhatsApp
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="#inscripcion"
-                data-cta="inicio-cierre-inscripcion"
-                className="inline-flex h-12 items-center bg-value px-6 font-bold text-splash-bg"
-              >
-                Inscribir mi taller
-              </a>
-              <a href={URL_ENTRAR} className="inline-flex h-12 items-center border border-splash-border px-6 font-bold text-splash-ink">
-                Entrar
-              </a>
-            </div>
-          </div>
-        </section>
+        <CierreCuenta />
       </main>
       <SitioFooter />
     </>

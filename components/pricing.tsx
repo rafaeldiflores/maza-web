@@ -48,12 +48,11 @@ export function Pricing() {
       <div className="mx-auto max-w-6xl">
         <div className="reveal mb-12 max-w-2xl sm:mb-16">
           <h2 className="font-display text-[clamp(2.25rem,6vw,3.5rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
-            Pruébalo primero. Decides después.
+            Un plan para cada tamaño de taller.
           </h2>
           <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-ink-muted sm:text-lg">
-            Todos los planes parten con {TRIAL_DIAS} días gratis, sin tarjeta
-            de crédito. Te acompañamos en la puesta en marcha: hablas con una
-            persona, no con un formulario.
+            Te acompañamos en la puesta en marcha: hablas con una persona, no
+            con un formulario.
           </p>
         </div>
 
@@ -164,11 +163,8 @@ export function Pricing() {
                     : "border border-ink text-ink hover:bg-surface-alt"
                 }`}
               >
-                Probar {plan.name} gratis
+                Consultar por {plan.name}
               </a>
-              <p className="rotulo mt-2.5 text-center text-[10px]">
-                {TRIAL_DIAS} días gratis · Sin tarjeta
-              </p>
             </div>
           ))}
         </div>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "../logo";
 import { WhatsappIcon } from "../whatsapp-icon";
-import { NAV_SITIO, URL_ENTRAR, URL_REGISTRO, WA_MESSAGES, waLink } from "@/lib/site";
+import { NAV_SITIO, URL_ENTRAR, WA_MESSAGES, waLink } from "@/lib/site";
 
 /**
  * Cabecera del sitio oficial. A diferencia de la de la landing (anclas dentro
@@ -12,12 +12,10 @@ import { NAV_SITIO, URL_ENTRAR, URL_REGISTRO, WA_MESSAGES, waLink } from "@/lib/
  * `activa` es la ruta de la página actual: el sitio es estático y la marca se
  * decide al compilar, sin JavaScript en el cliente.
  */
-export function SitioHeader({ activa, accion = "registro" }: { activa?: string; accion?: "registro" | "beta" }) {
-  // En la portada (beta cerrada) la acción principal es inscribir el taller, no crear cuenta.
-  const cta =
-    accion === "beta"
-      ? { href: "#inscripcion", corto: "Inscribir taller", largo: "Inscribir mi taller", data: "sitio-inscripcion" }
-      : { href: URL_REGISTRO, corto: "Crear cuenta", largo: "Crear cuenta gratis", data: "sitio-registro" };
+export function SitioHeader({ activa }: { activa?: string }) {
+  // MAZA entra por invitación (talleres fundadores): no hay "crear cuenta" en el
+  // sitio; la acción principal es inscribir el taller (formulario de la portada).
+  const cta = { href: "/#inscripcion", corto: "Inscribir taller", largo: "Inscribir mi taller", data: "sitio-inscripcion" };
   return (
     <header className="sticky top-0 z-40 border-b border-border-soft bg-app-bg">
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-5 py-3 sm:px-8">

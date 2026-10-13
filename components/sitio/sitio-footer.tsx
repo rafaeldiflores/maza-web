@@ -5,7 +5,6 @@ import {
   CONTACT_EMAIL,
   CONTACT_PHONE_DISPLAY,
   URL_ENTRAR,
-  URL_REGISTRO,
   WA_MESSAGES,
   waLink,
 } from "@/lib/site";
@@ -37,7 +36,6 @@ export function SitioFooter() {
         <div className="flex flex-col sm:gap-2">
           <p className="rotulo rotulo-sm mb-1">Cuenta</p>
           <a href={URL_ENTRAR} className={enlace}>Entrar</a>
-          <a href={URL_REGISTRO} className={enlace}>Crear cuenta</a>
           <a href="/eliminar-cuenta" className={enlace}>Eliminar cuenta</a>
         </div>
 

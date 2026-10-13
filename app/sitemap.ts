@@ -16,7 +16,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     pagina("/planes", 0.8),
     pagina("/ayuda", 0.7),
     pagina("/nosotros", 0.5),
-    pagina("/empieza", 0.6),
     pagina("/privacidad", 0.3, "yearly"),
     pagina("/terminos", 0.3, "yearly"),
   ];

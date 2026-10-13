@@ -120,7 +120,7 @@ export const WA_MESSAGES = {
   general: "Hola, quiero saber más sobre MAZA para mi taller.",
   trial: `Hola, quiero probar MAZA gratis por ${TRIAL_DIAS} días en mi taller.`,
   plan: (plan: string) =>
-    `Hola, quiero probar MAZA con el plan ${plan} en mi taller.`,
+    `Hola, quiero saber más del plan ${plan} de MAZA para mi taller.`,
   tester:
     "Hola, quiero crear mi cuenta de MAZA y sumarme a la prueba de la app de Android. Mi correo de Google Play es: ",
 } as const;

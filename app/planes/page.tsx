@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { SitioHeader } from "@/components/sitio/sitio-header";
 import { SitioFooter } from "@/components/sitio/sitio-footer";
@@ -5,11 +6,10 @@ import { CabeceraPagina } from "@/components/sitio/cabecera-pagina";
 import { CierreCuenta } from "@/components/sitio/cierre-cuenta";
 import { Pricing } from "@/components/pricing";
 import { Faq } from "@/components/faq";
-import { TRIAL_DIAS, URL_REGISTRO } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Planes y precios — MAZA",
-  description: `Taller Solo, Taller Pro y Empresa. Empieza con ${TRIAL_DIAS} días gratis, sin tarjeta.`,
+  description: "Taller Solo, Taller Pro y Empresa. Precios con IVA incluido.",
   alternates: { canonical: "/planes" },
 };
 
@@ -27,14 +27,13 @@ export default function Planes() {
         <CabeceraPagina rotulo="Planes y precios" titulo="Paga por las personas que trabajan, no por las órdenes">
           <p>
             Todos los planes incluyen la app y la web, el link de seguimiento y el asistente con IA.
-            Empiezas con {TRIAL_DIAS} días gratis y eliges plan cuando quieras, desde la app.
           </p>
-          <a
-            href={URL_REGISTRO}
+          <Link
+            href="/#inscripcion"
             className="mt-6 inline-flex h-12 items-center bg-value px-6 text-base font-bold text-splash-bg"
           >
-            Crear cuenta y probar gratis
-          </a>
+            Inscribir mi taller
+          </Link>
         </CabeceraPagina>
         <Pricing />
         <Faq />

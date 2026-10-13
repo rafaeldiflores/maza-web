@@ -1,6 +1,18 @@
 # Reglas de cabeceras de Cloudflare (Workers static assets).
 # El export deja /icon y /opengraph-image sin extensión, y sin esto salen como
 # application/octet-stream: WhatsApp no muestra la previsualización del link.
+#
+# Seguridad para todo el sitio (auditoría de lanzamiento, 13/10/2026): sin
+# iframes ajenos, sin adivinar tipos, HTTPS recordado por el navegador y el
+# Referer recortado al dominio. Las rutas que atienden los Workers de la app
+# (/app, /o, /api...) no pasan por acá: ponen sus propias cabeceras.
+/*
+  X-Frame-Options: DENY
+  Content-Security-Policy: frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
 /icon
   Content-Type: image/png
 /opengraph-image

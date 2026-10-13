@@ -6,24 +6,22 @@ import { ComputerFrame } from "@/components/computer-frame";
 import { PhoneFrame } from "@/components/phone-frame";
 import { FeatureIcon } from "@/components/feature-icon";
 import { StructuredData } from "@/components/structured-data";
-import { CierreCuenta } from "@/components/sitio/cierre-cuenta";
+import { InscripcionBeta } from "@/components/sitio/inscripcion-beta";
 import { ProntoGooglePlay } from "@/components/sitio/pronto-google-play";
 import { CelularConAsistente, MesonConAsistente } from "@/components/sitio/meson-con-asistente";
-import { WhatsappIcon } from "@/components/whatsapp-icon";
 import {
   FEATURES,
   TRIAL_DIAS,
   URL_ENTRAR,
-  URL_REGISTRO,
   clp,
   precioDesde,
-  waLink,
 } from "@/lib/site";
 
 /**
- * Portada del sitio oficial. Quien llega acá ya busca MAZA (o vuelve a entrar):
- * lo primero es qué es y los dos caminos, crear cuenta o entrar. La venta
- * larga, con demo y WhatsApp, vive en /empieza para los anuncios.
+ * Portada del sitio oficial. Mientras dure la beta cerrada, lo primero es la
+ * invitación a inscribir el taller (llega al WhatsApp de MAZA). Crear cuenta
+ * no aparece acá: /registro sigue existiendo para quien reciba el link.
+ * "Entrar a mi taller" queda chico, para los talleres que ya usan MAZA.
  */
 export const metadata: Metadata = {
   title: "MAZA — Gestión para talleres multirubro",
@@ -70,49 +68,28 @@ export default function Inicio() {
   return (
     <>
       <StructuredData />
-      <SitioHeader activa="/" />
+      <SitioHeader activa="/" accion="beta" />
       <main className="flex-1">
         {/* ─── Apertura ─────────────────────────────────────────────── */}
-        <section className="px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-20">
+        <section className="px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12">
           <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            <div className="flex flex-col items-start gap-6 lg:col-span-5">
-              <p className="rotulo">Gestión de talleres · Multirubro</p>
-              <h1 className="font-display text-[clamp(3rem,8vw,5.25rem)] leading-[0.92] tracking-[0.01em] text-ink text-balance">
-                Todo tu taller en un solo sistema.
+            <div className="flex flex-col items-start gap-5 lg:col-span-5">
+              <p className="rotulo">Beta cerrada · Talleres multirubro</p>
+              <h1 className="font-display text-[clamp(2.75rem,6vw,4rem)] leading-[0.92] tracking-[0.01em] text-ink text-balance">
+                Estamos eligiendo los talleres de la beta.
               </h1>
-              <p className="max-w-[44ch] text-lg leading-relaxed text-ink-muted">
-                Órdenes, clientes, inventario y caja, con un link para que tu cliente siga su
-                vehículo y apruebe el presupuesto desde el celular.
+              <p className="max-w-[46ch] text-lg leading-relaxed text-ink-muted">
+                Pocos talleres, elegidos uno a uno, van a usar MAZA antes que nadie y con
+                beneficios exclusivos. Inscribe el tuyo y te contactamos.
               </p>
-              <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href={URL_REGISTRO}
-                  data-cta="inicio-registro"
-                  className="inline-flex h-12 items-center bg-value px-6 text-base font-bold text-splash-bg"
-                >
-                  Crear cuenta gratis
-                </a>
-                <a
-                  href={waLink("Hola Rafa, quiero probar MAZA en mi taller.")}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cta="inicio-whatsapp"
-                  className="inline-flex h-12 items-center gap-2 border border-border-strong bg-surface px-5 text-base font-bold text-ink hover:border-ink hover:bg-surface-alt"
-                >
-                  <WhatsappIcon className="h-5 w-5 text-[#25D366]" />
-                  Hablar por WhatsApp
-                </a>
-                <a
-                  href={URL_ENTRAR}
-                  data-cta="inicio-entrar"
-                  className="inline-flex h-12 items-center px-3 text-sm font-semibold text-ink-muted hover:text-ink hover:underline"
-                >
-                  Entrar a mi taller →
-                </a>
-              </div>
-              <p className="font-mono text-xs text-ink-faint">
-                {TRIAL_DIAS} días gratis · Sin tarjeta · Celular y computador
-              </p>
+              <InscripcionBeta />
+              <a
+                href={URL_ENTRAR}
+                data-cta="inicio-entrar"
+                className="text-sm font-semibold text-ink-muted hover:text-ink hover:underline"
+              >
+                ¿Ya usas MAZA? Entrar a mi taller →
+              </a>
               <ProntoGooglePlay />
             </div>
 
@@ -209,7 +186,8 @@ export default function Inicio() {
             <Link href="/planes" className="caja group flex flex-col gap-3 p-6 hover:border-ink">
               <p className="rotulo rotulo-sm">Planes y precios</p>
               <p className="text-ink-muted">
-                Desde <span className="cifra text-3xl text-value-shade">{clp.format(precioDesde())}</span> al mes
+                Desde <span className="cifra text-3xl text-value-shade">{clp.format(precioDesde())}</span> al mes,
+                IVA incluido
               </p>
               <p className="text-sm text-ink-muted">
                 Tres planes según cuántas personas trabajan. Empiezas con {TRIAL_DIAS} días gratis.
@@ -227,7 +205,30 @@ export default function Inicio() {
           </div>
         </section>
 
-        <CierreCuenta />
+        <section className="bg-splash-bg px-5 py-16 sm:px-8 sm:py-20">
+          <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="max-w-[18ch] font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-[0.98] tracking-[0.01em] text-splash-ink">
+                ¿Quieres tu taller adentro?
+              </h2>
+              <p className="mt-3 font-mono text-xs text-splash-ink-faint">
+                Beta cerrada · Pocos cupos · Te contactamos por WhatsApp
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="#inscripcion"
+                data-cta="inicio-cierre-inscripcion"
+                className="inline-flex h-12 items-center bg-value px-6 font-bold text-splash-bg"
+              >
+                Inscribir mi taller
+              </a>
+              <a href={URL_ENTRAR} className="inline-flex h-12 items-center border border-splash-border px-6 font-bold text-splash-ink">
+                Entrar
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
       <SitioFooter />
     </>

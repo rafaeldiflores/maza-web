@@ -7,19 +7,20 @@ import { WA_MESSAGES, waLink } from "@/lib/site";
 /**
  * Botón flotante persistente de WhatsApp.
  * Permite que cualquier dueño de taller que esté mirando la web (en inicio,
- * planes, funciones o ayuda) pueda abrir un chat directo con Rafa con 1 toque.
+ * planes, funciones o ayuda) pueda abrir un chat directo con MAZA con 1 toque.
  *
- * En /empieza en pantallas móviles se oculta para no superponerse con CtaFija.
+ * En /empieza en pantallas móviles se oculta para no superponerse con CtaFija,
+ * y en la portada para no tapar el formulario de inscripción a la beta.
  */
 export function BotonWhatsappFlotante() {
   const pathname = usePathname();
-  const enEmpieza = pathname === "/empieza";
+  const ocultarEnCelular = pathname === "/empieza" || pathname === "/";
 
   return (
     <aside
       aria-label="Contacto directo por WhatsApp"
       className={`fixed bottom-5 right-5 z-40 transition-transform duration-200 hover:-translate-y-0.5 ${
-        enEmpieza ? "hidden sm:block" : "block"
+        ocultarEnCelular ? "hidden sm:block" : "block"
       }`}
     >
       <a
@@ -27,7 +28,7 @@ export function BotonWhatsappFlotante() {
         target="_blank"
         rel="noreferrer"
         data-cta="flotante-whatsapp"
-        aria-label="Hablar con Rafa por WhatsApp"
+        aria-label="Escribir a MAZA por WhatsApp"
         className="group flex items-center gap-2.5 border-2 border-ink bg-[#25D366] px-3.5 py-2.5 text-ink shadow-[3px_3px_0px_#1a1a2e] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_#1a1a2e]"
       >
         <div className="flex h-7 w-7 items-center justify-center text-ink">
@@ -35,10 +36,10 @@ export function BotonWhatsappFlotante() {
         </div>
         <div className="flex flex-col pr-1 text-left">
           <span className="font-bold text-xs uppercase tracking-tight text-ink sm:text-sm">
-            Hablar con Rafa
+            Escríbenos
           </span>
           <span className="font-mono text-[10px] font-semibold text-ink/80">
-            WhatsApp Taller
+            WhatsApp MAZA
           </span>
         </div>
       </a>

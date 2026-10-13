@@ -2,9 +2,10 @@ import { WhatsappIcon } from "./whatsapp-icon";
 import { CREADOR, waLink } from "@/lib/site";
 
 /**
- * El creador y su historia: un taller de bicis abierto en pandemia para pagar
- * la carrera, cinco años atendido en paralelo a Ingeniería Informática, y
- * MAZA como resultado de las dos cosas.
+ * El fundador y su historia, en tercera persona y voz de marca: un taller real
+ * atendido cinco años en paralelo a Ingeniería Informática, y MAZA como
+ * resultado de las dos cosas. MAZA habla en plural; la cara del fundador da
+ * confianza sin que todo parezca depender de una sola persona.
  */
 export function QuienEstaDetras() {
   return (
@@ -13,7 +14,7 @@ export function QuienEstaDetras() {
         {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
         <img
           src={CREADOR.foto}
-          alt={`${CREADOR.nombre}, creador de MAZA`}
+          alt={`${CREADOR.nombre}, fundador y CEO de MAZA`}
           width={96}
           height={96}
           loading="lazy"
@@ -21,43 +22,38 @@ export function QuienEstaDetras() {
         />
 
         <div className="flex flex-col gap-4">
-          <p className="rotulo text-[10px] text-value-shade">Quién está detrás</p>
+          <p className="rotulo text-[10px] text-value-shade">El fundador</p>
           <h2 className="font-display text-[clamp(2rem,5vw,3rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
             Cinco años de taller. Cuatro de ingeniería.
           </h2>
           <div className="flex flex-col gap-3 text-base leading-relaxed text-ink-muted">
             <p>
-              Soy {CREADOR.nombre}, ingeniero informático, oriundo
-              de {CREADOR.ciudad}. Desde chico quise entender cómo funcionan las
-              cosas por dentro, y la mecánica siempre fue una pasión aparte de
-              la informática.
+              <strong className="text-ink">{CREADOR.nombre}</strong>, fundador y CEO de
+              MAZA, es ingeniero en informática de {CREADOR.ciudad}. La mecánica y el
+              software fueron siempre sus dos oficios.
             </p>
             <p>
-              En pandemia, cuando las bicis se llenaron de trabajo, abrí{" "}
-              <strong className="text-ink">{CREADOR.taller}</strong>, mi taller
-              de bicicletas, para pagarme la carrera. Lo atendí cinco años mientras
-              estudiaba, y ahí conocí los problemas de verdad: el cuaderno, las
-              llamadas preguntando si la bici estaba lista, los presupuestos que
-              nadie contestaba.
+              En 2021 abrió <strong className="text-ink">{CREADOR.taller}</strong> y lo
+              atendió cinco años mientras estudiaba. Ahí vio de cerca los problemas de
+              todos los días: el cuaderno, las llamadas preguntando si el trabajo estaba
+              listo, los presupuestos que nadie contestaba.
             </p>
             <p>
-              Cada herramienta que aprendía en la carrera la probaba en el
-              taller. Lo que partió como un proyecto de estudio se transformó en
-              MAZA, que llevo casi dos años construyendo. Lo desarrollo y lo
-              atiendo yo: si me escribes, te respondo yo.
+              MAZA nació para resolver eso en un taller real. Cada función se prueba
+              primero en el trabajo diario de un taller antes de llegar a los demás.
             </p>
           </div>
 
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
             <a
-              href={waLink(`Hola ${CREADOR.corto}, quiero conversar sobre MAZA para mi taller.`)}
+              href={waLink("Hola, quiero conversar sobre MAZA para mi taller.")}
               target="_blank"
               rel="noreferrer"
               data-cta="creador"
               className="inline-flex items-center justify-center gap-2 bg-value px-6 py-3 text-sm font-bold text-splash-bg transition-colors hover:bg-value-shade"
             >
               <WhatsappIcon />
-              Escribirme por WhatsApp
+              Escríbenos por WhatsApp
             </a>
             <a
               href={CREADOR.linkedin}
@@ -65,7 +61,7 @@ export function QuienEstaDetras() {
               rel="noreferrer"
               className="inline-flex items-center justify-center border border-border-strong px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-surface-alt"
             >
-              Ver mi LinkedIn ↗
+              LinkedIn del fundador ↗
             </a>
           </div>
         </div>

@@ -16,6 +16,14 @@ export const MARCA = {
   buje: "M50.00,34.85A15.15,15.15 0 1,1 50.00,65.15A15.15,15.15 0 1,1 50.00,34.85ZM55.34,40.83A1.82,1.82 0 1,1 55.34,44.46A1.82,1.82 0 1,1 55.34,40.83ZM58.65,50.99A1.82,1.82 0 1,1 58.65,54.63A1.82,1.82 0 1,1 58.65,50.99ZM50.00,57.27A1.82,1.82 0 1,1 50.00,60.91A1.82,1.82 0 1,1 50.00,57.27ZM41.35,50.99A1.82,1.82 0 1,1 41.35,54.63A1.82,1.82 0 1,1 41.35,50.99ZM44.66,40.83A1.82,1.82 0 1,1 44.66,44.46A1.82,1.82 0 1,1 44.66,40.83ZM50.00,46.67A3.33,3.33 0 1,1 50.00,53.33A3.33,3.33 0 1,1 50.00,46.67Z",
 } as const;
 
+/**
+ * Tuerca hexagonal (lados planos arriba y abajo) que contiene la rueda: la caja
+ * del logo desde el 13-10-2026. Se dibuja con trazo redondeado de 8 del mismo
+ * color; la rueda va en `translate(20.5 20.5) scale(0.59)`.
+ */
+export const TUERCA = "M4,50 L27,10.2 L73,10.2 L96,50 L73,89.8 L27,89.8 Z";
+export const RUEDA_EN_TUERCA = "translate(20.5 20.5) scale(0.59)";
+
 export const NARANJO = "#ff9900";
 export const TINTA = "#16161a";
 export const CLARO = "#f2f2f5";

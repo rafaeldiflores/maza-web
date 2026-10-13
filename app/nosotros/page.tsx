@@ -14,7 +14,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Nosotros — MAZA",
-  description: `MAZA la creó ${CREADOR.nombre}, que tuvo taller de bicicletas antes de ser ingeniero. Contacto por WhatsApp y correo.`,
+  description: `MAZA nació en un taller real. Conoce a su fundador, ${CREADOR.nombre}, y cómo contactarnos por WhatsApp y correo.`,
   alternates: { canonical: "/nosotros" },
 };
 
@@ -23,7 +23,7 @@ export default function Nosotros() {
     <>
       <SitioHeader activa="/nosotros" />
       <main className="flex-1">
-        <CabeceraPagina rotulo="Nosotros" titulo="Hecho por alguien que tuvo taller">
+        <CabeceraPagina rotulo="Nosotros" titulo="Hecho desde un taller real">
           MAZA nació en el mesón de {CREADOR.taller}, en {CREADOR.ciudad}: primero para ordenar
           un taller de verdad, después para los demás.
         </CabeceraPagina>

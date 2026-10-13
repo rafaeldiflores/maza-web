@@ -7,6 +7,7 @@ import {
   precioFinal,
   waLink,
 } from "@/lib/site";
+import Link from "next/link";
 
 const currency = new Intl.NumberFormat("es-CL", {
   style: "currency",
@@ -71,13 +72,16 @@ export function Pricing() {
             </p>
           </div>
         ) : (
-          <div className="reveal mb-8 flex flex-wrap items-center gap-3 border border-border-strong bg-value-soft px-5 py-4">
-            <span className="rotulo bg-value px-2.5 py-1 text-[10px] text-splash-bg">
-              {TRIAL_DIAS} días gratis
+          <div className="reveal mb-8 flex flex-col gap-1.5 border border-border-strong bg-value-soft px-5 py-4">
+            <span className="rotulo w-fit bg-value px-2.5 py-1 text-[10px] text-splash-bg">
+              Beta cerrada
             </span>
             <p className="text-sm font-medium text-ink">
-              Pruébalo con el trabajo real de tu taller antes de pagar nada.
+              Los talleres de la beta tienen condiciones especiales.
             </p>
+            <Link href="/#inscripcion" className="w-fit text-sm font-bold text-ink underline underline-offset-4">
+              Inscribe tu taller →
+            </Link>
           </div>
         )}
 
@@ -125,6 +129,7 @@ export function Pricing() {
                   / mes
                 </span>
               </p>
+              <p className="rotulo mt-1 text-[10px]">IVA incluido</p>
               {plan.extraSeatPrice && (
                 <p className="rotulo mt-1 text-[10px]">
                   + {currency.format(precioFinal(plan.extraSeatPrice))} por mecánico extra

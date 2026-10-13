@@ -34,6 +34,7 @@ export const CREADOR = {
   nombre: "Rafael Díaz Flores",
   corto: "Rafael",
   titulo: "Ingeniero informático (Duoc UC)",
+  cargo: "Fundador y CEO",
   ciudad: "El Quisco, Chile",
   taller: "Litoral Bikes",
   linkedin: "https://www.linkedin.com/in/rafaeldiaz-it",
@@ -86,9 +87,13 @@ export const TRIAL_DIAS = 14;
  * activar la prueba y se baja si al terminarla no paga. Se actualiza a mano: el
  * contador tiene que ser verdad, si no la urgencia se vuelve un truco. Con
  * `activa: false` la sección vuelve a los precios de lista.
+ *
+ * Apagado el 13-10-2026: en la web solo va el precio de lista (IVA incluido).
+ * El trato de los beta testers (gratis durante la beta y luego 50% por 12
+ * meses) se ofrece uno a uno por WhatsApp, no se publica.
  */
 export const FUNDADOR = {
-  activa: true,
+  activa: false,
   descuento: 0.5,
   cupos: 20,
   tomados: 0,
@@ -351,7 +356,7 @@ export const FAQS = [
   },
   {
     q: "¿Sirve para mi rubro?",
-    a: "Sí. MAZA es multirubro: al crear tu cuenta eliges si trabajas con autos, motos o bicicletas, y la app cambia los campos y los términos: el auto se controla por kilometraje, la bicicleta por calendario. No es una app de autos adaptada a la fuerza.",
+    a: "Sí. MAZA es multirubro: al crear tu cuenta eliges el rubro de tu taller y la app cambia los campos y los términos: el auto se controla por kilometraje, la bicicleta por calendario. No es una app de autos adaptada a la fuerza.",
   },
   {
     q: "No hago mecánica, hago detailing / lavado. ¿Me sirve igual?",

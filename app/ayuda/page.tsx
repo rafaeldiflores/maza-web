@@ -26,7 +26,7 @@ const GUIAS: Guia[] = [
     titulo: "Primeros pasos",
     pasos: [
       "Crea tu cuenta en mazataller.com con «Crear cuenta», o descarga la app desde Google Play.",
-      "Elige tu rubro (bicicletas, motos o autos) y el nombre del taller. El catálogo parte con servicios de ejemplo.",
+      "Elige el rubro y el nombre de tu taller. El catálogo parte con servicios de ejemplo.",
       "En Servicios pon tus precios con el ícono de etiquetas, o importa tu lista completa (ver «Importar tu lista de precios»).",
       `Tienes ${TRIAL_DIAS} días de prueba con todo incluido. El plan se elige después, desde la app.`,
     ],

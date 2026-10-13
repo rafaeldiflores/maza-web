@@ -1,4 +1,4 @@
-import { LogoMark } from "./logo";
+import { LogoTuerca } from "./logo";
 import { WhatsappIcon } from "./whatsapp-icon";
 import { mensajeCtaPrincipal, textoCtaPrincipal, waLink } from "@/lib/site";
 
@@ -6,9 +6,7 @@ export function FinalCta() {
   return (
     <section id="empezar" className="px-5 pb-24 pt-8 sm:px-8 sm:pb-32">
       <div className="caja reveal mx-auto flex max-w-5xl flex-col items-center gap-7 px-6 py-16 text-center sm:px-14 sm:py-20">
-        <span className="grid h-14 w-14 place-items-center bg-ink text-app-bg">
-          <LogoMark className="h-9 w-9" />
-        </span>
+        <LogoTuerca className="h-16 w-16" />
 
         <h2 className="max-w-[18ch] font-display text-[clamp(2.25rem,6vw,4rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
           Empieza con el vehículo que tienes en el taller ahora.

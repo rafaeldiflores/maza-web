@@ -31,16 +31,16 @@ export function Hero() {
             {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
             <img
               src={CREADOR.foto}
-              alt={`${CREADOR.nombre}, creador de MAZA`}
+              alt={`${CREADOR.nombre}, fundador y CEO de MAZA`}
               width={48}
               height={48}
               className="h-12 w-12 shrink-0 rounded-full object-cover"
             />
             <p className="text-sm leading-snug text-ink-muted">
-              <span className="font-semibold text-ink">Te atiendo yo, {CREADOR.corto}.</span>
+              <span className="font-semibold text-ink">{CREADOR.nombre} · {CREADOR.cargo}</span>
               <br />
-              Tuve taller de bicicletas y creé MAZA.{" "}
-              <span className="underline underline-offset-2">Mi historia ↓</span>
+              MAZA nació en un taller real.{" "}
+              <span className="underline underline-offset-2">Nuestra historia ↓</span>
             </p>
           </a>
         </div>

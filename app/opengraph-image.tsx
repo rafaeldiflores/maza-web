@@ -1,5 +1,7 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { MARCA, NARANJO, TINTA } from "@/lib/marca";
+import { CLARO, MARCA, NARANJO, RUEDA_EN_TUERCA, TUERCA } from "@/lib/marca";
 
 // Se genera al compilar: el export estático de Cloudflare no tiene servidor.
 export const dynamic = "force-static";
@@ -7,6 +9,10 @@ export const dynamic = "force-static";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 export const alt = "MAZA — Gestión inteligente para tu taller";
+
+// Barlow, la tipografía de texto de la marca (assets/fonts, licencia OFL).
+const barlow = await readFile(join(process.cwd(), "assets/fonts/Barlow-Regular.ttf"));
+const barlowExtraBold = await readFile(join(process.cwd(), "assets/fonts/Barlow-ExtraBold.ttf"));
 
 const MONO =
   "ui-monospace, 'SF Mono', 'Cascadia Code', 'Roboto Mono', Consolas, monospace";
@@ -23,25 +29,19 @@ export default function OpengraphImage() {
           justifyContent: "space-between",
           padding: 72,
           background: "#0a0a0a",
-          fontFamily: "sans-serif",
+          fontFamily: "Barlow",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              width: 76,
-              height: 76,
-              background: "#f2f2f5",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <svg width="56" height="56" viewBox="0 0 100 100">
-              <path d={MARCA.silueta} fill={TINTA} fillRule="evenodd" />
+          {/* Tuerca tinta con borde claro sutil para que se lea sobre el fondo negro */}
+          <svg width="84" height="84" viewBox="0 0 100 100">
+            <path d={TUERCA} fill="none" stroke="rgba(255,255,255,0.16)" strokeWidth={10.5} strokeLinejoin="round" />
+            <path d={TUERCA} fill="#1a1a2e" stroke="#1a1a2e" strokeWidth={8} strokeLinejoin="round" />
+            <g transform={RUEDA_EN_TUERCA}>
+              <path d={MARCA.silueta} fill={CLARO} fillRule="evenodd" />
               <path d={MARCA.buje} fill={NARANJO} fillRule="evenodd" />
-            </svg>
-          </div>
+            </g>
+          </svg>
           <span
             style={{
               fontSize: 46,
@@ -88,7 +88,7 @@ export default function OpengraphImage() {
               padding: "12px 24px",
             }}
           >
-            14 días gratis
+            Beta cerrada
           </div>
           <div
             style={{
@@ -99,11 +99,17 @@ export default function OpengraphImage() {
               color: "#9497a1",
             }}
           >
-            Taller multirubro
+            Talleres multirubro · mazataller.com
           </div>
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: "Barlow", data: barlow, style: "normal", weight: 400 },
+        { name: "Barlow", data: barlowExtraBold, style: "normal", weight: 800 },
+      ],
+    }
   );
 }

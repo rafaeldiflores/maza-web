@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bebas_Neue } from "next/font/google";
+import { Barlow, Bebas_Neue } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { CF_ANALYTICS_TOKEN, SITE_URL } from "@/lib/site";
 
@@ -10,6 +10,14 @@ import { EnlacesAlta } from "@/components/enlaces-alta";
 import { WaTracking } from "@/components/wa-tracking";
 import { BotonWhatsappFlotante } from "@/components/boton-whatsapp-flotante";
 import "./globals.css";
+
+// Texto de la marca: Barlow (inspirada en la señalética de carreteras).
+const barlow = Barlow({
+  variable: "--font-barlow",
+  weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
@@ -38,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${bebasNeue.variable} h-full antialiased`}>
+    <html lang="es" className={`${barlow.variable} ${bebasNeue.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         {children}
         <BotonWhatsappFlotante />

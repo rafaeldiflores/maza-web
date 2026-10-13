@@ -12,7 +12,12 @@ import { NAV_SITIO, URL_ENTRAR, URL_REGISTRO, WA_MESSAGES, waLink } from "@/lib/
  * `activa` es la ruta de la página actual: el sitio es estático y la marca se
  * decide al compilar, sin JavaScript en el cliente.
  */
-export function SitioHeader({ activa }: { activa?: string }) {
+export function SitioHeader({ activa, accion = "registro" }: { activa?: string; accion?: "registro" | "beta" }) {
+  // En la portada (beta cerrada) la acción principal es inscribir el taller, no crear cuenta.
+  const cta =
+    accion === "beta"
+      ? { href: "#inscripcion", corto: "Inscribir taller", largo: "Inscribir mi taller", data: "sitio-inscripcion" }
+      : { href: URL_REGISTRO, corto: "Crear cuenta", largo: "Crear cuenta gratis", data: "sitio-registro" };
   return (
     <header className="sticky top-0 z-40 border-b border-border-soft bg-app-bg">
       <div className="mx-auto flex max-w-6xl items-center gap-6 px-5 py-3 sm:px-8">
@@ -46,11 +51,11 @@ export function SitioHeader({ activa }: { activa?: string }) {
             Entrar
           </a>
           <a
-            href={URL_REGISTRO}
-            data-cta="sitio-registro"
+            href={cta.href}
+            data-cta={cta.data}
             className="hidden h-10 items-center bg-value px-4 text-sm font-bold text-splash-bg sm:inline-flex"
           >
-            Crear cuenta
+            {cta.corto}
           </a>
 
           <details className="relative md:hidden">
@@ -84,8 +89,8 @@ export function SitioHeader({ activa }: { activa?: string }) {
                 <WhatsappIcon className="h-4 w-4 text-[#25D366]" />
                 WhatsApp directo
               </a>
-              <a href={URL_REGISTRO} className="bg-value px-4 py-3 text-center text-sm font-bold text-splash-bg">
-                Crear cuenta gratis
+              <a href={cta.href} className="bg-value px-4 py-3 text-center text-sm font-bold text-splash-bg">
+                {cta.largo}
               </a>
             </div>
           </details>

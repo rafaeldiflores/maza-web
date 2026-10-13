@@ -27,7 +27,7 @@ const PASOS = [
   {
     titulo: "Súmate a la prueba de la app",
     texto:
-      "La app todavía no está publicada en Google Play. Escríbeme por WhatsApp con el correo de tu Google Play y te agrego a los testers el mismo día.",
+      "La app todavía no está publicada en Google Play. Escríbenos por WhatsApp con el correo de tu Google Play y te agregamos a los testers el mismo día.",
   },
   {
     titulo: `Crea tu cuenta: ${TRIAL_DIAS} días gratis`,

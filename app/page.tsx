@@ -18,8 +18,8 @@ import {
 } from "@/lib/site";
 
 /**
- * Portada del sitio oficial. Mientras dure la beta cerrada, lo primero es la
- * invitación a inscribir el taller (llega al WhatsApp de MAZA). Crear cuenta
+ * Portada del sitio oficial. Mientras dure el programa de talleres fundadores,
+ * lo primero es la invitación a inscribir el taller (llega al WhatsApp de MAZA). Crear cuenta
  * no aparece acá: /registro sigue existiendo para quien reciba el link.
  * "Entrar a mi taller" queda chico, para los talleres que ya usan MAZA.
  */
@@ -74,9 +74,9 @@ export default function Inicio() {
         <section className="px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12">
           <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
             <div className="flex flex-col items-start gap-5 lg:col-span-5">
-              <p className="rotulo">Beta cerrada · Talleres multirubro</p>
+              <p className="rotulo">Talleres fundadores · Multirubro</p>
               <h1 className="font-display text-[clamp(2.75rem,6vw,4rem)] leading-[0.92] tracking-[0.01em] text-ink text-balance">
-                Estamos eligiendo los talleres de la beta.
+                Estamos eligiendo los talleres fundadores.
               </h1>
               <p className="max-w-[46ch] text-lg leading-relaxed text-ink-muted">
                 Pocos talleres, elegidos uno a uno, van a usar MAZA antes que nadie y con
@@ -212,7 +212,7 @@ export default function Inicio() {
                 ¿Quieres tu taller adentro?
               </h2>
               <p className="mt-3 font-mono text-xs text-splash-ink-faint">
-                Beta cerrada · Pocos cupos · Te contactamos por WhatsApp
+                Talleres fundadores · Pocos cupos · Te contactamos por WhatsApp
               </p>
             </div>
             <div className="flex flex-wrap gap-3">

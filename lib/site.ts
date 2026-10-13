@@ -89,7 +89,7 @@ export const TRIAL_DIAS = 14;
  * `activa: false` la sección vuelve a los precios de lista.
  *
  * Apagado el 13-10-2026: en la web solo va el precio de lista (IVA incluido).
- * El trato de los beta testers (gratis durante la beta y luego 50% por 12
+ * El trato de los talleres fundadores (gratis durante el lanzamiento y luego 50% por 12
  * meses) se ofrece uno a uno por WhatsApp, no se publica.
  */
 export const FUNDADOR = {

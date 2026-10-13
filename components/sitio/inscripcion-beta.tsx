@@ -15,7 +15,7 @@ const CAMPOS = [
 type Datos = Record<(typeof CAMPOS)[number]["id"], string>;
 
 /**
- * Inscripción a la beta cerrada. No hay servidor: arma un mensaje con los
+ * Inscripción al programa de talleres fundadores. No hay servidor: arma un mensaje con los
  * datos y abre el WhatsApp de MAZA, para que la conversación sea de persona a persona
  * (el número del taller llega con el mensaje).
  */
@@ -26,7 +26,7 @@ export function InscripcionBeta() {
   const enviar = (e: FormEvent) => {
     e.preventDefault();
     const mensaje = [
-      "Hola, quiero inscribir mi taller en la beta cerrada de MAZA.",
+      "Hola, quiero inscribir mi taller como taller fundador de MAZA.",
       `Nombre: ${datos.nombre.trim()}`,
       `Taller: ${datos.taller.trim()}`,
       `Comuna: ${datos.comuna.trim()}`,

@@ -10,7 +10,7 @@ import { WA_MESSAGES, waLink } from "@/lib/site";
  * planes, funciones o ayuda) pueda abrir un chat directo con MAZA con 1 toque.
  *
  * En /empieza en pantallas móviles se oculta para no superponerse con CtaFija,
- * y en la portada para no tapar el formulario de inscripción a la beta.
+ * y en la portada para no tapar el formulario de inscripción.
  */
 export function BotonWhatsappFlotante() {
   const pathname = usePathname();

@@ -88,7 +88,7 @@ export default function OpengraphImage() {
               padding: "12px 24px",
             }}
           >
-            Beta cerrada
+            Talleres fundadores
           </div>
           <div
             style={{

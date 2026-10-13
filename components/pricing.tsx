@@ -74,10 +74,10 @@ export function Pricing() {
         ) : (
           <div className="reveal mb-8 flex flex-col gap-1.5 border border-border-strong bg-value-soft px-5 py-4">
             <span className="rotulo w-fit bg-value px-2.5 py-1 text-[10px] text-splash-bg">
-              Beta cerrada
+              Talleres fundadores
             </span>
             <p className="text-sm font-medium text-ink">
-              Los talleres de la beta tienen condiciones especiales.
+              Los talleres fundadores tienen condiciones especiales.
             </p>
             <Link href="/#inscripcion" className="inline-flex min-h-11 w-fit items-center text-sm font-bold text-ink underline underline-offset-4">
               Inscribe tu taller →

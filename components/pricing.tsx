@@ -79,7 +79,7 @@ export function Pricing() {
             <p className="text-sm font-medium text-ink">
               Los talleres de la beta tienen condiciones especiales.
             </p>
-            <Link href="/#inscripcion" className="w-fit text-sm font-bold text-ink underline underline-offset-4">
+            <Link href="/#inscripcion" className="inline-flex min-h-11 w-fit items-center text-sm font-bold text-ink underline underline-offset-4">
               Inscribe tu taller →
             </Link>
           </div>

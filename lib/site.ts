@@ -202,9 +202,9 @@ export const FEATURES: Feature[] = [
   {
     title: "Un taller, tu rubro",
     description:
-      "Multirubro: eliges el rubro del taller (auto, moto o bicicleta) y la app habla tu idioma, con los campos y recordatorios que corresponden.",
+      "Multirubro: eliges el rubro de tu taller y la app habla tu idioma, con los campos y recordatorios que corresponden.",
     icon: "rubro",
-    shotAlt: "Selector de rubro del taller: autos, motos o bicicletas",
+    shotAlt: "Selector de rubro del taller",
   },
   {
     title: "Cola de trabajo y agenda",

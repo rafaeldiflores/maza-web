@@ -136,7 +136,7 @@ export default function Ayuda() {
               <ol className="flex flex-col border-l border-border-strong">
                 {GUIAS.map((g) => (
                   <li key={g.id}>
-                    <a href={`#${g.id}`} className="block py-1.5 pl-4 text-sm text-ink-muted hover:text-ink">
+                    <a href={`#${g.id}`} className="block py-3 pl-4 text-sm text-ink-muted hover:text-ink lg:py-1.5">
                       {g.titulo}
                     </a>
                   </li>

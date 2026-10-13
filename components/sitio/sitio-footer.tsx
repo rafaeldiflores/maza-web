@@ -10,7 +10,8 @@ import {
   waLink,
 } from "@/lib/site";
 
-const enlace = "text-sm text-ink-muted hover:text-ink";
+// En el celular cada enlace mide 44 px de alto para tocarlo con el dedo.
+const enlace = "inline-flex min-h-11 items-center self-start text-sm text-ink-muted hover:text-ink sm:min-h-0";
 
 /** Pie del sitio oficial: el mapa del sitio en columnas, como una placa de datos. */
 export function SitioFooter() {
@@ -26,21 +27,21 @@ export function SitioFooter() {
           <ProntoGooglePlay className="self-start" />
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col sm:gap-2">
           <p className="rotulo rotulo-sm mb-1">Producto</p>
           <Link href="/funciones" className={enlace}>Funciones</Link>
           <Link href="/planes" className={enlace}>Planes y precios</Link>
           <Link href="/ayuda" className={enlace}>Ayuda</Link>
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col sm:gap-2">
           <p className="rotulo rotulo-sm mb-1">Cuenta</p>
           <a href={URL_ENTRAR} className={enlace}>Entrar</a>
           <a href={URL_REGISTRO} className={enlace}>Crear cuenta</a>
           <a href="/eliminar-cuenta" className={enlace}>Eliminar cuenta</a>
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col sm:gap-2">
           <p className="rotulo rotulo-sm mb-1">MAZA</p>
           <Link href="/nosotros" className={enlace}>Nosotros</Link>
           <a href={waLink(WA_MESSAGES.general)} target="_blank" rel="noreferrer" className={enlace}>
@@ -52,8 +53,8 @@ export function SitioFooter() {
         </div>
       </div>
 
-      <p className="mx-auto mt-10 max-w-6xl border-t border-neutral-track pt-4 font-mono text-xs text-ink-faint">
-        MAZA © {new Date().getFullYear()} · Hecho en Chile, por alguien que tuvo taller
+      <p className="mx-auto mt-10 max-w-6xl border-t border-neutral-track pt-4 pb-16 font-mono text-xs text-ink-faint sm:pb-0">
+        MAZA © {new Date().getFullYear()} · Hecho en Chile, desde un taller real
       </p>
     </footer>
   );

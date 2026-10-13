@@ -86,7 +86,7 @@ export default function Inicio() {
               <a
                 href={URL_ENTRAR}
                 data-cta="inicio-entrar"
-                className="text-sm font-semibold text-ink-muted hover:text-ink hover:underline"
+                className="inline-flex min-h-11 items-center text-sm font-semibold text-ink-muted hover:text-ink hover:underline"
               >
                 ¿Ya usas MAZA? Entrar a mi taller →
               </a>

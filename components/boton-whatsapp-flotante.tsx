@@ -19,7 +19,7 @@ export function BotonWhatsappFlotante() {
   return (
     <aside
       aria-label="Contacto directo por WhatsApp"
-      className={`fixed bottom-5 right-5 z-40 transition-transform duration-200 hover:-translate-y-0.5 ${
+      className={`fixed bottom-4 right-4 z-40 sm:bottom-5 sm:right-5 transition-transform duration-200 hover:-translate-y-0.5 ${
         ocultarEnCelular ? "hidden sm:block" : "block"
       }`}
     >
@@ -29,12 +29,13 @@ export function BotonWhatsappFlotante() {
         rel="noreferrer"
         data-cta="flotante-whatsapp"
         aria-label="Escribir a MAZA por WhatsApp"
-        className="group flex items-center gap-2.5 border-2 border-ink bg-[#25D366] px-3.5 py-2.5 text-ink shadow-[3px_3px_0px_#1a1a2e] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_#1a1a2e]"
+        className="group flex h-14 w-14 items-center justify-center border-2 border-ink bg-[#25D366] text-ink sm:h-auto sm:w-auto sm:justify-start sm:gap-2.5 sm:px-3.5 sm:py-2.5 shadow-[3px_3px_0px_#1a1a2e] transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[1px_1px_0px_#1a1a2e]"
       >
         <div className="flex h-7 w-7 items-center justify-center text-ink">
           <WhatsappIcon className="h-6 w-6 text-ink" />
         </div>
-        <div className="flex flex-col pr-1 text-left">
+        {/* En el celular queda solo el ícono, para no tapar el contenido. */}
+        <div className="hidden flex-col pr-1 text-left sm:flex">
           <span className="font-bold text-xs uppercase tracking-tight text-ink sm:text-sm">
             Escríbenos
           </span>

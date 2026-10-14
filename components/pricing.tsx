@@ -80,10 +80,10 @@ export function Pricing() {
               Talleres fundadores
             </span>
             <p className="text-sm font-medium text-ink">
-              Estamos seleccionando 10 talleres (bicicletas, motos o autos) para acompañarlos 1 a 1: cargamos tu catálogo inicial de servicios y repuestos, adaptamos el flujo a tu mesón y congelamos condiciones preferenciales.
+              Estamos seleccionando un grupo reducido de talleres multirubro para acompañarlos paso a paso: nuestro equipo carga tu catálogo inicial de servicios y repuestos, adapta el flujo a tu mostrador y asegura condiciones preferenciales de fundador.
             </p>
             <WaLink
-              href={waUrl("Hola Rafa, quiero postular mi taller a uno de los cupos de Taller Fundador.")}
+              href={waUrl("Hola, quiero postular mi taller al Programa de Talleres Fundadores de MAZA.")}
               ubicacion="planes-fundadores"
               className="inline-flex min-h-11 w-fit items-center text-sm font-bold text-ink underline underline-offset-4 hover:text-value-shade"
             >

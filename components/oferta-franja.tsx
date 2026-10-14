@@ -24,7 +24,7 @@ export function OfertaFranja() {
         </div>
         <WaLink
           href={waUrl(
-            "Hola Rafa, vi el video y quiero postular mi taller a uno de los cupos de Taller Fundador."
+            "Hola, vi el video de MAZA y quiero postular mi taller a uno de los cupos del Programa de Talleres Fundadores."
           )}
           ubicacion="franja-fundadores"
           className="shrink-0 font-bold text-[var(--amber)] hover:underline inline-flex items-center gap-1"

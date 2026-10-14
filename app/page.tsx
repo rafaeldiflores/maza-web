@@ -99,12 +99,12 @@ export default function Inicio() {
               <ProntoGooglePlay />
               <div className="mt-4 pt-4 border-t border-[var(--line)]">
                 <WaLink
-                  href={waUrl("Hola Rafa, vi el video y quiero consultar por un cupo de Taller Fundador en MAZA.")}
+                  href={waUrl("Hola, vi el video de MAZA y quiero consultar por un cupo de Taller Fundador.")}
                   ubicacion="hero-fundadores"
                   className="inline-flex items-center gap-2 text-xs font-medium text-[var(--ink)] hover:text-[var(--amber-ink)] transition-colors"
                 >
                   <span className="h-2 w-2 rounded-full bg-[var(--amber)]" aria-hidden="true" />
-                  <span><strong>¿Vienes por el video?</strong> Habla directo con Rafa y entra como Taller Fundador (te cargamos el catálogo) →</span>
+                  <span><strong>¿Vienes por el video?</strong> Postula a un cupo de Taller Fundador (te dejamos el catálogo cargado) →</span>
                 </WaLink>
               </div>
             </div>

@@ -7,9 +7,9 @@ const HECHOS = [
   },
   {
     etiqueta: "02 · MULTIRUBRO REAL",
-    titular: "Bicis, Motos y Autos",
+    titular: "Recepción en 30 segundos",
     detalle:
-      "Ingreso rápido por patente o número de serie, fotos de recepción y orden de trabajo con código QR en 3 segundos.",
+      "Adaptado a talleres multirubro: ingreso rápido por patente o número de serie, fotos de recepción y orden con código QR.",
   },
   {
     etiqueta: "03 · PUESTA EN MARCHA",
@@ -19,9 +19,9 @@ const HECHOS = [
   },
   {
     etiqueta: "04 · ACOMPAÑAMIENTO",
-    titular: "Trato 1 a 1 con el creador",
+    titular: "Puesta en marcha asistida",
     detalle:
-      "Sin vendedores ni bots. Te atiende y ayuda a configurar tu taller quien mismo programa el sistema y conoce el oficio.",
+      "Sin bots ni esperas. Nuestro equipo configura tu taller contigo y deja cargado tu catálogo de servicios y repuestos.",
   },
 ] as const;
 

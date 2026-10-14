@@ -25,7 +25,7 @@ const GUIAS: Guia[] = [
     id: "primeros-pasos",
     titulo: "Primeros pasos",
     pasos: [
-      "MAZA entra por invitación: inscribe tu taller en mazataller.com y te contactamos para dejar tu cuenta lista.",
+      "Entra a app.mazataller.com desde el navegador de tu celular o PC (funciona directo sin descargas pesadas, y pronto también en Google Play). Toca «Crear cuenta»...",
       "Elige el rubro y el nombre de tu taller. El catálogo parte con servicios de ejemplo.",
       "En Servicios pon tus precios con el ícono de etiquetas, o importa tu lista completa (ver «Importar tu lista de precios»).",
       "Partes con todo incluido. El plan se elige después, desde la app.",

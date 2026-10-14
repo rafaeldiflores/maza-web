@@ -15,7 +15,7 @@ export function ProntoGooglePlay({ className }: { className?: string }) {
       <IconoGooglePlay className="h-6 w-6 shrink-0" />
       <span className="flex flex-col leading-none">
         <span className="text-[10px] font-semibold uppercase tracking-[0.08em] text-white/70">
-          Pronto en
+          Web App lista · Pronto en
         </span>
         <span className="mt-0.5 text-[17px] font-semibold tracking-[-0.01em]">Google Play</span>
       </span>

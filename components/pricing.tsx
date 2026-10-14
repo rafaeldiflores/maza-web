@@ -7,7 +7,8 @@ import {
   precioFinal,
   waLink,
 } from "@/lib/site";
-import Link from "next/link";
+import { WaLink } from "@/components/wa-tracking";
+import { waUrl } from "@/lib/marca";
 
 const currency = new Intl.NumberFormat("es-CL", {
   style: "currency",
@@ -71,16 +72,23 @@ export function Pricing() {
             </p>
           </div>
         ) : (
-          <div className="reveal mb-8 flex flex-col gap-1.5 border border-border-strong bg-value-soft px-5 py-4">
+          <div
+            id="fundadores"
+            className="reveal mb-8 flex flex-col gap-2 border border-border-strong bg-value-soft px-5 py-4 scroll-mt-24"
+          >
             <span className="rotulo w-fit bg-value px-2.5 py-1 text-[10px] text-splash-bg">
               Talleres fundadores
             </span>
             <p className="text-sm font-medium text-ink">
-              Los talleres fundadores tienen condiciones especiales.
+              Estamos seleccionando 10 talleres (bicicletas, motos o autos) para acompañarlos 1 a 1: cargamos tu catálogo inicial de servicios y repuestos, adaptamos el flujo a tu mesón y congelamos condiciones preferenciales.
             </p>
-            <Link href="/#inscripcion" className="inline-flex min-h-11 w-fit items-center text-sm font-bold text-ink underline underline-offset-4">
-              Inscribe tu taller →
-            </Link>
+            <WaLink
+              href={waUrl("Hola Rafa, quiero postular mi taller a uno de los cupos de Taller Fundador.")}
+              ubicacion="planes-fundadores"
+              className="inline-flex min-h-11 w-fit items-center text-sm font-bold text-ink underline underline-offset-4 hover:text-value-shade"
+            >
+              Postular por WhatsApp directo →
+            </WaLink>
           </div>
         )}
 

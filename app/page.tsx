@@ -10,6 +10,10 @@ import { InscripcionBeta } from "@/components/sitio/inscripcion-beta";
 import { CierreCuenta } from "@/components/sitio/cierre-cuenta";
 import { ProntoGooglePlay } from "@/components/sitio/pronto-google-play";
 import { CelularConAsistente, MesonConAsistente } from "@/components/sitio/meson-con-asistente";
+import { OfertaFranja } from "@/components/oferta-franja";
+import { SocialProof } from "@/components/social-proof";
+import { WaLink } from "@/components/wa-tracking";
+import { waUrl } from "@/lib/marca";
 import {
   FEATURES,
   URL_ENTRAR,
@@ -69,6 +73,7 @@ export default function Inicio() {
   return (
     <>
       <StructuredData />
+      <OfertaFranja />
       <SitioHeader activa="/" />
       <main className="flex-1">
         {/* ─── Apertura ─────────────────────────────────────────────── */}
@@ -92,6 +97,16 @@ export default function Inicio() {
                 ¿Ya usas MAZA? Entrar a mi taller →
               </a>
               <ProntoGooglePlay />
+              <div className="mt-4 pt-4 border-t border-[var(--line)]">
+                <WaLink
+                  href={waUrl("Hola Rafa, vi el video y quiero consultar por un cupo de Taller Fundador en MAZA.")}
+                  ubicacion="hero-fundadores"
+                  className="inline-flex items-center gap-2 text-xs font-medium text-[var(--ink)] hover:text-[var(--amber-ink)] transition-colors"
+                >
+                  <span className="h-2 w-2 rounded-full bg-[var(--amber)]" aria-hidden="true" />
+                  <span><strong>¿Vienes por el video?</strong> Habla directo con Rafa y entra como Taller Fundador (te cargamos el catálogo) →</span>
+                </WaLink>
+              </div>
             </div>
 
             <div className="relative lg:col-span-7">
@@ -109,6 +124,8 @@ export default function Inicio() {
             </div>
           </div>
         </section>
+
+        <SocialProof />
 
         {/* ─── Cómo trabaja un taller con MAZA ─────────────────────── */}
         <section className="border-y border-border-strong bg-surface px-5 py-16 sm:px-8 sm:py-20">

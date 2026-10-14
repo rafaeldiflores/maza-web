@@ -28,3 +28,7 @@ export const NARANJO = "#ff9900";
 export const TINTA = "#16161a";
 export const CLARO = "#f2f2f5";
 export const GOMA = "#3a3b44";
+
+import { waLink } from "./site";
+export const waUrl = waLink;
+

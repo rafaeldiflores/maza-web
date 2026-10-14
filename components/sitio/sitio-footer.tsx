@@ -51,9 +51,31 @@ export function SitioFooter() {
         </div>
       </div>
 
-      <p className="mx-auto mt-10 max-w-6xl border-t border-neutral-track pt-4 pb-16 font-mono text-xs text-ink-faint sm:pb-0">
-        MAZA © {new Date().getFullYear()} · Hecho en Chile, desde un taller real
-      </p>
+      <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-4 border-t border-neutral-track pt-4 pb-16 font-mono text-xs text-ink-faint sm:flex-row sm:items-center sm:justify-between sm:pb-0">
+        <p>MAZA © {new Date().getFullYear()} · Hecho en Chile, desde un taller real</p>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-sans text-xs text-ink-muted">
+          <a
+            href={waLink(WA_MESSAGES.general)}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-ink"
+          >
+            WhatsApp ({CONTACT_PHONE_DISPLAY})
+          </a>
+          <span aria-hidden="true" className="text-[var(--ink-subtle)]">·</span>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-ink">
+            {CONTACT_EMAIL}
+          </a>
+          <span aria-hidden="true" className="text-[var(--ink-subtle)]">·</span>
+          <Link href="/privacidad" className="hover:text-ink">
+            Política de privacidad
+          </Link>
+          <span aria-hidden="true" className="text-[var(--ink-subtle)]">·</span>
+          <Link href="/terminos" className="hover:text-ink">
+            Términos y condiciones
+          </Link>
+        </div>
+      </div>
     </footer>
   );
 }

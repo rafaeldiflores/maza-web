@@ -1,8 +1,37 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, type AnchorHTMLAttributes, type ReactNode } from "react";
 import { track } from "@vercel/analytics";
 import { nombreOrigen, origenVisita } from "@/lib/origen";
+
+/**
+ * Enlace directo a WhatsApp con tracking de ubicación / botón.
+ */
+export function WaLink({
+  href,
+  ubicacion,
+  className,
+  children,
+  ...props
+}: {
+  href: string;
+  ubicacion?: string;
+  className?: string;
+  children: ReactNode;
+} & AnchorHTMLAttributes<HTMLAnchorElement>) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      data-cta={ubicacion ?? "whatsapp"}
+      className={className}
+      {...props}
+    >
+      {children}
+    </a>
+  );
+}
 
 /**
  * Un solo listener para todos los links a WhatsApp de la página: al tocarlo

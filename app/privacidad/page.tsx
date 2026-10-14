@@ -49,7 +49,7 @@ export default function PrivacidadPage() {
               <p>
                 MAZA es una aplicación de gestión para talleres
                 multirubro, desarrollada por{" "}
-                <strong className="text-ink">Rafael Di Fiore</strong>. Para
+                <strong className="text-ink">Rafael Díaz Flores</strong>. Para
                 consultas sobre privacidad, escríbenos a{" "}
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}

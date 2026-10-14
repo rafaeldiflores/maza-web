@@ -16,8 +16,14 @@
   --maza-ink-muted: #374151;
   --maza-ink-faint: #6b7280;
   --maza-ink-ghost: #9ca3af;
+  --ink-subtle: var(--maza-ink-ghost);
   --maza-border-soft: #f3f4f6;
   --maza-border-strong: #d1d5db;
+  --line: var(--maza-border-strong);
+  --ink: var(--maza-ink);
+  --bg: var(--maza-app-bg);
+  --amber: #f59e0b;
+  --amber-ink: #d97706;
   --maza-neutral-track: #e5e7eb;
   --maza-danger: #e53935;
 
@@ -55,8 +61,14 @@
     --maza-ink-muted: #c7c9d1;
     --maza-ink-faint: #9498a3;
     --maza-ink-ghost: #82858f;
+    --ink-subtle: var(--maza-ink-ghost);
     --maza-border-soft: #31333c;
     --maza-border-strong: #40424d;
+    --line: var(--maza-border-strong);
+    --ink: var(--maza-ink);
+    --bg: var(--maza-app-bg);
+    --amber: #fbbf24;
+    --amber-ink: #f59e0b;
     --maza-neutral-track: #2a2c34;
     --maza-danger: #ff6b6b;
 

@@ -1,58 +1,53 @@
-import Image from "next/image";
-import { TESTIMONIALS } from "@/lib/site";
-import { mediaExists } from "@/lib/media";
+const HECHOS = [
+  {
+    etiqueta: "01 · VALIDADO EN EL BARRO",
+    titular: "Forjado en taller real",
+    detalle:
+      "Nacido de 5 años de operación real en Litoral Bikes (El Quisco). Probado en el mesón diario antes de abrirse a otros talleres.",
+  },
+  {
+    etiqueta: "02 · MULTIRUBRO REAL",
+    titular: "Bicis, Motos y Autos",
+    detalle:
+      "Ingreso rápido por patente o número de serie, fotos de recepción y orden de trabajo con código QR en 3 segundos.",
+  },
+  {
+    etiqueta: "03 · PUESTA EN MARCHA",
+    titular: "Catálogo listo en minutos",
+    detalle:
+      "Sube una foto de tu pizarra de precios, un PDF o pega un texto de WhatsApp y la IA carga tus servicios y repuestos.",
+  },
+  {
+    etiqueta: "04 · ACOMPAÑAMIENTO",
+    titular: "Trato 1 a 1 con el creador",
+    detalle:
+      "Sin vendedores ni bots. Te atiende y ayuda a configurar tu taller quien mismo programa el sistema y conoce el oficio.",
+  },
+] as const;
 
 /**
- * Prueba social. Mientras TESTIMONIALS esté vacío la sección no se renderiza:
- * es preferible no tener testimonios a inventarlos — un testimonio falso se
- * nota y quema la confianza justo donde más importa.
- *
- * Para activarla: conseguir 2-3 talleres piloto reales, pedirles una frase y
- * una foto, y agregarlos al arreglo TESTIMONIALS en lib/site.ts.
+ * Franja de respaldo real y autoridad técnica. Cero humo, 100% honesto.
  */
 export function SocialProof() {
-  if (TESTIMONIALS.length === 0) return null;
-
   return (
-    <section className="px-5 py-20 sm:px-8 sm:py-28">
+    <section className="border-y border-[var(--line)] bg-[var(--surface)] px-5 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-6xl">
-        <p className="reveal titulo-seccion mb-10">
-          Talleres que ya dejaron el cuaderno
-        </p>
-
-        <div className="caja grid grid-cols-1 md:grid-cols-3">
-          {TESTIMONIALS.map((t, i) => (
-            <figure
-              key={t.name}
-              className={`reveal flex flex-col gap-5 p-6 ${
-                i % 3 !== 2 ? "md:border-r" : ""
-              } ${i < TESTIMONIALS.length - 3 ? "border-b md:border-b-0" : "border-b md:border-b-0"} border-neutral-track`}
+        <div className="grid grid-cols-1 border-l border-t border-[var(--line)] sm:grid-cols-2 lg:grid-cols-4">
+          {HECHOS.map((h) => (
+            <div
+              key={h.etiqueta}
+              className="flex flex-col gap-2.5 border-b border-r border-[var(--line)] bg-[var(--surface)] p-6"
             >
-              <blockquote className="text-[15px] leading-relaxed text-ink-muted">
-                “{t.quote}”
-              </blockquote>
-              <figcaption className="mt-auto flex items-center gap-3">
-                {mediaExists(t.photo) ? (
-                  <Image
-                    src={`/${t.photo}`}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 border border-border-strong object-cover"
-                  />
-                ) : (
-                  <span className="grid h-10 w-10 place-items-center border border-border-strong font-display text-lg text-ink">
-                    {t.name.charAt(0)}
-                  </span>
-                )}
-                <span className="flex flex-col">
-                  <span className="text-sm font-bold text-ink">
-                    {t.name}
-                  </span>
-                  <span className="rotulo text-[10px]">{t.workshop}</span>
-                </span>
-              </figcaption>
-            </figure>
+              <span className="font-mono text-[11px] font-semibold tracking-wider text-ink-faint uppercase">
+                {h.etiqueta}
+              </span>
+              <h3 className="font-display text-2xl font-extrabold tracking-[0.02em] text-[var(--ink)] leading-tight">
+                {h.titular}
+              </h3>
+              <p className="text-sm leading-relaxed text-ink-muted">
+                {h.detalle}
+              </p>
+            </div>
           ))}
         </div>
       </div>

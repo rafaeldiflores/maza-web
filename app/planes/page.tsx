@@ -29,7 +29,7 @@ export default function Planes() {
             Todos los planes incluyen la app y la web, el link de seguimiento y el asistente con IA.
           </p>
           <Link
-            href="/#inscripcion"
+            href="#fundadores"
             className="mt-6 inline-flex h-12 items-center bg-value px-6 text-base font-bold text-splash-bg"
           >
             Inscribir mi taller

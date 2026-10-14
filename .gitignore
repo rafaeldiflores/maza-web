@@ -48,3 +48,6 @@ next-env.d.ts
 .claude/settings.local.json
 .claude/hooks/
 .claude/commands/avance.md
+# Codex CLI y agentes locales
+.codex/
+.agents/

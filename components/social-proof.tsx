@@ -5,7 +5,7 @@ const HECHOS = [
     etiqueta: "01 · VALIDADO EN EL BARRO",
     titular: "Forjado en taller real",
     detalle:
-      "Nacido de 5 años de operación real en Litoral Bikes (El Quisco). Probado en el mesón diario antes de abrirse a otros talleres.",
+      "Nacido de 1 año en el taller Litoral Bikes (El Quisco), testeado y probado en todo el proceso operativo antes de abrirse a otros talleres.",
   },
   {
     etiqueta: "02 · MULTIRUBRO REAL",
@@ -47,18 +47,27 @@ export function SocialProof() {
                 }`}
               >
                 {h.etiqueta.startsWith("01") && (
-                  <div className="relative mb-3 h-36 w-full overflow-hidden rounded-sm border border-[#26262C] lg:hidden">
-                    <Image
-                      src="/fundador.jpg"
-                      alt="Litoral Bikes - El Quisco"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 300px"
-                      className="object-cover object-center"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#141417] via-[#141417]/60 to-transparent" />
-                    <span className="absolute bottom-2 left-2 rounded-xs border border-[#26262C] bg-[#0A0A0A]/85 px-2 py-1 font-mono text-[10px] text-[#F2F2F5]">
-                      📍 Litoral Bikes · 5 años de operación real
-                    </span>
+                  <div className="mb-3 flex items-center gap-3 rounded-sm border border-[#26262C] bg-[#141417] p-2.5 lg:hidden">
+                    <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-[#FF9900]/70 bg-[#0A0A0A]">
+                      <Image
+                        src="/fundador.jpg"
+                        alt="Litoral Bikes - El Quisco"
+                        width={56}
+                        height={56}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="font-mono text-[10px] font-bold text-[#FF9900] uppercase tracking-wider">
+                        📍 Litoral Bikes · El Quisco
+                      </span>
+                      <span className="text-xs font-bold text-[#F2F2F5] leading-snug">
+                        1 año en el taller real
+                      </span>
+                      <span className="text-[11px] text-[#9A9AA3] leading-tight">
+                        Testeado y probado en todo el proceso operativo
+                      </span>
+                    </div>
                   </div>
                 )}
               <span className="font-mono text-[11px] font-semibold tracking-wider text-ink-faint uppercase">

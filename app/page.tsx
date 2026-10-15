@@ -59,7 +59,7 @@ const PASOS = [
     titulo: "Entregas y cobras",
     texto:
       "Cierras la orden, cobras y la caja queda cuadrada. El historial del vehículo te espera en la próxima visita.",
-    imagenMovil: "/screenshots/maza-agente-chat.png",
+    imagenMovil: "/screenshots/hero.png",
     badgeResultado: "● Caja cuadrada al instante",
     badgeColor: "text-[#FF9900]",
   },
@@ -96,7 +96,7 @@ export default function Inicio() {
                 TU TALLER EN ORDEN. SIN CUADERNO.
               </h1>
               <p className="max-w-[46ch] text-lg leading-relaxed text-ink-muted">
-                Recibe vehículos en 30 segundos, envía presupuestos que tu cliente aprueba con un toque por WhatsApp y cuadra tu caja al centavo. Forjado en 5 años de taller real.
+                Recibe vehículos en 30 segundos, envía presupuestos que tu cliente aprueba con un toque por WhatsApp y cuadra tu caja al centavo. Forjado en 1 año en el taller, testeado y probado en todo el proceso operativo.
               </p>
               <div className="border-l-2 border-[#FF9900] bg-[#141417] px-3.5 py-2.5 rounded-r-sm w-full">
                 <p className="text-xs leading-relaxed text-[#F2F2F5]">
@@ -119,7 +119,7 @@ export default function Inicio() {
                   className="inline-flex items-center gap-2 text-xs font-medium text-[var(--ink)] hover:text-[var(--amber-ink)] transition-colors"
                 >
                   <span className="h-2 w-2 rounded-full bg-[var(--amber)]" aria-hidden="true" />
-                  <span><strong>¿Vienes por el video?</strong> Postula a un cupo de Taller Fundador (te dejamos el catálogo cargado) →</span>
+                  <span><strong>¿Vienes por el video?</strong> Suma tu taller como Taller Fundador (te dejamos el catálogo cargado) →</span>
                 </WaLink>
               </div>
             </div>
@@ -158,20 +158,25 @@ export default function Inicio() {
                   <h2 className="font-display text-3xl leading-none tracking-[0.01em] text-ink">{p.titulo}</h2>
                   <p className="text-[15px] leading-relaxed text-ink-muted">{p.texto}</p>
 
-                  {/* Evidencia visual en móvil (< lg) */}
+                  {/* Evidencia visual en móvil (< lg) con marco proporcionado */}
                   <div className="mt-4 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
-                    <div className="flex items-center gap-1.5 border-b border-[#26262C] bg-[#141417] px-3 py-1.5">
-                      <span className={`font-mono text-[10px] font-bold ${p.badgeColor}`}>
+                    <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px]">
+                      <span className={`font-bold ${p.badgeColor}`}>
                         {p.badgeResultado}
                       </span>
+                      <span className="text-[#9A9AA3]">Paso {p.n}</span>
                     </div>
-                    <Image
-                      src={p.imagenMovil}
-                      alt={p.titulo}
-                      width={600}
-                      height={350}
-                      className="max-h-48 w-full object-cover object-top"
-                    />
+                    <div className="flex justify-center bg-[#0E0E11] py-3 px-4">
+                      <div className="w-[185px] max-h-56 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-md">
+                        <Image
+                          src={p.imagenMovil}
+                          alt={p.titulo}
+                          width={370}
+                          height={800}
+                          className="w-full object-cover object-top"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </li>
               ))}
@@ -195,6 +200,26 @@ export default function Inicio() {
                   <p className="rotulo rotulo-sm">{s.rotulo}</p>
                   <h3 className="mt-2 font-display text-3xl leading-none tracking-[0.01em] text-ink">{s.titulo}</h3>
 
+                  {s.rotulo.includes("App") && (
+                    <div className="mb-4 mt-4 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
+                      <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px] text-[#9A9AA3]">
+                        <span className="font-bold text-[#FF9900]">● Cola de trabajo en vivo</span>
+                        <span className="text-[#F2F2F5]">App Android</span>
+                      </div>
+                      <div className="flex justify-center bg-[#0E0E11] py-3 px-4">
+                        <div className="w-[185px] max-h-56 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-md">
+                          <Image
+                            src="/screenshots/equipo.png"
+                            alt="Cola de trabajo funcionando en el celular"
+                            width={370}
+                            height={800}
+                            className="w-full object-cover object-top"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {s.rotulo.includes("Web") && (
                     <div className="mb-4 mt-4 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
                       <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px] text-[#9A9AA3]">
@@ -206,13 +231,15 @@ export default function Inicio() {
                         </div>
                         <span className="font-bold text-[#22A559]">● En vivo</span>
                       </div>
-                      <Image
-                        src="/screenshots/mostrador-pc.png"
-                        alt="Mostrador PC de MAZA con cola de trabajo en vivo"
-                        width={700}
-                        height={400}
-                        className="w-full object-cover object-top"
-                      />
+                      <div className="bg-[#0E0E11] p-2">
+                        <Image
+                          src="/screenshots/mostrador-pc.png"
+                          alt="Mostrador PC de MAZA con cola de trabajo en vivo"
+                          width={700}
+                          height={400}
+                          className="w-full rounded-xs object-cover object-top"
+                        />
+                      </div>
                     </div>
                   )}
 

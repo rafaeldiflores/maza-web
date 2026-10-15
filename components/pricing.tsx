@@ -83,11 +83,11 @@ export function Pricing() {
               Estamos seleccionando un grupo reducido de talleres multirubro para acompañarlos paso a paso: nuestro equipo carga tu catálogo inicial de servicios y repuestos, adapta el flujo a tu mostrador y asegura condiciones preferenciales de fundador.
             </p>
             <WaLink
-              href={waUrl("Hola, quiero postular mi taller al Programa de Talleres Fundadores de MAZA.")}
+              href={waUrl("Hola, quiero sumar mi taller al Programa de Talleres Fundadores de MAZA.")}
               ubicacion="planes-fundadores"
               className="inline-flex min-h-11 w-fit items-center text-sm font-bold text-ink underline underline-offset-4 hover:text-value-shade"
             >
-              Postular por WhatsApp directo →
+              Sumar mi taller por WhatsApp directo →
             </WaLink>
           </div>
         )}

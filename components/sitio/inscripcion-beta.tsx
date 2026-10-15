@@ -66,7 +66,7 @@ export function InscripcionBeta({ colapsableEnMovil = false }: InscripcionBetaPr
             data-cta="inicio-inscripcion-abrir-movil"
             className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm bg-[#FF9900] px-6 text-base font-bold text-[#0A0A0A] transition-colors hover:bg-value-shade"
           >
-            Postular mi taller fundador →
+            Suma tu taller fundador →
           </button>
           <p className="text-center font-mono text-[11px] text-[#9A9AA3]">
             Te dejamos el catálogo cargado · Atención 1 a 1 por WhatsApp

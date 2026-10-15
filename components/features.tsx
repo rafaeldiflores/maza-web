@@ -31,10 +31,17 @@ export function Features() {
         <div className="reveal -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] sm:mx-0 sm:flex-col sm:gap-28 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
           {spotlight.map((feature, i) => {
             const imageFirst = i % 2 === 0;
+            const anchorId =
+              feature.icon === "seguimiento"
+                ? "recepcion"
+                : feature.icon === "presupuesto"
+                ? "presupuesto"
+                : undefined;
             return (
               <div
                 key={feature.icon}
-                className="grid w-[78%] shrink-0 snap-center grid-cols-1 content-start items-center gap-5 sm:w-auto sm:grid-cols-2 sm:gap-14"
+                id={anchorId}
+                className="grid w-[78%] shrink-0 snap-center scroll-mt-28 grid-cols-1 content-start items-center gap-5 sm:w-auto sm:grid-cols-2 sm:gap-14"
               >
                 <div
                   className={`flex justify-center ${imageFirst ? "sm:order-1" : "sm:order-2"}`}

@@ -55,9 +55,10 @@ function PanelLectura() {
 export function Assistant() {
   return (
     <section
-      id="asistente"
-      className="border-y border-border-soft bg-surface-alt px-5 py-16 sm:px-8 sm:py-28"
+      id="ia"
+      className="scroll-mt-28 border-y border-border-soft bg-surface-alt px-5 py-16 sm:px-8 sm:py-28"
     >
+      <span id="asistente" className="sr-only scroll-mt-28" />
       <div className="mx-auto max-w-6xl">
         <div className="reveal max-w-3xl">
           <span className="rotulo inline-flex items-center gap-2 border border-border-strong px-3 py-1.5 text-[10px]">

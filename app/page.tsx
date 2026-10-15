@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { SitioHeader } from "@/components/sitio/sitio-header";
 import { SitioFooter } from "@/components/sitio/sitio-footer";
@@ -12,6 +13,7 @@ import { ProntoGooglePlay } from "@/components/sitio/pronto-google-play";
 import { CelularConAsistente, MesonConAsistente } from "@/components/sitio/meson-con-asistente";
 import { OfertaFranja } from "@/components/oferta-franja";
 import { SocialProof } from "@/components/social-proof";
+import { TecnologiasBar } from "@/components/sitio/tecnologias-bar";
 import { WaLink } from "@/components/wa-tracking";
 import { waUrl } from "@/lib/marca";
 import {
@@ -39,18 +41,27 @@ const PASOS = [
     titulo: "Recibes",
     texto:
       "Ingresas el vehículo en el celular: cliente, fotos, inspección y servicios. La orden nace con su número y queda en la cola.",
+    imagenMovil: "/screenshots/seguimiento.png",
+    badgeResultado: "⚡ Ingreso en 30 seg con QR y fotos",
+    badgeColor: "text-[#FF9900]",
   },
   {
     n: "02",
     titulo: "Informas",
     texto:
       "Tu cliente recibe un link por WhatsApp: ve cómo va su vehículo y aprueba el presupuesto con un toque. Sin llamadas.",
+    imagenMovil: "/screenshots/presupuesto.png",
+    badgeResultado: "✓ Aprobado online por el cliente",
+    badgeColor: "text-[#22A559]",
   },
   {
     n: "03",
     titulo: "Entregas y cobras",
     texto:
       "Cierras la orden, cobras y la caja queda cuadrada. El historial del vehículo te espera en la próxima visita.",
+    imagenMovil: "/screenshots/maza-agente-chat.png",
+    badgeResultado: "● Caja cuadrada al instante",
+    badgeColor: "text-[#FF9900]",
   },
 ];
 
@@ -80,15 +91,19 @@ export default function Inicio() {
         <section className="px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12">
           <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
             <div className="flex flex-col items-start gap-5 lg:col-span-5">
-              <p className="rotulo">Talleres fundadores · Multirubro</p>
+              <p className="rotulo">SISTEMA MULTIRUBRO EN OPERACIÓN · CUPOS TALLER FUNDADOR</p>
               <h1 className="font-display text-[clamp(2.75rem,6vw,4rem)] leading-[0.92] tracking-[0.01em] text-ink text-balance">
-                Estamos eligiendo los talleres fundadores.
+                TU TALLER EN ORDEN. SIN CUADERNO.
               </h1>
               <p className="max-w-[46ch] text-lg leading-relaxed text-ink-muted">
-                Pocos talleres, elegidos uno a uno, van a usar MAZA antes que nadie y con
-                beneficios exclusivos. Inscribe el tuyo y te contactamos.
+                Recibe vehículos en 30 segundos, envía presupuestos que tu cliente aprueba con un toque por WhatsApp y cuadra tu caja al centavo. Forjado en 5 años de taller real.
               </p>
-              <InscripcionBeta />
+              <div className="border-l-2 border-[#FF9900] bg-[#141417] px-3.5 py-2.5 rounded-r-sm w-full">
+                <p className="text-xs leading-relaxed text-[#F2F2F5]">
+                  ⚡ <strong>Cupos Taller Fundador (Puesta en marcha asistida):</strong> Manda una foto de tu lista de precios y nuestro equipo te entrega el taller 100% configurado con tu catálogo + beneficio fundador.
+                </p>
+              </div>
+              <InscripcionBeta colapsableEnMovil />
               <a
                 href={URL_ENTRAR}
                 data-cta="inicio-entrar"
@@ -125,6 +140,8 @@ export default function Inicio() {
           </div>
         </section>
 
+        <TecnologiasBar />
+
         <SocialProof />
 
         {/* ─── Cómo trabaja un taller con MAZA ─────────────────────── */}
@@ -140,6 +157,22 @@ export default function Inicio() {
                   <span className="cifra text-3xl text-value-shade">{p.n}</span>
                   <h2 className="font-display text-3xl leading-none tracking-[0.01em] text-ink">{p.titulo}</h2>
                   <p className="text-[15px] leading-relaxed text-ink-muted">{p.texto}</p>
+
+                  {/* Evidencia visual en móvil (< lg) */}
+                  <div className="mt-4 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
+                    <div className="flex items-center gap-1.5 border-b border-[#26262C] bg-[#141417] px-3 py-1.5">
+                      <span className={`font-mono text-[10px] font-bold ${p.badgeColor}`}>
+                        {p.badgeResultado}
+                      </span>
+                    </div>
+                    <Image
+                      src={p.imagenMovil}
+                      alt={p.titulo}
+                      width={600}
+                      height={350}
+                      className="max-h-48 w-full object-cover object-top"
+                    />
+                  </div>
                 </li>
               ))}
             </ol>
@@ -161,6 +194,28 @@ export default function Inicio() {
                 <div key={s.rotulo} className="caja p-6">
                   <p className="rotulo rotulo-sm">{s.rotulo}</p>
                   <h3 className="mt-2 font-display text-3xl leading-none tracking-[0.01em] text-ink">{s.titulo}</h3>
+
+                  {s.rotulo.includes("Web") && (
+                    <div className="mb-4 mt-4 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
+                      <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px] text-[#9A9AA3]">
+                        <div className="flex items-center gap-1.5">
+                          <span className="h-2 w-2 rounded-full bg-[#374151]" />
+                          <span className="h-2 w-2 rounded-full bg-[#374151]" />
+                          <span className="h-2 w-2 rounded-full bg-[#374151]" />
+                          <span className="ml-1 text-[#F2F2F5]">https://mazataller.com/app</span>
+                        </div>
+                        <span className="font-bold text-[#22A559]">● En vivo</span>
+                      </div>
+                      <Image
+                        src="/screenshots/mostrador-pc.png"
+                        alt="Mostrador PC de MAZA con cola de trabajo en vivo"
+                        width={700}
+                        height={400}
+                        className="w-full object-cover object-top"
+                      />
+                    </div>
+                  )}
+
                   <ul className="mt-5 flex flex-col">
                     {s.items.map((it) => (
                       <li key={it} className="flex items-center gap-3 border-t border-neutral-track py-2.5 text-[15px] text-ink">
@@ -179,14 +234,35 @@ export default function Inicio() {
         <section className="border-t border-border-strong px-5 py-16 sm:px-8 sm:py-24">
           <div className="mx-auto max-w-6xl">
             <div className="flex flex-wrap items-end justify-between gap-4">
-              <h2 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-[0.98] tracking-[0.01em] text-ink">
-                Lo que hace por ti
-              </h2>
+              <div className="flex items-baseline gap-3">
+                <h2 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-[0.98] tracking-[0.01em] text-ink">
+                  Lo que hace por ti
+                </h2>
+                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#9A9AA3] lg:hidden">
+                  Desliza →
+                </span>
+              </div>
               <Link href="/funciones" className="text-sm font-bold text-ink underline underline-offset-4">
                 Ver todas las funciones →
               </Link>
             </div>
-            <div className="mt-10 grid grid-cols-1 border-l border-t border-border-strong sm:grid-cols-2 lg:grid-cols-3">
+
+            {/* Móvil (< lg): Carrusel horizontal */}
+            <div className="mt-8 -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:hidden">
+              {destacadas.map((f) => (
+                <div
+                  key={f.icon}
+                  className="flex min-w-[80vw] sm:min-w-[60vw] snap-center flex-col gap-3 border border-border-strong bg-surface p-6"
+                >
+                  <FeatureIcon name={f.icon} className="h-6 w-6 text-ink" />
+                  <h3 className="text-lg font-bold leading-snug text-ink">{f.title}</h3>
+                  <p className="text-sm leading-relaxed text-ink-muted">{f.description}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop (lg:): Grilla intacta */}
+            <div className="mt-10 hidden border-l border-t border-border-strong lg:grid lg:grid-cols-3">
               {destacadas.map((f) => (
                 <div key={f.icon} className="flex flex-col gap-3 border-b border-r border-border-strong bg-surface p-6">
                   <FeatureIcon name={f.icon} className="h-6 w-6 text-ink" />

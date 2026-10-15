@@ -112,7 +112,7 @@ export function WorkshopToolsGrid() {
   };
 
   return (
-    <div className="reveal mt-14 sm:mt-28">
+    <div id="herramientas" className="reveal mt-14 scroll-mt-28 sm:mt-28">
       {/* Cabecera técnica con selector de modo */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between border-b-2 border-ink pb-3.5">
         <div>

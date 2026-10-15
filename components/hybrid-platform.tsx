@@ -3,7 +3,7 @@ import { PhoneFrame } from "./phone-frame";
 
 export function HybridPlatform() {
   return (
-    <section className="border-y border-border-soft bg-surface-alt px-5 py-16 sm:px-8 sm:py-28">
+    <section id="meson" className="scroll-mt-28 border-y border-border-soft bg-surface-alt px-5 py-16 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="reveal max-w-3xl">
           <span className="rotulo hidden items-center gap-2 border border-border-strong px-3 py-1.5 text-[10px] sm:inline-flex">

@@ -12,25 +12,15 @@ import { CierreCuenta } from "@/components/sitio/cierre-cuenta";
 import { ProntoGooglePlay } from "@/components/sitio/pronto-google-play";
 import { CelularConAsistente, MesonConAsistente } from "@/components/sitio/meson-con-asistente";
 import { OfertaFranja } from "@/components/oferta-franja";
-import { SocialProof } from "@/components/social-proof";
 import { TecnologiasBar } from "@/components/sitio/tecnologias-bar";
 import { IngenieriaTaller } from "@/components/sitio/ingenieria-taller";
-import { WaLink } from "@/components/wa-tracking";
-import { waUrl } from "@/lib/marca";
 import {
-  FEATURES,
+  type IconName,
   URL_ENTRAR,
   clp,
   precioDesde,
 } from "@/lib/site";
 
-/**
- * Portada del sitio oficial. Mientras dure el programa de talleres fundadores,
- * lo primero es la invitación a inscribir el taller (llega al WhatsApp de MAZA).
- * No hay "crear cuenta" en el sitio: /registro sigue existiendo (sin indexar)
- * para quien reciba el link a mano.
- * "Entrar a mi taller" queda chico, para los talleres que ya usan MAZA.
- */
 export const metadata: Metadata = {
   title: "MAZA — Gestión para talleres multirubro",
   alternates: { canonical: "/" },
@@ -39,89 +29,137 @@ export const metadata: Metadata = {
 const PASOS = [
   {
     n: "01",
-    titulo: "Recibes",
-    texto:
-      "Ingresas el vehículo en el celular: cliente, fotos, inspección y servicios. La orden nace con su número y queda en la cola.",
+    tiempo: "30 SEGUNDOS",
+    titulo: "Recibes sin planillas",
+    texto: "Patente o QR, fotos de ingreso y servicios. La orden entra directo a la cola.",
     imagenMovil: "/screenshots/seguimiento.png",
-    badgeResultado: "⚡ Ingreso en 30 seg con QR y fotos",
+    badgeResultado: "⚡ Orden con QR lista",
     badgeColor: "text-[#FF9900]",
   },
   {
     n: "02",
-    titulo: "Informas",
-    texto:
-      "Tu cliente recibe un link por WhatsApp: ve cómo va su vehículo y aprueba el presupuesto con un toque. Sin llamadas.",
+    tiempo: "1 TOQUE",
+    titulo: "Aprueban por WhatsApp",
+    texto: "Tu cliente ve el avance desde un link y aprueba el presupuesto sin llamadas.",
     imagenMovil: "/screenshots/presupuesto.png",
-    badgeResultado: "✓ Aprobado online por el cliente",
+    badgeResultado: "✓ Aprobado desde el celular",
     badgeColor: "text-[#22A559]",
   },
   {
     n: "03",
-    titulo: "Entregas y cobras",
-    texto:
-      "Cierras la orden, cobras y la caja queda cuadrada. El historial del vehículo te espera en la próxima visita.",
+    tiempo: "AL CENTAVO",
+    titulo: "Entregas y cuadras caja",
+    texto: "Cobras efectivo, transferencia o Mercado Pago. Stock y caja cuadran solos.",
     imagenMovil: "/screenshots/hero.png",
-    badgeResultado: "● Caja cuadrada al instante",
+    badgeResultado: "● Caja e historial al día",
     badgeColor: "text-[#FF9900]",
   },
 ];
 
 const SUPERFICIES = [
   {
-    rotulo: "App · en el taller",
+    rotulo: "App Android · En el piso",
     titulo: "El celular ejecuta",
-    items: ["Recepción con fotos e inspección", "Avance de cada orden", "Entrega y cobro", "Asistente con IA"],
+    sub: "Rápido y con una mano al lado del vehículo.",
+    items: [
+      "Recepción en 30 seg con fotos y QR",
+      "Avance de estados en 1 toque",
+      "Envío de presupuesto por WhatsApp",
+      "Asistente IA con datos de tu taller",
+    ],
   },
   {
-    rotulo: "Web · en el mesón",
+    rotulo: "Web · En el mostrador",
     titulo: "El computador administra",
-    items: ["Venta de mostrador", "Inventario y compras", "Balances y cierre de caja", "Catálogo de servicios"],
+    sub: "Entras escaneando un QR, sin contraseñas.",
+    items: [
+      "Cierre de caja, abonos y balances",
+      "Venta rápida de mostrador",
+      "Inventario y alertas de stock bajo",
+      "Catálogo de servicios y precios",
+    ],
+  },
+];
+
+const EQUIPAMIENTO_SERIE: { icon: IconName; titulo: string; resumen: string }[] = [
+  {
+    icon: "seguimiento",
+    titulo: "Seguimiento en vivo",
+    resumen: "Link para tu cliente sin instalar nada.",
+  },
+  {
+    icon: "presupuesto",
+    titulo: "Presupuestos online",
+    resumen: "Aprueban total o parcial desde el celular.",
+  },
+  {
+    icon: "equipo",
+    titulo: "Dueño y mecánicos",
+    resumen: "Cada uno con su acceso y carga asignada.",
+  },
+  {
+    icon: "inventario",
+    titulo: "Stock automático",
+    resumen: "Se descuenta solo en cada reparación.",
+  },
+  {
+    icon: "rubro",
+    titulo: "Multirubro real",
+    resumen: "Control por kilometraje o por calendario.",
+  },
+  {
+    icon: "exportar",
+    titulo: "Tus datos en Excel",
+    resumen: "Descarga completa cuando quieras en 1 clic.",
   },
 ];
 
 export default function Inicio() {
-  const destacadas = FEATURES.filter((f) => !f.ownSection).slice(0, 6);
-
   return (
     <>
       <StructuredData />
       <OfertaFranja />
       <SitioHeader activa="/" />
       <main className="flex-1">
-        {/* ─── Apertura ─────────────────────────────────────────────── */}
-        <section className="px-5 pb-16 pt-8 sm:px-8 sm:pb-24 sm:pt-12">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
-            <div className="flex flex-col items-start gap-5 lg:col-span-5">
+        {/* ─── 1. HERO: Gancho en 5 segundos ────────────────────────── */}
+        <section className="px-5 pb-12 pt-6 sm:px-8 sm:pb-20 sm:pt-10">
+          <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 lg:grid-cols-12">
+            <div className="flex flex-col items-start gap-4 lg:col-span-5">
               <p className="rotulo">SISTEMA MULTIRUBRO EN OPERACIÓN · CUPOS TALLER FUNDADOR</p>
-              <h1 className="font-display text-[clamp(2.75rem,6vw,4rem)] leading-[0.92] tracking-[0.01em] text-ink text-balance">
+              <h1 className="font-display text-[clamp(2.75rem,6vw,4.1rem)] leading-[0.92] tracking-[0.01em] text-ink text-balance">
                 TU TALLER EN ORDEN. SIN CUADERNO.
               </h1>
-              <p className="max-w-[46ch] text-lg leading-relaxed text-ink-muted">
-                Recibe vehículos en 30 segundos, envía presupuestos que tu cliente aprueba con un toque por WhatsApp y cuadra tu caja al centavo. Forjado en 1 año en el taller, testeado y probado en todo el proceso operativo.
+              <p className="max-w-[44ch] text-base sm:text-lg leading-snug text-ink-muted">
+                Recibe vehículos en 30 segundos, envía presupuestos que aprueban con un toque por WhatsApp y cuadra tu caja al centavo.
               </p>
-              <div className="border-l-2 border-[#FF9900] bg-[#141417] px-3.5 py-2.5 rounded-r-sm w-full">
-                <p className="text-xs leading-relaxed text-[#F2F2F5]">
-                  ⚡ <strong>Cupos Taller Fundador (Puesta en marcha asistida):</strong> Manda una foto de tu lista de precios y nuestro equipo te entrega el taller 100% configurado con tu catálogo + beneficio fundador.
-                </p>
-              </div>
+
+              {/* 3 Píldoras escaneables en 2 segundos (reemplaza párrafos densos) */}
+              <ul className="flex w-full flex-col gap-1.5 border-l-2 border-[#FF9900] bg-[#141417] px-3.5 py-2.5 rounded-r-sm text-xs text-[#F2F2F5]">
+                <li className="flex items-center gap-2">
+                  <span className="font-mono font-bold text-[#FF9900]">⚡ Llave en mano:</span>
+                  <span className="text-[#9A9AA3]">Mandas 1 foto y cargamos tu lista de precios.</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="font-mono font-bold text-[#22A559]">✓ Cero llamadas:</span>
+                  <span className="text-[#9A9AA3]">Tu cliente sigue y aprueba desde su celular.</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="font-mono font-bold text-[#F2F2F5]">● 1 año en taller:</span>
+                  <span className="text-[#9A9AA3]">Probado en todo el proceso operativo real.</span>
+                </li>
+              </ul>
+
               <InscripcionBeta colapsableEnMovil />
-              <a
-                href={URL_ENTRAR}
-                data-cta="inicio-entrar"
-                className="inline-flex min-h-11 items-center text-sm font-semibold text-ink-muted hover:text-ink hover:underline"
-              >
-                ¿Ya usas MAZA? Entrar a mi taller →
-              </a>
-              <ProntoGooglePlay />
-              <div className="mt-4 pt-4 border-t border-[var(--line)]">
-                <WaLink
-                  href={waUrl("Hola, vi el video de MAZA y quiero consultar por un cupo de Taller Fundador.")}
-                  ubicacion="hero-fundadores"
-                  className="inline-flex items-center gap-2 text-xs font-medium text-[var(--ink)] hover:text-[var(--amber-ink)] transition-colors"
+
+              <div className="mt-1 flex w-full flex-wrap items-center justify-between gap-3 pt-2 border-t border-[var(--line)]">
+                <ProntoGooglePlay />
+                <a
+                  href={URL_ENTRAR}
+                  data-cta="inicio-entrar"
+                  className="inline-flex min-h-10 items-center text-xs sm:text-sm font-semibold text-ink-muted hover:text-ink hover:underline"
                 >
-                  <span className="h-2 w-2 rounded-full bg-[var(--amber)]" aria-hidden="true" />
-                  <span><strong>¿Vienes por el video?</strong> Suma tu taller como Taller Fundador (te dejamos el catálogo cargado) →</span>
-                </WaLink>
+                  ¿Ya usas MAZA? Entrar →
+                </a>
               </div>
             </div>
 
@@ -141,28 +179,45 @@ export default function Inicio() {
           </div>
         </section>
 
+        {/* ─── 2. RESPALDO TECNOLÓGICO ──────────────────────────────── */}
         <TecnologiasBar />
 
-        <SocialProof />
-
-        <IngenieriaTaller />
-
-        {/* ─── Cómo trabaja un taller con MAZA ─────────────────────── */}
-        <section className="border-y border-border-strong bg-surface px-5 py-16 sm:px-8 sm:py-20">
+        {/* ─── 3. FLUJO EN 3 PASOS (Visual, directo y sin relleno) ──── */}
+        <section className="border-b border-border-strong bg-surface px-5 py-14 sm:px-8 sm:py-18">
           <div className="mx-auto max-w-6xl">
-            <p className="titulo-seccion mb-8 max-w-fit pr-6">Un día en el taller</p>
+            <div className="mb-8 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="rotulo text-[#FF9900]">EL FLUJO COMPLETO EN 3 PASOS</p>
+                <h2 className="mt-1 font-display text-[clamp(2rem,4.5vw,3rem)] leading-none tracking-[0.01em] text-ink">
+                  CÓMO TRABAJA TU TALLER CON MAZA
+                </h2>
+              </div>
+              <p className="font-mono text-xs text-ink-muted">
+                Sin planillas · Sin perseguir clientes por teléfono
+              </p>
+            </div>
+
             <ol className="grid grid-cols-1 border border-border-strong sm:grid-cols-3">
               {PASOS.map((p, i) => (
                 <li
                   key={p.n}
-                  className={`flex flex-col gap-3 p-6 ${i > 0 ? "border-t border-border-strong sm:border-l sm:border-t-0" : ""}`}
+                  className={`flex flex-col gap-2.5 p-5 sm:p-6 ${
+                    i > 0 ? "border-t border-border-strong sm:border-l sm:border-t-0" : ""
+                  }`}
                 >
-                  <span className="cifra text-3xl text-value-shade">{p.n}</span>
-                  <h2 className="font-display text-3xl leading-none tracking-[0.01em] text-ink">{p.titulo}</h2>
-                  <p className="text-[15px] leading-relaxed text-ink-muted">{p.texto}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="cifra text-3xl text-value-shade">{p.n}</span>
+                    <span className="rounded-xs border border-border-strong bg-app-bg px-2 py-0.5 font-mono text-[10px] font-bold text-ink-muted">
+                      {p.tiempo}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-3xl leading-none tracking-[0.01em] text-ink">
+                    {p.titulo}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-ink-muted">{p.texto}</p>
 
-                  {/* Evidencia visual en móvil (< lg) con marco proporcionado */}
-                  <div className="mt-4 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
+                  {/* Evidencia visual en móvil (< lg) */}
+                  <div className="mt-3 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
                     <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px]">
                       <span className={`font-bold ${p.badgeColor}`}>
                         {p.badgeResultado}
@@ -170,12 +225,12 @@ export default function Inicio() {
                       <span className="text-[#9A9AA3]">Paso {p.n}</span>
                     </div>
                     <div className="flex justify-center bg-[#0E0E11] py-3 px-4">
-                      <div className="w-[185px] max-h-56 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-md">
+                      <div className="w-[180px] max-h-52 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-md">
                         <Image
                           src={p.imagenMovil}
                           alt={p.titulo}
-                          width={370}
-                          height={800}
+                          width={360}
+                          height={780}
                           className="w-full object-cover object-top"
                         />
                       </div>
@@ -187,35 +242,46 @@ export default function Inicio() {
           </div>
         </section>
 
-        {/* ─── Dos superficies ──────────────────────────────────────── */}
-        <section className="px-5 py-16 sm:px-8 sm:py-24">
+        {/* ─── 4. INGENIERÍA REAL (Diferenciador Anti-Improvisación) ── */}
+        <IngenieriaTaller />
+
+        {/* ─── 5. DOS PANTALLAS + EQUIPAMIENTO DE SERIE (Unificado) ─── */}
+        <section className="px-5 py-14 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-6xl">
-            <h2 className="max-w-[20ch] font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
-              La app ejecuta. La web administra.
-            </h2>
-            <p className="mt-4 max-w-[60ch] text-base leading-relaxed text-ink-muted sm:text-lg">
-              Una sola cuenta, los mismos datos en vivo. En el computador entras a mazataller.com,
-              escaneas un código con el celular y listo: sin escribir la contraseña.
-            </p>
-            <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="rotulo text-[#FF9900]">SINCRONIZACIÓN EN TIEMPO REAL</p>
+                <h2 className="mt-1 font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-[0.96] tracking-[0.01em] text-ink">
+                  LA APP EJECUTA. LA WEB ADMINISTRA.
+                </h2>
+              </div>
+              <p className="max-w-[38ch] text-sm text-ink-muted">
+                Escaneas un QR en el computador del mesón y trabajas con los mismos datos al instante.
+              </p>
+            </div>
+
+            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {SUPERFICIES.map((s) => (
-                <div key={s.rotulo} className="caja p-6">
+                <div key={s.rotulo} className="caja p-5 sm:p-6">
                   <p className="rotulo rotulo-sm">{s.rotulo}</p>
-                  <h3 className="mt-2 font-display text-3xl leading-none tracking-[0.01em] text-ink">{s.titulo}</h3>
+                  <h3 className="mt-1.5 font-display text-3xl leading-none tracking-[0.01em] text-ink">
+                    {s.titulo}
+                  </h3>
+                  <p className="mt-1 text-xs text-ink-muted">{s.sub}</p>
 
                   {s.rotulo.includes("App") && (
-                    <div className="mb-4 mt-4 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
+                    <div className="mb-4 mt-3.5 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
                       <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px] text-[#9A9AA3]">
                         <span className="font-bold text-[#FF9900]">● Cola de trabajo en vivo</span>
                         <span className="text-[#F2F2F5]">App Android</span>
                       </div>
                       <div className="flex justify-center bg-[#0E0E11] py-3 px-4">
-                        <div className="w-[185px] max-h-56 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-md">
+                        <div className="w-[180px] max-h-52 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-md">
                           <Image
                             src="/screenshots/equipo.png"
                             alt="Cola de trabajo funcionando en el celular"
-                            width={370}
-                            height={800}
+                            width={360}
+                            height={780}
                             className="w-full object-cover object-top"
                           />
                         </div>
@@ -224,7 +290,7 @@ export default function Inicio() {
                   )}
 
                   {s.rotulo.includes("Web") && (
-                    <div className="mb-4 mt-4 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
+                    <div className="mb-4 mt-3.5 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
                       <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px] text-[#9A9AA3]">
                         <div className="flex items-center gap-1.5">
                           <span className="h-2 w-2 rounded-full bg-[#374151]" />
@@ -246,9 +312,12 @@ export default function Inicio() {
                     </div>
                   )}
 
-                  <ul className="mt-5 flex flex-col">
+                  <ul className="mt-4 flex flex-col">
                     {s.items.map((it) => (
-                      <li key={it} className="flex items-center gap-3 border-t border-neutral-track py-2.5 text-[15px] text-ink">
+                      <li
+                        key={it}
+                        className="flex items-center gap-2.5 border-t border-neutral-track py-2 text-sm text-ink"
+                      >
                         <span className="testigo text-ink" aria-hidden="true" />
                         {it}
                       </li>
@@ -257,74 +326,60 @@ export default function Inicio() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* ─── Funciones ────────────────────────────────────────────── */}
-        <section className="border-t border-border-strong px-5 py-16 sm:px-8 sm:py-24">
-          <div className="mx-auto max-w-6xl">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div className="flex items-baseline gap-3">
-                <h2 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] leading-[0.98] tracking-[0.01em] text-ink">
-                  Lo que hace por ti
-                </h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#9A9AA3] lg:hidden">
-                  Desliza →
+            {/* Matriz compacta de funciones (escaneable en segundos) */}
+            <div className="mt-8">
+              <div className="mb-3 flex items-center justify-between">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-ink-muted">
+                  INCLUIDO EN TU TALLER DESDE EL PRIMER DÍA
                 </span>
+                <Link href="/funciones" className="text-xs sm:text-sm font-bold text-[#FF9900] hover:underline">
+                  Ver las 12 funciones →
+                </Link>
               </div>
-              <Link href="/funciones" className="text-sm font-bold text-ink underline underline-offset-4">
-                Ver todas las funciones →
-              </Link>
-            </div>
-
-            {/* Móvil (< lg): Carrusel horizontal */}
-            <div className="mt-8 -mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:hidden">
-              {destacadas.map((f) => (
-                <div
-                  key={f.icon}
-                  className="flex min-w-[80vw] sm:min-w-[60vw] snap-center flex-col gap-3 border border-border-strong bg-surface p-6"
-                >
-                  <FeatureIcon name={f.icon} className="h-6 w-6 text-ink" />
-                  <h3 className="text-lg font-bold leading-snug text-ink">{f.title}</h3>
-                  <p className="text-sm leading-relaxed text-ink-muted">{f.description}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Desktop (lg:): Grilla intacta */}
-            <div className="mt-10 hidden border-l border-t border-border-strong lg:grid lg:grid-cols-3">
-              {destacadas.map((f) => (
-                <div key={f.icon} className="flex flex-col gap-3 border-b border-r border-border-strong bg-surface p-6">
-                  <FeatureIcon name={f.icon} className="h-6 w-6 text-ink" />
-                  <h3 className="text-lg font-bold leading-snug text-ink">{f.title}</h3>
-                  <p className="text-sm leading-relaxed text-ink-muted">{f.description}</p>
-                </div>
-              ))}
+              <div className="grid grid-cols-2 border-l border-t border-border-strong sm:grid-cols-3 lg:grid-cols-6">
+                {EQUIPAMIENTO_SERIE.map((f) => (
+                  <div
+                    key={f.icon}
+                    className="flex flex-col gap-1.5 border-b border-r border-border-strong bg-surface p-3.5 sm:p-4"
+                  >
+                    <FeatureIcon name={f.icon} className="h-5 w-5 text-[#FF9900]" />
+                    <h3 className="text-xs sm:text-sm font-bold leading-tight text-ink">{f.titulo}</h3>
+                    <p className="text-[11px] leading-snug text-ink-muted">{f.resumen}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ─── Planes y ayuda ───────────────────────────────────────── */}
-        <section className="px-5 pb-16 sm:px-8 sm:pb-24">
+        {/* ─── 6. PRECIOS TRANSPARENTES Y AYUDA ────────────────────── */}
+        <section className="px-5 pb-14 sm:px-8 sm:pb-20">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-4 md:grid-cols-2">
-            <Link href="/planes" className="caja group flex flex-col gap-3 p-6 hover:border-ink">
-              <p className="rotulo rotulo-sm">Planes y precios</p>
+            <Link href="/planes" className="caja group flex flex-col gap-2 p-5 sm:p-6 hover:border-ink">
+              <p className="rotulo rotulo-sm">Planes transparentes · Sin amarres</p>
               <p className="text-ink-muted">
-                Desde <span className="cifra text-3xl text-value-shade">{clp.format(precioDesde())}</span> al mes,
+                Desde <span className="cifra text-3xl text-value-shade">{clp.format(precioDesde())}</span> / mes,
                 IVA incluido
               </p>
-              <p className="text-sm text-ink-muted">
-                Tres planes según cuántas personas trabajan. Precios con IVA incluido.
+              <p className="text-xs sm:text-sm text-ink-muted">
+                Según el tamaño de tu equipo. Cancela cuando quieras en 1 clic.
               </p>
-              <span className="mt-auto text-sm font-bold text-ink group-hover:underline">Ver planes →</span>
+              <span className="mt-2 text-sm font-bold text-[#FF9900] group-hover:underline">
+                Ver los 3 planes →
+              </span>
             </Link>
-            <Link href="/ayuda" className="caja group flex flex-col gap-3 p-6 hover:border-ink">
-              <p className="rotulo rotulo-sm">Ayuda</p>
-              <p className="font-display text-3xl leading-none tracking-[0.01em] text-ink">Guías paso a paso</p>
-              <p className="text-sm text-ink-muted">
-                Primeros pasos, recibir un vehículo, enviar el link, importar con IA y usar el mesón.
+            <Link href="/funciones" className="caja group flex flex-col gap-2 p-5 sm:p-6 hover:border-ink">
+              <p className="rotulo rotulo-sm">Recorrido visual</p>
+              <p className="font-display text-3xl leading-none tracking-[0.01em] text-ink">
+                MIRA CADA PANTALLA POR DENTRO
               </p>
-              <span className="mt-auto text-sm font-bold text-ink group-hover:underline">Ir a la ayuda →</span>
+              <p className="text-xs sm:text-sm text-ink-muted">
+                Revisa capturas reales de la cola, el presupuesto online, el asistente IA y la caja.
+              </p>
+              <span className="mt-2 text-sm font-bold text-ink group-hover:underline">
+                Explorar pantallas y funciones →
+              </span>
             </Link>
           </div>
         </section>

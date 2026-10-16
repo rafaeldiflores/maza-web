@@ -14,6 +14,7 @@ import { CelularConAsistente, MesonConAsistente } from "@/components/sitio/meson
 import { OfertaFranja } from "@/components/oferta-franja";
 import { SocialProof } from "@/components/social-proof";
 import { TecnologiasBar } from "@/components/sitio/tecnologias-bar";
+import { IngenieriaTaller } from "@/components/sitio/ingenieria-taller";
 import { WaLink } from "@/components/wa-tracking";
 import { waUrl } from "@/lib/marca";
 import {
@@ -143,6 +144,8 @@ export default function Inicio() {
         <TecnologiasBar />
 
         <SocialProof />
+
+        <IngenieriaTaller />
 
         {/* ─── Cómo trabaja un taller con MAZA ─────────────────────── */}
         <section className="border-y border-border-strong bg-surface px-5 py-16 sm:px-8 sm:py-20">

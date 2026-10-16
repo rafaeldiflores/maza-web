@@ -1,16 +1,27 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useState, type ReactNode } from "react";
 
 interface Tecnologia {
+  id: string;
   nombre: string;
   subtitulo: string;
+  detalle: string;
+  datoClave: string;
+  colorBorde: string;
   icono: ReactNode;
   spanDosCol?: boolean;
 }
 
 const TECNOLOGIAS: Tecnologia[] = [
   {
+    id: "whatsapp",
     nombre: "WhatsApp",
     subtitulo: "Avisos y link en 1 toque",
+    detalle:
+      "Abre el chat del cliente con el mensaje y su link de seguimiento ya redactados desde el propio número de tu taller. Tú revisas y envías en 1 toque, sin bots impersonales.",
+    datoClave: "Directo desde tu número · Sin cobro por mensaje",
+    colorBorde: "border-[#25D366]",
     icono: (
       <svg
         role="img"
@@ -24,8 +35,13 @@ const TECNOLOGIAS: Tecnologia[] = [
     ),
   },
   {
+    id: "mercadopago",
     nombre: "Mercado Pago",
     subtitulo: "Cobros directo a tu cuenta",
+    detalle:
+      "Tu cliente puede pagar el presupuesto o el retiro desde el mismo link con tarjeta o transferencia. El dinero va directo a tu cuenta de Mercado Pago y se registra en la orden.",
+    datoClave: "Conciliación inmediata con tu caja diaria",
+    colorBorde: "border-[#00B1EA]",
     icono: (
       <svg
         role="img"
@@ -39,8 +55,13 @@ const TECNOLOGIAS: Tecnologia[] = [
     ),
   },
   {
+    id: "googlecloud",
     nombre: "Google Cloud",
     subtitulo: "Datos seguros y respaldados",
+    detalle:
+      "Cada orden, foto de ingreso, cliente e inventario se respalda en vivo en servidores de Google. Si cambias de celular o de computador en el mesón, tu taller sigue intacto.",
+    datoClave: "Respaldo continuo · Exportable a Excel en 1 clic",
+    colorBorde: "border-[#4285F4]",
     icono: (
       <svg
         role="img"
@@ -68,8 +89,13 @@ const TECNOLOGIAS: Tecnologia[] = [
     ),
   },
   {
+    id: "googleplay",
     nombre: "Google Play",
     subtitulo: "App rápida en Android",
+    detalle:
+      "Aplicación Android diseñada para operar con una sola mano en el piso del taller: cámara directa para patentes y QR, fotos de piezas gastadas y vinculación instantánea con el PC.",
+    datoClave: "Sincronizada en tiempo real con el mostrador web",
+    colorBorde: "border-[#00F076]",
     icono: (
       <svg
         role="img"
@@ -97,8 +123,13 @@ const TECNOLOGIAS: Tecnologia[] = [
     ),
   },
   {
+    id: "gemini",
     nombre: "Google Gemini IA",
     subtitulo: "Carga tu catálogo por foto",
+    detalle:
+      "Digitaliza tu lista de precios desde 1 foto para entregarte el taller listo. Además, impulsa el Asistente MAZA que consulta tu inventario, cola y caja real en segundos.",
+    datoClave: "Lee solo los datos reales de tu taller · No inventa precios",
+    colorBorde: "border-[#8C65F7]",
     spanDosCol: true,
     icono: (
       <svg
@@ -124,36 +155,100 @@ const TECNOLOGIAS: Tecnologia[] = [
 ];
 
 export function TecnologiasBar() {
+  const [activaId, setActivaId] = useState<string | null>(null);
+  const activa = TECNOLOGIAS.find((t) => t.id === activaId) ?? null;
+
   return (
     <section className="border-y border-[#26262C] bg-[#0E0E11] px-5 py-5 sm:px-8">
       <div className="mx-auto max-w-6xl">
-        <p className="mb-3.5 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-[#6E6E77] sm:text-left">
-          CONECTADO Y RESPALDADO CON TECNOLOGÍA DE
-        </p>
+        <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2">
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6E6E77]">
+            CONECTADO Y RESPALDADO CON TECNOLOGÍA DE
+          </p>
+          <span className="font-mono text-[10px] text-[#9A9AA3]">
+            👆 Toca un ícono para ver qué hace
+          </span>
+        </div>
 
         {/* Móvil: grid de 2 columnas | Desktop: fila de 5 columnas */}
-        <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-5 lg:gap-4">
-          {TECNOLOGIAS.map((t) => (
-            <div
-              key={t.nombre}
-              className={`flex items-center gap-2.5 rounded-sm border border-[#26262C] bg-[#141417]/80 px-3 py-2.5 ${
-                t.spanDosCol ? "col-span-2 lg:col-span-1" : "col-span-1"
-              }`}
-            >
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xs border border-[#26262C] bg-[#1C1C21]">
-                {t.icono}
-              </span>
-              <div className="flex flex-col min-w-0">
-                <span className="text-xs font-bold leading-tight text-[#F2F2F5] truncate">
-                  {t.nombre}
+        <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-5 lg:gap-3.5">
+          {TECNOLOGIAS.map((t) => {
+            const seleccionada = t.id === activaId;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                aria-expanded={seleccionada}
+                onClick={() => setActivaId((prev) => (prev === t.id ? null : t.id))}
+                className={`group flex items-center justify-between gap-2.5 rounded-sm border px-3 py-2.5 text-left transition-colors cursor-pointer ${
+                  t.spanDosCol ? "col-span-2 lg:col-span-1" : "col-span-1"
+                } ${
+                  seleccionada
+                    ? "border-[#FF9900] bg-[#1C1C21]"
+                    : "border-[#26262C] bg-[#141417]/80 hover:border-[#FF9900]/50 hover:bg-[#141417]"
+                }`}
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <span
+                    className={`grid h-9 w-9 shrink-0 place-items-center rounded-xs border transition-colors ${
+                      seleccionada
+                        ? "border-[#FF9900]/60 bg-[#0A0A0A]"
+                        : "border-[#26262C] bg-[#1C1C21] group-hover:border-[#FF9900]/30"
+                    }`}
+                  >
+                    {t.icono}
+                  </span>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-xs font-bold leading-tight text-[#F2F2F5] truncate">
+                      {t.nombre}
+                    </span>
+                    <span className="font-mono text-[10px] leading-tight text-[#9A9AA3] truncate">
+                      {t.subtitulo}
+                    </span>
+                  </div>
+                </div>
+                <span
+                  className={`shrink-0 font-mono text-[10px] font-bold transition-transform ${
+                    seleccionada ? "text-[#FF9900]" : "text-[#6E6E77] group-hover:text-[#FF9900]"
+                  }`}
+                  aria-hidden="true"
+                >
+                  {seleccionada ? "▴" : "▾"}
                 </span>
-                <span className="font-mono text-[10px] leading-tight text-[#9A9AA3] truncate">
-                  {t.subtitulo}
-                </span>
-              </div>
-            </div>
-          ))}
+              </button>
+            );
+          })}
         </div>
+
+        {/* Franja inline instantánea (sin popups ni modales) */}
+        {activa && (
+          <div
+            className={`mt-2.5 flex flex-col justify-between gap-2.5 rounded-sm border border-[#26262C] border-l-2 ${activa.colorBorde} bg-[#141417] px-3.5 py-3 sm:flex-row sm:items-center sm:gap-4`}
+          >
+            <div className="flex items-start gap-2.5 sm:items-center">
+              <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-xs border border-[#26262C] bg-[#0A0A0A] sm:mt-0">
+                {activa.icono}
+              </span>
+              <p className="text-xs leading-relaxed text-[#F2F2F5]">
+                <strong className="font-bold text-[#FF9900]">{activa.nombre}: </strong>
+                {activa.detalle}
+              </p>
+            </div>
+            <div className="flex items-center justify-between gap-3 border-t border-[#26262C] pt-2 sm:shrink-0 sm:border-t-0 sm:pt-0">
+              <span className="font-mono text-[10px] font-bold text-[#22A559]">
+                ✓ {activa.datoClave}
+              </span>
+              <button
+                type="button"
+                onClick={() => setActivaId(null)}
+                className="font-mono text-[10px] text-[#9A9AA3] hover:text-[#F2F2F5] cursor-pointer px-1"
+                aria-label="Cerrar detalle"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

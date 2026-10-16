@@ -18,13 +18,13 @@ export function QuienEstaDetras() {
           width={96}
           height={96}
           loading="lazy"
-          className="h-24 w-24 shrink-0 rounded-full object-cover"
+          className="h-24 w-24 shrink-0 rounded-full object-cover object-top"
         />
 
         <div className="flex flex-col gap-4">
           <p className="rotulo text-[10px] text-value-shade">El fundador</p>
           <h2 className="font-display text-[clamp(2rem,5vw,3rem)] leading-[0.98] tracking-[0.01em] text-ink text-balance">
-            Cinco años de taller. Cuatro de ingeniería.
+            Forjado en taller real. Respaldado por ingeniería.
           </h2>
           <div className="flex flex-col gap-3 text-base leading-relaxed text-ink-muted">
             <p>
@@ -33,14 +33,14 @@ export function QuienEstaDetras() {
               software fueron siempre sus dos oficios.
             </p>
             <p>
-              En 2021 abrió <strong className="text-ink">{CREADOR.taller}</strong> y lo
-              atendió cinco años mientras estudiaba. Ahí vio de cerca los problemas de
-              todos los días: el cuaderno, las llamadas preguntando si el trabajo estaba
-              listo, los presupuestos que nadie contestaba.
+              En <strong className="text-ink">{CREADOR.taller}</strong> vivió de cerca los
+              problemas de todos los días: el cuaderno, las llamadas preguntando si el
+              trabajo estaba listo, los presupuestos que nadie contestaba.
             </p>
             <p>
-              MAZA nació para resolver eso en un taller real. Cada función se prueba
-              primero en el trabajo diario de un taller antes de llegar a los demás.
+              MAZA nació para resolver eso en terreno: lleva{" "}
+              <strong className="text-ink">1 año operando en el taller</strong>, testeado
+              y probado en todo el proceso operativo antes de llegar a los demás.
             </p>
           </div>
 

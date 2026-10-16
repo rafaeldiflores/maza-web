@@ -14,56 +14,66 @@ interface PruebaDeFuego {
   solucionMaza: string;
   metrica: string;
   etiquetaMetrica: string;
+  captura: string;
+  pieCaptura: string;
 }
 
 const PRUEBAS_DE_FUEGO: PruebaDeFuego[] = [
   {
-    id: "presupuesto-parcial",
+    id: "presupuesto-opciones",
     numero: "01",
-    etiquetaBoton: "01 · Aprueba la mitad",
-    pregunta: "¿Cotizas 4 cosas y el cliente solo quiere hacer 2?",
+    etiquetaBoton: "01 · Cero disputas",
+    pregunta: "¿Cotizas varias cosas o el cliente cuestiona por qué se cambia una pieza?",
     fallaComun:
-      "Borras la orden, recalculas a mano por WhatsApp y arriesgas cobrar mal en caja.",
+      "Discutes por teléfono, borras la orden a mano por WhatsApp y arriesgas cobrar mal en caja.",
     solucionMaza:
-      "El cliente destilda en su celular lo que no hará hoy. Total, orden y stock se ajustan solos.",
+      "Subes fotos de la pieza gastada y envías opciones (Básico, Recomendada, Premium) o ítems destildables. Aprueba en 1 toque.",
     metrica: "1 TOQUE",
-    etiquetaMetrica: "Recálculo en vivo",
+    etiquetaMetrica: "Opciones y evidencia",
+    captura: "/screenshots/presupuesto-opciones.png",
+    pieCaptura: "Presupuesto con opciones: Básico $45.000 vs Completo ★ Recomendada $80.000",
   },
   {
     id: "manos-con-grasa",
     numero: "02",
     etiquetaBoton: "02 · Hora punta",
-    pregunta: "¿Manos ocupadas y 3 vehículos entrando a la vez?",
+    pregunta: "¿8 vehículos adentro y no sabes si alcanzas a entregar todo hoy?",
     fallaComun:
-      "15 campos chiquititos obligatorios que nadie tiene tiempo de llenar en el taller.",
+      "15 campos chiquititos obligatorios y una lista ciega que no calcula tu carga real de trabajo.",
     solucionMaza:
-      "Botones grandes de terreno: patente o QR, fotos de ingreso y link enviado en 30 segundos.",
+      "Recepción en 30 seg con checklist de 19 puntos. La vista «Mi Día» suma las horas de tus órdenes y calcula a qué hora terminas.",
     metrica: "30 SEG",
-    etiquetaMetrica: "Recepción en mesón",
+    etiquetaMetrica: "Recepción + Carga horaria",
+    captura: "/screenshots/mi-dia.png",
+    pieCaptura: "Vista Mi Día: 4 trabajos · 6 h 50 min · Terminas cerca de las 06:27",
   },
   {
     id: "caja-real",
     numero: "03",
-    etiquetaBoton: "03 · Pagos mixtos",
+    etiquetaBoton: "03 · Caja exacta",
     pregunta: "¿Dejan abono y al retirar pagan mitad efectivo y mitad transferencia?",
     fallaComun:
-      "Solo entienden un pago único: a las 7 PM la caja no cuadra y vuelves al cuaderno.",
+      "Solo aceptan un pago único: a las 7 PM el efectivo del cajón no cuadra y vuelves al cuaderno.",
     solucionMaza:
-      "Soporta abonos, pagos divididos y Mercado Pago. Separa mano de obra y repuestos al centavo.",
+      "Separa tu ganancia del día del efectivo exacto que debe haber en el cajón. Soporta abonos, pagos divididos y retiros de caja.",
     metrica: "$0 DESCUADRE",
-    etiquetaMetrica: "Cierre de caja exacto",
+    etiquetaMetrica: "Efectivo vs Transferencias",
+    captura: "/screenshots/balances.png",
+    pieCaptura: "Cierre de caja: separa ganancia hoy ($64.500) del efectivo en cajón ($12.500)",
   },
   {
-    id: "puesta-en-marcha",
+    id: "equipo-permisos",
     numero: "04",
-    etiquetaBoton: "04 · Tus precios hoy",
-    pregunta: "¿Quién tiene tiempo de digitar 200 servicios y repuestos?",
+    etiquetaBoton: "04 · Equipo y costos",
+    pregunta: "¿Sumas mecánicos pero no quieres que vean tu caja ni tus costos?",
     fallaComun:
-      "Te entregan una cuenta vacía y un formulario eterno que abandonas al segundo día.",
+      "Todos entran con la misma clave y cualquiera ve cuánto ganas, tus márgenes de repuestos o borra órdenes.",
     solucionMaza:
-      "Mandas 1 foto de tu pizarra o lista y nuestro equipo junto a la IA te entregan el taller cargado.",
-    metrica: "LLAVE EN MANO",
-    etiquetaMetrica: "Catálogo listo día 1",
+      "Cada mecánico avanza sus órdenes asignadas en su celular, mientras caja, balances y costos de compra quedan ocultos.",
+    metrica: "ROLES CLAROS",
+    etiquetaMetrica: "Caja y costos blindados",
+    captura: "/screenshots/equipo.png",
+    pieCaptura: "Permisos de taller: caja y costos de inventario ocultos al mecánico",
   },
 ];
 
@@ -95,19 +105,19 @@ export function IngenieriaTaller() {
             <p className="mt-2.5 text-sm leading-relaxed text-[#9A9AA3] sm:text-base">
               En un taller real las apps improvisadas duran dos días. MAZA une{" "}
               <strong className="font-semibold text-[#F2F2F5]">4 años de Ingeniería Informática</strong> con{" "}
-              <strong className="font-semibold text-[#F2F2F5]">1 año operando en taller real</strong>, probado en todo el proceso operativo.
+              <strong className="font-semibold text-[#F2F2F5]">1 año operando en taller real</strong>, testeado y probado en todo el proceso operativo.
             </p>
           </div>
 
-          {/* Sello compacto de origen con foto real */}
-          <div className="flex items-center gap-3 rounded-sm border border-[#26262C] bg-[#141417] p-3 lg:max-w-xs shrink-0">
-            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border-2 border-[#FF9900]">
+          {/* Sello compacto de origen con foto real bien encuadrada */}
+          <div className="flex items-center gap-3.5 rounded-sm border border-[#26262C] bg-[#141417] p-3.5 lg:max-w-sm shrink-0">
+            <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-[#FF9900] bg-[#0A0A0A]">
               <Image
                 src="/fundador.jpg"
-                alt="Taller Litoral Bikes en operación"
-                width={48}
-                height={48}
-                className="h-full w-full object-cover"
+                alt="Rafael Díaz Flores — Fundador de MAZA en taller Litoral Bikes"
+                width={96}
+                height={96}
+                className="h-full w-full object-cover object-top"
               />
             </div>
             <div className="flex flex-col min-w-0">
@@ -115,23 +125,23 @@ export function IngenieriaTaller() {
                 ● Litoral Bikes · El Quisco
               </span>
               <span className="text-xs font-bold text-[#F2F2F5]">
-                1 año en el taller real
+                1 año operando en taller real
               </span>
               <span className="text-[11px] text-[#9A9AA3] leading-tight">
-                Testeado y probado en cada orden antes de salir al mercado.
+                Testeado y probado en todo el proceso operativo antes de abrir cupos.
               </span>
             </div>
           </div>
         </div>
 
-        {/* ─── Simulador interactivo ultra-escaneable ─────────────────── */}
+        {/* ─── Simulador interactivo con captura real por caso ────────── */}
         <div className="mt-7 rounded-sm border border-[#26262C] bg-[#141417] p-4 sm:p-6">
           <div className="flex items-center justify-between gap-2">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-[#9A9AA3]">
-              TOCA UN CASO REAL DE TALLER:
+              TOCA UN CASO REAL DE TALLER Y MIRA LA PANTALLA:
             </p>
             <span className="font-mono text-[10px] text-[#FF9900]">
-              👆 Compara en 1 toque
+              👆 4 pruebas de fuego
             </span>
           </div>
 
@@ -164,38 +174,62 @@ export function IngenieriaTaller() {
             })}
           </div>
 
-          {/* Resultado al grano */}
-          <div className="mt-4 rounded-sm border border-[#26262C] bg-[#0A0A0A] p-4 sm:p-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#26262C] pb-3">
-              <h3 className="font-display text-xl leading-tight tracking-[0.01em] text-[#F2F2F5] sm:text-2xl">
-                {prueba.pregunta}
-              </h3>
-              <div className="inline-flex items-center gap-2 rounded-xs border border-[#FF9900]/40 bg-[#141417] px-3 py-1">
-                <span className="font-mono text-sm font-extrabold text-[#FF9900]">
-                  {prueba.metrica}
-                </span>
-                <span className="font-mono text-[10px] uppercase text-[#9A9AA3]">
-                  · {prueba.etiquetaMetrica}
-                </span>
+          {/* Resultado al grano + Captura real de la pantalla */}
+          <div className="mt-4 grid grid-cols-1 items-center gap-4 rounded-sm border border-[#26262C] bg-[#0A0A0A] p-4 sm:p-5 lg:grid-cols-12">
+            <div className="flex flex-col gap-3.5 lg:col-span-7">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#26262C] pb-3">
+                <h3 className="font-display text-xl leading-tight tracking-[0.01em] text-[#F2F2F5] sm:text-2xl">
+                  {prueba.pregunta}
+                </h3>
+                <div className="inline-flex items-center gap-2 rounded-xs border border-[#FF9900]/40 bg-[#141417] px-2.5 py-1">
+                  <span className="font-mono text-xs font-extrabold text-[#FF9900]">
+                    {prueba.metrica}
+                  </span>
+                  <span className="font-mono text-[10px] uppercase text-[#9A9AA3]">
+                    · {prueba.etiquetaMetrica}
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                <div className="rounded-sm border border-[#26262C] bg-[#141417]/60 p-3.5">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#ff6b6b]">
+                    ✕ App improvisada de oficina
+                  </span>
+                  <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-[#9A9AA3]">
+                    {prueba.fallaComun}
+                  </p>
+                </div>
+
+                <div className="rounded-sm border border-[#22A559]/50 bg-[#141417] p-3.5">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#22A559]">
+                    ✓ Ingeniería MAZA en terreno
+                  </span>
+                  <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-[#F2F2F5]">
+                    {prueba.solucionMaza}
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className="mt-3.5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-4">
-              <div className="rounded-sm border border-[#26262C] bg-[#141417]/60 p-3.5">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#ff6b6b]">
-                  ✕ App improvisada de oficina
-                </span>
-                <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-[#9A9AA3]">
-                  {prueba.fallaComun}
-                </p>
+            {/* Evidencia visual real de ese caso */}
+            <div className="overflow-hidden rounded-sm border border-[#26262C] bg-[#0E0E11] lg:col-span-5">
+              <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px]">
+                <span className="font-bold text-[#22A559]">● Pantalla real en MAZA</span>
+                <span className="text-[#9A9AA3]">Caso {prueba.numero}</span>
               </div>
-
-              <div className="rounded-sm border border-[#22A559]/50 bg-[#141417] p-3.5">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#22A559]">
-                  ✓ Ingeniería MAZA en terreno
-                </span>
-                <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-[#F2F2F5]">
-                  {prueba.solucionMaza}
+              <div className="flex flex-col items-center p-3">
+                <div className="w-[195px] max-h-60 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-lg">
+                  <Image
+                    src={prueba.captura}
+                    alt={prueba.pieCaptura}
+                    width={380}
+                    height={800}
+                    className="w-full object-cover object-top"
+                  />
+                </div>
+                <p className="mt-2 text-center font-mono text-[10px] text-[#9A9AA3]">
+                  {prueba.pieCaptura}
                 </p>
               </div>
             </div>

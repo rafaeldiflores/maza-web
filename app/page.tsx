@@ -30,28 +30,28 @@ const PASOS = [
   {
     n: "01",
     tiempo: "30 SEGUNDOS",
-    titulo: "Recibes sin planillas",
-    texto: "Patente o QR, fotos de ingreso y servicios. La orden entra directo a la cola.",
-    imagenMovil: "/screenshots/seguimiento.png",
-    badgeResultado: "⚡ Orden con QR lista",
+    titulo: "Recibes con fotos y checklist",
+    texto: "Patente o QR, checklist de ingreso y fotos de evidencia. La orden entra directo a la cola.",
+    imagenMovil: "/screenshots/orden-auto.png",
+    badgeResultado: "⚡ Orden e inspección listas",
     badgeColor: "text-[#FF9900]",
   },
   {
     n: "02",
     tiempo: "1 TOQUE",
-    titulo: "Aprueban por WhatsApp",
-    texto: "Tu cliente ve el avance desde un link y aprueba el presupuesto sin llamadas.",
-    imagenMovil: "/screenshots/presupuesto.png",
-    badgeResultado: "✓ Aprobado desde el celular",
+    titulo: "Ven las fotos y aprueban",
+    texto: "Tu cliente revisa las fotos de lo encontrado en su link y elige la opción de presupuesto sin llamarte.",
+    imagenMovil: "/screenshots/evidencia-link.png",
+    badgeResultado: "✓ Aprobado desde el link",
     badgeColor: "text-[#22A559]",
   },
   {
     n: "03",
     tiempo: "AL CENTAVO",
     titulo: "Entregas y cuadras caja",
-    texto: "Cobras efectivo, transferencia o Mercado Pago. Stock y caja cuadran solos.",
-    imagenMovil: "/screenshots/hero.png",
-    badgeResultado: "● Caja e historial al día",
+    texto: "Envías comprobante por WhatsApp, PDF o ticket térmico. Efectivo en cajón, transferencias y stock cuadran solos.",
+    imagenMovil: "/screenshots/entrega-comprobante.png",
+    badgeResultado: "● Comprobante y caja al día",
     badgeColor: "text-[#FF9900]",
   },
 ];
@@ -216,23 +216,25 @@ export default function Inicio() {
                   </h3>
                   <p className="text-sm leading-relaxed text-ink-muted">{p.texto}</p>
 
-                  {/* Evidencia visual en móvil (< lg) */}
-                  <div className="mt-3 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
-                    <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px]">
-                      <span className={`font-bold ${p.badgeColor}`}>
-                        {p.badgeResultado}
-                      </span>
-                      <span className="text-[#9A9AA3]">Paso {p.n}</span>
-                    </div>
-                    <div className="flex justify-center bg-[#0E0E11] py-3 px-4">
-                      <div className="w-[180px] max-h-52 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-md">
-                        <Image
-                          src={p.imagenMovil}
-                          alt={p.titulo}
-                          width={360}
-                          height={780}
-                          className="w-full object-cover object-top"
-                        />
+                  {/* Evidencia visual real del paso */}
+                  <div className="mt-auto pt-3">
+                    <div className="overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A]">
+                      <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px]">
+                        <span className={`font-bold ${p.badgeColor}`}>
+                          {p.badgeResultado}
+                        </span>
+                        <span className="text-[#9A9AA3]">Paso {p.n}</span>
+                      </div>
+                      <div className="flex justify-center bg-[#0E0E11] py-3 px-4">
+                        <div className="w-[185px] max-h-56 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-md">
+                          <Image
+                            src={p.imagenMovil}
+                            alt={p.titulo}
+                            width={360}
+                            height={780}
+                            className="w-full object-cover object-top"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -270,16 +272,16 @@ export default function Inicio() {
                   <p className="mt-1 text-xs text-ink-muted">{s.sub}</p>
 
                   {s.rotulo.includes("App") && (
-                    <div className="mb-4 mt-3.5 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
+                    <div className="mb-4 mt-3.5 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A]">
                       <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px] text-[#9A9AA3]">
-                        <span className="font-bold text-[#FF9900]">● Cola de trabajo en vivo</span>
+                        <span className="font-bold text-[#FF9900]">● Cola de trabajo en vivo (8 órdenes)</span>
                         <span className="text-[#F2F2F5]">App Android</span>
                       </div>
                       <div className="flex justify-center bg-[#0E0E11] py-3 px-4">
-                        <div className="w-[180px] max-h-52 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-md">
+                        <div className="w-[185px] max-h-56 overflow-hidden rounded-t-xl border border-[#26262C] bg-[#0A0A0A] shadow-md">
                           <Image
-                            src="/screenshots/equipo.png"
-                            alt="Cola de trabajo funcionando en el celular"
+                            src="/screenshots/cola-moto.png"
+                            alt="Cola de trabajo real funcionando en el celular con estados y aprobación desde el link"
                             width={360}
                             height={780}
                             className="w-full object-cover object-top"
@@ -290,7 +292,7 @@ export default function Inicio() {
                   )}
 
                   {s.rotulo.includes("Web") && (
-                    <div className="mb-4 mt-3.5 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A] lg:hidden">
+                    <div className="mb-4 mt-3.5 overflow-hidden rounded-sm border border-[#26262C] bg-[#0A0A0A]">
                       <div className="flex items-center justify-between border-b border-[#26262C] bg-[#141417] px-3 py-1.5 font-mono text-[10px] text-[#9A9AA3]">
                         <div className="flex items-center gap-1.5">
                           <span className="h-2 w-2 rounded-full bg-[#374151]" />

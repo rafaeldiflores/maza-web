@@ -66,7 +66,7 @@ const TOOLS: WorkshopTool[] = [
     badge: "TU RUBRO",
     microCopy: "La app habla tu idioma según la especialidad de tu taller.",
     detail:
-      "Adapta la terminología, pautas de kilometraje y campos específicos según si trabajas con vehículos, flotas, motocicletas o bicicletas.",
+      "Adapta la terminología, controles por kilometraje o por calendario y campos específicos según la especialidad de tu taller.",
   },
   {
     id: "domicilio",

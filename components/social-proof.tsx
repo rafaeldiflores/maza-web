@@ -58,8 +58,12 @@ export function SocialProof() {
                       />
                     </div>
                     <div className="flex flex-col min-w-0">
-                      <span className="font-mono text-[10px] font-bold text-[#FF9900] uppercase tracking-wider">
-                        📍 Litoral Bikes · El Quisco
+                      <span className="inline-flex items-center gap-1 font-mono text-[10px] font-bold text-[#FF9900] uppercase tracking-wider">
+                        <svg viewBox="0 0 24 24" className="h-3 w-3 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                          <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Litoral Bikes · El Quisco
                       </span>
                       <span className="text-xs font-bold text-[#F2F2F5] leading-snug">
                         1 año en el taller real

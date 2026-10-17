@@ -29,7 +29,7 @@ const PASOS = [
     titulo: "Recibes con fotos",
     texto: "Checklist de ingreso y fotos de evidencia en una mano.",
     imagenMovil: "/screenshots/orden-auto.png",
-    badgeResultado: "⚡ Ingreso listo",
+    badgeResultado: "● Ingreso listo",
     badgeColor: "text-[#FF9900]",
   },
   {
@@ -74,7 +74,19 @@ export default function Inicio() {
 
               {/* Gancho sorpresa único y directo */}
               <div className="flex w-full items-center gap-2.5 rounded-sm border border-[#FF9900]/35 bg-[#FF9900]/10 px-3.5 py-2.5 text-xs text-[#F2F2F5]">
-                <span className="text-base leading-none" aria-hidden="true">🪄</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4 shrink-0 text-[#FF9900]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                  <circle cx="12" cy="13" r="4" />
+                </svg>
                 <span>
                   <strong className="font-mono text-[#FF9900]">Llave en mano:</strong> mandas 1 foto de tu lista de precios y te entregamos el taller cargado.
                 </span>

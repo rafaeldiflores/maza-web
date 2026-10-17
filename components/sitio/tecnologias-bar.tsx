@@ -165,8 +165,20 @@ export function TecnologiasBar() {
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6E6E77]">
             CONECTADO CON LA TECNOLOGÍA DE
           </p>
-          <span className="font-mono text-[10px] text-[#9A9AA3]">
-            👆 Toca un ícono para ver qué hace
+          <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-[#9A9AA3]">
+            <svg
+              viewBox="0 0 24 24"
+              className="h-3 w-3 shrink-0 text-[#FF9900]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" />
+            </svg>
+            <span>Toca un ícono para ver qué hace</span>
           </span>
         </div>
 

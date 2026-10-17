@@ -67,7 +67,7 @@ function ContenidoAsistente({ previa = false }: { previa?: boolean }) {
               <p className="rotulo text-[7.5px] text-value-shade">Caja</p>
               <p className="mt-1">
                 <strong className="cifra">$2.840.000</strong> en 38 órdenes cerradas,{" "}
-                <strong className="text-success">📈 14 %</strong> sobre agosto a esta fecha.
+                <strong className="text-success">▲ 14 %</strong> sobre agosto a esta fecha.
               </p>
             </div>
           </>

@@ -185,8 +185,20 @@ export function InscripcionBeta({ colapsableEnMovil = false }: InscripcionBetaPr
           {/* Encabezado de celebración */}
           <div className="flex items-start justify-between gap-2 border-b border-[#26262C] pb-3">
             <div className="flex items-center gap-2">
-              <span className="inline-flex h-6 items-center rounded-xs bg-[#22A559]/20 border border-[#22A559]/50 px-2 font-mono text-[10px] font-bold uppercase tracking-wider text-[#22A559]">
-                🎉 ¡FELICIDADES! CUPO DESBLOQUEADO
+              <span className="inline-flex h-6 items-center gap-1.5 rounded-xs bg-[#22A559]/20 border border-[#22A559]/50 px-2 font-mono text-[10px] font-bold uppercase tracking-wider text-[#22A559]">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-3.5 w-3.5 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                ¡FELICIDADES! CUPO DESBLOQUEADO
               </span>
             </div>
             {colapsableEnMovil && (
@@ -206,10 +218,23 @@ export function InscripcionBeta({ colapsableEnMovil = false }: InscripcionBetaPr
               ¡FELICIDADES! ESTÁS DENTRO DE LOS TALLERES FUNDADORES.
             </h3>
             <div className="rounded-xs border border-[#FF9900]/50 bg-[#FF9900]/15 px-3.5 py-2.5">
-              <p className="text-xs sm:text-sm font-bold text-[#FF9900]">
-                🎁 Tienes un 50% de descuento en la suscripción anual
+              <p className="flex items-center gap-2 text-xs sm:text-sm font-bold text-[#FF9900]">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4 shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+                  <line x1="7" y1="7" x2="7.01" y2="7" />
+                </svg>
+                <span>Tienes un 50% de descuento en la suscripción anual</span>
               </p>
-              <p className="mt-0.5 text-[11px] sm:text-xs text-[#F2F2F5]/90">
+              <p className="mt-1 pl-6 text-[11px] sm:text-xs text-[#F2F2F5]/90">
                 Además te entregamos el taller llave en mano con tu catálogo de precios cargado.
               </p>
             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import Image from "next/image";
 import { AndroidFrame } from "@/components/android-frame";
 import { ComputerFrame } from "@/components/computer-frame";
@@ -10,6 +10,7 @@ type VistaId = "cliente" | "taller" | "meson" | "magia";
 interface Vista {
   id: VistaId;
   etiqueta: string;
+  icono: ReactNode;
   insignia: string;
   colorInsignia: string;
   sorpresa: string;
@@ -18,7 +19,13 @@ interface Vista {
 const VISTAS: Vista[] = [
   {
     id: "cliente",
-    etiqueta: "📱 Lo que ve tu cliente",
+    etiqueta: "Lo que ve tu cliente",
+    icono: (
+      <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+        <path d="M9 12l2 2 4-4" />
+      </svg>
+    ),
     insignia: "SIN INSTALAR NADA · APRUEBA EN 1 TOQUE",
     colorInsignia: "text-[#22A559]",
     sorpresa:
@@ -26,7 +33,12 @@ const VISTAS: Vista[] = [
   },
   {
     id: "taller",
-    etiqueta: "🔧 Tu celular en taller",
+    etiqueta: "Tu celular en taller",
+    icono: (
+      <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+      </svg>
+    ),
     insignia: "COLA EN VIVO · AVANCE CON UNA MANO",
     colorInsignia: "text-[#FF9900]",
     sorpresa:
@@ -34,7 +46,14 @@ const VISTAS: Vista[] = [
   },
   {
     id: "meson",
-    etiqueta: "🖥️ Tu mesón en PC",
+    etiqueta: "Tu mesón en PC",
+    icono: (
+      <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </svg>
+    ),
     insignia: "CONECTADO POR QR EN 1 SEGUNDO",
     colorInsignia: "text-[#FF9900]",
     sorpresa:
@@ -42,7 +61,13 @@ const VISTAS: Vista[] = [
   },
   {
     id: "magia",
-    etiqueta: "🪄 1 Foto → Catálogo",
+    etiqueta: "1 Foto → Catálogo",
+    icono: (
+      <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+        <circle cx="12" cy="13" r="4" />
+      </svg>
+    ),
     insignia: "PUESTA EN MARCHA LLAVE EN MANO",
     colorInsignia: "text-[#22A559]",
     sorpresa:
@@ -71,13 +96,14 @@ export function SorpresaEnVivo() {
               role="tab"
               aria-selected={esActiva}
               onClick={() => setVistaId(v.id)}
-              className={`rounded-xs px-2.5 py-2 font-mono text-[11px] font-bold transition-all cursor-pointer text-center truncate ${
+              className={`flex items-center justify-center gap-1.5 rounded-xs px-2.5 py-2 font-mono text-[11px] font-bold transition-all cursor-pointer text-center truncate ${
                 esActiva
                   ? "bg-[#FF9900] text-[#0A0A0A] shadow-sm"
                   : "bg-[#141417] text-[#9A9AA3] hover:border-[#FF9900]/40 hover:text-[#F2F2F5]"
               }`}
             >
-              {v.etiqueta}
+              {v.icono}
+              <span className="truncate">{v.etiqueta}</span>
             </button>
           );
         })}

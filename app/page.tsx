@@ -28,7 +28,7 @@ const PASOS = [
     tiempo: "30 SEG",
     titulo: "Recibes con fotos",
     texto: "Checklist de ingreso y fotos de evidencia en una mano.",
-    imagenMovil: "/screenshots/orden-auto.png",
+    imagenMovil: "/screenshots/ingreso.png",
     badgeResultado: "● Ingreso listo",
     badgeColor: "text-[#FF9900]",
   },

@@ -159,19 +159,19 @@ export function TecnologiasBar() {
   const activa = TECNOLOGIAS.find((t) => t.id === activaId) ?? null;
 
   return (
-    <section className="border-y border-[#26262C] bg-[#0E0E11] px-5 py-5 sm:px-8">
+    <section className="border-y border-[#26262C] bg-[#0E0E11] px-5 py-4 sm:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-3.5 flex flex-wrap items-center justify-between gap-2">
+        <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#6E6E77]">
-            CONECTADO Y RESPALDADO CON TECNOLOGÍA DE
+            CONECTADO CON LA TECNOLOGÍA DE
           </p>
           <span className="font-mono text-[10px] text-[#9A9AA3]">
             👆 Toca un ícono para ver qué hace
           </span>
         </div>
 
-        {/* Móvil: grid de 2 columnas | Desktop: fila de 5 columnas */}
-        <div className="grid grid-cols-2 gap-2.5 lg:grid-cols-5 lg:gap-3.5">
+        {/* Fila minimalista de 5 íconos oficiales */}
+        <div className="grid grid-cols-2 gap-2 lg:grid-cols-5">
           {TECNOLOGIAS.map((t) => {
             const seleccionada = t.id === activaId;
             return (
@@ -180,7 +180,7 @@ export function TecnologiasBar() {
                 type="button"
                 aria-expanded={seleccionada}
                 onClick={() => setActivaId((prev) => (prev === t.id ? null : t.id))}
-                className={`group flex items-center justify-between gap-2.5 rounded-sm border px-3 py-2.5 text-left transition-colors cursor-pointer ${
+                className={`group flex items-center justify-between gap-2 rounded-sm border px-3 py-2 text-left transition-colors cursor-pointer ${
                   t.spanDosCol ? "col-span-2 lg:col-span-1" : "col-span-1"
                 } ${
                   seleccionada
@@ -190,7 +190,7 @@ export function TecnologiasBar() {
               >
                 <div className="flex items-center gap-2.5 min-w-0">
                   <span
-                    className={`grid h-9 w-9 shrink-0 place-items-center rounded-xs border transition-colors ${
+                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-xs border transition-colors ${
                       seleccionada
                         ? "border-[#FF9900]/60 bg-[#0A0A0A]"
                         : "border-[#26262C] bg-[#1C1C21] group-hover:border-[#FF9900]/30"
@@ -198,14 +198,9 @@ export function TecnologiasBar() {
                   >
                     {t.icono}
                   </span>
-                  <div className="flex flex-col min-w-0">
-                    <span className="text-xs font-bold leading-tight text-[#F2F2F5] truncate">
-                      {t.nombre}
-                    </span>
-                    <span className="font-mono text-[10px] leading-tight text-[#9A9AA3] truncate">
-                      {t.subtitulo}
-                    </span>
-                  </div>
+                  <span className="text-xs font-bold leading-tight text-[#F2F2F5] truncate">
+                    {t.nombre}
+                  </span>
                 </div>
                 <span
                   className={`shrink-0 font-mono text-[10px] font-bold transition-transform ${
@@ -223,18 +218,13 @@ export function TecnologiasBar() {
         {/* Franja inline instantánea (sin popups ni modales) */}
         {activa && (
           <div
-            className={`mt-2.5 flex flex-col justify-between gap-2.5 rounded-sm border border-[#26262C] border-l-2 ${activa.colorBorde} bg-[#141417] px-3.5 py-3 sm:flex-row sm:items-center sm:gap-4`}
+            className={`mt-2 flex flex-col justify-between gap-2 rounded-sm border border-[#26262C] border-l-2 ${activa.colorBorde} bg-[#141417] px-3.5 py-2.5 sm:flex-row sm:items-center sm:gap-4`}
           >
-            <div className="flex items-start gap-2.5 sm:items-center">
-              <span className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-xs border border-[#26262C] bg-[#0A0A0A] sm:mt-0">
-                {activa.icono}
-              </span>
-              <p className="text-xs leading-relaxed text-[#F2F2F5]">
-                <strong className="font-bold text-[#FF9900]">{activa.nombre}: </strong>
-                {activa.detalle}
-              </p>
-            </div>
-            <div className="flex items-center justify-between gap-3 border-t border-[#26262C] pt-2 sm:shrink-0 sm:border-t-0 sm:pt-0">
+            <p className="text-xs leading-relaxed text-[#F2F2F5]">
+              <strong className="font-bold text-[#FF9900]">{activa.nombre}: </strong>
+              {activa.detalle}
+            </p>
+            <div className="flex items-center justify-between gap-3 sm:shrink-0">
               <span className="font-mono text-[10px] font-bold text-[#22A559]">
                 ✓ {activa.datoClave}
               </span>

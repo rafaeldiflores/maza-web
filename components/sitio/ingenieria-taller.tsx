@@ -4,19 +4,16 @@ import { CREADOR } from "@/lib/site";
 
 const DETALLES_REALES = [
   {
-    titulo: "Presupuestos con opciones o destildables",
-    texto:
-      "Envías hasta 3 alternativas (Básico, Recomendada, Premium) o ítems que el cliente puede destildar en su celular. El total y los repuestos se ajustan solos.",
+    titulo: "Presupuestos con 3 opciones o destildables",
+    texto: "Básico, Recomendada o Premium en 1 link. El total y el stock se ajustan solos.",
   },
   {
-    titulo: "Carga horaria en «Mi Día»",
-    texto:
-      "No es una lista ciega: suma las horas estimadas de tus trabajos en cola y te dice a qué hora terminas la jornada.",
+    titulo: "Carga horaria real en «Mi Día»",
+    texto: "Suma las horas estimadas de tu cola y te dice a qué hora terminas la jornada.",
   },
   {
-    titulo: "Caja exacta y costos protegidos",
-    texto:
-      "Separa tu ganancia del día del efectivo exacto que debe haber en el cajón, y oculta tus costos de inventario a los mecánicos.",
+    titulo: "Caja al centavo y costos protegidos",
+    texto: "Separa tu ganancia del efectivo en cajón y oculta costos de compra a mecánicos.",
   },
 ];
 
@@ -24,37 +21,33 @@ export function IngenieriaTaller() {
   return (
     <section
       id="ingenieria-real"
-      className="border-b border-border-strong px-5 py-14 sm:px-8 sm:py-20"
+      className="border-b border-border-strong px-5 py-12 sm:px-8 sm:py-16"
     >
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 lg:grid-cols-12">
-        {/* Columna izquierda: Explicación directa y humana */}
-        <div className="flex flex-col gap-4 lg:col-span-6">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 lg:grid-cols-12">
+        {/* Columna izquierda: Directa y sin relleno */}
+        <div className="flex flex-col gap-3.5 lg:col-span-6">
           <p className="rotulo text-[#FF9900]">
             FORJADO EN TALLER REAL · EL QUISCO, CHILE
           </p>
-          <h2 className="font-display text-[clamp(2.1rem,5vw,3.25rem)] leading-[0.95] tracking-[0.01em] text-ink text-balance">
-            UN AÑO PROBADO EN EL MESÓN ANTES DE SALIR.
+          <h2 className="font-display text-[clamp(2rem,4.5vw,3rem)] leading-[0.95] tracking-[0.01em] text-ink text-balance">
+            1 AÑO PROBADO EN EL MESÓN + 4 AÑOS DE INGENIERÍA.
           </h2>
-          <p className="text-sm sm:text-base leading-relaxed text-ink-muted">
-            MAZA nació en <strong className="text-ink">{CREADOR.taller}</strong> y une{" "}
-            <strong className="text-ink">4 años de Ingeniería Informática</strong> con{" "}
-            <strong className="text-ink">1 año operando en el taller</strong>, testeado y
-            probado en todo el proceso operativo.
+          <p className="text-sm leading-relaxed text-ink-muted">
+            Nacido en <strong className="text-ink">{CREADOR.taller}</strong>, testeado y probado en
+            todo el proceso operativo real antes de abrirse a otros talleres.
           </p>
 
           <ul className="mt-1 flex flex-col border-t border-border-strong">
             {DETALLES_REALES.map((d) => (
               <li
                 key={d.titulo}
-                className="flex flex-col gap-1 border-b border-border-strong py-3.5"
+                className="flex flex-col gap-0.5 border-b border-border-strong py-2.5"
               >
                 <div className="flex items-center gap-2">
                   <span className="testigo bg-[#FF9900]" aria-hidden="true" />
-                  <h3 className="text-sm font-bold text-ink">{d.titulo}</h3>
+                  <h3 className="text-xs sm:text-sm font-bold text-ink">{d.titulo}</h3>
                 </div>
-                <p className="pl-4 text-xs sm:text-sm leading-relaxed text-ink-muted">
-                  {d.texto}
-                </p>
+                <p className="pl-4 text-xs text-ink-muted">{d.texto}</p>
               </li>
             ))}
           </ul>
@@ -64,9 +57,9 @@ export function IngenieriaTaller() {
             <Image
               src={CREADOR.foto}
               alt={`${CREADOR.nombre}, fundador de MAZA`}
-              width={44}
-              height={44}
-              className="h-11 w-11 shrink-0 rounded-full border border-border-strong object-cover object-top"
+              width={40}
+              height={40}
+              className="h-10 w-10 shrink-0 rounded-full border border-border-strong object-cover object-top"
             />
             <div className="text-xs leading-snug">
               <p className="font-bold text-ink">{CREADOR.nombre}</p>
@@ -77,16 +70,16 @@ export function IngenieriaTaller() {
           </div>
         </div>
 
-        {/* Columna derecha: 2 capturas reales representativas de la ingeniería de la app */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:col-span-6">
+        {/* Columna derecha: 2 capturas completas 9:16 sin recortes laterales ni inferiores */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:col-span-6">
           <div className="flex flex-col items-center gap-2">
-            <AndroidFrame className="max-w-[220px] sm:max-w-[250px]">
+            <AndroidFrame aspect="aspect-[9/16]" className="max-w-[205px] sm:max-w-[225px]">
               <Image
                 src="/screenshots/mi-dia.png"
                 alt="Vista Mi Día en MAZA calculando horas de trabajo y hora de término"
                 fill
-                sizes="(max-width: 640px) 180px, 250px"
-                className="object-cover object-top"
+                sizes="(max-width: 640px) 180px, 225px"
+                className="object-contain object-top"
               />
             </AndroidFrame>
             <span className="font-mono text-[10px] sm:text-xs text-ink-muted text-center">
@@ -95,13 +88,13 @@ export function IngenieriaTaller() {
           </div>
 
           <div className="flex flex-col items-center gap-2">
-            <AndroidFrame className="max-w-[220px] sm:max-w-[250px]">
+            <AndroidFrame aspect="aspect-[9/16]" className="max-w-[205px] sm:max-w-[225px]">
               <Image
                 src="/screenshots/balances.png"
                 alt="Cierre de caja en MAZA separando ganancia del día y efectivo exacto en cajón"
                 fill
-                sizes="(max-width: 640px) 180px, 250px"
-                className="object-cover object-top"
+                sizes="(max-width: 640px) 180px, 225px"
+                className="object-contain object-top"
               />
             </AndroidFrame>
             <span className="font-mono text-[10px] sm:text-xs text-ink-muted text-center">

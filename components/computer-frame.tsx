@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { mediaExists } from "@/lib/media";
 
 export interface ComputerFrameProps {
   file?: string;
@@ -14,7 +13,7 @@ export function ComputerFrame({
   className,
   children,
 }: ComputerFrameProps) {
-  const ready = file ? mediaExists(file) : false;
+  const ready = Boolean(file);
 
   return (
     <div className={`relative mx-auto w-full max-w-4xl ${className ?? ""}`}>

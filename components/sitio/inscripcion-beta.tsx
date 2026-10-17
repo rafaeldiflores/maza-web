@@ -68,25 +68,25 @@ export function InscripcionBeta({ colapsableEnMovil = false }: InscripcionBetaPr
   return (
     <div id="inscripcion" className="w-full scroll-mt-24">
       {debeColapsar && (
-        <div className="flex w-full flex-col gap-2.5 lg:hidden">
-          <button
-            type="button"
-            onClick={desplegarYEnfocar}
-            data-cta="inicio-inscripcion-abrir-movil"
-            className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-sm bg-[#FF9900] px-6 text-base font-bold text-[#0A0A0A] shadow-lg transition-colors hover:bg-value-shade cursor-pointer"
-          >
-            Suma tu taller fundador →
-          </button>
-          <div className="flex flex-wrap items-center justify-between gap-2 px-0.5 font-mono text-[11px] text-[#9A9AA3]">
-            <span>⚡ Te cargamos tu lista de precios</span>
+        <div className="flex w-full flex-col gap-2.5">
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <button
+              type="button"
+              onClick={desplegarYEnfocar}
+              data-cta="inicio-inscripcion-abrir"
+              className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-sm bg-[#FF9900] px-6 text-base font-bold text-[#0A0A0A] shadow-lg transition-colors hover:bg-value-shade cursor-pointer"
+            >
+              Suma tu taller fundador →
+            </button>
             <a
               href={waLink("Hola, vi la web de MAZA y quiero sumar mi taller como Taller Fundador.")}
               target="_blank"
               rel="noreferrer"
-              data-cta="inicio-wa-directo-movil"
-              className="font-bold text-[#22A559] hover:underline"
+              data-cta="inicio-wa-directo"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm border border-[#26262C] bg-[#141417] px-4 text-xs sm:text-sm font-bold text-[#F2F2F5] transition-colors hover:border-[#25D366] hover:text-[#25D366]"
             >
-              WhatsApp directo →
+              <WhatsappIcon className="h-4 w-4 text-[#25D366]" />
+              WhatsApp directo
             </a>
           </div>
         </div>
@@ -95,7 +95,7 @@ export function InscripcionBeta({ colapsableEnMovil = false }: InscripcionBetaPr
       <form
         onSubmit={enviar}
         className={`caja w-full flex-col gap-3.5 p-4 sm:p-5 transition-all duration-300 ${
-          debeColapsar ? "hidden lg:flex" : "flex"
+          debeColapsar ? "hidden" : "flex"
         }`}
       >
         <div className="flex items-center justify-between border-b border-border-strong pb-2.5">
@@ -106,7 +106,7 @@ export function InscripcionBeta({ colapsableEnMovil = false }: InscripcionBetaPr
             <button
               type="button"
               onClick={() => setAbiertoEnMovil(false)}
-              className="font-mono text-[11px] text-ink-muted hover:text-ink lg:hidden"
+              className="font-mono text-[11px] text-ink-muted hover:text-ink cursor-pointer"
             >
               Cerrar ×
             </button>

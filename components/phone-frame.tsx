@@ -187,6 +187,19 @@ function MockupIA() {
   );
 }
 
+const CAPTURAS_9_16 = new Set([
+  "screenshots/balances.png",
+  "screenshots/cola-moto.png",
+  "screenshots/cola.png",
+  "screenshots/entrega-comprobante.png",
+  "screenshots/evidencia-link.png",
+  "screenshots/inspeccion.png",
+  "screenshots/mi-dia.png",
+  "screenshots/orden-auto.png",
+  "screenshots/presupuesto-opciones.png",
+  "screenshots/venta-mostrador.png",
+]);
+
 export interface PhoneFrameProps {
   file?: string;
   alt?: string;
@@ -200,12 +213,14 @@ export function PhoneFrame({
   alt = "Captura de pantalla de la app MAZA en Android",
   className,
   children,
-  aspect = "aspect-[9/19.5]",
+  aspect,
 }: PhoneFrameProps) {
   const ready = file ? mediaExists(file) : false;
+  const resolvedAspect =
+    aspect ?? (file && CAPTURAS_9_16.has(file) ? "aspect-[9/16]" : "aspect-[9/19.5]");
 
   return (
-    <AndroidFrame className={className} aspect={aspect}>
+    <AndroidFrame className={className} aspect={resolvedAspect}>
       {children ? (
         children
       ) : ready && file ? (
@@ -214,7 +229,7 @@ export function PhoneFrame({
           alt={alt}
           fill
           sizes="(max-width: 640px) 260px, 290px"
-          className="object-cover object-top"
+          className="object-contain object-top"
         />
       ) : file?.includes("seguimiento") ? (
         <MockupSeguimiento />

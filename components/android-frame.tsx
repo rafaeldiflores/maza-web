@@ -34,13 +34,7 @@ export function AndroidFrame({
           <div className={`relative ${aspect} w-full overflow-hidden rounded-[20px] bg-surface`}>
             {/* Reflejo sutil del vidrio plano */}
             <div
-              className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-tr from-transparent via-transparent to-white/[0.06]"
-              aria-hidden="true"
-            />
-
-            {/* Barra de gestos */}
-            <div
-              className="pointer-events-none absolute bottom-1.5 left-1/2 z-30 h-1 w-20 -translate-x-1/2 rounded-full bg-neutral-800/40 dark:bg-white/40"
+              className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-tr from-transparent via-transparent to-white/[0.05]"
               aria-hidden="true"
             />
 

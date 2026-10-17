@@ -68,10 +68,10 @@ const VISTAS: Vista[] = [
         <circle cx="12" cy="13" r="4" />
       </svg>
     ),
-    insignia: "PUESTA EN MARCHA LLAVE EN MANO",
+    insignia: "FACTURAS Y LISTAS LEÍDAS CON IA",
     colorInsignia: "text-[#22A559]",
     sorpresa:
-      "No tipeas nada: nos mandas 1 foto de tu pizarra o cuaderno y te entregamos el taller con todos tus servicios y precios cargados.",
+      "No tipeas nada: sacas una foto a la factura, la guía o tu lista de precios y MAZA carga el inventario para que lo revises.",
   },
 ];
 
@@ -149,28 +149,28 @@ export function SorpresaEnVivo() {
           <div className="grid w-full max-w-xl grid-cols-1 items-center gap-4 rounded-sm border border-[#26262C] bg-[#0E0E11] p-4 sm:grid-cols-12 sm:p-5">
             <div className="flex flex-col gap-2.5 sm:col-span-6">
               <span className="inline-flex w-fit items-center gap-1.5 rounded-xs border border-[#FF9900]/40 bg-[#FF9900]/10 px-2 py-0.5 font-mono text-[10px] font-bold text-[#FF9900]">
-                PASO CERO · CERO PLANILLAS
+                CARGA CON IA · SIN TIPEAR
               </span>
               <h3 className="font-display text-2xl sm:text-3xl leading-none text-[#F2F2F5]">
-                DE TU PIZARRA A LA APP EN MINUTOS.
+                DE UNA FOTO A TU INVENTARIO.
               </h3>
               <ol className="flex flex-col gap-2 border-l-2 border-[#26262C] pl-3 text-xs text-[#9A9AA3]">
                 <li>
-                  <strong className="text-[#F2F2F5]">1. Sacas 1 foto</strong> a tu lista de precios, cuaderno o PDF actual.
+                  <strong className="text-[#F2F2F5]">1. Fotografías</strong> una factura, guía, PDF o tu lista de precios.
                 </li>
                 <li>
-                  <strong className="text-[#F2F2F5]">2. Gemini IA + nuestro equipo</strong> estructuran tus servicios y repuestos.
+                  <strong className="text-[#F2F2F5]">2. La IA lee</strong> nombres, cantidades y precios. Tú revisas antes de guardar.
                 </li>
                 <li>
-                  <strong className="text-[#22A559]">3. Entras a trabajar</strong> con todo tu catálogo listo desde el día 1.
+                  <strong className="text-[#22A559]">3. Listo:</strong> suma stock y crea lo que falta, sin duplicados.
                 </li>
               </ol>
             </div>
             <div className="flex justify-center sm:col-span-6">
               <AndroidFrame aspect="aspect-[9/16]" className="max-w-[205px] sm:max-w-[215px]">
                 <Image
-                  src="/screenshots/venta-mostrador.png"
-                  alt="Catálogo de productos y precios cargado en MAZA con stock en tiempo real"
+                  src="/screenshots/importar-ia.png"
+                  alt="Recepción de compra en MAZA: factura o planilla leída con IA"
                   fill
                   sizes="215px"
                   className="object-contain object-top"

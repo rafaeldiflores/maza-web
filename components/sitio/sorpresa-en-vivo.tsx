@@ -167,12 +167,12 @@ export function SorpresaEnVivo() {
               </ol>
             </div>
             <div className="flex justify-center sm:col-span-6">
-              <AndroidFrame aspect="aspect-[9/19.5]" className="max-w-[195px] sm:max-w-[210px]">
+              <AndroidFrame aspect="aspect-[9/16]" className="max-w-[205px] sm:max-w-[215px]">
                 <Image
-                  src="/screenshots/servicios.png"
-                  alt="Catálogo de servicios cargado en MAZA con precios y tiempos estimados"
+                  src="/screenshots/venta-mostrador.png"
+                  alt="Catálogo de productos y precios cargado en MAZA con stock en tiempo real"
                   fill
-                  sizes="210px"
+                  sizes="215px"
                   className="object-contain object-top"
                 />
               </AndroidFrame>
